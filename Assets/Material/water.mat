@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: water
+  m_Shader: {fileID: -6465566751694194690, guid: ce7e079805e5dea4bb613fb6348cee89,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_4EAE8A6A:
+        m_Texture: {fileID: 2800000, guid: d6b61e219dd9fea40b2b89abc4311a93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_647BB78:
+        m_Texture: {fileID: 2800000, guid: b67ec84b565a47e45a0f88341a26dfc1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B19ED77:
+        m_Texture: {fileID: 2800000, guid: d982b2e85b768de45b392cb13eaa769e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_17A3DBBE: 0.02
+    - Vector1_21B5A497: 1
+    - Vector1_880CD8EF: 1
+    - Vector1_B3B29B94: 0.2
+    - Vector1_C15DC28F: 1
+    - Vector1_CAD8A78: 4.33
+    - Vector1_D19C43FB: 5
+    - Vector1_DA3656D8: 0.05
+    - Vector1_FB4B84BF: 0.3
+    m_Colors:
+    - Color_70895C5: {r: 0, g: 0.45098037, b: 1, a: 1}
+    - Color_95446840: {r: 0.14901957, g: 0.5803921, b: 1, a: 1}
+    - Color_9D63C14D: {r: 0.01960784, g: 0.19607836, b: 0.28235298, a: 1}
+    - Color_DA6A6061: {r: 0.14901957, g: 0.5490196, b: 0.8862746, a: 1}
+    - Color_FAA0327A: {r: 0, g: 0.13333327, b: 0.18039218, a: 1}
+    - Vector2_5E540E88: {r: -0.03, g: -0.01, b: 0, a: 0}
+    - Vector2_8D873D00: {r: -0.05, g: 0, b: 0, a: 0}
+    - Vector2_AE65ECE1: {r: 5, g: 0, b: 0, a: 0}
+    - Vector2_B112D787: {r: -0.2, g: 0, b: 0, a: 0}
+    - Vector2_EE39293D: {r: -0.05, g: 0, b: 0, a: 0}
