@@ -12,17 +12,22 @@ public class Player : MonoBehaviour, IEntity
     private PlayerController _playerController;
     private Pickup _pickup;
     
+    // Monobehaviors
+    private Rigidbody _rigidbody;
+    private CapsuleCollider _capsuleCollider;
+    
     public void Init(int index)
     {
         _index = index;
-       gameObject.AddComponent<CapsuleCollider>();
-       gameObject.AddComponent<Rigidbody>();
-       
+       _capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+       _rigidbody = gameObject.AddComponent<Rigidbody>();
+       _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
        _playerController = new PlayerController();
     }
 
     public void Tick()
     {
-        _playerController.Tick();
+        _playerController.Tick(transform);
     }
 }
