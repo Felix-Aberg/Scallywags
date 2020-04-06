@@ -17,10 +17,6 @@ public class PlayerController
     public void Tick(Transform player)
     {
         // Tempcontrols
-        if(Input.GetButton("Fire1"))
-        {
-            Debug.Log("Pickup");
-        }
 
         var horizontal = Input.GetAxis("Horizontal");
         var Vertical = Input.GetAxis("Vertical");

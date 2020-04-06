@@ -4,15 +4,23 @@
 public class Pickup
 {
     private IPickable _pickedUpItem;
-
-    public Pickup(IPickable item, Player player)
+    public bool TryToPickUp(IPickable itemToPickUp)
+    {
+        return _pickedUpItem == null && itemToPickUp.IsAvailable();
+    }
+    
+    public void PickUp(IPickable item, Player player)
     {
         if (_pickedUpItem == null)
         {
             _pickedUpItem = item.Pickup(player);
         }
     }
-
+    
+    public bool TryToDrop()
+    {
+        return _pickedUpItem != null;
+    }
     public void Drop()
     {
         if(_pickedUpItem == null) return;

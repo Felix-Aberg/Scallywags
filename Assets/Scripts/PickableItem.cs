@@ -8,6 +8,12 @@ using UnityEngine;
 public class PickableItem : MonoBehaviour, IPickable
 {
     private Player _pickedUpBy;
+
+    public bool IsAvailable()
+    {
+        return _pickedUpBy == null;
+    }
+
     public IPickable Pickup(Player player)
     {
         if (_pickedUpBy != null) return null;

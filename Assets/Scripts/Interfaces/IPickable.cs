@@ -6,4 +6,5 @@ public interface IPickable
 {
     IPickable Pickup(Player player);
     void Drop();
+    bool IsAvailable();
 }
