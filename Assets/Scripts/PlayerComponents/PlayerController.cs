@@ -20,9 +20,14 @@ public class PlayerController
 
         var horizontal = Input.GetAxis("Horizontal");
         var Vertical = Input.GetAxis("Vertical");
-        
-        var moveDir = new Vector3(horizontal * Time.deltaTime * _speed, 0, Vertical * Time.deltaTime *_speed);
-        player.rotation = Quaternion.LookRotation(moveDir);
+
+        var moveDir = new Vector3(horizontal * Time.deltaTime * _speed, 0, Vertical * Time.deltaTime * _speed);
         player.transform.position += moveDir;
+        
+        if (moveDir != Vector3.zero)
+        {
+            var rot = Quaternion.LookRotation(moveDir);
+            player.rotation = Quaternion.LookRotation(moveDir);
+        }
     }
 }

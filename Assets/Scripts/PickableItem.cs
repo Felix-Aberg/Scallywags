@@ -14,6 +14,11 @@ public class PickableItem : MonoBehaviour, IPickable
         return _pickedUpBy == null;
     }
 
+    public GameObject GetObject()
+    {
+        return gameObject;
+    }
+
     public IPickable Pickup(Player player)
     {
         if (_pickedUpBy != null) return null;

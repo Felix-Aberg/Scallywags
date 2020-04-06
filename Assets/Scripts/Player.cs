@@ -31,34 +31,11 @@ public class Player : MonoBehaviour, IEntity
     public void Tick()
     {
         _playerController.Tick(transform);
+        _pickup.Tick(gameObject.transform, this);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Fire1"))
-        {
-            var itemToPickUp = other.GetComponent<IPickable>();
-            if (itemToPickUp != null)
-            {
-                if (_pickup.TryToPickUp(itemToPickUp))
-                {
-                    _pickup.PickUp(itemToPickUp, this);
-                    Debug.Log("Pickup");
-                }
-            }
-        }
-
-        if (Input.GetButton("Fire2"))
-        {
-            var itemToPickUp = other.GetComponent<IPickable>();
-            if (itemToPickUp != null)
-            {
-                if (_pickup.TryToDrop())
-                {
-                    _pickup.Drop();
-                    Debug.Log("Drop");
-                }
-            }
-        }
+        _pickup._itemNear = other.gameObject;
     }
 }
