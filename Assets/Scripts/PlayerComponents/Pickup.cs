@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-/// <summary>
+﻿/// <summary>
 /// Pickup/drop logic for IPickable items
 /// </summary>
 public class Pickup

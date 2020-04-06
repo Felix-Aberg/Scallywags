@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Creates entities and holds a list of entities in game
 /// </summary>
@@ -10,6 +11,7 @@ public class EntityManager
     private List<IEntity> _entities = new List<IEntity>();
     private List<Player> _players = new List<Player>();
     private GameObject _playerPrefab;
+    // private GameObject _enemy1;
     
     public enum EntityType
     {
@@ -38,6 +40,7 @@ public class EntityManager
                 CreatePlayer(pos, index);
                 break;
             case EntityType.Enemy:
+                // CreateEnemy();
                 throw new NotImplementedException();
                 break;
         }
@@ -54,12 +57,11 @@ public class EntityManager
 
     private Player GetPlayer(int index)
     {
-        foreach (var entity in _entities)
+        foreach (var player in _players)
         {
-            var player = entity as Player;
             if (player.Index == index)
             {
-                return entity as Player;
+                return player;
             } 
         }
         
@@ -81,5 +83,10 @@ public class EntityManager
     public List<IEntity> GetAllEntities()
     {
         return _entities;
+    }
+
+    public List<Player> GetAllPlayers()
+    {
+        return _players;
     }
 }
