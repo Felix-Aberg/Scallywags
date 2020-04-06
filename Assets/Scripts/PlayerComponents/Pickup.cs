@@ -9,6 +9,7 @@ public class Pickup
 {
     public GameObject _itemNear;
     private IPickable _pickedUpItem;
+    private float _Y_Offset = 0.5f;
 
     public void Tick(Transform transform, Player player)
     {
@@ -56,8 +57,8 @@ public class Pickup
     private Vector3 CalculateTargetPos(Transform transform)
     {
         var targetPos = transform.position;
-        targetPos.y += 1;
-        targetPos.z += 1;
+        targetPos.y += _Y_Offset;
+        targetPos += transform.forward;
         return targetPos;
     }
 
