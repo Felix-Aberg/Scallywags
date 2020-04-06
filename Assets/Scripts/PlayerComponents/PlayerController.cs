@@ -8,7 +8,8 @@ using UnityEngine.Rendering;
 /// </summary>
 public class PlayerController
 {
-    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _turnSpeed = 10f;
     void Init()
     {
         
@@ -27,7 +28,7 @@ public class PlayerController
         if (moveDir != Vector3.zero)
         {
             var rot = Quaternion.LookRotation(moveDir);
-            player.rotation = Quaternion.LookRotation(moveDir);
+            player.rotation = Quaternion.RotateTowards(player.transform.rotation, rot, _turnSpeed);
         }
     }
 }
