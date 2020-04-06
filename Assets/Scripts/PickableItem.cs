@@ -2,26 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Adding this to game object makes the item pickable buy player
-/// </summary>
-public class PickableItem : MonoBehaviour, IPickable
+namespace ScallyWags
 {
-    private Player _pickedUpBy;
-    public IPickable Pickup(Player player)
+    /// <summary>
+    /// Adding this to game object makes the item pickable buy player
+    /// </summary>
+    public class PickableItem : MonoBehaviour, IPickable
     {
-        if (_pickedUpBy != null) return null;
+        private Player _pickedUpBy;
 
-        _pickedUpBy = player;
-        gameObject.transform.SetParent(player.gameObject.transform);
-        return this;
-    }
+        public bool IsAvailable()
+        {
+            return _pickedUpBy == null;
+        }
 
-    public void Drop()
-    {
-        if (_pickedUpBy ==  null) return;
-        
-        _pickedUpBy = null;
-        gameObject.transform.SetParent(null);
+        public GameObject GetObject()
+        {
+            return gameObject;
+        }
+
+        public IPickable Pickup(Player player)
+        {
+            if (_pickedUpBy != null) return null;
+
+            _pickedUpBy = player;
+            gameObject.transform.SetParent(player.gameObject.transform);
+            return this;
+        }
+
+        public void Drop()
+        {
+            if (_pickedUpBy == null) return;
+            
+            _pickedUpBy = null;
+            gameObject.transform.SetParent(null);
+        }
     }
 }
