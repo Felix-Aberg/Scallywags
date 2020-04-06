@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPickable
+namespace ScallyWags
 {
-    IPickable Pickup(Player player);
-    void Drop();
-    bool IsAvailable();
-    GameObject GetObject();
+    /// <summary>
+    /// Adding this to item will allow players to pick it up
+    /// </summary>
+    public interface IPickable
+    {
+        IPickable Pickup(Player player);
+        void Drop();
+        bool IsAvailable();
+        GameObject GetObject();
+    }
 }

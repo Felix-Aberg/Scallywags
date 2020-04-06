@@ -1,31 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// This script handles updating and creating all objects in the game
-/// </summary>
-public class Main : MonoBehaviour
+
+namespace ScallyWags
 {
-    // Prefabs
-    public GameObject _playerPrefab;
-    
-    private EntityManager _entityManager;
-
-    private GameObject[] spawnPos;
-
-    void Start()
+    /// <summary>
+    /// This script handles updating and creating all objects in the game
+    /// </summary>
+    public class Main : MonoBehaviour
     {
-        // Spawn players
-        spawnPos = GameObject.FindGameObjectsWithTag("Spawn");
-        _entityManager = new EntityManager(_playerPrefab);
-        for(int i = 0; i < spawnPos.Length; i++)
+        // Prefabs
+        public GameObject _playerPrefab;
+
+        private EntityManager _entityManager;
+
+        private GameObject[] spawnPos;
+
+        void Start()
         {
-            _entityManager.CreateEntity(EntityManager.EntityType.Player, spawnPos[i].transform.position, i);
+            // Spawn players
+            spawnPos = GameObject.FindGameObjectsWithTag("Spawn");
+            _entityManager = new EntityManager(_playerPrefab);
+            for (int i = 0; i < spawnPos.Length; i++)
+            {
+                _entityManager.CreateEntity(EntityManager.EntityType.Player, spawnPos[i].transform.position, i);
+            }
         }
-    }
-    
-    void Update()
-    {
-        _entityManager.Tick();
+
+        void Update()
+        {
+            _entityManager.Tick();
+        }
     }
 }

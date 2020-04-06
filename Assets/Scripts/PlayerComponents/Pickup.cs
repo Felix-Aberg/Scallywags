@@ -1,84 +1,128 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.XR;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-/// <summary>
-/// Pickup/drop logic for IPickable items
-/// </summary>
-public class Pickup
+namespace ScallyWags
 {
-    public GameObject _itemNear;
-    private IPickable _pickedUpItem;
-    private float _Y_Offset = 0.5f;
-
-    public void Tick(Transform transform, Player player)
+    /// <summary>
+    /// Pickup/drop logic for IPickable items
+    /// </summary>
+    [System.Serializable]
+    public class Pickup
     {
-        if (_pickedUpItem != null)
-        {
-            _pickedUpItem.GetObject().transform.position = CalculateTargetPos(transform);
-        }
+        public PickableItem PickedUpItem => _pickedUpItem;
+        private PickableItem _pickedUpItem;
+        [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
+        private float _Y_Offset = 0.5f;
 
-        Inputs(player);
-    }
 
-    private void Inputs(Player player)
-    {
-        if (Input.GetButton("Fire2"))
+        public void Tick(Transform transform, Player player, bool pickUpPressed)
         {
             if (_pickedUpItem != null)
             {
-                if (TryToDrop())
-                {
-                    Drop();
-                    Debug.Log("Drop");
-                }
+                _pickedUpItem.GetObject().transform.position = CalculateTargetPos(transform);
             }
+            Inputs(player, pickUpPressed);
         }
-        
-        if (Input.GetButton("Fire1"))
+
+        private void Inputs(Player player, bool pickUpPressed)
         {
-            var itemToPickUp = _itemNear.GetComponent<IPickable>();
-            if (itemToPickUp != null)
+            if (pickUpPressed)
             {
-                if (TryToPickUp(itemToPickUp))
+                if (_pickedUpItem != null)
                 {
-                    PickUp(itemToPickUp, player);
-                    Debug.Log("Pickup");
+                    if (TryToDrop())
+                    {
+                        Drop();
+                        Debug.Log("Drop");
+                    }
+                }
+                else
+                {
+                    var itemToPickUp = GetClosestItem(player);
+                    if (itemToPickUp != null)
+                    {
+                        if (TryToPickUp(itemToPickUp))
+                        {
+                            PickUp(itemToPickUp as PickableItem, player);
+                            Debug.Log("Pickup");
+                        }
+                    }
                 }
             }
         }
-    }
-    
-    private bool TryToPickUp(IPickable itemToPickUp)
-    {
-        return _pickedUpItem == null && itemToPickUp.IsAvailable();
-    }
 
-    private Vector3 CalculateTargetPos(Transform transform)
-    {
-        var targetPos = transform.position;
-        targetPos.y += _Y_Offset;
-        targetPos += transform.forward;
-        return targetPos;
-    }
-
-    private void PickUp(IPickable item, Player player)
-    {
-        if (_pickedUpItem == null)
+        private IPickable GetClosestItem(Player player)
         {
-            _pickedUpItem = item.Pickup(player);
-        }
-    }
+            GameObject closest = null;
+            var closestDist = float.MaxValue;
+            foreach (var item in _itemsNear)
+            {
+                var currentDist = Vector3.Distance(player.transform.position, item.transform.position);
+                if (currentDist < closestDist)
+                {
+                    closest = item;
+                    closestDist = currentDist;
+                }
+            }
 
-    private bool TryToDrop()
-    {
-        return _pickedUpItem != null;
-    }
-    private void Drop()
-    {
-        if(_pickedUpItem == null) return;
+            return closest?.GetComponent<PickableItem>();
+        }
+
+        public void SetItem(GameObject gameObject)
+        {
+            var item = gameObject.GetComponent<IPickable>();
+            if (item != null)
+            {
+                if (_itemsNear.Contains(gameObject)) return;
+                _itemsNear.Add(gameObject);
+            }
+        }
         
-        _pickedUpItem.Drop();
-        _pickedUpItem = null;
+        public void RemoveItem(GameObject gameObject)
+        {
+            var item = gameObject.GetComponent<PickableItem>();
+            if (item != null)
+            {
+                if (_itemsNear.Contains(gameObject))
+                {
+                    _itemsNear.Remove(gameObject);
+                }
+            }
+        }
+
+        private bool TryToPickUp(IPickable itemToPickUp)
+        {
+            return _pickedUpItem == null && itemToPickUp.IsAvailable();
+        }
+
+        private Vector3 CalculateTargetPos(Transform transform)
+        {
+            var targetPos = transform.position;
+            targetPos.y += _Y_Offset;
+            targetPos += transform.forward;
+            return targetPos;
+        }
+
+        private void PickUp(PickableItem item, Player player)
+        {
+            if (_pickedUpItem == null)
+            {
+                _pickedUpItem = item.Pickup(player) as PickableItem;
+            }
+        }
+
+        private bool TryToDrop()
+        {
+            return _pickedUpItem != null;
+        }
+
+        public void Drop()
+        {
+            if (_pickedUpItem == null) return;
+            
+            _pickedUpItem.Drop();
+            _pickedUpItem = null;
+            _itemsNear.Clear();
+        }
     }
 }
