@@ -39,14 +39,12 @@ namespace ScallyWags
 
             foreach (Player player in _players)
             {
-                if (!player.IsDead())
-                {
-                    player.Tick();
-                }
-                else
+                if (player.IsDead())
                 {
                     RespawnEntity(EntityType.Player, player.Index);
+  
                 }
+                player.Tick();
             }
         }
 
