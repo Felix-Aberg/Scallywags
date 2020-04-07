@@ -16,6 +16,8 @@ namespace ScallyWags
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
 
+        private float _deadDepth = -10f;
+
         // Monobehaviors
         private Rigidbody _rigidbody;
 
@@ -47,7 +49,12 @@ namespace ScallyWags
             _pickup.Tick(gameObject.transform, this, pickUpPressed);
             _interact.Tick(_pickup.PickedUpItem, this, interActPressed);
         }
-        
+
+        public bool IsDead()
+        {
+            return transform.position.y < _deadDepth;
+        }
+
         public void Drop()
         {
             _pickup.Drop();

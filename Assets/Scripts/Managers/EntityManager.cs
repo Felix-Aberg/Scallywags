@@ -16,37 +16,63 @@ namespace ScallyWags
         private GameObject _playerPrefab;
         // private GameObject _enemy1;
 
+        private GameObject[] _spawnPos;
+        
         public enum EntityType
         {
             Player,
             Enemy
         }
 
-        public EntityManager(GameObject playerPrefab)
+        public EntityManager(GameObject playerPrefab, GameObject[] spawnPos)
         {
             _playerPrefab = playerPrefab;
+            _spawnPos = spawnPos;
         }
 
         public void Tick()
         {
-            foreach (var entity in _entities)
+            foreach (IEntity entity in _entities)
             {
                 entity.Tick();
             }
+
+            foreach (Player player in _players)
+            {
+                if (!player.IsDead())
+                {
+                    player.Tick();
+                }
+                else
+                {
+                    RespawnEntity(EntityType.Player, player.Index);
+                }
+            }
         }
 
-        public void CreateEntity(EntityType type, Vector3 pos, int index)
+        public void CreateEntity(EntityType type, int index)
         {
             switch (type)
             {
                 case EntityType.Player:
-                    CreatePlayer(pos, index);
+                    CreatePlayer(_spawnPos[index-1].transform.position, index);
                     break;
                 case EntityType.Enemy:
                     // CreateEnemy();
+                    // AddEntity(entity);
                     throw new NotImplementedException();
                     break;
             }
+        }
+
+        public void RespawnEntity(EntityType type, int index)
+        { 
+            var player = GetPlayer(index);
+            player.gameObject.SetActive(false);
+
+            player.transform.position = _spawnPos[index-1].transform.position;
+            // Todo delay & visual effects
+            player.gameObject.SetActive(true);
         }
 
         private void CreatePlayer(Vector3 pos, int index)
@@ -55,7 +81,6 @@ namespace ScallyWags
             IEntity entity = player.GetComponent<IEntity>();
             entity.Init(index);
             _players.Add(entity as Player);
-            AddEntity(entity);
         }
 
         private Player GetPlayer(int index)
