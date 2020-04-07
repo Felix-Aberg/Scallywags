@@ -438,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639601879318531464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.78, y: -1.15, z: -22.259998}
+  m_LocalPosition: {x: 1.78, y: -2.7, z: -22.259998}
   m_LocalScale: {x: 24, y: 10, z: 12}
   m_Children: []
   m_Father: {fileID: 4639601878932822471}
@@ -714,6 +714,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4bda21779d2ff14498e74de4eab888b7,
         type: 2}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 9166632562245658450, guid: 2958b822bae9b07438c15195be7b6f6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -861,6 +881,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4bda21779d2ff14498e74de4eab888b7,
         type: 2}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654710799463583409, guid: 2958b822bae9b07438c15195be7b6f6a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 9166632562245658450, guid: 2958b822bae9b07438c15195be7b6f6a,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -21,7 +21,7 @@ namespace ScallyWags
             // Spawn players
             spawnPos = GameObject.FindGameObjectsWithTag("Spawn");
             _entityManager = new EntityManager(_playerPrefab);
-            for (int i = 0; i < spawnPos.Length; i++)
+            for (int i = 1; i < spawnPos.Length+1; i++) // Players start from 1
             {
                 _entityManager.CreateEntity(EntityManager.EntityType.Player, spawnPos[i].transform.position, i);
             }

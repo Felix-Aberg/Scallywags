@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,12 @@ namespace ScallyWags
     public class PickableItem : MonoBehaviour, IPickable
     {
         private Player _pickedUpBy;
+        private Rigidbody _rb;
+
+        private void Start()
+        {
+            _rb = GetComponent<Rigidbody>();
+        }
 
         public bool IsAvailable()
         {
@@ -25,6 +32,7 @@ namespace ScallyWags
         {
             if (_pickedUpBy != null) return null;
 
+            _rb.detectCollisions = false;
             _pickedUpBy = player;
             gameObject.transform.SetParent(player.gameObject.transform);
             return this;
@@ -34,6 +42,7 @@ namespace ScallyWags
         {
             if (_pickedUpBy == null) return;
             
+            _rb.detectCollisions = true;
             _pickedUpBy = null;
             gameObject.transform.SetParent(null);
         }
