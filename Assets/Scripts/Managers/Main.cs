@@ -15,9 +15,15 @@ namespace ScallyWags
         private EntityManager _entityManager;
 
         private GameObject[] spawnPos;
+        
+        // Monobehaviors
+        private ShipController _shipController;
 
         void Start()
         {
+            // Find ship
+            _shipController = FindObjectOfType<ShipController>();
+            _shipController.Init();   
             // Spawn players
             spawnPos = GameObject.FindGameObjectsWithTag("Spawn");
             _entityManager = new EntityManager(_playerPrefab, spawnPos);
@@ -29,6 +35,7 @@ namespace ScallyWags
 
         void Update()
         {
+            _shipController.Tick();
             _entityManager.Tick();
         }
     }
