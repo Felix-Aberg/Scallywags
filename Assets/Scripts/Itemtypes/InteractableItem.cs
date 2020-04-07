@@ -16,8 +16,12 @@ namespace ScallyWags
             {
                 if (item.GetType() == usable.GetType())
                 {
-                    player.Drop();
                     Use(item);
+                    if (item.singleUse)
+                    {
+                        player.Drop();
+                        Destroy(item.gameObject);
+                    }
                 }
             }
         }
@@ -25,7 +29,6 @@ namespace ScallyWags
         private void Use(PickableItem item)
         {
             GetComponent<IInteraction>().Act();
-            Destroy(item.gameObject);
         }
     }
 }

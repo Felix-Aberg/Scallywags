@@ -10,6 +10,7 @@ namespace ScallyWags
     /// </summary>
     public class PickableItem : MonoBehaviour, IPickable
     {
+        public bool singleUse;
         private Player _pickedUpBy;
         private Rigidbody _rb;
 
@@ -33,8 +34,13 @@ namespace ScallyWags
             if (_pickedUpBy != null) return null;
 
             _rb.detectCollisions = false;
+            _rb.velocity = Vector3.zero;
+            _rb.constraints = RigidbodyConstraints.FreezeAll;
+            
             _pickedUpBy = player;
             gameObject.transform.SetParent(player.gameObject.transform);
+            transform.rotation = Quaternion.identity;
+            
             return this;
         }
 
@@ -43,6 +49,9 @@ namespace ScallyWags
             if (_pickedUpBy == null) return;
             
             _rb.detectCollisions = true;
+            _rb.velocity = Vector3.zero;
+            _rb.constraints = RigidbodyConstraints.None;
+            
             _pickedUpBy = null;
             gameObject.transform.SetParent(null);
         }

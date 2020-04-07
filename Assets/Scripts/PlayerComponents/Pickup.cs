@@ -33,7 +33,6 @@ namespace ScallyWags
                     if (TryToDrop())
                     {
                         Drop();
-                        Debug.Log("Drop");
                     }
                 }
                 else
@@ -44,7 +43,6 @@ namespace ScallyWags
                         if (TryToPickUp(itemToPickUp))
                         {
                             PickUp(itemToPickUp as PickableItem, player);
-                            Debug.Log("Pickup");
                         }
                     }
                 }

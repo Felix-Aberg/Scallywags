@@ -39,7 +39,21 @@ namespace ScallyWags
             {
                 var closestItem = GetClosestItem(player);
                 closestItem?.Interact(item, player);
+                RefreshItems();
             }
+        }
+
+        private void RefreshItems()
+        {
+            List<GameObject> newList = new List<GameObject>();
+            foreach (var item in _itemsNear)
+            {
+                if (item == null) continue;
+                
+                newList.Add(item);
+            }
+
+            _itemsNear = newList;
         }
 
         private IInteractable GetClosestItem(Player player)
@@ -48,6 +62,8 @@ namespace ScallyWags
             var closestDist = float.MaxValue;
             foreach (var item in _itemsNear)
             {
+                if (item == null) continue;
+                
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);
                 if (currentDist < closestDist)
                 {
