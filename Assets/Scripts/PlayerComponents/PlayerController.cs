@@ -8,7 +8,9 @@ namespace ScallyWags
     public class PlayerController
     {
         [SerializeField] private float _speed = 5f;
-        [SerializeField] private float _turnSpeed = 10f;
+        [SerializeField] private float _turnSpeed = 20f;
+        [SerializeField] private float _deadZone = 0.5f;
+        private Vector3 _lastDir = new Vector3();
 
         void Init()
         {
@@ -18,14 +20,19 @@ namespace ScallyWags
         public void Tick(Transform player, float horizontal, float vertical)
         {
             // Tempcontrols
-            var moveDir = new Vector3(horizontal * Time.deltaTime * _speed, 0, vertical * Time.deltaTime * _speed);
-            player.transform.position += moveDir;
+            var moveDir = new Vector3(horizontal, 0, vertical);
+            if (moveDir.magnitude > 1)
+                moveDir.Normalize();
+            var movement = _speed * Time.deltaTime * moveDir;
 
-            if (moveDir != Vector3.zero)
+            if (moveDir.magnitude > _deadZone)
             {
-                var rot = Quaternion.LookRotation(moveDir);
-                player.rotation = Quaternion.RotateTowards(player.transform.rotation, rot, _turnSpeed);
+                player.transform.position += movement;
+                _lastDir = moveDir;
             }
+
+            var rot = Quaternion.LookRotation(_lastDir);
+            player.rotation = Quaternion.RotateTowards(player.transform.rotation, rot, _turnSpeed);
         }
     }
 }
