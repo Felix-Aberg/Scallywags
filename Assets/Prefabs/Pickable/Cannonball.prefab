@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   singleUse: 1
+  itemType: 1
 --- !u!114 &355062934
 MonoBehaviour:
   m_ObjectHideFlags: 0

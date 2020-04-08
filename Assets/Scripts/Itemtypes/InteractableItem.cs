@@ -14,7 +14,7 @@ namespace ScallyWags
         {
             foreach (var usable in _usableItems.itemList)
             {
-                if (item.GetType() == usable.GetType())
+                if (item.itemType == usable.itemType)
                 {
                     Use(item);
                     if (item.singleUse)

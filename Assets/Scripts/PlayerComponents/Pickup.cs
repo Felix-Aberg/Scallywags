@@ -45,8 +45,23 @@ namespace ScallyWags
                             PickUp(itemToPickUp as PickableItem, player);
                         }
                     }
+
+                    RefreshItems();
                 }
             }
+        }
+        
+        private void RefreshItems()
+        {
+            List<GameObject> newList = new List<GameObject>();
+            foreach (var item in _itemsNear)
+            {
+                if (item == null) continue;
+                
+                newList.Add(item);
+            }
+
+            _itemsNear = newList;
         }
 
         private IPickable GetClosestItem(Player player)
