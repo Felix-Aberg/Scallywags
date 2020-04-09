@@ -12,6 +12,7 @@ namespace ScallyWags
     {
         public int Index => _index;
         [SerializeField] private int _index;
+        private InputHandler _inputHandler;
         private PlayerController _playerController;
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
@@ -31,6 +32,7 @@ namespace ScallyWags
             _pickup = new Pickup();
             _interact = new Interact();
             _playerController = new PlayerController();
+            _inputHandler = gameObject.AddComponent<InputHandler>();
         }
 
         public void Tick()
@@ -38,12 +40,11 @@ namespace ScallyWags
             // Get inputs from controllers here for example (index is controller number):
             // var vertical = _inputManager.GetVertical(index);
             
-            // TODO move this to input manager
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            bool pickUpPressed = Input.GetButtonDown("Fire1");
-            bool interActPressed = Input.GetButtonDown("Fire2");
-            
+            float horizontal = _inputHandler.GetXAxis(_index);
+            float vertical = _inputHandler.GetYAxis(_index);
+            bool pickUpPressed = _inputHandler.GetPickup(_index);
+            bool interActPressed = _inputHandler.GetInteract(_index);
+
             // Handle input
             _playerController.Tick(transform, horizontal, vertical);
             _pickup.Tick(gameObject.transform, this, pickUpPressed);
