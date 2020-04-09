@@ -474,6 +474,7 @@ MonoBehaviour:
     _itemsNear: []
   _interact:
     _itemsNear: []
+  useKeyboard: 1
 --- !u!65 &6950868564152302689
 BoxCollider:
   m_ObjectHideFlags: 0

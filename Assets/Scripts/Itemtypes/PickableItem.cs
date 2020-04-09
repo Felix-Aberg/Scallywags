@@ -1,5 +1,8 @@
-﻿using JetBrains.Annotations;
+﻿using System.Numerics;
+using JetBrains.Annotations;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace ScallyWags
 {
@@ -41,9 +44,11 @@ namespace ScallyWags
             _rb.constraints = RigidbodyConstraints.FreezeAll;
             
             _pickedUpBy = player;
-            gameObject.transform.SetParent(player.gameObject.transform);
-            transform.rotation = Quaternion.identity;
             
+            var t = transform;
+            t.SetParent(player.gameObject.transform);
+            t.localRotation = Quaternion.identity;
+
             return this;
         }
 
@@ -56,7 +61,7 @@ namespace ScallyWags
             _rb.constraints = RigidbodyConstraints.None;
             
             _pickedUpBy = null;
-            gameObject.transform.SetParent(null);
+            transform.SetParent(null);
         }
     }
 }
