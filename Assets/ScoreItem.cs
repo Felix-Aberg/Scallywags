@@ -35,9 +35,4 @@ public class ScoreItem : MonoBehaviour, IDamageable
         var pos = transform.position + new Vector3(random.x, 0, random.y);
         return pos;
     }
-    
-    private void OnCollisionEnter(Collision other)
-    {
-        TakeDamage();
-    }
 }
