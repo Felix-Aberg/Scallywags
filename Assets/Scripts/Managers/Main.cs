@@ -54,6 +54,16 @@ namespace ScallyWags
         {
             _shipController.Tick();
             _entityManager.Tick();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+            
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _entityManager.GetPlayer(1).SetKeyboard();
+            }
         }
     }
 }

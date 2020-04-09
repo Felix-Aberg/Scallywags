@@ -97,5 +97,10 @@ namespace ScallyWags
             _pickup.RemoveItem(item);
             _interact.RemoveItem(item);
         }
+
+        public void SetKeyboard()
+        {
+            useKeyboard = !useKeyboard;
+        }
     }
 }
