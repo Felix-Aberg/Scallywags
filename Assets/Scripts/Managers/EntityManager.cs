@@ -16,7 +16,7 @@ namespace ScallyWags
         private GameObject _playerPrefab;
         // private GameObject _enemy1;
 
-        private GameObject[] _spawnPos;
+        private PlayerSpawn[] _spawnPos;
         
         public enum EntityType
         {
@@ -24,7 +24,7 @@ namespace ScallyWags
             Enemy
         }
 
-        public EntityManager(GameObject playerPrefab, GameObject[] spawnPos)
+        public EntityManager(GameObject playerPrefab, PlayerSpawn[] spawnPos)
         {
             _playerPrefab = playerPrefab;
             _spawnPos = spawnPos;
@@ -63,7 +63,7 @@ namespace ScallyWags
             }
         }
 
-        public void RespawnEntity(EntityType type, int index)
+        private void RespawnEntity(EntityType type, int index)
         { 
             var player = GetPlayer(index);
             player.gameObject.SetActive(false);

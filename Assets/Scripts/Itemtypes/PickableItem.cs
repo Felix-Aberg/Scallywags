@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using JetBrains.Annotations;
 using UnityEngine;
 
 namespace ScallyWags
 {
     /// <summary>
-    /// Adding this to game object makes the item pickable buy player
+    /// Adding this to game object makes the item pickable by player
     /// </summary>
     public class PickableItem : MonoBehaviour, IPickable
     {
         public bool singleUse;
         private Player _pickedUpBy;
         private Rigidbody _rb;
+        public ItemType itemType;
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
+            if (itemType == ItemType.NotSet)
+            {
+                Debug.LogError("You must set item type for item");
+            }
         }
 
         public bool IsAvailable()

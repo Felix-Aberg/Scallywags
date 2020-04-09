@@ -341,8 +341,8 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   maxFogDistance:
-    m_OverrideState: 1
-    m_Value: 500
+    m_OverrideState: 0
+    m_Value: 50
     min: 0
   mipFogMaxMip:
     m_OverrideState: 0
@@ -414,23 +414,23 @@ MonoBehaviour:
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   threshold:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 1
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.2
     min: 0
     max: 1
   scatter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.7
     min: 0
     max: 1
   tint:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
