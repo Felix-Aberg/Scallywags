@@ -15,6 +15,8 @@ namespace ScallyWags
             }
             else
             {
+                if (index == 2)
+                    Debug.Log(Input.GetAxis("Horizontal" + index));
                 return Input.GetAxis("Horizontal" + index);
             }
 
@@ -24,7 +26,6 @@ namespace ScallyWags
         {
             if (index < 1 || index > 4)
             {
-                Debug.LogError("Array out of index in InputHandler GetYAxis. Array ranges from 1-4. Index: " + index);
                 return 0;
             }
             else
