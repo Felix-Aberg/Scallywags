@@ -25,7 +25,7 @@ public class Explode : MonoBehaviour
             Debug.LogError("Missing particle system prefab");
         }
         particleSystem.GetComponent<ParticleSystem>().Play();
-        _audioPool.PlayAudioEvent(_audio);
+        _audioPool.PlayAudioEvent(_audio, transform.position);
         gameObject.SetActive(false);
     }
 }

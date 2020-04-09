@@ -31,7 +31,7 @@ namespace ScallyWags
             var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, Quaternion.identity);
             cannonBall.GetComponent<Rigidbody>().AddForce(_spawnPos.transform.forward * _cannonForce, ForceMode.Impulse);
             _particleSystem.Play();
-            _audioPool.PlayAudioEvent(_event);
+            _audioPool.PlayAudioEvent(_event, transform.position);
         }
     }
 }

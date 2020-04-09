@@ -23,4 +23,9 @@ public class AudioSourcePoolManager : MonoBehaviour
     {
         _pool.Play(audioEvent);
     }
+
+    public void PlayAudioEvent(AudioEvent audioEvent, Vector3 pos)
+    {
+        _pool.Play(audioEvent, pos);
+    }
 }

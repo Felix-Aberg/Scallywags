@@ -23,4 +23,12 @@ public class AudioSourcePool : PollingPool<AudioSource>
         var source = Get();
         simpleAudioEvent.Play(source);
     }
+
+    public void Play(AudioEvent simpleAudioEvent, Vector3 pos)
+    {
+        var source = Get();
+        source.transform.position = pos;
+        source.spatialBlend = 1;
+        simpleAudioEvent.Play(source);
+    }
 }

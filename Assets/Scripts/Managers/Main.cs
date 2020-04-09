@@ -24,7 +24,7 @@ namespace ScallyWags
         private ShipController _shipController;
         private AudioSourcePoolManager _audioSourcePoolManager;
 
-        void Start()
+        void Awake()
         {
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
             
