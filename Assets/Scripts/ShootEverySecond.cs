@@ -10,7 +10,7 @@ public class ShootEverySecond : MonoBehaviour
     void Start()
     {
         _cannon = GetComponent<CannonInteraction>();
-        InvokeRepeating(nameof(Shoot), 2f, 10);
+        InvokeRepeating(nameof(Shoot), Random.Range(1f, 2.0f), 10);
     }
 
     void Shoot()
