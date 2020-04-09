@@ -13,44 +13,70 @@ namespace ScallyWags
         private PickableItem _pickedUpItem;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
         private float _Y_Offset = 0.5f;
+        [SerializeField] float _throwStrength = 0;
+        private float _maxThrowStrength = 20f;
+        private float _strenghtFactor = 50f;
 
 
-        public void Tick(Transform transform, Player player, bool pickUpPressed)
+        public void Tick(Transform transform, Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
         {
             if (_pickedUpItem != null)
             {
                 _pickedUpItem.GetObject().transform.position = CalculateTargetPos(transform);
             }
-            Inputs(player, pickUpPressed);
+            Inputs(player, pickUpPressed, pickupDown, pickUpReleased);
         }
 
-        private void Inputs(Player player, bool pickUpPressed)
+        private void Inputs(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
         {
-            if (pickUpPressed)
+            if (_pickedUpItem != null)
             {
-                if (_pickedUpItem != null)
-                {
-                    if (TryToDrop())
-                    {
-                        Drop();
-                    }
-                }
-                else
-                {
-                    var itemToPickUp = GetClosestItem(player);
-                    if (itemToPickUp != null)
-                    {
-                        if (TryToPickUp(itemToPickUp))
-                        {
-                            PickUp(itemToPickUp as PickableItem, player);
-                        }
-                    }
-
-                    RefreshItems();
-                }
+                HandleThrowing(player, pickUpPressed, pickupDown, pickUpReleased);
+            }
+            else
+            {
+                HandlePickingUp(player, pickUpPressed, pickupDown, pickUpReleased);
             }
         }
-        
+
+        private void HandlePickingUp(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
+        {
+                        
+            if (pickUpReleased)
+            {
+                var itemToPickUp = GetClosestItem(player);
+                if (itemToPickUp != null)
+                {
+                    if (TryToPickUp(itemToPickUp))
+                    {
+                        Debug.Log("PickUp");
+                        PickUp(itemToPickUp as PickableItem, player);
+                    }
+                }
+                RefreshItems();
+            }
+        }
+
+        private void HandleThrowing(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
+        {
+            if (pickupDown)
+            {
+                _throwStrength = 0;
+            }
+            
+            if (pickUpPressed)
+            {
+                _throwStrength += Time.deltaTime * _strenghtFactor;
+                _throwStrength = Mathf.Clamp(_throwStrength, 0, _maxThrowStrength); 
+            }
+  
+            if (pickUpReleased)
+            {
+                Debug.Log("Throw");
+                Throw();
+            }
+        }
+
         private void RefreshItems()
         {
             List<GameObject> newList = new List<GameObject>();
@@ -124,16 +150,12 @@ namespace ScallyWags
             }
         }
 
-        private bool TryToDrop()
-        {
-            return _pickedUpItem != null;
-        }
-
-        public void Drop()
+        public void Throw()
         {
             if (_pickedUpItem == null) return;
             
             _pickedUpItem.Drop();
+            _pickedUpItem.GetComponent<Rigidbody>().AddForce(_pickedUpItem.transform.forward * _throwStrength, ForceMode.Impulse);
             _pickedUpItem = null;
             _itemsNear.Clear();
         }

@@ -15,11 +15,8 @@ namespace ScallyWags
             }
             else
             {
-                if (index == 2)
-                    Debug.Log(Input.GetAxis("Horizontal" + index));
                 return Input.GetAxis("Horizontal" + index);
             }
-
         }
 
         public float GetYAxis(int index)
@@ -34,6 +31,19 @@ namespace ScallyWags
             }
         }
 
+        public bool GetPickupDown(int index)
+        {
+            if (index < 1 || index > 4)
+            {
+                Debug.LogError("Array out of index in InputHandler GetPickup. Array ranges from 1-4. Index: " + index);
+                return false;
+            }
+            else
+            {
+                return Input.GetButtonDown("Pickup" + index);
+            }
+        }
+        
         public bool GetPickup(int index)
         {
             if (index < 1 || index > 4)
@@ -47,7 +57,20 @@ namespace ScallyWags
             }
         }
 
-        public bool GetInteract(int index)
+        public bool GetPickupUp(int index)
+        {
+            if (index < 1 || index > 4)
+            {
+                Debug.LogError("Array out of index in InputHandler GetPickup. Array ranges from 1-4. Index: " + index);
+                return false;
+            }
+            else
+            {
+                return Input.GetButtonUp("Pickup" + index);
+            }
+        }
+
+        public bool GetInteractDown(int index)
         {
             if (index < 1 || index > 4)
             {
@@ -56,11 +79,11 @@ namespace ScallyWags
             }
             else
             {
-                return Input.GetButton("Interact" + index);
+                return Input.GetButtonDown("Interact" + index);
             }
         }
 
-        public bool GetJump(int index)
+        public bool GetJumpDown(int index)
         {
             if (index < 1 || index > 4)
             {
@@ -69,11 +92,11 @@ namespace ScallyWags
             }
             else
             {
-                return Input.GetButton("Jump" + index);
+                return Input.GetButtonDown("Jump" + index);
             }
         }
 
-        public bool GetYarr(int index)
+        public bool GetYarrDown(int index)
         {
             if (index < 1 || index > 4)
             {
@@ -82,7 +105,7 @@ namespace ScallyWags
             }
             else
             {
-                return Input.GetButton("Yarr" + index);
+                return Input.GetButtonDown("Yarr" + index);
             }
         }
     }
