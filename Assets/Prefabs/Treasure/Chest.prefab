@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2348384927471204151}
   - component: {fileID: 2348384927471204144}
   - component: {fileID: -8755200092295126222}
-  - component: {fileID: -2000459800636626667}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -143,16 +142,3 @@ MonoBehaviour:
     type: 3}
   maxHitpoints: 2
   goldValue: 100
---- !u!114 &-2000459800636626667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2348384927471204150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConversionMode: 1
