@@ -1,14 +1,22 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextSetter : MonoBehaviour
 {
-    public Text text;
-    public TextMeshProUGUI proText;
     public IntVariable Variable;
     public string prefix;
     public string postfix;
+    
+    private Text text;
+    private TextMeshProUGUI proText;
+
+    private void Start()
+    {
+        text = GetComponent<Text>();
+        proText = GetComponent<TextMeshProUGUI>();
+    }
 
     private void Update()
     {

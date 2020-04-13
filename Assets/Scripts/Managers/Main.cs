@@ -10,13 +10,18 @@ namespace ScallyWags
     /// </summary>
     public class Main : MonoBehaviour
     {
+        // UI
+        [SerializeField] private IntVariable goldCounterUI;
+        [SerializeField] private FloatVariable roundTimeUI;
+        
         // Prefabs
         public GameObject _playerPrefab;
 
         private EntityManager _entityManager;
 
         private PlayerSpawn[] _spawnPos;
-        [SerializeField] TreasureManager _treasureManager;
+        private TreasureManager _treasureManager;
+        private RoundTimer _roundTimer;
 
         // Camera
         private CinemachineTargetGroup _targetGroup;
@@ -51,7 +56,10 @@ namespace ScallyWags
             }
 
             _treasureManager = new TreasureManager();
-            _treasureManager.Init();
+            _treasureManager.Init(goldCounterUI);
+            
+            _roundTimer = new RoundTimer();
+            _roundTimer.Init(roundTimeUI);
         }
 
         void Update()
@@ -59,6 +67,7 @@ namespace ScallyWags
             _shipController.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
+            _roundTimer.Tick();
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
