@@ -7,5 +7,4 @@ public interface IEntity
 {
     void Init(int index = 0);
     void Tick();
-    bool IsDead();
 }

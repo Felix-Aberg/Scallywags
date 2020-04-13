@@ -1,112 +1,75 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace ScallyWags
 {
-    public class InputHandler : MonoBehaviour
+    public class InputHandler
     {
-        public float GetXAxis(int index)
-        {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetXAxis. Array ranges from 1-4. Index: " + index);
-                return 0;
-            }
-            else
-            {
-                return Input.GetAxis("Horizontal" + index);
-            }
-        }
+        private string horizontal = "Horizontal";
+        private string vertical = "Vertical";
+        private string pickup = "Pickup";
+        private string interact = "Interact";
+        private string jump = "Jump";
+        private string yarr = "Yarr";
 
-        public float GetYAxis(int index)
+        public Inputs GetInputs(int index)
         {
             if (index < 1 || index > 4)
             {
-                return 0;
+                Debug.LogError("Array out of index in InputHandler. Array ranges from 1-4. Index: " + index);
             }
-            else
-            {
-                return Input.GetAxis("Vertical" + index);
-            }
-        }
+            Inputs inputs;
 
-        public bool GetPickupDown(int index)
-        {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetPickup. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButtonDown("Pickup" + index);
-            }
+            inputs.horizontal = GetXAxis(index);
+            inputs.vertical = GetYAxis(index);
+            inputs.pickUpPressed = GetPickup(index);
+            inputs.pickUpDown = GetPickupDown(index);
+            inputs.pickUpReleased = GetPickupUp(index);
+            inputs.interActPressed = GetInteractDown(index);
+
+            return inputs;
         }
         
-        public bool GetPickup(int index)
+        private float GetXAxis(int index)
         {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetPickup. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButton("Pickup" + index);
-            }
+            return Input.GetAxis(horizontal + index);
         }
 
-        public bool GetPickupUp(int index)
+        private float GetYAxis(int index)
         {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetPickup. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButtonUp("Pickup" + index);
-            }
+            return Input.GetAxis(vertical + index);
         }
 
-        public bool GetInteractDown(int index)
+        private bool GetPickupDown(int index)
         {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetInteract. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButtonDown("Interact" + index);
-            }
+            return Input.GetButtonDown(pickup + index);
         }
 
-        public bool GetJumpDown(int index)
+        private bool GetPickup(int index)
         {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetJump. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButtonDown("Jump" + index);
-            }
+            return Input.GetButton(pickup + index);
         }
 
-        public bool GetYarrDown(int index)
+        private bool GetPickupUp(int index)
         {
-            if (index < 1 || index > 4)
-            {
-                Debug.LogError("Array out of index in InputHandler GetYarr. Array ranges from 1-4. Index: " + index);
-                return false;
-            }
-            else
-            {
-                return Input.GetButtonDown("Yarr" + index);
-            }
+            return Input.GetButtonUp(pickup + index);
+        }
+
+        private bool GetInteractDown(int index)
+        {
+            return Input.GetButtonDown(interact + index);
+        }
+
+        private bool GetJumpDown(int index)
+        {
+            return Input.GetButtonDown(jump + index);
+        }
+
+        private bool GetYarrDown(int index)
+        {
+            return Input.GetButtonDown(yarr + index);
         }
     }
 }

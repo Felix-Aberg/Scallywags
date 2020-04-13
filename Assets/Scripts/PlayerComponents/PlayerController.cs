@@ -9,7 +9,6 @@ namespace ScallyWags
     {
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _turnSpeed = 20f;
-        [SerializeField] private float _deadZone = 0.5f;
         private Vector3 _lastDir = new Vector3();
         private Quaternion rot;
 
@@ -21,12 +20,10 @@ namespace ScallyWags
         {
             // Tempcontrols
             var moveDir = new Vector3(horizontal, 0, vertical);
-            if (moveDir.sqrMagnitude > 1)
-                moveDir.Normalize();
-            var movement = _speed * Time.deltaTime * moveDir;
-
-            if (moveDir.sqrMagnitude > _deadZone*_deadZone)
+            
+            if (moveDir.sqrMagnitude > 0);
             {
+                var movement = _speed * Time.deltaTime * moveDir;
                 player.transform.position += movement;
                 _lastDir = moveDir;
             }

@@ -72,7 +72,6 @@ namespace ScallyWags
   
             if (pickUpReleased)
             {
-                Debug.Log("Throw");
                 Throw();
             }
         }

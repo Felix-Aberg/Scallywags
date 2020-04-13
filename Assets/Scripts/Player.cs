@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace ScallyWags
 {
@@ -16,7 +17,6 @@ namespace ScallyWags
         private PlayerController _playerController;
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
-        [SerializeField] private bool useKeyboard;
 
         private float _deadDepth = -10f;
 
@@ -33,49 +33,19 @@ namespace ScallyWags
             _pickup = new Pickup();
             _interact = new Interact();
             _playerController = new PlayerController();
-            _inputHandler = gameObject.AddComponent<InputHandler>();
+            _inputHandler = new InputHandler();
         }
 
         public void Tick()
         {
-            // Get inputs from controllers here for example (index is controller number):
-            // var vertical = _inputManager.GetVertical(index);
-            
-            float horizontal;
-            float vertical;
-            bool pickUpPressed;
-            bool interActPressed;
-            bool pickUpReleased;
-            bool pickUpDown;
-
-            if (useKeyboard) // Just for debugging
-            {
-                horizontal = Input.GetAxis("Horizontal");
-                vertical = Input.GetAxis("Vertical");
-                pickUpPressed = Input.GetButton("Fire1");
-                pickUpReleased = Input.GetButtonUp("Fire1");
-                pickUpDown = Input.GetButtonDown("Fire1");
-                interActPressed = Input.GetButtonDown("Fire2");
-            }
-            else
-            {
-                horizontal = _inputHandler.GetXAxis(_index);
-                vertical = _inputHandler.GetYAxis(_index);
-                pickUpPressed = _inputHandler.GetPickupDown(_index);
-                pickUpDown = _inputHandler.GetPickup(_index);
-                pickUpReleased = _inputHandler.GetPickupUp(_index);
-                interActPressed = _inputHandler.GetInteractDown(_index);
-            }
+            // Get inputs
+            Inputs inputs = new Inputs();
+            inputs = _inputHandler.GetInputs(_index);
             
             // Handle input
-            _playerController.Tick(transform, horizontal, vertical);
-            _pickup.Tick(gameObject.transform, this, pickUpPressed, pickUpDown, pickUpReleased);
-            _interact.Tick(_pickup.PickedUpItem, this, interActPressed);
-        }
-
-        public bool IsDead()
-        {
-            throw new NotImplementedException();
+            _playerController.Tick(transform, inputs.horizontal, inputs.vertical);
+            _pickup.Tick(gameObject.transform, this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
+            _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
         }
 
         public void Drop()
@@ -96,11 +66,6 @@ namespace ScallyWags
             var item = other.gameObject;
             _pickup.RemoveItem(item);
             _interact.RemoveItem(item);
-        }
-
-        public void SetKeyboard()
-        {
-            useKeyboard = !useKeyboard;
         }
     }
 }

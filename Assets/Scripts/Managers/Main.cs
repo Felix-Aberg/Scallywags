@@ -73,11 +73,6 @@ namespace ScallyWags
             {
                 Application.Quit();
             }
-            
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                _entityManager.GetPlayer(1).SetKeyboard();
-            }
         }
     }
 }
