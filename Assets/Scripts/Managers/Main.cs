@@ -15,7 +15,8 @@ namespace ScallyWags
 
         private EntityManager _entityManager;
 
-        private PlayerSpawn[] spawnPos;
+        private PlayerSpawn[] _spawnPos;
+        [SerializeField] TreasureManager _treasureManager;
 
         // Camera
         private CinemachineTargetGroup _targetGroup;
@@ -36,9 +37,9 @@ namespace ScallyWags
             _targetGroup = FindObjectOfType<CinemachineTargetGroup>();
             
             // Spawn players
-            spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
-            _entityManager = new EntityManager(_playerPrefab, spawnPos);
-            for (int i = 1; i < spawnPos.Length+1; i++) // Player index starts from 1
+            _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
+            _entityManager = new EntityManager(_playerPrefab, _spawnPos);
+            for (int i = 1; i < _spawnPos.Length+1; i++) // Player index starts from 1
             {
                 _entityManager.CreateEntity(EntityManager.EntityType.Player, i);
             }
@@ -48,12 +49,16 @@ namespace ScallyWags
             {
                 _targetGroup.AddMember(player.gameObject.transform, 1, 0);
             }
+
+            _treasureManager = new TreasureManager();
+            _treasureManager.Init();
         }
 
         void Update()
         {
             _shipController.Tick();
             _entityManager.Tick();
+            _treasureManager.Tick();
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

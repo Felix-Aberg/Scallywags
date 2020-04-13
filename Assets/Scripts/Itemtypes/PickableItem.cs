@@ -41,6 +41,7 @@ namespace ScallyWags
 
             _rb.detectCollisions = false;
             _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.FreezeAll;
             
             _pickedUpBy = player;
@@ -58,6 +59,7 @@ namespace ScallyWags
             
             _rb.detectCollisions = true;
             _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;
             
             _pickedUpBy = null;

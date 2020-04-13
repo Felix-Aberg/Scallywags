@@ -20,7 +20,15 @@ namespace ScallyWags
                     if (item.singleUse)
                     {
                         player.Drop();
-                        Destroy(item.gameObject);
+                        var respawnable = item.GetComponent<Respawnable>();
+                        if (respawnable)
+                        {
+                            respawnable.Respawn();
+                        }
+                        else
+                        {
+                            Destroy(item);
+                        }
                     }
                 }
             }
