@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 537080566987034457}
   - component: {fileID: 537080566987034461}
   - component: {fileID: 537080566987034460}
+  - component: {fileID: 5777529042530464477}
   m_Layer: 0
   m_Name: Cannonball
   m_TagString: Untagged
@@ -125,3 +126,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleUse: 1
   itemType: 1
+--- !u!114 &5777529042530464477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537080566987034438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa02627bfa0f4b34ea4b6adc32508660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

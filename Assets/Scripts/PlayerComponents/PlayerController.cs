@@ -15,7 +15,6 @@ namespace ScallyWags
 
         void Init()
         {
-
         }
 
         public void Tick(Transform player, float horizontal, float vertical)

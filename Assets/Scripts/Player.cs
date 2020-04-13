@@ -75,7 +75,7 @@ namespace ScallyWags
 
         public bool IsDead()
         {
-            return transform.position.y < _deadDepth;
+            throw new NotImplementedException();
         }
 
         public void Drop()
