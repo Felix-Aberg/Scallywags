@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19a5135840d7bf429ea83e8ac447b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldCounterUI: {fileID: 11400000, guid: f189f9f1b04cbe24c9b237fe13f1a269, type: 2}
+  roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
   _playerPrefab: {fileID: 4374859028719597281, guid: 42de9da4a41ac6b4dbcf68c81cd8e2af,
     type: 3}

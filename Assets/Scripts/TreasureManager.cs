@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,12 +10,17 @@ namespace ScallyWags
     [Serializable]
     public class TreasureManager
     {
-        public int GoldValue => _goldValue;
-        [SerializeField] int _goldValue;
+        int _goldValue;
         private ScoreItem[] gold;
+        private IntVariable _goldCounterUI;
         
-        public void Init()
+        public void Init(IntVariable goldCounter)
         {
+            _goldCounterUI = goldCounter;
+            if (goldCounter == null)
+            {
+                Debug.LogError("No gold counter asset assigned to main.cs script");
+            }
             gold = GameObject.FindObjectsOfType<ScoreItem>();
 
             foreach (var item in gold)
@@ -28,12 +31,15 @@ namespace ScallyWags
 
             if (_goldValue != 100)
             {
-                Debug.LogError("Gold value not 100");
+                Debug.LogError("Gold value not correct (100 expected) got: " + _goldValue);
             }
         }
 
         public void Tick()
         {
+            // Update UI
+            _goldCounterUI.Value = _goldValue;
+            
             foreach (var item in gold)
             {
                 item.Tick();

@@ -1,6 +1,9 @@
 ﻿using ScallyWags;
 using UnityEngine;
 
+namespace ScallyWags
+{
+    
 public class ScoreItem : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject _dividesTo;
@@ -59,4 +62,6 @@ public class ScoreItem : MonoBehaviour, IDamageable
         var pos = transform.position + new Vector3(random.x, 0, random.y);
         return pos;
     }
+}
+
 }
