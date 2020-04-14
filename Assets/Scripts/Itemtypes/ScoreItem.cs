@@ -13,9 +13,12 @@ public class ScoreItem : MonoBehaviour, IDamageable
     private int _hitPoint;
     private float _distance = 1f;
     private TreasureManager _treasureManager;
+    private CreateUIElement _createUIElement;
+    private bool _lost;
 
     public void Init(TreasureManager treasureManager)
     {
+        _createUIElement = FindObjectOfType<CreateUIElement>();
         _treasureManager = treasureManager;
         _hitPoint = maxHitpoints;
     }
@@ -34,9 +37,13 @@ public class ScoreItem : MonoBehaviour, IDamageable
 
     public void Tick()
     {
+        if (_lost) return;
+        
         if (transform.position.y < -5f)
         {
+            _lost = true;
             _goldValue = 0;
+            _createUIElement.CreateElement(UIElement.GoldLost, transform.position);
             _treasureManager.ReCalculateGold();
         }
     }
