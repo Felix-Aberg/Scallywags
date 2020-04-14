@@ -22,10 +22,8 @@ namespace ScallyWags
         private PlayerSpawn[] _spawnPos;
         private TreasureManager _treasureManager;
         private RoundTimer _roundTimer;
+        private CameraHandler _cameraHandler;
 
-        // Camera
-        private CinemachineTargetGroup _targetGroup;
-        
         // Monobehaviors
         private ShipController _shipController;
         private AudioSourcePoolManager _audioSourcePoolManager;
@@ -36,11 +34,8 @@ namespace ScallyWags
             
             // Find ship
             _shipController = FindObjectOfType<ShipController>();
-            _shipController.Init();   
-            
-            // Setup camera
-            _targetGroup = FindObjectOfType<CinemachineTargetGroup>();
-            
+            _shipController.Init();
+
             // Spawn players
             _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
             _entityManager = new EntityManager(_playerPrefab, _spawnPos);
@@ -48,13 +43,11 @@ namespace ScallyWags
             {
                 _entityManager.CreateEntity(EntityManager.EntityType.Player, i);
             }
-
-            // Add players to camera
-            foreach (var player in _entityManager.GetAllPlayers())
-            {
-                _targetGroup.AddMember(player.gameObject.transform, 1, 0);
-            }
-
+            
+            // Setup camera
+            _cameraHandler = FindObjectOfType<CameraHandler>();
+            _cameraHandler.Init(_entityManager.GetAllPlayers());
+            
             _treasureManager = new TreasureManager();
             _treasureManager.Init(goldCounterUI);
             
@@ -64,6 +57,7 @@ namespace ScallyWags
 
         void Update()
         {
+            _cameraHandler.Tick();
             _shipController.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
