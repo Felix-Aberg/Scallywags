@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 34642550}
   - component: {fileID: 34642549}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Round time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 180
   m_WholeNumbers: 0
-  m_Value: 108.57002
+  m_Value: 178.01588
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_Color: {r: 0.6603774, g: 0.4359667, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -285,6 +285,56 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1548917385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548917386}
+  - component: {fileID: 1548917387}
+  m_Layer: 5
+  m_Name: GoldLost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1548917386
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548917385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1301180990518491699}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 123.600006, y: 32.199997}
+  m_SizeDelta: {x: 248.3, y: 65.399994}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1548917387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548917385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffeb9ffb6cf003a48b29081759b55f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldLost: {fileID: 5248761584199003788, guid: 9d64471c0c5a7884bad2931cf0fc2390,
+    type: 3}
 --- !u!1 &5933036551641490143
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +348,7 @@ GameObject:
   - component: {fileID: 8047838060535807216}
   - component: {fileID: 399823748393184115}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Gold left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,6 +538,7 @@ RectTransform:
   m_Children:
   - {fileID: 5594810993449353647}
   - {fileID: 34642548}
+  - {fileID: 1548917386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
