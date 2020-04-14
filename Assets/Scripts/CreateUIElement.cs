@@ -1,16 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
+﻿using UnityEngine;
 
 namespace ScallyWags
 {
     public class CreateUIElement : MonoBehaviour
         {
             public GameObject _goldLost;
+            public GameObject _tauntBubble;
             private Camera _camera;
             
             // Start is called before the first frame update
@@ -24,16 +19,24 @@ namespace ScallyWags
                 switch (element)
                 {
                     case UIElement.GoldLost:
-                        var uielement = Instantiate(_goldLost, Vector3.zero, Quaternion.identity, gameObject.transform);
-                        var rectTransform = uielement.GetComponent<RectTransform>();
-                        rectTransform.anchoredPosition = new Vector2(0,0);
+                        InstantiateElement(_goldLost, Vector3.zero);
+                        break;
+                    case UIElement.SpeechBubble:
+                        InstantiateElement(_tauntBubble, pos);
                         break;
                     default:
                         Debug.LogError("Missing UI element type");
                         break;
                 }
             }
-        
+
+            private void InstantiateElement(GameObject prefab, Vector3 pos)
+            {
+                var uiElement = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
+                var rectTransform = uiElement.GetComponent<RectTransform>();
+                var screenPos = GetScreenPos(pos);
+                rectTransform.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
+            }
             private Vector3 GetScreenPos(Vector3 worldPos)
             {
                 Vector3 screenPos = _camera.WorldToScreenPoint(worldPos);
