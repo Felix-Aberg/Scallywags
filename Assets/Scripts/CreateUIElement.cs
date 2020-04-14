@@ -19,7 +19,7 @@ namespace ScallyWags
                 switch (element)
                 {
                     case UIElement.GoldLost:
-                        InstantiateElement(_goldLost, Vector3.zero);
+                        InstantiateElement(_goldLost);
                         break;
                     case UIElement.SpeechBubble:
                         InstantiateElement(_tauntBubble, pos);
@@ -36,6 +36,13 @@ namespace ScallyWags
                 var rectTransform = uiElement.GetComponent<RectTransform>();
                 var screenPos = GetScreenPos(pos);
                 rectTransform.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
+            }
+            
+            private void InstantiateElement(GameObject prefab)
+            {
+                var uiElement = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
+                var rectTransform = uiElement.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = new Vector2(0,0);
             }
             private Vector3 GetScreenPos(Vector3 worldPos)
             {
