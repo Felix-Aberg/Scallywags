@@ -4,7 +4,6 @@ using UnityEngine.PlayerLoop;
 
 namespace ScallyWags 
 {
-    [RequireComponent(typeof(ParticleSystem))]
     public class CannonInteraction : MonoBehaviour, IInteraction
     {
         [SerializeField] private SimpleAudioEvent _event;

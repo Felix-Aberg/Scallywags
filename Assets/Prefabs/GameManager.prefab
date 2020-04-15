@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3611850030813781983}
   - component: {fileID: 8517884298922818127}
+  - component: {fileID: 1124632563287614118}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,3 +48,16 @@ MonoBehaviour:
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
   _playerPrefab: {fileID: 4374859028719597281, guid: 42de9da4a41ac6b4dbcf68c81cd8e2af,
     type: 3}
+--- !u!114 &1124632563287614118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912385582754536911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15311517b541b564dacb0e55c48fe698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHazardRating: 0
