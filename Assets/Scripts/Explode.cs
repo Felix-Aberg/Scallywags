@@ -23,6 +23,9 @@ public class Explode : MonoBehaviour
         }
         damageable?.TakeDamage();
 
+        var ship = other.gameObject.GetComponentInParent<ShipCondition>();
+        ship.TakeDamage();
+        
         var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);
         if (particleSystem == null)
         {

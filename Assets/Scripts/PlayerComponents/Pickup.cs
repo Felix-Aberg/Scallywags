@@ -12,10 +12,13 @@ namespace ScallyWags
         public PickableItem PickedUpItem => _pickedUpItem;
         private PickableItem _pickedUpItem;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
-        private float _Y_Offset = 0.5f;
+        private float _yOffset = 0.86f;
+        private float _xOffset = 1.2f;
+        
         [SerializeField] float _throwStrength = 0;
         private float _maxThrowStrength = 20f;
         private float _strenghtFactor = 50f;
+
 
 
         public void Tick(Transform transform, Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
@@ -49,7 +52,6 @@ namespace ScallyWags
                 {
                     if (TryToPickUp(itemToPickUp))
                     {
-                        Debug.Log("PickUp");
                         PickUp(itemToPickUp as PickableItem, player);
                     }
                 }
@@ -136,8 +138,8 @@ namespace ScallyWags
         private Vector3 CalculateTargetPos(Transform transform)
         {
             var targetPos = transform.position;
-            targetPos.y += _Y_Offset;
-            targetPos += transform.forward;
+            targetPos.y += _yOffset;
+            targetPos += transform.forward * _xOffset;
             return targetPos;
         }
 

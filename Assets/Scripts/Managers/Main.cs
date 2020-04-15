@@ -25,17 +25,12 @@ namespace ScallyWags
         private CameraHandler _cameraHandler;
 
         // Monobehaviors
-        private ShipController _shipController;
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
 
         void Awake()
         {
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
-            
-            // Find ship
-            _shipController = FindObjectOfType<ShipController>();
-            _shipController.Init();
 
             // Spawn players
             _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
@@ -63,7 +58,6 @@ namespace ScallyWags
         {
             _hazardManager.Tick();
             _cameraHandler.Tick();
-            _shipController.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
             _roundTimer.Tick();

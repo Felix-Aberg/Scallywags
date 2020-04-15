@@ -4,5 +4,6 @@
     Cannonball,
     Hammer,
     TreasureChest,
-    BagOfGold
+    BagOfGold,
+    Gem
 }
