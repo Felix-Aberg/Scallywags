@@ -17,6 +17,10 @@ public class Explode : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         var damageable = other.gameObject.GetComponent<IDamageable>();
+        if (damageable == null)
+        {
+            damageable = other.gameObject.GetComponentInParent<IDamageable>();
+        }
         damageable?.TakeDamage();
 
         var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);

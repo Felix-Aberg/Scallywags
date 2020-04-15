@@ -14,6 +14,6 @@ public class ShipController : MonoBehaviour
     public void Tick()
     {
         float f = Mathf.PingPong(Time.time * 3, 10);
-        transform.rotation = startRot * Quaternion.AngleAxis(f, Vector3.forward);
+        transform.rotation = startRot * Quaternion.AngleAxis(f, Vector3.right);
     }
 }
