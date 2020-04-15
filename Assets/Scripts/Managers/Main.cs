@@ -27,6 +27,7 @@ namespace ScallyWags
         // Monobehaviors
         private ShipController _shipController;
         private AudioSourcePoolManager _audioSourcePoolManager;
+        private HazardManager _hazardManager;
 
         void Awake()
         {
@@ -53,10 +54,14 @@ namespace ScallyWags
             
             _roundTimer = new RoundTimer();
             _roundTimer.Init(roundTimeUI);
+
+            _hazardManager = GetComponent<HazardManager>();
+            _hazardManager.Init();
         }
 
         void Update()
         {
+            _hazardManager.Tick();
             _cameraHandler.Tick();
             _shipController.Tick();
             _entityManager.Tick();
