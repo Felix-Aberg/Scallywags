@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 1264510300846287159}
   - component: {fileID: 4805613481489864142}
   - component: {fileID: -1966277917910073292}
+  - component: {fileID: 1296917348080053592}
+  - component: {fileID: 835999664787042315}
+  - component: {fileID: 8818623258272891901}
   m_Layer: 0
   m_Name: Gemstone
   m_TagString: Untagged
@@ -26,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6524640592341377298}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.39, y: 5, z: -3.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -95,3 +98,46 @@ MonoBehaviour:
   _dividesTo: {fileID: 0}
   _goldValue: 10
   maxHitpoints: 0
+--- !u!54 &1296917348080053592
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524640592341377298}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &835999664787042315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524640592341377298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.93185455, y: 0.639985, z: 0.93185455}
+  m_Center: {x: 0, y: 0.31999508, z: 0}
+--- !u!114 &8818623258272891901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524640592341377298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26348361f4a15ad4daf8edf29b916544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleUse: 0
+  itemType: 0

@@ -18,8 +18,6 @@ namespace ScallyWags
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
 
-        private float _deadDepth = -10f;
-
         // Monobehaviors
         private Rigidbody _rigidbody;
 
@@ -34,6 +32,8 @@ namespace ScallyWags
             _interact = new Interact();
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
+            
+            _pickup.Init(transform);
         }
 
         public void Tick()
@@ -44,7 +44,7 @@ namespace ScallyWags
             
             // Handle input
             _playerController.Tick(transform, inputs.horizontal, inputs.vertical);
-            _pickup.Tick(gameObject.transform, this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
+            _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
         }
 

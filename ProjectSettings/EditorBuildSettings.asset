@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreScene.unity
     guid: a7ca1c8a8c6f6384a9f5e6d65c24f0d2
+  - enabled: 1
+    path: Assets/Scenes/JariTestingHighFidelity.unity
+    guid: 11c8f305dd1cfbf45a029a3420c06592
   m_configObjects: {}

@@ -39,7 +39,7 @@ public class ScoreItem : MonoBehaviour, IDamageable
     {
         if (_lost) return;
         
-        if (transform.position.y < -5f)
+        if (transform.position.y < -15f)
         {
             _lost = true;
             _goldValue = 0;

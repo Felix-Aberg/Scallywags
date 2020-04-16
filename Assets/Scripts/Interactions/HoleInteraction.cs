@@ -35,5 +35,10 @@ namespace ScallyWags
             gameObject.SetActive(false);
             hammerHits = 0;
         }
+
+        public void CreateHole()
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace ScallyWags
         [SerializeField] private FloatVariable roundTimeUI;
         
         // Prefabs
-        public GameObject _playerPrefab;
+        public GameObject playerPrefab;
 
         private EntityManager _entityManager;
 
@@ -23,22 +23,21 @@ namespace ScallyWags
         private TreasureManager _treasureManager;
         private RoundTimer _roundTimer;
         private CameraHandler _cameraHandler;
-
+        private ShipManager _shipManager;
+        
         // Monobehaviors
-        private ShipController _shipController;
         private AudioSourcePoolManager _audioSourcePoolManager;
+        private HazardManager _hazardManager;
+        private EventManager _eventManager;
 
         void Awake()
         {
+            _eventManager = gameObject.AddComponent<EventManager>();
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
-            
-            // Find ship
-            _shipController = FindObjectOfType<ShipController>();
-            _shipController.Init();
 
             // Spawn players
             _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
-            _entityManager = new EntityManager(_playerPrefab, _spawnPos);
+            _entityManager = new EntityManager(playerPrefab, _spawnPos);
             for (int i = 1; i < _spawnPos.Length+1; i++) // Player index starts from 1
             {
                 _entityManager.CreateEntity(EntityManager.EntityType.Player, i);
@@ -53,15 +52,22 @@ namespace ScallyWags
             
             _roundTimer = new RoundTimer();
             _roundTimer.Init(roundTimeUI);
+
+            _hazardManager = GetComponent<HazardManager>();
+            _hazardManager.Init();
+
+            _shipManager = gameObject.AddComponent<ShipManager>();
+            _shipManager.Init();
         }
 
         void Update()
         {
+            _hazardManager.Tick();
             _cameraHandler.Tick();
-            _shipController.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
             _roundTimer.Tick();
+            _shipManager.Tick();
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
