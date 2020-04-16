@@ -8,12 +8,14 @@ namespace ScallyWags
 {
     public class ShipMoveCloser : MonoBehaviour
     {
-        private Vector3 _moveTarget = new Vector3(0, 0, 20);
+        [SerializeField] private float _moveDistance = 20;
+        private Vector3 _moveTarget;
         private ShipCondition _ship;
 
         private void Start()
         {
             _ship = GetComponent<ShipCondition>();
+            _moveTarget = new Vector3(0, 0, _moveDistance);
         }
 
         void Update()
