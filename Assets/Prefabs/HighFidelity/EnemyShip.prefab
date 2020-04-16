@@ -6200,7 +6200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _event: {fileID: 11400000, guid: 43b208e593f115942bffd24fa5258056, type: 2}
   _cannonForce: 50
-  _cannonBall: {fileID: 3720384497703973021, guid: 6de63ad9b6e19b84ba74b2b686228adc,
+  _cannonBall: {fileID: 3720384497703973021, guid: 63b79ffff5920ea4ea69845ca7c9d297,
     type: 3}
 --- !u!114 &78566818963102539
 MonoBehaviour:
@@ -13719,6 +13719,7 @@ GameObject:
   - component: {fileID: 6326156097609464670}
   - component: {fileID: 6110958909598516066}
   - component: {fileID: 5664095530716042607}
+  - component: {fileID: 2981130135509492219}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -13790,6 +13791,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipType: 0
   _shipHealth: 0
+--- !u!114 &2981130135509492219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393854260003309012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdfa334e9438e14ebf0cbe7d8bf6951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7834876489329323001
 GameObject:
   m_ObjectHideFlags: 0

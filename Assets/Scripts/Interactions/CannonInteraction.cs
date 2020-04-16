@@ -13,13 +13,11 @@ namespace ScallyWags
         private ParticleSystem _particleSystem;
         private AudioSourcePoolManager _audioPool;
         private ShipCondition _enemyCondition;
-        private ShipCondition _ship;
         private void Start()
         {
             _particleSystem = GetComponentInChildren<ParticleSystem>();
             _spawnPos = GetComponentInChildren<ItemSpawn>();
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
-            _ship = GetComponentInParent<ShipCondition>();
 
             if (_spawnPos == null)
             {
@@ -50,7 +48,7 @@ namespace ScallyWags
 
             foreach (var ship in ships)
             {
-                if (ship != _ship)
+                if (ship.ShipType == ShipManager.ShipType.Enemy)
                 {
                     _enemyCondition = ship;
                 }

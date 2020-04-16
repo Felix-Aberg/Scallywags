@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace ScallyWags
 {
@@ -12,20 +13,25 @@ namespace ScallyWags
         public PickableItem PickedUpItem => _pickedUpItem;
         private PickableItem _pickedUpItem;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
-        private float _yOffset = 0.86f;
-        private float _xOffset = 1.2f;
+        private float _yOffset = 0.7f;
+        private float _xOffset = 1f;
         
         [SerializeField] float _throwStrength = 0;
         private float _maxThrowStrength = 20f;
         private float _strenghtFactor = 50f;
 
+        private Transform _transform;
 
+        public void Init(Transform transform)
+        {
+            _transform = transform;
+        }
 
-        public void Tick(Transform transform, Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
+        public void Tick(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
         {
             if (_pickedUpItem != null)
             {
-                _pickedUpItem.GetObject().transform.position = CalculateTargetPos(transform);
+                _pickedUpItem.transform.position = CalculateTargetPos(_transform);
             }
             Inputs(player, pickUpPressed, pickupDown, pickUpReleased);
         }
@@ -148,6 +154,7 @@ namespace ScallyWags
             if (_pickedUpItem == null)
             {
                 _pickedUpItem = item.Pickup(player) as PickableItem;
+                _pickedUpItem.transform.DOMove(CalculateTargetPos(_transform), 0.2f);
             }
         }
 

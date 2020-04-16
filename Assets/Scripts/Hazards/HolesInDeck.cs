@@ -10,7 +10,7 @@ public class HolesInDeck : Hazard
     private int _maxHoles;
     private List<HoleInteraction> _holes = new List<HoleInteraction>();
 
-    public override void Execute()
+    public override void Execute(HazardData data)
     {
         var holesToSpawn = Random.Range(_minHoles, _maxHoles+1);
 

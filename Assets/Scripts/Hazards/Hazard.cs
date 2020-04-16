@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hazard
+namespace ScallyWags
 {
-    public abstract void Execute();
+    public abstract class Hazard : MonoBehaviour
+    {
+        public abstract void Execute(HazardData hazard);
+    }
 }

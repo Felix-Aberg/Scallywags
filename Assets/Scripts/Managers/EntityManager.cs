@@ -76,7 +76,7 @@ namespace ScallyWags
             _players.Add(entity as Player);
         }
 
-        public Player GetPlayer(int index)
+        private Player GetPlayer(int index)
         {
             foreach (var player in _players)
             {
