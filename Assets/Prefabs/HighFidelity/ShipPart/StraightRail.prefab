@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1236819939011063361}
   - component: {fileID: 7081636803686002933}
   m_Layer: 0
-  m_Name: StraightRail (1)
+  m_Name: StraightRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bb9d6a8e6088f4791bd70108ffc4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 6369757037939972947, guid: 9aadd14458295ac47b45a79ba4109e39,
+    type: 3}
 --- !u!1 &8132725006361822180
 GameObject:
   m_ObjectHideFlags: 0

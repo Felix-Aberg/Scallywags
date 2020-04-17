@@ -8,5 +8,6 @@ namespace ScallyWags
         public string EventName;
         public GameObject Prefab;
         public int Health;
+        public AudioEvent Audio;
     }
 }

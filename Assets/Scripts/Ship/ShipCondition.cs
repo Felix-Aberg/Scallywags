@@ -42,9 +42,12 @@ namespace ScallyWags
             }
         }
 
-        public void FixDamage()
+        public void FixDamage(int damage = 1)
         {
-            var y = transform.position.y + _sinkingPerDamage;
+            var health = damage + _shipHealth;
+            _shipHealth = Mathf.Min(health, _shipHealth);
+            
+            var y = transform.position.y + damage;
             y = Mathf.Min(y, _startingDepth);
             transform.DOMoveY(y, 1);
         }

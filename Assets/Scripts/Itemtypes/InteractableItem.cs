@@ -14,24 +14,32 @@ namespace ScallyWags
         {
             foreach (var usable in _usableItems.itemList)
             {
-                if (item.itemType == usable.itemType)
+                if (item.itemType != usable.itemType) continue;
+                
+                Use(item);
+
+                if (!item.singleUse) break;
+                
+                player.Drop();
+                var respawnable = item.GetComponent<Respawnable>();
+                if (respawnable)
                 {
-                    Use(item);
-                    if (item.singleUse)
-                    {
-                        player.Drop();
-                        var respawnable = item.GetComponent<Respawnable>();
-                        if (respawnable)
-                        {
-                            respawnable.Respawn();
-                        }
-                        else
-                        {
-                            Destroy(item);
-                        }
-                    }
+                    respawnable.Respawn();
+                }
+                else
+                {
+                    Destroy(item);
                 }
             }
+        }
+
+        public bool CanBeUsed(PickableItem item)
+        {
+            foreach (var usable in _usableItems.itemList)
+            {
+                if (item.itemType == usable.itemType) return true;
+            }
+            return false;
         }
 
         private void Use(PickableItem item)

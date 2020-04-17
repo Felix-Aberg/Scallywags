@@ -4876,7 +4876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _event: {fileID: 11400000, guid: 43b208e593f115942bffd24fa5258056, type: 2}
-  _cannonForce: 50
+  _cannonForce: 70
   _cannonBall: {fileID: 3720384497703973021, guid: 63b79ffff5920ea4ea69845ca7c9d297,
     type: 3}
 --- !u!114 &1530166127
