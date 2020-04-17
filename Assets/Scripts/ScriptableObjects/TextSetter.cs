@@ -11,6 +11,7 @@ public class TextSetter : MonoBehaviour
     
     private Text text;
     private TextMeshProUGUI proText;
+    private int _lastValue;
 
     private void Start()
     {
@@ -22,12 +23,20 @@ public class TextSetter : MonoBehaviour
     {
         if (text != null && Variable != null)
         {
-            text.text = prefix + Variable.Value.ToString() + postfix;
+            if (Variable.Value != _lastValue)
+            {
+                _lastValue = Variable.Value;
+                text.text = prefix + Variable.Value.ToString() + postfix;
+            }
         }
 
         if (proText != null && Variable != null)
-        {
-            proText.text = prefix +  Variable.Value.ToString() + postfix;
+        { 
+            if (Variable.Value != _lastValue)
+            {
+                _lastValue = Variable.Value;
+                proText.text = prefix +  Variable.Value.ToString() + postfix;
+            }
         }
     }
 }
