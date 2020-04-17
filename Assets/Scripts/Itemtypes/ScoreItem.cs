@@ -1,5 +1,4 @@
 ﻿using ScallyWags;
-using Unity.CodeEditor;
 using UnityEngine;
 
 namespace ScallyWags
