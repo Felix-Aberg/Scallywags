@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3611850030813781983}
   - component: {fileID: 8517884298922818127}
   - component: {fileID: 1124632563287614118}
+  - component: {fileID: 466275443}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldCounterUI: {fileID: 11400000, guid: f189f9f1b04cbe24c9b237fe13f1a269, type: 2}
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
-  playerPrefab: {fileID: 4374859028719597281, guid: 42de9da4a41ac6b4dbcf68c81cd8e2af,
+  playerPrefab: {fileID: 4374859028719597281, guid: 0d10ae24159ac134b8c1f7e541636ae0,
     type: 3}
 --- !u!114 &1124632563287614118
 MonoBehaviour:
@@ -71,3 +72,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
   _currentHazardRating: 0
   _hazardInterval: 10
+--- !u!114 &466275443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912385582754536911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf3ae50a0e4ba9479d8232a733901ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

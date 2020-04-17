@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace ScallyWags
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class Respawnable : MonoBehaviour, IRespawnable
     {
         private Vector3 _startPos;
