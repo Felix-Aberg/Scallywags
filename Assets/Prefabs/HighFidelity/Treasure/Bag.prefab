@@ -100,7 +100,7 @@ MonoBehaviour:
   _dividesTo: {fileID: 3604555032304741275, guid: 987553a9874d8a24daa8a65dbfbba4bc,
     type: 3}
   _goldValue: 50
-  maxHitpoints: 2
+  maxHitpoints: 1
 --- !u!114 &-7744786291694761584
 MonoBehaviour:
   m_ObjectHideFlags: 0
