@@ -10,14 +10,14 @@ namespace ScallyWags
         [SerializeField] private float _cannonForce = 1;
         [SerializeField] private GameObject _cannonBall;
         private ItemSpawn _spawnPos;
-        private ParticleSystem _particleSystem;
+        private ParticleSystem[] _particleSystem;
         private AudioSourcePoolManager _audioPool;
         private ShipCondition _enemyCondition;
         private ShipCondition _shipCondition;
         private void Start()
         {
             _shipCondition = GetComponentInChildren<ShipCondition>();
-            _particleSystem = GetComponentInChildren<ParticleSystem>();
+            _particleSystem = GetComponentsInChildren<ParticleSystem>();
             _spawnPos = GetComponentInChildren<ItemSpawn>();
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
 
@@ -43,7 +43,10 @@ namespace ScallyWags
             var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, Quaternion.identity);
             cannonBall.transform.rotation = rot;
             cannonBall.GetComponent<Rigidbody>().AddForce(_spawnPos.transform.forward * _cannonForce, ForceMode.Impulse);
-            _particleSystem.Play();
+            foreach (var p in _particleSystem)
+            {
+                p.Play();   
+            }
             _audioPool.PlayAudioEvent(_event, transform.position);
         }
 
