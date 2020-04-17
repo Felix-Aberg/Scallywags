@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dividesTo: {fileID: 8939739294183150078, guid: 750f3eb7813a74d48a640e54511e07bc,
     type: 3}
+  particleEffect: {fileID: 1069615020121157063, guid: c331c179b06c36b468cdd4f1e0f48c3a,
+    type: 3}
   _goldValue: 100
   maxHitpoints: 1
 --- !u!54 &1975106152

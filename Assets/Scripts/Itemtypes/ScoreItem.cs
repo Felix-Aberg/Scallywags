@@ -1,4 +1,5 @@
 ﻿using ScallyWags;
+using Unity.CodeEditor;
 using UnityEngine;
 
 namespace ScallyWags
@@ -7,6 +8,7 @@ namespace ScallyWags
 public class ScoreItem : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject _dividesTo;
+    [SerializeField] private GameObject particleEffect;
     public int GoldValue => _goldValue;
     [SerializeField] private int _goldValue;
     [SerializeField] private int maxHitpoints = 2;
@@ -39,7 +41,7 @@ public class ScoreItem : MonoBehaviour, IDamageable
     {
         if (_lost) return;
         
-        if (transform.position.y < -15f)
+        if (transform.position.y < -50f)
         {
             _lost = true;
             _goldValue = 0;
@@ -55,6 +57,10 @@ public class ScoreItem : MonoBehaviour, IDamageable
         _goldValue = 0;
         gameObject.SetActive(false);
         _treasureManager.ReCalculateGold();
+        if (particleEffect)
+        {
+            Instantiate(particleEffect, transform.position, Quaternion.identity);
+        }
     }
 
     private void SpawnItem(GameObject bagOfGold)

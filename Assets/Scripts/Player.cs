@@ -24,7 +24,6 @@ namespace ScallyWags
         public void Init(int index)
         {
             _index = index;
-            gameObject.AddComponent<CapsuleCollider>();
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             
