@@ -31,14 +31,14 @@ namespace ScallyWags
             }
         }
 
-        public void Tick(PickableItem item, Player player, bool interactPressed)
+        public void Tick(PickableItem currentItem, Player player, bool interactPressed)
         {
-            if (item == null) return;
+            if (currentItem == null) return;
             
             if (interactPressed)
             {
-                var closestItem = GetClosestItem(player);
-                closestItem?.Interact(item, player);
+                var closestItem = GetClosestItem(player, currentItem);
+                closestItem?.Interact(currentItem, player);
                 RefreshItems();
             }
         }
@@ -56,13 +56,17 @@ namespace ScallyWags
             _itemsNear = newList;
         }
 
-        private IInteractable GetClosestItem(Player player)
+        private IInteractable GetClosestItem(Player player, PickableItem currentItem)
         {
             GameObject closest = null;
             var closestDist = float.MaxValue;
             foreach (var item in _itemsNear)
             {
+                if (closest == null) closest = item;
+                
                 if (item == null) continue;
+
+                if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false) continue;
                 
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);
                 if (currentDist < closestDist)

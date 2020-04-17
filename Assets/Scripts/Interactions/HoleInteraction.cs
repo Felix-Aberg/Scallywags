@@ -6,24 +6,28 @@ using UnityEngine;
 
 namespace ScallyWags
 {
-    [RequireComponent(typeof(ParticleSystem))]
     public class HoleInteraction : MonoBehaviour, IInteraction
     {
-        private ParticleSystem _particleSystem;
-        private int hammerHits = 0;
+        private ShipCondition _shipCondition;
+        private ParticleSystem[] _particleSystem;
+        [SerializeField] private int hammerHits = 0;
         private int hitsRequired = 5;
 
         private void Start()
         {
-            _particleSystem = GetComponent<ParticleSystem>();
+            _particleSystem = GetComponentsInChildren<ParticleSystem>();
+            _shipCondition = GetComponentInParent<ShipCondition>();
         }
 
         public void Act()
         {
-            // TODO hammer sounds effects etc
+            // TODO hammer sounds
             hammerHits++;
-            _particleSystem.Play();
-            
+            foreach (var p in _particleSystem)
+            {
+                p.Play();
+            }
+
             if (hammerHits >= hitsRequired)
             {
                 Fix();
@@ -32,13 +36,10 @@ namespace ScallyWags
 
         private void Fix()
         {
-            gameObject.SetActive(false);
+            Debug.Log("Hole fixed");
             hammerHits = 0;
-        }
-
-        public void CreateHole()
-        {
-            gameObject.SetActive(true);
+            _shipCondition.FixDamage();
+            gameObject.SetActive(false);
         }
     }
 }

@@ -6,21 +6,24 @@ using UnityEngine;
 public class ShootEverySecond : MonoBehaviour
 {
     private CannonInteraction _cannon;
-
-    private ShipCondition _ship;
-    // Start is called before the first frame update
+    private float _timer;
+    private float _delay;
+    
     void Start()
     {
-        _ship = GetComponentInParent<ShipCondition>();
         _cannon = GetComponent<CannonInteraction>();
-        InvokeRepeating(nameof(Shoot), Random.Range(1f, 2.0f), 10);
+        _delay = Random.Range(3f, 5f);
     }
 
     void Update()
     {
-        if(_ship.IsSinking())
+        _timer += Time.deltaTime;
+
+        if (_timer >= _delay)
         {
-            enabled = false;
+            _timer = 0;
+            _delay = Random.Range(3f, 5f);
+            Shoot();
         }
     }
 

@@ -9,7 +9,7 @@ namespace ScallyWags
     {
         private Vector3 _startPos;
         private Quaternion _startRot;
-        private float _respawnLimit = -5f;
+        private float _respawnLimit = -50f;
         private Rigidbody _rb;
     
         // Start is called before the first frame update

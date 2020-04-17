@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioSourcePool : PollingPool<AudioSource>
 {
@@ -21,6 +22,7 @@ public class AudioSourcePool : PollingPool<AudioSource>
     public void Play(AudioEvent simpleAudioEvent)
     {
         var source = Get();
+        source.outputAudioMixerGroup = simpleAudioEvent.MixerGroup;
         simpleAudioEvent.Play(source);
     }
 

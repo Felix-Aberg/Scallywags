@@ -48,7 +48,6 @@ MonoBehaviour:
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
   playerPrefab: {fileID: 4374859028719597281, guid: 42de9da4a41ac6b4dbcf68c81cd8e2af,
     type: 3}
-  enemyShipPrefab: {fileID: 0}
 --- !u!114 &1124632563287614118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +60,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15311517b541b564dacb0e55c48fe698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _easyHazards: []
-  _mediumHazards: []
+  _easyHazards:
+  - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
+  _mediumHazards:
+  - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
-  _introduction: []
+  _introduction:
+  - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
+  - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
   _currentHazardRating: 0
   _hazardInterval: 10

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ScallyWags
 {
@@ -12,6 +14,8 @@ namespace ScallyWags
         [SerializeField] private List<HazardData> _introduction = new List<HazardData>();
         [SerializeField] private HazardRating _currentHazardRating;
 
+        private Dictionary<string, bool> hazardDone = new Dictionary<string, bool>();
+        
         [SerializeField] private float _hazardInterval = 10f;
         private float _timer = 0;
 
