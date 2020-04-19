@@ -19,8 +19,6 @@ mkdir $UNITY_BUILD_DIR
   -projectPath "$PROJECT_PATH" \
   -exportPackage "Assets" "$EXPORT_PATH" \
   -serial $SERIAL \
-  -username $USERNAME \
-  -password $PASSWORD \
   -quit \
   | tee "$LOG_FILE"
   
