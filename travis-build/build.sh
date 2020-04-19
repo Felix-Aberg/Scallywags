@@ -21,6 +21,7 @@ mkdir $UNITY_BUILD_DIR
   -serial $SERIAL \
   -username $USERNAME \
   -password $PASSWORD \
+  -createManualActivationFile \
   -buildWindows64Player  "$(pwd)/build/win/ci-build.exe" \
   -quit \
   | tee "$LOG_FILE"
