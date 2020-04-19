@@ -9,7 +9,7 @@ env:
 
 cache:
   directories:
-    - $UNITY_DOWNLOAD_CACHE
+    - "$HOME/unity_download_cache"
 
     
 before_install:
@@ -31,7 +31,7 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: $GITHUB_TOKEN
+  token: $GITHUB_TOKEN
   file: $DEPLOY_UNITYPACKAGE
   skip_cleanup: true
   overwrite: true
