@@ -18,6 +18,9 @@ mkdir $UNITY_BUILD_DIR
   -silent-crashes \
   -logFile \
   -projectPath "$PROJECT_PATH" \
+  -serial $SERIAL \
+  -username $USERNAME \
+  -password $PASSWORD \
   -buildWindows64Player  "$(pwd)/build/win/ci-build.exe" \
   -quit \
   | tee "$LOG_FILE"
