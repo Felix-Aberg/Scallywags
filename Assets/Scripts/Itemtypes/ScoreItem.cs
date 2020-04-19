@@ -24,18 +24,6 @@ public class ScoreItem : MonoBehaviour, IDamageable
         _hitPoint = maxHitpoints;
     }
     
-    public void TakeDamage()
-    {
-        _hitPoint--;
-        if (_hitPoint <= 0)
-        {
-            if (_dividesTo != null)
-            {
-                Divide();
-            }
-        }
-    }
-
     public void Tick()
     {
         if (_lost) return;
@@ -49,10 +37,22 @@ public class ScoreItem : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamage()
+    {
+        _hitPoint--;
+        if (_hitPoint <= 0)
+        {
+            if (_dividesTo != null)
+            {
+                SpawnItem(_dividesTo);
+                SpawnItem(_dividesTo);
+                Divide();
+            }
+        }
+    }
+
     private void Divide()
     {
-        SpawnItem(_dividesTo);
-        SpawnItem(_dividesTo);
         _goldValue = 0;
         gameObject.SetActive(false);
         _treasureManager.ReCalculateGold();

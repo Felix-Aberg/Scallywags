@@ -10,28 +10,27 @@ namespace ScallyWags
     {
         public ShipManager.ShipType ShipType => _shipType; 
         [SerializeField] private ShipManager.ShipType _shipType;
-        [SerializeField] private int _shipHealth;
-        private int _shipMaxHealth = 10;
         private float _startingDepth;
         private float _sinkingPerDamage;
         private ShipManager _shipManager;
+        private ShipHealth _shipHealth;
         
         // Start is called before the first frame update
         public void Init(ShipManager.ShipType shipType, ShipManager shipManager, int maxHealth = 10)
         {
+            _shipHealth = new ShipHealth(maxHealth);
             _shipManager = shipManager;
             _shipType = shipType;
-            _shipMaxHealth = maxHealth;
-            _sinkingPerDamage = 5f / _shipMaxHealth;
+
+            _sinkingPerDamage = 5f / maxHealth;
             var pos = transform.position;
             transform.position = new Vector3(pos.x, 0, pos.z);
-            _shipHealth = _shipMaxHealth;
             _startingDepth = transform.position.y;
         }
 
         public void Tick()
         {
-            if (_shipHealth <= 0)
+            if (_shipHealth.GetHealth() <= 0)
             {
                 Sink();
             }
@@ -44,35 +43,35 @@ namespace ScallyWags
 
         public void FixDamage(int damage = 1)
         {
-            var health = damage + _shipHealth;
-            _shipHealth = Mathf.Min(health, _shipHealth);
+            _shipHealth.FixDamage(damage);
             
             var y = transform.position.y + damage;
             y = Mathf.Min(y, _startingDepth);
             transform.DOMoveY(y, 1);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage = 1)
         {
-            _shipHealth -= 1;
+            _shipHealth.TakeDamage(damage);
+            
             var pos = transform.position;
             transform.DOMoveY(pos.y - _sinkingPerDamage, 1);
         }
 
         public int GetHealth()
         {
-            return _shipHealth;
+            return _shipHealth.GetHealth();
+        }
+        
+        public bool IsSinking()
+        {
+            return _shipHealth.GetHealth() <= 0;
         }
 
         private void Sink()
         {
             transform.position = Vector3.MoveTowards(transform.position,
                 new Vector3(transform.position.x, -100, transform.position.z), 0.03f);
-        }
-
-        public bool IsSinking()
-        {
-            return _shipHealth <= 0;
         }
     }
 }
