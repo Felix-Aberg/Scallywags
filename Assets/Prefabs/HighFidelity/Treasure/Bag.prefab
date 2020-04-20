@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dividesTo: {fileID: 3604555032304741275, guid: 987553a9874d8a24daa8a65dbfbba4bc,
     type: 3}
-  particleEffect: {fileID: 8566064861487476053, guid: ffc3084f84010624c80ca88c902883d0,
+  particleEffect: {fileID: 6524640592341377298, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}
   _goldValue: 50
   maxHitpoints: 1
@@ -140,12 +140,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &-6108810420528277311
 MonoBehaviour:
   m_ObjectHideFlags: 0

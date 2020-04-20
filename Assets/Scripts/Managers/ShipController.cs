@@ -7,7 +7,7 @@ using UnityEngine.PlayerLoop;
 public class ShipController : MonoBehaviour
 {
     private Quaternion startRot;
-    private float _swayAmount = 10;
+    private float _swayAmount = 15;
     private float _halfSway;
 
     public void Start()

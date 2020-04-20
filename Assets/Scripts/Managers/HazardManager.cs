@@ -14,10 +14,11 @@ namespace ScallyWags
         [SerializeField] private List<HazardData> _introduction = new List<HazardData>();
         [SerializeField] private HazardRating _currentHazardRating;
 
-        private Dictionary<string, bool> hazardDone = new Dictionary<string, bool>();
-        
+        private int _hazardsUnlocked = 1;
+
         [SerializeField] private float _hazardInterval = 10f;
         private float _timer = 0;
+        private FloatVariable _roundTime;
 
         private enum HazardRating
         {
@@ -26,8 +27,10 @@ namespace ScallyWags
             Hard
         }
 
-        public void Init()
+        public void Init(FloatVariable roundTime)
         {
+            _roundTime = roundTime;
+            
             if (_easyHazards.Count == 0 || _mediumHazards.Count == 0 || _hardHazards.Count == 0 ||
                 _introduction.Count == 0)
             {
@@ -37,9 +40,12 @@ namespace ScallyWags
 
         public void Tick()
         {
+            UpdateAvailableHazards();
+            
             if (_easyHazards.Count == 0 && _mediumHazards.Count == 0 && _hardHazards.Count == 0 &&
                 _introduction.Count == 0)
             {
+                Debug.LogError("No hazards");
                 return;
             }
 
@@ -57,9 +63,22 @@ namespace ScallyWags
             }
         }
 
+        private void UpdateAvailableHazards()
+        {
+            if (_roundTime.Value < 400 && _roundTime.Value > 200)
+            {
+                _hazardsUnlocked = 2;
+            }
+
+            if (_roundTime.Value < 200)
+            {
+                _hazardsUnlocked = 3;
+            }
+        }
+
         private void ChooseRating()
         {
-            _currentHazardRating = (HazardRating) Random.Range(0, 3);
+            _currentHazardRating = (HazardRating) Random.Range(0, _hazardsUnlocked);
 
             switch (_currentHazardRating)
             {
@@ -80,6 +99,7 @@ namespace ScallyWags
 
         private void SpawnHazard(List<HazardData> hazards)
         {
+            // If no hazards in this rating choose new hazard rating
             if (hazards.Count <= 0)
             {
                 ChooseRating();
@@ -87,11 +107,14 @@ namespace ScallyWags
             }
 
             var index = Random.Range(0, hazards.Count);
-            EventManager.EventMessage eventMessage = new EventManager.EventMessage(hazards[index]);
-            EventManager.TriggerEvent(hazards[index].EventName, eventMessage);
+            for(int i = 0; i < hazards[index].NumberOfHazards; i++)
+            {
+                EventManager.EventMessage eventMessage = new EventManager.EventMessage(hazards[index]);
+                EventManager.TriggerEvent(hazards[index].EventName, eventMessage);   
+            }
         }
 
-        // Introduction hazards come one by one. Remove introduction hazards after triggering hazard
+        // Introduction hazards come one by one. Remove introduction hazards after triggering each hazard
         private void SpawnIntroHazard(List<HazardData> introduction)
         {
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(_introduction[0]);

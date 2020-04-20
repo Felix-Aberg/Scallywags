@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 104528873635138268}
   - component: {fileID: -3580682436431791152}
   - component: {fileID: 7982202406093769558}
-  m_Layer: 0
-  m_Name: Fire bulb
+  m_Layer: 9
+  m_Name: Fire bulb Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8678549049345392137}
   - component: {fileID: 8678549049345392135}
   - component: {fileID: 8678549049345392136}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

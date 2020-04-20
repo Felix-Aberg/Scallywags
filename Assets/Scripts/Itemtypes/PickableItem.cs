@@ -11,10 +11,13 @@ namespace ScallyWags
     /// </summary>
     public class PickableItem : MonoBehaviour, IPickable
     {
+        public ItemType itemType;
         public bool singleUse;
         private Player _pickedUpBy;
         private Rigidbody _rb;
-        public ItemType itemType;
+        
+        private SphereCollider _sphereCollider;
+        private BoxCollider _boxCollider;
 
         private void Start()
         {
@@ -23,6 +26,9 @@ namespace ScallyWags
             {
                 Debug.LogError("You must set item type for item");
             }
+
+            _boxCollider = GetComponent<BoxCollider>();
+            _sphereCollider = GetComponent<SphereCollider>();
         }
 
         public bool IsAvailable()
@@ -39,7 +45,9 @@ namespace ScallyWags
         {
             if (_pickedUpBy != null) return null;
 
-            _rb.detectCollisions = false;
+            if (_boxCollider) _boxCollider.isTrigger = true;
+            if (_sphereCollider) _sphereCollider.isTrigger = true;
+           // _rb.detectCollisions = false;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -57,7 +65,9 @@ namespace ScallyWags
         {
             if (_pickedUpBy == null) return;
             
-            _rb.detectCollisions = true;
+            if (_boxCollider) _boxCollider.isTrigger = false;
+            if (_sphereCollider) _sphereCollider.isTrigger = false;
+           //  _rb.detectCollisions = true;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;

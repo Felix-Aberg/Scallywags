@@ -63,13 +63,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _easyHazards:
   - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
-  _mediumHazards:
-  - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
+  - {fileID: 11400000, guid: 890d7d8fa231f6e4d9c2706dc466fb0f, type: 2}
+  _mediumHazards: []
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   _introduction:
-  - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
+  - {fileID: 11400000, guid: 2c595881e80e17246ba671c2b5ac698d, type: 2}
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
+  - {fileID: 11400000, guid: 117a046756fb2ba4585382179c4175f4, type: 2}
   _currentHazardRating: 0
   _hazardInterval: 10
 --- !u!114 &466275443

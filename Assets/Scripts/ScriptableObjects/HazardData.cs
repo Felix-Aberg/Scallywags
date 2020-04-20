@@ -9,5 +9,6 @@ namespace ScallyWags
         public GameObject Prefab;
         public int Health;
         public AudioEvent Audio;
+        public int NumberOfHazards = 1;
     }
 }
