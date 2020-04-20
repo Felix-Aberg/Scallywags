@@ -14,17 +14,39 @@ namespace ScallyWags
         {
             _mortarSpawns = GameObject.FindObjectsOfType<MortarSpawn>();
             EventManager.StartListening("Mortar", BarrageRequest);
+            EventManager.StartListening("Intro1", IntroBarrageRequest);
+            EventManager.StartListening("Intro2", IntroBarrageRequest);
+            EventManager.StartListening("Intro3", IntroBarrageRequestOnTreasure);
             _audioPool = GameObject.FindObjectOfType<AudioSourcePoolManager>();
         }
 
         ~MortarManager()
         { 
             EventManager.StopListening("Mortar", BarrageRequest);
+            EventManager.StopListening("Intro1", IntroBarrageRequest);
+            EventManager.StopListening("Intro2", IntroBarrageRequest);
+            EventManager.StartListening("Intro3", IntroBarrageRequestOnTreasure);
         }
         
         private void BarrageRequest(EventManager.EventMessage message)
         {
             Barrage(message.HazardData);
+        }
+
+        private void IntroBarrageRequest(EventManager.EventMessage message)
+        {
+            var middleOfShip = Vector3.zero;
+            middleOfShip.y = 30;
+            GameObject.Instantiate(message.HazardData.Prefab, middleOfShip, Quaternion.identity);
+            _audioPool.PlayAudioEvent(message.HazardData.Audio);
+        }
+        
+        private void IntroBarrageRequestOnTreasure(EventManager.EventMessage message)
+        {
+            var treasureLocation = GameObject.FindObjectOfType<ScoreItem>().transform.position;
+            treasureLocation.y = 30;
+            GameObject.Instantiate(message.HazardData.Prefab, treasureLocation, Quaternion.identity);
+            _audioPool.PlayAudioEvent(message.HazardData.Audio);
         }
 
         private void Barrage(HazardData data)

@@ -48,7 +48,7 @@ namespace ScallyWags
             List<GameObject> newList = new List<GameObject>();
             foreach (var item in _itemsNear)
             {
-                if (item == null) continue;
+                if (item.gameObject.activeInHierarchy == false) continue;
                 
                 newList.Add(item);
             }

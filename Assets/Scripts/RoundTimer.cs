@@ -8,7 +8,7 @@ namespace ScallyWags
     public class RoundTimer
     {
         private FloatVariable _roundTimeUI;
-        private double _time = 180;
+        private double _time = 600;
     
         public void Init(FloatVariable roundTimeUI)
         {
