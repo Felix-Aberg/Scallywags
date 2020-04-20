@@ -41,7 +41,14 @@ namespace ScallyWags
             {
                 Debug.LogError("Missing particle system prefab");
             }
-            particleSystem.GetComponent<ParticleSystem>().Play();
+            else
+            {
+                var systems = particleSystem.GetComponentsInChildren<ParticleSystem>();
+                foreach (var s in systems)
+                {
+                    s.Play();
+                }
+            }
             _audioPool.PlayAudioEvent(_audio, transform.position);
 
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();

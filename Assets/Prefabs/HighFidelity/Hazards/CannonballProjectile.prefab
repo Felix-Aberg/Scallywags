@@ -126,8 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holePrefab: {fileID: 555253276902422293, guid: f551d880684e8de4c8343b4a6f528d67,
     type: 3}
-  firePrefab: {fileID: 0}
-  particles: {fileID: 4992789865907538236, guid: 53b3faaa07ceb324fb176bbb8d6396e6,
+  firePrefab: {fileID: 815586351041137999, guid: f8d3133101961c54eb68c631d25f550e,
+    type: 3}
+  particles: {fileID: 8665549824972433968, guid: b6e535d7bc8fe8c498adc2d6cce38434,
     type: 3}
   causesFire: 0
   createsHoles: 0
