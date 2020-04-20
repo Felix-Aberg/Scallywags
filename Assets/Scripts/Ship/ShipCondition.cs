@@ -52,6 +52,7 @@ namespace ScallyWags
 
         public void TakeDamage(int damage = 1)
         {
+            if (IsSinking()) return;
             _shipHealth.TakeDamage(damage);
             
             var pos = transform.position;
