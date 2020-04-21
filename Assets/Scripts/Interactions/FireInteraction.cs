@@ -49,7 +49,7 @@ public class FireInteraction : MonoBehaviour, IInteraction
 
     private void PutOutFire()
     {
-        Debug.Log("Fire put out");
+        EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
         waterBuckets = 0;
         _shipCondition.FixDamage(damageDone);
         gameObject.SetActive(false);

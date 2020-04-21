@@ -32,6 +32,8 @@ namespace ScallyWags
             FindTarget();
             
             // Shoot cannonball
+            
+            EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
 
             var rot = Quaternion.identity;
             if (_enemyCondition)

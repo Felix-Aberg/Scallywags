@@ -10,7 +10,7 @@ namespace ScallyWags
         public void Init()
         {
             var ship = GameObject.FindObjectOfType<ShipCondition>();
-            ship.Init(ShipType.Player, this, 10);
+            ship.Init(ShipType.Player, this, 20);
             ships.Add(ship);
             _spawnPos = GameObject.FindObjectOfType<EnemyShipSpawn>().gameObject.transform;
         }

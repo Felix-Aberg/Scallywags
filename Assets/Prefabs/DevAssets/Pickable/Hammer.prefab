@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 350302753571177352}
   - component: {fileID: 7332442264083584417}
   - component: {fileID: 490004469596648682}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 2491928986198511333}
   - component: {fileID: 865622944343479513}
   - component: {fileID: 2822397109846991156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26348361f4a15ad4daf8edf29b916544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleUse: 0
   itemType: 2
+  singleUse: 0
 --- !u!114 &2822397109846991156
 MonoBehaviour:
   m_ObjectHideFlags: 0

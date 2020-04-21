@@ -1,23 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 [SelectionBase]
 public class ShipController : MonoBehaviour
 {
-    private Quaternion startRot;
     private float _swayAmount = 15;
     private float _halfSway;
+    private bool direction;
+    private Rigidbody _rigidbody;
 
     public void Start()
     {
-        startRot = transform.rotation;
         _halfSway = _swayAmount * 0.5f;
+        _rigidbody = GetComponent<Rigidbody>();
+
+        _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
     }
-    public void Update()
+
+    private void RotateAgain()
     {
-        float f = Mathf.PingPong(Time.time * 1, _swayAmount) - _halfSway;
-        transform.rotation = startRot * Quaternion.AngleAxis(f, Vector3.right);
+        direction = !direction;
+        if (direction)
+        {
+            _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
+        }
+        else
+        {
+            _rigidbody.DORotate(new Vector3(-_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
+        }
     }
 }
