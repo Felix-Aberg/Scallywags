@@ -15,6 +15,7 @@ namespace ScallyWags
         [SerializeField] private HazardRating _currentHazardRating;
 
         private int _hazardsUnlocked = 1;
+        private bool _introInProgress;
 
         [SerializeField] private float _hazardInterval = 10f;
         private float _timer = 0;
@@ -25,6 +26,11 @@ namespace ScallyWags
             Easy,
             Medium,
             Hard
+        }
+
+        private void OnEnable()
+        {
+            EventManager.StartListening("IntroDone", NextIntro);
         }
 
         public void Init(FloatVariable roundTime)
@@ -55,12 +61,25 @@ namespace ScallyWags
 
             if (_introduction.Count > 0)
             {
-                SpawnIntroHazard(_introduction);
+                if (_introInProgress) return;
+                
+                SpawnIntroHazard();
+                _introInProgress = true;
+
+                if (_introduction.Count == 1)
+                {
+                    _introInProgress = false;
+                }
             }
             else
             {
                 ChooseRating();
             }
+        }
+        
+        private void NextIntro(EventManager.EventMessage args)
+        {
+            _introInProgress = false;
         }
 
         private void UpdateAvailableHazards()
@@ -115,7 +134,7 @@ namespace ScallyWags
         }
 
         // Introduction hazards come one by one. Remove introduction hazards after triggering each hazard
-        private void SpawnIntroHazard(List<HazardData> introduction)
+        private void SpawnIntroHazard()
         {
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(_introduction[0]);
             EventManager.TriggerEvent(_introduction[0].EventName, eventMessage);

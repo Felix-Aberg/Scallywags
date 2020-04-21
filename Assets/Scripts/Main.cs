@@ -24,6 +24,7 @@ namespace ScallyWags
         private CameraHandler _cameraHandler;
         private ShipManager _shipManager;
         private MortarManager _mortarManager;
+        private KrakenManager _krakenManager;
         
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
@@ -59,6 +60,9 @@ namespace ScallyWags
             
             _mortarManager = new MortarManager();
             _mortarManager.Init();
+            
+            _krakenManager = new KrakenManager();
+            _krakenManager.Init();
         }
 
         void Update()

@@ -36,7 +36,7 @@ namespace ScallyWags
 
         private void Fix()
         {
-            Debug.Log("Hole fixed");
+            EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
             hammerHits = 0;
             _shipCondition.FixDamage();
             gameObject.SetActive(false);
