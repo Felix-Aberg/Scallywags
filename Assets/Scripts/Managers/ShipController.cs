@@ -6,7 +6,7 @@ using UnityEngine;
 [SelectionBase]
 public class ShipController : MonoBehaviour
 {
-    private float _swayAmount = 15;
+    private float _swayAmount = 7;
     private float _halfSway;
     private bool direction;
     private Rigidbody _rigidbody;
@@ -16,7 +16,7 @@ public class ShipController : MonoBehaviour
         _halfSway = _swayAmount * 0.5f;
         _rigidbody = GetComponent<Rigidbody>();
 
-        _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
+        _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 5).OnComplete(RotateAgain);
     }
 
     private void RotateAgain()
@@ -24,11 +24,11 @@ public class ShipController : MonoBehaviour
         direction = !direction;
         if (direction)
         {
-            _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
+            _rigidbody.DORotate(new Vector3(_halfSway, 180, 0), 5).OnComplete(RotateAgain);
         }
         else
         {
-            _rigidbody.DORotate(new Vector3(-_halfSway, 180, 0), 10).SetEase(Ease.InOutCubic).OnComplete(RotateAgain);
+            _rigidbody.DORotate(new Vector3(-_halfSway, 180, 0), 5).OnComplete(RotateAgain);
         }
     }
 }

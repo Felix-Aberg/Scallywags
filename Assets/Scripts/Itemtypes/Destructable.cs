@@ -12,7 +12,11 @@ namespace ScallyWags
         {
             var ship = GetComponentInParent<ShipCondition>();
             ship?.TakeDamage();
-            
+
+            if (_particleSystem == null)
+            {
+                Debug.LogError(gameObject.name + " missing particle system");
+            }
             Instantiate(_particleSystem, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }

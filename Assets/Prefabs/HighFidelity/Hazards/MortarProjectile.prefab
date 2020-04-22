@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3720384497703972995}
   - component: {fileID: 3720384497703972994}
   - component: {fileID: 3720384497703972998}
-  - component: {fileID: -2749754282395235368}
+  - component: {fileID: -6578599998806757615}
   m_Layer: 9
   m_Name: MortarProjectile
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-2749754282395235368
+--- !u!114 &-6578599998806757615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,16 +120,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3720384497703973021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd0f1771274cda48affa937bab5e103, type: 3}
+  m_Script: {fileID: 11500000, guid: 327fb3b955a386b4088915d11a0945df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   holePrefab: {fileID: 555253276902422293, guid: f551d880684e8de4c8343b4a6f528d67,
     type: 3}
   firePrefab: {fileID: 815586351041137999, guid: f8d3133101961c54eb68c631d25f550e,
     type: 3}
-  particles: {fileID: 8665549824972433968, guid: b6e535d7bc8fe8c498adc2d6cce38434,
+  particles: {fileID: 6369757037939972947, guid: 9aadd14458295ac47b45a79ba4109e39,
     type: 3}
   causesFire: 0
   createsHoles: 1
-  causesHullDamage: 0
   _audio: {fileID: 11400000, guid: e6569ce8898297348be19d3b3095e398, type: 2}

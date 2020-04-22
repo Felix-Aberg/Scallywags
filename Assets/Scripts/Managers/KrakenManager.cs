@@ -1,3 +1,4 @@
+using System.Linq;
 using Boo.Lang.Environments;
 using Unity.CodeEditor;
 using UnityEngine;
@@ -23,11 +24,11 @@ namespace ScallyWags
 
         private void SpawnKraken(EventManager.EventMessage message)
         {
-            foreach (var pos in _spawnPos)
+            for(int i = 0; i <= message.HazardData.NumberOfHazards; i++)
             {
-                var t = pos.transform;
-                t.rotation = Quaternion.Euler(t.rotation.x, 180, t.rotation.z);
-                GameObject.Instantiate(message.HazardData.Prefab, pos.transform.position, t.rotation);
+                var t = _spawnPos[i].transform;
+                t.rotation = Quaternion.Euler(0, t.localRotation.eulerAngles.y, 0);
+                GameObject.Instantiate(message.HazardData.Prefab, _spawnPos[i].transform.position, t.rotation);
             }
         }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8517884298922818127}
   - component: {fileID: 1124632563287614118}
   - component: {fileID: 466275443}
+  - component: {fileID: 2044908652}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -64,16 +65,19 @@ MonoBehaviour:
   _easyHazards:
   - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
   - {fileID: 11400000, guid: 890d7d8fa231f6e4d9c2706dc466fb0f, type: 2}
-  _mediumHazards: []
+  _mediumHazards:
+  - {fileID: 11400000, guid: 7e4e6a8d2722122458ff459f34fbaa2e, type: 2}
+  - {fileID: 11400000, guid: 3f219bb4f2abfa04f964aba85bc5c51e, type: 2}
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
+  - {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}
   _introduction:
   - {fileID: 11400000, guid: 2c595881e80e17246ba671c2b5ac698d, type: 2}
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
   - {fileID: 11400000, guid: 117a046756fb2ba4585382179c4175f4, type: 2}
   - {fileID: 11400000, guid: 973108f18dbf6a942bdcd49a20a10421, type: 2}
   _currentHazardRating: 0
-  _hazardInterval: 10
+  _hazardInterval: 15
 --- !u!114 &466275443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,3 +90,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf3ae50a0e4ba9479d8232a733901ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2044908652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912385582754536911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ecca0585d27824abe38dcf1f682e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyShip: {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
+  kraken: {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}

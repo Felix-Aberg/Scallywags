@@ -13,8 +13,8 @@ namespace ScallyWags
         private float _startingDepth;
         private float _sinkingPerDamage;
         private ShipManager _shipManager;
-        private ShipHealth _shipHealth;
-        
+        [SerializeField] ShipHealth _shipHealth;
+
         // Start is called before the first frame update
         public void Init(ShipManager.ShipType shipType, ShipManager shipManager, int maxHealth = 10)
         {
@@ -54,11 +54,10 @@ namespace ScallyWags
         {
             if (IsSinking()) return;
             _shipHealth.TakeDamage(damage);
-            
-            var pos = transform.position;
-            transform.DOMoveY(pos.y - _sinkingPerDamage, 1);
-        }
 
+            var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage; 
+            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1);
+        }
         public int GetHealth()
         {
             return _shipHealth.GetHealth();

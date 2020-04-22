@@ -48,6 +48,7 @@ namespace ScallyWags
             }
             
             var go = GameObject.Instantiate(prefab, _spawnPos.position, Quaternion.identity);
+            go.transform.rotation = Quaternion.Euler(0, 180, 0);
             var ship = go.GetComponent<ShipCondition>();
             ship.Init(shipType, this, health);
             ships.Add(ship);

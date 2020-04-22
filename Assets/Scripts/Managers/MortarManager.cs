@@ -13,11 +13,11 @@ namespace ScallyWags
         public void Init()
         {
             _mortarSpawns = GameObject.FindObjectsOfType<MortarSpawn>();
+            _audioPool = GameObject.FindObjectOfType<AudioSourcePoolManager>();
             EventManager.StartListening("Mortar", BarrageRequest);
             EventManager.StartListening("Intro1", IntroBarrageRequest);
             EventManager.StartListening("Intro2", IntroBarrageRequest);
             EventManager.StartListening("Intro3", IntroBarrageRequestOnTreasure);
-            _audioPool = GameObject.FindObjectOfType<AudioSourcePoolManager>();
         }
 
         ~MortarManager()
@@ -65,6 +65,15 @@ namespace ScallyWags
                 AddSpawnsToList();
             }
             var index = Random.Range(0, _spawnList.Count);
+            if (Physics.Raycast(_spawnList[index].transform.position, Vector3.down, out var hit))
+            {
+                if (hit.collider.gameObject.GetComponent<IInteractable>() != null)
+                {
+                    var spawnPos = _spawnList[index];
+                    _spawnList.Remove(spawnPos);
+                    SelectPosition();
+                }
+            }
             return _spawnList[index];
         }
 

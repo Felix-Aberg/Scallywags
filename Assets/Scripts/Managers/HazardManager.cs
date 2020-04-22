@@ -84,12 +84,12 @@ namespace ScallyWags
 
         private void UpdateAvailableHazards()
         {
-            if (_roundTime.Value < 400 && _roundTime.Value > 200)
+            if (_roundTime.Value < 200 && _roundTime.Value > 100)
             {
                 _hazardsUnlocked = 2;
             }
 
-            if (_roundTime.Value < 200)
+            if (_roundTime.Value < 100)
             {
                 _hazardsUnlocked = 3;
             }

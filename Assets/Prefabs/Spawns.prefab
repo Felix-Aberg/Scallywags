@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &40015260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40015261}
+  - component: {fileID: 40015262}
+  m_Layer: 0
+  m_Name: KrakenSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &40015261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40015260}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -6.75, y: -7.85, z: 16.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243161289}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &40015262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40015260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fae09aa83e01a46b73ed66b9dd427e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &243161288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243161289}
+  m_Layer: 0
+  m_Name: KrakenSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243161289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243161288}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 40015261}
+  - {fileID: 1235574002}
+  m_Father: {fileID: 5117594472780965298}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669422505
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669422505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: 41.0645, z: -2.75}
+  m_LocalPosition: {x: -10.46, y: 41.0645, z: -2.75}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 6427471998390415175}
@@ -68,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121300454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.56, y: 41.0645, z: -0.04}
+  m_LocalPosition: {x: -10.56, y: 41.0645, z: 2.14}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 6427471998390415175}
@@ -84,6 +159,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7db00060b7f7bf54499366ed9c1b6680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1235574001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235574002}
+  - component: {fileID: 1235574003}
+  m_Layer: 0
+  m_Name: KrakenSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1235574002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235574001}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.74, y: -7.85, z: 16.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243161289}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1235574003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235574001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fae09aa83e01a46b73ed66b9dd427e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4778643076785679112
@@ -119,6 +237,7 @@ Transform:
   - {fileID: 6427471996709489608}
   - {fileID: 6427471998453518162}
   - {fileID: 6427471998390415175}
+  - {fileID: 243161289}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,11 +434,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 301272876, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1010485573, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 1010485574, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.78
+      objectReference: {fileID: 0}
     - target: {fileID: 1077891627, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
       propertyPath: m_Icon
       value: 
@@ -345,7 +472,11 @@ PrefabInstance:
         type: 0}
     - target: {fileID: 1473570502, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.75
+      value: 6.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473570502, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 1561217592, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
       propertyPath: m_Icon
@@ -357,15 +488,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 1844582991, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844582991, guid: 0700c00720a575045ac5e3a0ad07ca8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.01
+      objectReference: {fileID: 0}
     - target: {fileID: 896098885181158518, guid: 0700c00720a575045ac5e3a0ad07ca8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 896098885181158518, guid: 0700c00720a575045ac5e3a0ad07ca8b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.51
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 896098885181158519, guid: 0700c00720a575045ac5e3a0ad07ca8b,
         type: 3}
@@ -466,22 +605,22 @@ PrefabInstance:
     - target: {fileID: 3155102690800302626, guid: 3e33f3b8e87fde24da6f8839574205fa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 3155102690800302626, guid: 3e33f3b8e87fde24da6f8839574205fa,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3155102690800302626, guid: 3e33f3b8e87fde24da6f8839574205fa,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3155102690800302626, guid: 3e33f3b8e87fde24da6f8839574205fa,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3155102690800302626, guid: 3e33f3b8e87fde24da6f8839574205fa,
         type: 3}

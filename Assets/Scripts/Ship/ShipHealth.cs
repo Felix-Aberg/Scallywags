@@ -2,10 +2,11 @@ using UnityEngine;
 
 namespace ScallyWags
 {
+    [System.Serializable]
     public class ShipHealth
     {
         private int _maxHealth;
-        private int _health;
+        [SerializeField] private int _health;
 
         public ShipHealth(int maxHealth)
         {
@@ -33,6 +34,11 @@ namespace ScallyWags
         public bool IsSinking()
         {
             return _health <= 0;
+        }
+
+        public int GetMissingHealth()
+        {
+            return _maxHealth - _health;
         }
     }
 }
