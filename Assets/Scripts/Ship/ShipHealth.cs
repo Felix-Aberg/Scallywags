@@ -30,11 +30,6 @@ namespace ScallyWags
         {
             return _health;
         }
-        
-        public bool IsSinking()
-        {
-            return _health <= 0;
-        }
 
         public int GetMissingHealth()
         {
