@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class KrakenAttack : MonoBehaviour
 {
+    private BoxCollider _collider;
+
+    private void Start()
+    {
+        _collider = GetComponent<BoxCollider>();
+    }
+
+    public void EnableCollider()
+    {
+        _collider.enabled = true;
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
         var destroyableChild = other.gameObject.GetComponentInChildren<IDamageable>();
@@ -14,5 +26,6 @@ public class KrakenAttack : MonoBehaviour
         var destroyable = other.gameObject.GetComponent<IDamageable>();
         
         destroyable?.TakeDamage();
+        _collider.enabled = false;
     }
 }

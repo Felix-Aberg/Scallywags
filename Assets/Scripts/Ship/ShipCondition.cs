@@ -62,6 +62,11 @@ namespace ScallyWags
         {
             return _shipHealth.GetHealth();
         }
+
+        public float DepthOffset()
+        {
+            return _shipHealth.GetMissingHealth() * _sinkingPerDamage;
+        }
         
         public bool IsSinking()
         {
