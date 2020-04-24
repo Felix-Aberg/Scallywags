@@ -19,6 +19,8 @@ namespace ScallyWags
 
         public void Tick(Transform player, float horizontal, float vertical)
         {
+            Rigidbody _rb = player.GetComponent<Rigidbody>();
+
             // Tempcontrols
             var moveDir = new Vector3(horizontal, 0, vertical);
             if (moveDir.magnitude > _deadZone)
@@ -32,15 +34,17 @@ namespace ScallyWags
                 //var movement = _speed * Time.deltaTime * moveDir;
                 //player.transform.position += movement;
 
-                Rigidbody _rb = player.GetComponent<Rigidbody>();
-
-                Vector3 movement = _rb.velocity;
-                movement.x = _speed * moveDir.x;
-                movement.z = _speed * moveDir.z;
-                _rb.velocity = movement;
-
                 _lastDir = moveDir;
             }
+            else
+            {
+                moveDir = Vector3.zero;
+            }
+
+            Vector3 movement = _rb.velocity;
+            movement.x = _speed * moveDir.x;
+            movement.z = _speed * moveDir.z;
+            _rb.velocity = movement;
 
             if (_lastDir != Vector3.zero)
             {
