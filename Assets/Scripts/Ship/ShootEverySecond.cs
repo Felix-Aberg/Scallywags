@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class ShootEverySecond : MonoBehaviour
 {
-    private CannonInteraction _cannon;
+    private EnemyCannon _cannon;
     private float _timer;
     private float _delay;
     private ShipCondition _ship;
     void Start()
     {
-        _cannon = GetComponent<CannonInteraction>();
+        _cannon = GetComponent<EnemyCannon>();
         _ship = GetComponentInParent<ShipCondition>();
         _delay = Random.Range(3f, 5f);
     }

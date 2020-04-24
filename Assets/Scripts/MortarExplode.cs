@@ -53,7 +53,9 @@ namespace ScallyWags
                     var pos = hit.point;
                     if (createsHoles)
                     {
-                        var hole = Instantiate(holePrefab, pos, Quaternion.identity);
+                        ContactPoint contact = other.contacts[0];
+                        Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+                        var hole = Instantiate(holePrefab, pos, rotation);
                         hole.transform.SetParent(hit.transform);
                         hole.transform.localRotation = Quaternion.identity;
                         ship?.TakeDamage();

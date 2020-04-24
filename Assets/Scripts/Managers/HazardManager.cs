@@ -58,7 +58,19 @@ namespace ScallyWags
                 Debug.LogError("No hazards");
                 return;
             }
+            
+            // Force progressing in tutorial to avoid hard locking the game
+            _tutorialTimer += Time.deltaTime;
+            if (_tutorialMaxDelay < _tutorialTimer)
+            {
+                _introInProgress = false;
+                _tutorialTimer = 0;
+            }
 
+            _hazardTimer += Time.deltaTime;
+            if (_hazardTimer < _hazardInterval) return;
+            _hazardTimer = 0;
+            
             if (_introduction.Count > 0)
             {
                 TutorialHazard();
@@ -71,15 +83,6 @@ namespace ScallyWags
 
         private void TutorialHazard()
         {
-            _tutorialTimer += Time.deltaTime;
-
-            // Force progressing in tutorial to avoid hard locking the game
-            if (_tutorialMaxDelay < _tutorialTimer)
-            {
-                _introInProgress = false;
-                _tutorialTimer = 0;
-            }
-                
             if (_introInProgress) return;
                 
             SpawnIntroHazard();
@@ -93,15 +96,13 @@ namespace ScallyWags
 
         private void Hazard()
         {
-            _hazardTimer += Time.deltaTime;
-            if (_hazardTimer < _hazardInterval) return;
-            _hazardTimer = 0;
             ChooseRating();
         }
         
         private void NextIntro(EventManager.EventMessage args)
         {
             _introInProgress = false;
+            _tutorialTimer = 0;
         }
 
         private void UpdateAvailableHazards()

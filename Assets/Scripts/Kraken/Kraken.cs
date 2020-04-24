@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 
 public class Kraken : MonoBehaviour, IDamageable
 {
-    private int _maxHealth = 1;
+    public int Health => _health;
+    private int _maxHealth = 3;
     private int _health;
     private Animator _anim;
 

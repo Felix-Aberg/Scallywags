@@ -74,6 +74,7 @@ namespace ScallyWags
             _treasureManager.Tick();
             _roundTimer.Tick();
             _shipManager.Tick();
+            _krakenManager.Tick();
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

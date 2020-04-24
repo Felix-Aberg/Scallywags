@@ -22,11 +22,6 @@ namespace ScallyWags
         private void OnCollisionEnter(Collision other)
         {
             var damageable = other.gameObject.GetComponent<IDamageable>();
-            if (damageable == null)
-            {
-                damageable = other.gameObject.GetComponentInParent<IDamageable>();
-            }
-
             damageable?.TakeDamage();
 
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();

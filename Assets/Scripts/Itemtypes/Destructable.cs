@@ -17,7 +17,10 @@ namespace ScallyWags
             {
                 Debug.LogError(gameObject.name + " missing particle system");
             }
-            Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            else
+            {
+                Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            }
             gameObject.SetActive(false);
         }
     }
