@@ -18,7 +18,11 @@ namespace ScallyWags
         private bool _introInProgress;
 
         [SerializeField] private float _hazardInterval = 10f;
-        private float _timer = 0;
+        private float _hazardTimer = 0;
+
+        private float _tutorialTimer = 0;
+        private float _tutorialMaxDelay = 30f;
+        
         private FloatVariable _roundTime;
 
         private enum HazardRating
@@ -55,26 +59,44 @@ namespace ScallyWags
                 return;
             }
 
-            _timer += Time.deltaTime;
-            if (_timer < _hazardInterval) return;
-            _timer = 0;
-
             if (_introduction.Count > 0)
             {
-                if (_introInProgress) return;
-                
-                SpawnIntroHazard();
-                _introInProgress = true;
-
-                if (_introduction.Count == 1)
-                {
-                    _introInProgress = false;
-                }
+                TutorialHazard();
             }
             else
             {
-                ChooseRating();
+                Hazard();
             }
+        }
+
+        private void TutorialHazard()
+        {
+            _tutorialTimer += Time.deltaTime;
+
+            // Force progressing in tutorial to avoid hard locking the game
+            if (_tutorialMaxDelay < _tutorialTimer)
+            {
+                _introInProgress = false;
+                _tutorialTimer = 0;
+            }
+                
+            if (_introInProgress) return;
+                
+            SpawnIntroHazard();
+            _introInProgress = true;
+
+            if (_introduction.Count == 1)
+            {
+                _introInProgress = false;
+            }
+        }
+
+        private void Hazard()
+        {
+            _hazardTimer += Time.deltaTime;
+            if (_hazardTimer < _hazardInterval) return;
+            _hazardTimer = 0;
+            ChooseRating();
         }
         
         private void NextIntro(EventManager.EventMessage args)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ScallyWags
 {
@@ -78,6 +79,17 @@ namespace ScallyWags
             {
                 Application.Quit();
             }
+
+            if (_treasureManager.GoldValue <= 0)
+            {
+                StartCoroutine(LoadScene("LoseScene"));
+            }
+        }
+
+        private IEnumerator LoadScene(string scene)
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadSceneAsync(scene);
         }
     }
 }

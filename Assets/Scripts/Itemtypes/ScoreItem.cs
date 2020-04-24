@@ -31,8 +31,8 @@ public class ScoreItem : MonoBehaviour, IDamageable
         if (transform.position.y < -40f)
         {
             _lost = true;
+            _createUIElement.CreateElement(UIElement.GoldLost, transform.position, "-" +_goldValue + " GOLD!");
             _goldValue = 0;
-            _createUIElement.CreateElement(UIElement.GoldLost, transform.position);
             _treasureManager.ReCalculateGold();
         }
     }

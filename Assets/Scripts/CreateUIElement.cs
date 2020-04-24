@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace ScallyWags
 {
@@ -14,12 +15,12 @@ namespace ScallyWags
                 _camera = FindObjectOfType<Camera>();
             }
         
-            public void CreateElement(UIElement element, Vector3 pos)
+            public void CreateElement(UIElement element, Vector3 pos, string text)
             {
                 switch (element)
                 {
                     case UIElement.GoldLost:
-                        InstantiateElement(_goldLost);
+                        InstantiateElement(_goldLost, text);
                         break;
                     case UIElement.SpeechBubble:
                         InstantiateElement(_tauntBubble, pos);
@@ -38,16 +39,16 @@ namespace ScallyWags
                 rectTransform.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
             }
             
-            private void InstantiateElement(GameObject prefab)
+            private void InstantiateElement(GameObject prefab, string text)
             {
                 var uiElement = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
                 var rectTransform = uiElement.GetComponent<RectTransform>();
+                uiElement.GetComponent<TextMeshProUGUI>().text = text;
                 rectTransform.anchoredPosition = new Vector2(0,0);
             }
             private Vector3 GetScreenPos(Vector3 worldPos)
             {
                 Vector3 screenPos = _camera.WorldToScreenPoint(worldPos);
-                Debug.Log("target is " + screenPos.x + " pixels from the left");
                 return screenPos;
             }
         }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +12,7 @@ namespace ScallyWags
     [Serializable]
     public class TreasureManager
     {
+        public int GoldValue => _goldValue;
         private int _goldValue;
         private ScoreItem[] gold;
         private IntVariable _goldCounterUI;
@@ -44,11 +47,6 @@ namespace ScallyWags
             foreach (var item in gold)
             {
                 item.Tick();
-            }
-
-            if (_goldValue <= 0)
-            {
-                SceneManager.LoadSceneAsync("LoseScene");
             }
         }
 
