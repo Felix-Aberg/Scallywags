@@ -71,9 +71,13 @@ namespace ScallyWags
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;
-            
+
+            Rigidbody _parentRb = _pickedUpBy.GetComponent<Rigidbody>();
+            if (_parentRb == null) Debug.Log("Parent is null!");
+
             _pickedUpBy = null;
             transform.SetParent(null);
+            _rb.AddForce(_parentRb.velocity, ForceMode.VelocityChange);
         }
     }
 }
