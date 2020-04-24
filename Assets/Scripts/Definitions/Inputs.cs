@@ -8,5 +8,6 @@ namespace ScallyWags
         public bool interActPressed;
         public bool pickUpReleased;
         public bool pickUpDown;
+        public bool jumpPressed;
     }
 }
