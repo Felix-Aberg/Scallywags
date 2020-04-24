@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3233544521181889540}
   - component: {fileID: 3233544521181889541}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BentRail_Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 5170942190570537072}
   - component: {fileID: 2930845925784813086}
   - component: {fileID: 8561741234889518321}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BentRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

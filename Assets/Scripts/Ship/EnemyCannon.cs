@@ -60,6 +60,7 @@ public class EnemyCannon : MonoBehaviour
             if (_destroyable.Count > 0)
             {
                 var index = Random.Range(0, _destroyable.Count);
+
                 Vector3 target = _destroyable[index].transform.position;
                 Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
                 rb.velocity = BallisticVel(target, angle);

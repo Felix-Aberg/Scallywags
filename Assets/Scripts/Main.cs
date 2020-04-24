@@ -25,7 +25,7 @@ namespace ScallyWags
         private CameraHandler _cameraHandler;
         private ShipManager _shipManager;
         private MortarManager _mortarManager;
-        private KrakenManager _krakenManager;
+        [SerializeField] private KrakenManager _krakenManager;
         
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;

@@ -25,6 +25,8 @@ namespace ScallyWags
         
         private FloatVariable _roundTime;
 
+        private bool _IsPaused;
+
         private enum HazardRating
         {
             Easy,
@@ -35,6 +37,12 @@ namespace ScallyWags
         private void OnEnable()
         {
             EventManager.StartListening("IntroDone", NextIntro);
+            EventManager.StartListening("Pause", TogglePause);
+        }
+
+        private void TogglePause(EventManager.EventMessage arg0)
+        {
+            _IsPaused = !_IsPaused;
         }
 
         public void Init(FloatVariable roundTime)
@@ -50,6 +58,8 @@ namespace ScallyWags
 
         public void Tick()
         {
+            if (_IsPaused) return;
+            
             UpdateAvailableHazards();
             
             if (_easyHazards.Count == 0 && _mediumHazards.Count == 0 && _hardHazards.Count == 0 &&

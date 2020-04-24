@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 
 public class Kraken : MonoBehaviour, IDamageable
 {
-    public int Health => _health;
     private int _maxHealth = 3;
     private int _health;
     private Animator _anim;
@@ -18,9 +17,11 @@ public class Kraken : MonoBehaviour, IDamageable
     private ShipCondition _playerShip;
     private float y;
     private KrakenAttack _krakenAttack;
-
-    void Start()
+    private KrakenManager _krakenManager;
+    public void Init(KrakenManager krakenManager)
     {
+        _krakenManager = krakenManager;
+        
         _krakenAttack = GetComponentInChildren<KrakenAttack>();
         _health = _maxHealth;
         _anim = GetComponent<Animator>();
@@ -36,8 +37,8 @@ public class Kraken : MonoBehaviour, IDamageable
             }
         }
     }
-    
-    void Update()
+
+    public void Tick()
     {
         UpdateDepth();
         AttackDecision();
@@ -49,6 +50,7 @@ public class Kraken : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             _anim.SetBool("Dead", true);
+            _krakenManager.RemoveKraken(this);
         }
     }
 
@@ -59,7 +61,7 @@ public class Kraken : MonoBehaviour, IDamageable
         if (_attackTimer > _attackDelay)
         {
             _attackTimer = 0;
-            _attackDelay = Random.Range(5, 10);
+            _attackDelay = Random.Range(4, 8);
             Attack();
             _krakenAttack.EnableCollider();
         }
@@ -74,16 +76,14 @@ public class Kraken : MonoBehaviour, IDamageable
     {
         int attack = Random.Range(0, 2);
 
-        if (attack == 1)
+        if (attack == 0)
         {
             _anim.SetTrigger("Slam");
-            return;
         }
 
-        if (attack == 2)
+        if (attack == 1)
         {
-            _anim.SetTrigger("Slap"); 
-            return;
+            _anim.SetTrigger("Slap");
         }
     }
 

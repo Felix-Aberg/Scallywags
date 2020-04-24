@@ -1,14 +1,16 @@
-using System.Linq;
-using Boo.Lang.Environments;
-using Unity.CodeEditor;
+using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace ScallyWags
 {
+    [System.Serializable]
     public class KrakenManager
     {
         private KrakenSpawn[] _spawnPos;
-        private Kraken[] _krakens = new Kraken[2];
+        [SerializeField] private Kraken[] _krakens = new Kraken[2];
 
         public void Init()
         {
@@ -22,14 +24,35 @@ namespace ScallyWags
             EventManager.StopListening("Kraken", SpawnKraken);
             EventManager.StopListening("KrakenIntro", SpawnIntroKraken);
         }
-
+        
         public void Tick()
+        {
+            foreach (var k in _krakens)
+            {
+                k?.Tick();
+            }
+        }
+
+        private void AddKraken(Kraken kraken)
         {
             for (int i = 0; i < _krakens.Length; i++)
             {
-                if (_krakens[i]?.Health <= 0)
+                if (_krakens[i] == null)
+                {
+                    _krakens[i] = kraken;
+                    break;
+                }
+            }
+        }
+
+        public void RemoveKraken(Kraken kraken)
+        {
+            for (int i = 0; i < _krakens.Length; i++)
+            {
+                if (_krakens[i] == kraken)
                 {
                     _krakens[i] = null;
+                    break;
                 }
             }
         }
@@ -37,16 +60,35 @@ namespace ScallyWags
         private void SpawnKraken(EventManager.EventMessage message)
         {
             if (IsEnemyShipSpawned()) return;
-            
+
+            if (!CanSpawnKraken()) return;
+
             for(int i = 0; i <= message.HazardData.NumberOfHazards; i++)
             {
-                if (_krakens[i] != null) continue;
-                
                 var t = _spawnPos[i].transform;
+                if (t == null) break;
+                
                 t.rotation = Quaternion.Euler(0, t.localRotation.eulerAngles.y, 0);
                 var kraken = GameObject.Instantiate(message.HazardData.Prefab, _spawnPos[i].transform.position, t.rotation);
-                _krakens[i] = kraken.GetComponent<Kraken>();
+                
+                var krakenComponent = kraken.GetComponent<Kraken>();
+                AddKraken(krakenComponent);
+                krakenComponent.Init(this);
             }
+        }
+
+        private bool CanSpawnKraken()
+        {
+            bool canSpawn = true;
+            for (int i = 0; i < _krakens.Length; i++)
+            {
+                if (_krakens[i] != null)
+                {
+                    canSpawn = false;
+                    break;
+                }
+            }
+            return canSpawn;
         }
 
         private bool IsEnemyShipSpawned()

@@ -22,5 +22,11 @@ public class DebugEventManager : MonoBehaviour
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(kraken);
             EventManager.TriggerEvent("Kraken", eventMessage);
         }
+        
+        if (GUI.Button(new Rect(10, 160, 100, 30), "Pause"))
+        {
+            EventManager.EventMessage eventMessage = new EventManager.EventMessage(null);
+            EventManager.TriggerEvent("Pause", eventMessage);
+        }
     }
 }

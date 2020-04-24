@@ -8,7 +8,7 @@ namespace ScallyWags
     {
         [SerializeField] private SimpleAudioEvent _event;
         [SerializeField] private GameObject _cannonBall;
-        private float _cannonForce = 70;
+        private float _cannonForce = 700;
         private ItemSpawn _spawnPos;
         private ParticleSystem[] _particleSystem;
         private AudioSourcePoolManager _audioPool;
@@ -36,7 +36,7 @@ namespace ScallyWags
             EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
 
             var rot = _spawnPos.transform.rotation;
-            var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, rot);
+            var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, Quaternion.identity);
             
             if (_enemyCondition)
             {

@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 1869128563}
   - component: {fileID: 2155550222190550818}
   - component: {fileID: 429306614}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2716239050192317848}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbf796615a81e240a705b05fc618eed, type: 3}
   m_Name: 
@@ -923,11 +923,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2716239050192317848}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 106
   m_CollisionDetection: 0
@@ -1480,7 +1480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5831991902332915135}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.7, y: 0.10000038, z: -2.46}
+  m_LocalPosition: {x: -0.04, y: 0.10000038, z: -2.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5733259036135604664}
@@ -1762,7 +1762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7480226544547996128}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.7, y: 0.10000038, z: -2.5}
+  m_LocalPosition: {x: 0.062, y: 0.10000038, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5733259036135604664}
@@ -3981,12 +3981,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4b8758dc849e33144a0adda2d10444b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8
+      value: 0.089
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4b8758dc849e33144a0adda2d10444b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.3
+      value: -4.764
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4b8758dc849e33144a0adda2d10444b8,
         type: 3}

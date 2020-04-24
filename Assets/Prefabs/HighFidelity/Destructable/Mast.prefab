@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 602448914618651194}
   - component: {fileID: 7614315364033186208}
   - component: {fileID: 1591926807041059959}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Mast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7152119739747710891}
   - component: {fileID: 7152119739747710888}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Mast_Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,6 +234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sails
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 342ad384d34bb0d4f917866c6cdd102c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 342ad384d34bb0d4f917866c6cdd102c, type: 3}
