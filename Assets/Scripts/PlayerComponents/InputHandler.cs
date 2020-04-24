@@ -28,6 +28,7 @@ namespace ScallyWags
             inputs.pickUpDown = GetPickupDown(index);
             inputs.pickUpReleased = GetPickupUp(index);
             inputs.interActPressed = GetInteractDown(index);
+            inputs.jumpPressed = GetJumpDown(index);
 
             return inputs;
         }

@@ -14,11 +14,12 @@ namespace ScallyWags
         private PickableItem _pickedUpItem;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
         private float _yOffset = 0.7f;
-        private float _xOffset = 1f;
+        private float _xOffset = 1.2f;
         
-        [SerializeField] float _throwStrength = 0;
-        private float _maxThrowStrength = 20f;
-        private float _strenghtFactor = 50f;
+        [SerializeField] float _throwStrength = 0f;
+        private float _initialThrowStrength = -5f; // Inverse time until it throws instead of dropping
+        private float _maxThrowStrength = 20f; //Max throw strength
+        private float _strenghtFactor = 35f; // Throw charge speed (per second)
 
         private Transform _transform;
 
@@ -69,17 +70,17 @@ namespace ScallyWags
         {
             if (pickupDown)
             {
-                _throwStrength = 0;
+                _throwStrength = _initialThrowStrength;
             }
             
             if (pickUpPressed)
             {
                 _throwStrength += Time.deltaTime * _strenghtFactor;
-                _throwStrength = Mathf.Clamp(_throwStrength, 0, _maxThrowStrength); 
             }
   
             if (pickUpReleased)
             {
+                _throwStrength = Mathf.Clamp(_throwStrength, 0f, _maxThrowStrength);
                 Throw();
             }
         }
