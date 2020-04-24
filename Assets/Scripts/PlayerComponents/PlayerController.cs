@@ -9,10 +9,11 @@ namespace ScallyWags
     {
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _turnSpeed = 20f;
+        [SerializeField] private float _deadZone = 0.4f;
         private Vector3 _lastDir = new Vector3();
         private Quaternion rot;
 
-        void Init()
+        public void Init()
         {
         }
 
@@ -20,19 +21,34 @@ namespace ScallyWags
         {
             // Tempcontrols
             var moveDir = new Vector3(horizontal, 0, vertical);
-            
-            if (moveDir.sqrMagnitude > 0);
+            if (moveDir.magnitude > _deadZone)
             {
-                var movement = _speed * Time.deltaTime * moveDir;
-                player.transform.position += movement;
+                // Clamp input movespeed
+                if (moveDir.magnitude > 1f)
+                    moveDir.Normalize();
+
+                // Execute movement
+
+                //var movement = _speed * Time.deltaTime * moveDir;
+                //player.transform.position += movement;
+
+                Rigidbody _rb = player.GetComponent<Rigidbody>();
+
+                Vector3 movement = _rb.velocity;
+                movement.x = _speed * moveDir.x;
+                movement.z = _speed * moveDir.z;
+                _rb.velocity = movement;
+
                 _lastDir = moveDir;
             }
 
-            if (_lastDir.sqrMagnitude > 0)
+            if (_lastDir != Vector3.zero)
             {
                 rot = Quaternion.LookRotation(_lastDir);
-                player.rotation = Quaternion.RotateTowards(player.transform.rotation, rot, _turnSpeed);
             }
+
+            player.rotation = Quaternion.RotateTowards(player.transform.rotation, rot, _turnSpeed);
+
         }
     }
 }
