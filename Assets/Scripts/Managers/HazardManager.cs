@@ -21,7 +21,7 @@ namespace ScallyWags
         private float _hazardTimer = 0;
 
         private float _tutorialTimer = 0;
-        private float _tutorialMaxDelay = 30f;
+        private float _tutorialMaxDelay = 60f;
         
         private FloatVariable _roundTime;
 

@@ -109,7 +109,11 @@ namespace ScallyWags
         {
             var t = _spawnPos[1].transform;
             t.rotation = Quaternion.Euler(t.rotation.x, 180, t.rotation.z);
-            GameObject.Instantiate(message.HazardData.Prefab, t.position, t.rotation);
+            var kraken = GameObject.Instantiate(message.HazardData.Prefab, t.position, t.rotation);
+            
+            var krakenComponent = kraken.GetComponent<Kraken>();
+            AddKraken(krakenComponent);
+            krakenComponent.Init(this);
         }
     }
 }
