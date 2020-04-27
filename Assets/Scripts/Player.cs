@@ -18,6 +18,8 @@ namespace ScallyWags
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
 
+        private AnimationController _animationController;
+
         // Monobehaviors
         private Rigidbody _rigidbody;
 
