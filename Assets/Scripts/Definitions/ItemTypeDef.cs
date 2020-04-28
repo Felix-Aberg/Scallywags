@@ -6,5 +6,6 @@
     TreasureChest,
     BagOfGold,
     Gem,
-    Bucket
+    Bucket,
+    Sword
 }

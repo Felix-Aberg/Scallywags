@@ -7,8 +7,14 @@ namespace ScallyWags
     [System.Serializable]
     public class Interact
     {
+        private AnimationController _animationController;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
 
+        public void Init(AnimationController animationController)
+        {
+            _animationController = animationController;
+        }
+        
         public void SetItem(GameObject gameObject)
         {
             var item = gameObject.GetComponent<IInteractable>();
@@ -40,6 +46,7 @@ namespace ScallyWags
                 var closestItem = GetClosestItem(player, currentItem);
                 closestItem?.Interact(currentItem, player);
                 RefreshItems();
+                _animationController.Interact();
             }
         }
 
