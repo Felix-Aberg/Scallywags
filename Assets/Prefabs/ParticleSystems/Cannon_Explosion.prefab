@@ -24164,6 +24164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8665549824972433983}
+  - component: {fileID: -6483964315406774400}
   m_Layer: 0
   m_Name: Cannon_Explosion
   m_TagString: Untagged
@@ -24192,6 +24193,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6483964315406774400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8665549824972433968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf25eaa446900b46940979458b05b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterSeconds: 5
 --- !u!1 &8665549825454245138
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,8 +55,10 @@ namespace ScallyWags
             _pickedUpBy = player;
             
             var t = transform;
-            t.SetParent(player.gameObject.transform);
             t.localRotation = Quaternion.identity;
+            t.SetParent(player.gameObject.GetComponentInChildren<RightArmTarget>().transform);
+            t.localRotation = Quaternion.identity;
+            transform.localRotation = Quaternion.Euler(0,-90,0);
 
             return this;
         }

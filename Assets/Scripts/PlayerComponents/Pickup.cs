@@ -22,17 +22,21 @@ namespace ScallyWags
         private float _strenghtFactor = 35f; // Throw charge speed (per second)
 
         private Transform _transform;
+        private AnimationController _animationController;
+        private RightArmTarget _rightArmTarget;
 
-        public void Init(Transform transform)
+        public void Init(Transform transform, AnimationController animationController, RightArmTarget rightArmTarget)
         {
             _transform = transform;
+            _animationController = animationController;
+            _rightArmTarget = rightArmTarget;
         }
 
         public void Tick(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
         {
             if (_pickedUpItem != null)
             {
-                _pickedUpItem.transform.position = CalculateTargetPos(_transform);
+                _pickedUpItem.transform.position = _rightArmTarget.transform.position;
             }
             Inputs(player, pickUpPressed, pickupDown, pickUpReleased);
         }
@@ -82,6 +86,7 @@ namespace ScallyWags
             {
                 _throwStrength = Mathf.Clamp(_throwStrength, 0f, _maxThrowStrength);
                 Throw();
+                _animationController.Throw();
             }
         }
 
@@ -155,7 +160,7 @@ namespace ScallyWags
             if (_pickedUpItem == null)
             {
                 _pickedUpItem = item.Pickup(player) as PickableItem;
-                _pickedUpItem.transform.DOMove(CalculateTargetPos(_transform), 0.2f);
+                // _pickedUpItem.transform.DOMove(_rightArmTarget.transform.position, 0.2f);
             }
         }
 
@@ -164,7 +169,7 @@ namespace ScallyWags
             if (_pickedUpItem == null) return;
             
             _pickedUpItem.Drop();
-            _pickedUpItem.GetComponent<Rigidbody>().AddForce(_pickedUpItem.transform.forward * _throwStrength, ForceMode.Impulse);
+            _pickedUpItem.GetComponent<Rigidbody>().AddForce(_pickedUpItem.transform.right * _throwStrength, ForceMode.Impulse);
             _pickedUpItem = null;
             _itemsNear.Clear();
         }

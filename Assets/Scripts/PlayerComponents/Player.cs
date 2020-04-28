@@ -35,8 +35,11 @@ namespace ScallyWags
             _interact = new Interact();
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
+            _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup);
             
-            _pickup.Init(transform);
+            _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
+            _interact.Init(_animationController);
+
         }
 
         public void Tick()
@@ -49,6 +52,8 @@ namespace ScallyWags
             _playerController.Tick(transform, inputs.horizontal, inputs.vertical);
             _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
+            
+            _animationController.Tick();
         }
 
         public void Drop()
