@@ -17,6 +17,7 @@ namespace ScallyWags
         private PlayerController _playerController;
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
+        [SerializeField] private Jump _jump;
 
         private AnimationController _animationController;
 
@@ -36,9 +37,11 @@ namespace ScallyWags
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
             _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup);
+            _jump = new Jump();
             
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
+            _jump.Init(transform);
 
         }
 
@@ -52,7 +55,8 @@ namespace ScallyWags
             _playerController.Tick(transform, inputs.horizontal, inputs.vertical);
             _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
-            
+            _jump.Tick(transform, _rigidbody, inputs.jumpPressed);
+
             _animationController.Tick();
         }
 

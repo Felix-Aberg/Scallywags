@@ -44,6 +44,7 @@ namespace ScallyWags
             Vector3 movement = _rb.velocity;
             movement.x = _speed * moveDir.x;
             movement.z = _speed * moveDir.z;
+            movement.y = _rb.velocity.y;
             _rb.velocity = movement;
 
             if (_lastDir != Vector3.zero)
