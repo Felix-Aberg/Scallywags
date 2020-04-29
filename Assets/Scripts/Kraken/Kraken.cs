@@ -40,6 +40,10 @@ public class Kraken : MonoBehaviour, IDamageable
 
     public void Tick()
     {
+        if (_playerShip.GetHealth() < 0)
+        {
+            _health = 0;
+        }
         UpdateDepth();
         AttackDecision();
         DieDecision();

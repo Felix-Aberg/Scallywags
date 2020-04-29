@@ -52,13 +52,13 @@ namespace ScallyWags
             
             _roundTimer = new RoundTimer();
             _roundTimer.Init(roundTimeUI);
-
-            _hazardManager = GetComponent<HazardManager>();
-            _hazardManager.Init(roundTimeUI);
-
+            
             _shipManager = gameObject.AddComponent<ShipManager>();
             _shipManager.Init();
-            
+
+            _hazardManager = GetComponent<HazardManager>();
+            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
+
             _mortarManager = new MortarManager();
             _mortarManager.Init();
             

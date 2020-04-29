@@ -22,7 +22,7 @@ TagManager:
   - Damageable
   - Treasure
   - Telegraph
-  - 
+  - DoNotBlockPlayer
   - 
   - 
   - 

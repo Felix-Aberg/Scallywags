@@ -30,7 +30,7 @@ namespace ScallyWags
 
         public void Tick()
         {
-            if (_shipHealth.GetHealth() <= 0)
+            if (_shipHealth.GetHealth() < 0)
             {
                 Sink();
             }
@@ -76,7 +76,7 @@ namespace ScallyWags
         private void Sink()
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                new Vector3(transform.position.x, -100, transform.position.z), 0.03f);
+                new Vector3(transform.position.x, -100, transform.position.z), 0.05f);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-[SelectionBase]
 public class ShipController : MonoBehaviour
 {
     [SerializeField] private bool useRigidBody;
