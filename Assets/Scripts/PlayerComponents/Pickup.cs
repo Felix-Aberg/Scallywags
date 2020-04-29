@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using DG.Tweening;
 
@@ -55,16 +56,20 @@ namespace ScallyWags
 
         private void HandlePickingUp(Player player, bool pickUpPressed, bool pickupDown, bool pickUpReleased)
         {
-                        
+            var itemToPickUp = GetClosestItem(player);
+
+            if (itemToPickUp == null) return;
+
+            if (!TryToPickUp(itemToPickUp)) return;
+            
+            itemToPickUp.GetObject().GetComponent<ItemHighlight>().HighlightItem(_itemsNear);
+
             if (pickUpReleased)
             {
-                var itemToPickUp = GetClosestItem(player);
-                if (itemToPickUp != null)
+                if (TryToPickUp(itemToPickUp))
                 {
-                    if (TryToPickUp(itemToPickUp))
-                    {
-                        PickUp(itemToPickUp as PickableItem, player);
-                    }
+                    itemToPickUp.GetObject().GetComponent<ItemHighlight>().HighlightItem(_itemsNear);
+                    PickUp(itemToPickUp as PickableItem, player);
                 }
                 RefreshItems();
             }
@@ -99,7 +104,6 @@ namespace ScallyWags
                 
                 newList.Add(item);
             }
-
             _itemsNear = newList;
         }
 
@@ -125,6 +129,7 @@ namespace ScallyWags
             var item = gameObject.GetComponent<IPickable>();
             if (item != null)
             {
+                if (item == _pickedUpItem) return;
                 if (_itemsNear.Contains(gameObject)) return;
                 _itemsNear.Add(gameObject);
             }
@@ -160,6 +165,7 @@ namespace ScallyWags
             if (_pickedUpItem == null)
             {
                 _pickedUpItem = item.Pickup(player) as PickableItem;
+                _itemsNear.Remove(item.GetObject());
                 // _pickedUpItem.transform.DOMove(_rightArmTarget.transform.position, 0.2f);
             }
         }

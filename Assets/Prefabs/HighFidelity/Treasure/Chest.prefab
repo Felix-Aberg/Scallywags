@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1975106152}
   - component: {fileID: 1975106151}
   - component: {fileID: 1975106150}
+  - component: {fileID: 1451826491}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -116,8 +117,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 1
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!65 &1975106151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,6 +146,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 3
   singleUse: 0
+--- !u!114 &1451826491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577000737056989673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf10e98df3f0a943a6d4a27cd9b486c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outline: {fileID: 2100000, guid: bc3cf7a860b25be44bde604458f251b5, type: 2}
 --- !u!1001 &434693019
 PrefabInstance:
   m_ObjectHideFlags: 0

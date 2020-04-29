@@ -46,5 +46,10 @@ namespace ScallyWags
         {
             GetComponent<IInteraction>().Act();
         }
+
+        public GameObject GetObject()
+        {
+            return gameObject;
+        }
     }
 }

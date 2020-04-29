@@ -41,12 +41,15 @@ namespace ScallyWags
         {
             if (currentItem == null) return;
             
+            var closestItem = GetClosestItem(player, currentItem) as InteractableItem;
+            if (closestItem == null) return;
+                
             if (interactPressed)
             {
-                var closestItem = GetClosestItem(player, currentItem);
-                closestItem?.Interact(currentItem, player);
+                closestItem.Interact(currentItem, player);
                 RefreshItems();
                 _animationController.Interact();
+                closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
             }
         }
 
@@ -75,6 +78,8 @@ namespace ScallyWags
 
                 if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false) continue;
                 
+                item.GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
+
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);
                 if (currentDist < closestDist)
                 {

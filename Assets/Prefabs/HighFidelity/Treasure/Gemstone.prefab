@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1296917348080053592}
   - component: {fileID: 8818623258272891901}
   - component: {fileID: -1057648325716350667}
+  - component: {fileID: 3047853060915882970}
   m_Layer: 0
   m_Name: Gemstone
   m_TagString: Untagged
@@ -142,3 +143,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.46592727
   m_Center: {x: 0, y: 0.31999508, z: 0}
+--- !u!114 &3047853060915882970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524640592341377298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf10e98df3f0a943a6d4a27cd9b486c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outline: {fileID: 2100000, guid: bc3cf7a860b25be44bde604458f251b5, type: 2}
