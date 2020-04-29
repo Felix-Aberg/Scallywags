@@ -93,7 +93,7 @@ namespace ScallyWags
 
             foreach (var ship in ships)
             {
-                if (ship.ShipType == ShipManager.ShipType.Enemy)
+                if (ship.ShipType == ShipType.Enemy)
                 {
                     return true;
                 }

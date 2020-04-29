@@ -28,7 +28,7 @@ namespace ScallyWags
 
             if (ship == null) return;
 
-            if (ship.ShipType == ShipManager.ShipType.Enemy)
+            if (ship.ShipType == ShipType.Enemy)
             {
                 ship.TakeDamage();
             }

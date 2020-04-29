@@ -15,8 +15,10 @@ namespace ScallyWags
             _roundTimeUI = roundTimeUI;
         }
     
-        public void Tick()
+        public void Tick(ShipCondition ship)
         {
+            if (ship.GetHealth() <= 0) return;
+            
             _time -= Time.deltaTime;
             _roundTimeUI.Value = (float)_time;
             if (_time <= 0)

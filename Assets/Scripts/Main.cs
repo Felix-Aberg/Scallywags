@@ -72,7 +72,7 @@ namespace ScallyWags
             _cameraHandler.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
-            _roundTimer.Tick();
+            _roundTimer.Tick(_shipManager.GetShip(ShipType.Player));
             _shipManager.Tick();
             _krakenManager.Tick();
 

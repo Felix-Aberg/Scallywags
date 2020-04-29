@@ -31,7 +31,7 @@ public class Kraken : MonoBehaviour, IDamageable
         var ships = FindObjectsOfType<ShipCondition>();
         foreach (var ship in ships)
         {
-            if (ship.ShipType == ShipManager.ShipType.Player)
+            if (ship.ShipType == ShipType.Player)
             {
                 _playerShip = ship;
             }
