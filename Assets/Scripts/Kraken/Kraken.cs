@@ -25,7 +25,7 @@ public class Kraken : MonoBehaviour, IDamageable
         _krakenAttack = GetComponentInChildren<KrakenAttack>();
         _health = _maxHealth;
         _anim = GetComponent<Animator>();
-        _attackDelay = Random.Range(5, 10);
+        _attackDelay = Random.Range(3, 5);
         y = transform.position.y;
 
         var ships = FindObjectsOfType<ShipCondition>();
