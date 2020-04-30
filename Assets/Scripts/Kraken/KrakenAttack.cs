@@ -49,7 +49,7 @@ public class KrakenAttack : MonoBehaviour
 
         if (_dealtDamageToShip && _dealtDamageToShipPart)
         {
-            _collider.enabled = false;
+            // _collider.enabled = false;
         }
     }
 }
