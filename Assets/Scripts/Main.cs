@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,7 @@ namespace ScallyWags
         private ShipManager _shipManager;
         private MortarManager _mortarManager;
         [SerializeField] private KrakenManager _krakenManager;
+        private NavMeshManager _navMeshManager;
         
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
@@ -45,24 +47,21 @@ namespace ScallyWags
             
             // Setup camera
             _cameraHandler = FindObjectOfType<CameraHandler>();
-            _cameraHandler.Init(_entityManager.GetAllPlayers());
-            
             _treasureManager = new TreasureManager();
-            _treasureManager.Init(goldCounterUI);
-            
             _roundTimer = new RoundTimer();
-            _roundTimer.Init(roundTimeUI);
-            
+            _navMeshManager = gameObject.AddComponent<NavMeshManager>();
             _shipManager = gameObject.AddComponent<ShipManager>();
-            _shipManager.Init();
-
             _hazardManager = GetComponent<HazardManager>();
-            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
-
             _mortarManager = new MortarManager();
-            _mortarManager.Init();
-            
             _krakenManager = new KrakenManager();
+            
+            _cameraHandler.Init(_entityManager.GetAllPlayers());
+            _treasureManager.Init(goldCounterUI);
+            _roundTimer.Init(roundTimeUI);
+            _navMeshManager.Init(_shipManager.GetShip(ShipType.Player));
+            _shipManager.Init();
+            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
+            _mortarManager.Init();
             _krakenManager.Init();
         }
 
