@@ -32,15 +32,6 @@ public class EnemyCannon : MonoBehaviour
 
         public void Act()
         {
-            if (_enemyCondition)
-            {
-                var dist = Vector3.Distance(_enemyCondition.transform.position, transform.position);
-                if (dist < 25)
-                {
-                    return;
-                }
-            }
-            
             FindTarget();
             Fire();
             
