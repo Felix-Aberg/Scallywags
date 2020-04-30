@@ -23,14 +23,8 @@ namespace ScallyWags
 
         public void Tick()
         {
-            _animator.SetFloat("Speed", _rigidBody.velocity.magnitude);
+            _animator.SetFloat("Speed", _rigidBody.velocity.sqrMagnitude);
             
-            var isCarryingState = _animator.GetCurrentAnimatorStateInfo(1).IsTag("Carry");
-            if (isCarryingState)
-            {
-                _animator.SetLayerWeight(1, _pickup.PickedUpItem == null ? 0 : 1);
-            }
-
             if (_pickup.PickedUpItem != null)
             {
                 var equippableItem = _equippableItems.Contains(_pickup.PickedUpItem.itemType);
@@ -50,9 +44,17 @@ namespace ScallyWags
             _animator.SetTrigger("Throw");
         }
 
-        public void Interact()
+        public void Interact(ItemType type)
         {
-            _animator.SetTrigger("Interact");
+            switch (type)
+            {
+                case ItemType.Sword:
+                    _animator.SetTrigger("Sword");
+                    break;
+                default:
+                    _animator.SetTrigger("Interact");
+                    break;
+            }
         }
     }
 }

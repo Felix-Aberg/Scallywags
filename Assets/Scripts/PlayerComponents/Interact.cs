@@ -48,7 +48,7 @@ namespace ScallyWags
             {
                 closestItem.Interact(currentItem, player);
                 RefreshItems();
-                _animationController.Interact();
+                _animationController.Interact(currentItem.itemType);
                 closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
             }
         }
