@@ -28,6 +28,11 @@ namespace ScallyWags
             }
         }
 
+        public bool IsGrounded()
+        {
+            return _jumpCollission.grounded;
+        }
+
         // Check if player is in the air or not
         public bool CheckIfGrounded(Transform transform)
         {

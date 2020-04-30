@@ -465,8 +465,6 @@ MonoBehaviour:
   _jump:
     _jumpForce: 7.2
     _gravityModifier: 1.5
-  _yarr:
-    _yarrBubble: {fileID: 0}
 --- !u!65 &6950868564152302689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -516,7 +514,7 @@ Animator:
   m_GameObject: {fileID: 4374859028719597281}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 66f1e03c0a52d3f4c915dc0ba920a9df, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4b6a9cca5bef0b14ab86968dc8686464, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1b996f4c2640dcf47a00abb66de082d6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

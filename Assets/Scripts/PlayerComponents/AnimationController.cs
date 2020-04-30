@@ -9,12 +9,14 @@ namespace ScallyWags
         private Rigidbody _rigidBody;
         private Pickup _pickup;
         private List<ItemType> _equippableItems = new List<ItemType>();
+        private Jump _jump;
 
-        public AnimationController(Animator animator, Rigidbody rigidBody, Pickup pickup)
+        public AnimationController(Animator animator, Rigidbody rigidBody, Pickup pickup, Jump jump)
         {
             _animator = animator;
             _rigidBody = rigidBody;
             _pickup = pickup;
+            _jump = jump;
             _equippableItems.Add(ItemType.Hammer);
             _equippableItems.Add(ItemType.Sword);
         }
@@ -33,7 +35,14 @@ namespace ScallyWags
             {
                 var equippableItem = _equippableItems.Contains(_pickup.PickedUpItem.itemType);
                 _animator.SetBool("Carrying", !equippableItem);
+                _animator.SetLayerWeight(1, 1);
             }
+            else
+            {
+                _animator.SetLayerWeight(1, 0);
+            }
+
+            _animator.SetBool("Grounded", _jump.IsGrounded());
         }
 
         public void Throw()
