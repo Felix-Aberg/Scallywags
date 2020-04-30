@@ -37,12 +37,13 @@ namespace ScallyWags
             _jump = new Jump();
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
+
+            _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup, _jump);
             
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
             _jump.Init(transform);
-            
-            _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup, _jump);
+
         }
 
         public void Tick()
