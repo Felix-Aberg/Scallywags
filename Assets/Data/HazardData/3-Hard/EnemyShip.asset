@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyShip
   m_EditorClassIdentifier: Assembly-CSharp:ScallyWags:HazardData
   EventName: EnemyShip
-  Prefab: {fileID: 7393854260003309012, guid: 2c3a4366e52695745a82ca549d628695, type: 3}
+  Prefab: {fileID: 8703128751041152250, guid: 2c3a4366e52695745a82ca549d628695, type: 3}
   Health: 5
   Audio: {fileID: 0}
   NumberOfHazards: 1

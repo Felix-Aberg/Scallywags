@@ -16,6 +16,7 @@ namespace ScallyWags
         
         public void FixDamage(int value)
         {
+            if (_health < 0) return;
             var health = _health + value;
             _health = Mathf.Clamp(health, 0, _maxHealth);
         }

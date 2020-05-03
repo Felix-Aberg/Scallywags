@@ -8,15 +8,15 @@ namespace ScallyWags
 {
     public class ShipCondition : MonoBehaviour
     {
-        public ShipManager.ShipType ShipType => _shipType; 
-        [SerializeField] private ShipManager.ShipType _shipType;
+        public ShipType ShipType => _shipType; 
+        [SerializeField] private ShipType _shipType;
         private float _startingDepth;
         private float _sinkingPerDamage;
         private ShipManager _shipManager;
         [SerializeField] ShipHealth _shipHealth;
 
         // Start is called before the first frame update
-        public void Init(ShipManager.ShipType shipType, ShipManager shipManager, int maxHealth = 10)
+        public void Init(ShipType shipType, ShipManager shipManager, int maxHealth = 10)
         {
             _shipHealth = new ShipHealth(maxHealth);
             _shipManager = shipManager;
@@ -76,7 +76,7 @@ namespace ScallyWags
         private void Sink()
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                new Vector3(transform.position.x, -100, transform.position.z), 0.03f);
+                new Vector3(transform.position.x, -100, transform.position.z), 0.05f);
         }
     }
 }

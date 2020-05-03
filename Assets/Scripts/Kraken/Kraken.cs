@@ -25,13 +25,13 @@ public class Kraken : MonoBehaviour, IDamageable
         _krakenAttack = GetComponentInChildren<KrakenAttack>();
         _health = _maxHealth;
         _anim = GetComponent<Animator>();
-        _attackDelay = Random.Range(5, 10);
+        _attackDelay = Random.Range(3, 5);
         y = transform.position.y;
 
         var ships = FindObjectsOfType<ShipCondition>();
         foreach (var ship in ships)
         {
-            if (ship.ShipType == ShipManager.ShipType.Player)
+            if (ship.ShipType == ShipType.Player)
             {
                 _playerShip = ship;
             }
@@ -40,6 +40,10 @@ public class Kraken : MonoBehaviour, IDamageable
 
     public void Tick()
     {
+        if (_playerShip.GetHealth() < 0)
+        {
+            _health = 0;
+        }
         UpdateDepth();
         AttackDecision();
         DieDecision();

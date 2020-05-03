@@ -30,9 +30,12 @@ namespace ScallyWags
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
+        public LevelEventManager _levelEventManager;
 
         void Awake()
         {
+            _levelEventManager = gameObject.AddComponent<LevelEventManager>();
+            
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
             // Spawn players
@@ -52,13 +55,13 @@ namespace ScallyWags
             
             _roundTimer = new RoundTimer();
             _roundTimer.Init(roundTimeUI);
-
-            _hazardManager = GetComponent<HazardManager>();
-            _hazardManager.Init(roundTimeUI);
-
+            
             _shipManager = gameObject.AddComponent<ShipManager>();
             _shipManager.Init();
-            
+
+            _hazardManager = GetComponent<HazardManager>();
+            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
+
             _mortarManager = new MortarManager();
             _mortarManager.Init();
             
@@ -72,17 +75,19 @@ namespace ScallyWags
             _cameraHandler.Tick();
             _entityManager.Tick();
             _treasureManager.Tick();
-            _roundTimer.Tick();
+            _roundTimer.Tick(_shipManager.GetShip(ShipType.Player));
             _shipManager.Tick();
             _krakenManager.Tick();
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Quit);
                 Application.Quit();
             }
 
             if (_treasureManager.GoldValue <= 0)
             {
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Lost);
                 StartCoroutine(LoadScene("LoseScene"));
             }
         }

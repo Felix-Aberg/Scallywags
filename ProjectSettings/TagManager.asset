@@ -20,10 +20,10 @@ TagManager:
   - Player
   - Tools
   - Damageable
-  - 
-  - 
-  - 
-  - 
+  - Treasure
+  - Telegraph
+  - DoNotBlockPlayer
+  - Cannonball
   - 
   - 
   - 

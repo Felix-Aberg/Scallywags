@@ -7,8 +7,14 @@ namespace ScallyWags
     [System.Serializable]
     public class Interact
     {
+        private AnimationController _animationController;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
 
+        public void Init(AnimationController animationController)
+        {
+            _animationController = animationController;
+        }
+        
         public void SetItem(GameObject gameObject)
         {
             var item = gameObject.GetComponent<IInteractable>();
@@ -35,11 +41,15 @@ namespace ScallyWags
         {
             if (currentItem == null) return;
             
+            var closestItem = GetClosestItem(player, currentItem) as InteractableItem;
+            if (closestItem == null) return;
+                
             if (interactPressed)
             {
-                var closestItem = GetClosestItem(player, currentItem);
-                closestItem?.Interact(currentItem, player);
+                closestItem.Interact(currentItem, player);
                 RefreshItems();
+                _animationController.Interact(currentItem.itemType);
+                closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
             }
         }
 
@@ -68,6 +78,8 @@ namespace ScallyWags
 
                 if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false) continue;
                 
+                item.GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
+
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);
                 if (currentDist < closestDist)
                 {

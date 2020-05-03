@@ -1,4 +1,6 @@
-﻿public enum ItemType
+﻿namespace ScallyWags
+{
+    public enum ItemType
 {
     NotSet,
     Cannonball,
@@ -6,5 +8,8 @@
     TreasureChest,
     BagOfGold,
     Gem,
-    Bucket
+    Bucket,
+    Sword
+}
+    
 }

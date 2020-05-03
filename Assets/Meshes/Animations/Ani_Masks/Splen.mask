@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Splen
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Hip
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.L/UpperArm.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.L/UpperArm.L/ForeArm.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.L/UpperArm.L/ForeArm.L/Hand.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.R/UpperArm.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.R/UpperArm.R/ForeArm.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Collarbone.R/UpperArm.R/ForeArm.R/Hand.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Spine1/Spine2/Head
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.L/Shin.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.L/Shin.L/Foot.L
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.R/Shin.R
+    m_Weight: 1
+  - m_Path: Armature/Hip/Thigh.R/Shin.R/Foot.R
+    m_Weight: 1
+  - m_Path: Cat_Lowpoly
+    m_Weight: 1

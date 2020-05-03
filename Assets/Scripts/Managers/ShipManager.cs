@@ -23,6 +23,18 @@ namespace ScallyWags
             }
         }
 
+        public ShipCondition GetShip(ShipType type)
+        {
+            foreach (var ship in ships)
+            {
+                if (ship.ShipType == type)
+                {
+                    return ship;
+                }
+            }
+            return null;
+        }
+
         private void OnEnable()
         {
             EventManager.StartListening("EnemyShip", CreateShip);
@@ -34,7 +46,7 @@ namespace ScallyWags
         }
         private void CreateShip(EventManager.EventMessage message)
         {
-            CreateShipObject(message.HazardData.Prefab, ShipManager.ShipType.Enemy, 5);
+            CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
         }
 
         private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
@@ -52,12 +64,6 @@ namespace ScallyWags
             var ship = go.GetComponent<ShipCondition>();
             ship.Init(shipType, this, health);
             ships.Add(ship);
-        }
-
-        public enum ShipType
-        {
-            Enemy,
-            Player
         }
 
         public void RemoveShip(ShipCondition shipCondition)

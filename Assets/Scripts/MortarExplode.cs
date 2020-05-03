@@ -48,6 +48,12 @@ namespace ScallyWags
 
             if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f))
             {
+                if (hit.collider.gameObject.GetComponent<InteractableItem>())
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+
                 if (hit.collider.gameObject.GetComponentInParent<ShipCondition>())
                 {
                     var pos = hit.point;

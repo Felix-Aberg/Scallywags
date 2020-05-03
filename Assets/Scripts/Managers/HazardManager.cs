@@ -14,6 +14,8 @@ namespace ScallyWags
         [SerializeField] private List<HazardData> _introduction = new List<HazardData>();
         [SerializeField] private HazardRating _currentHazardRating;
 
+        private ShipCondition _playerShip;
+
         private int _hazardsUnlocked = 1;
         private bool _introInProgress;
 
@@ -45,9 +47,10 @@ namespace ScallyWags
             _IsPaused = !_IsPaused;
         }
 
-        public void Init(FloatVariable roundTime)
+        public void Init(FloatVariable roundTime, ShipCondition ship)
         {
             _roundTime = roundTime;
+            _playerShip = ship;
             
             if (_easyHazards.Count == 0 || _mediumHazards.Count == 0 || _hardHazards.Count == 0 ||
                 _introduction.Count == 0)
@@ -58,6 +61,11 @@ namespace ScallyWags
 
         public void Tick()
         {
+            if (_playerShip.GetHealth() <= 0)
+            {
+                _IsPaused = true;
+            }
+            
             if (_IsPaused) return;
             
             UpdateAvailableHazards();

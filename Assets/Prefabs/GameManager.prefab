@@ -50,6 +50,10 @@ MonoBehaviour:
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
   playerPrefab: {fileID: 4374859028719597281, guid: 0d10ae24159ac134b8c1f7e541636ae0,
     type: 3}
+  _krakenManager:
+    _krakens:
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!114 &1124632563287614118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +73,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e4e6a8d2722122458ff459f34fbaa2e, type: 2}
   - {fileID: 11400000, guid: 3f219bb4f2abfa04f964aba85bc5c51e, type: 2}
   - {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}
+  - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
-  - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
+  - {fileID: 11400000, guid: 4a4a61e37543d6c4bb2261639b9be14b, type: 2}
   _introduction:
   - {fileID: 11400000, guid: 2c595881e80e17246ba671c2b5ac698d, type: 2}
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
