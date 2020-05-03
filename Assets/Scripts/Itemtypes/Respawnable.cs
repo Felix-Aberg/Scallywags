@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 namespace ScallyWags
 {
@@ -10,6 +11,7 @@ namespace ScallyWags
         private Quaternion _startRot;
         private float _respawnLimit = -50f;
         private Rigidbody _rb;
+        private LevelEventManager _levelEventManager;
     
         // Start is called before the first frame update
         void Start()
@@ -17,6 +19,8 @@ namespace ScallyWags
             _startPos = transform.position;
             _startRot = transform.rotation;
             _rb = GetComponent<Rigidbody>();
+            _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
+                
         }
     
         // Update is called once per frame
@@ -24,6 +28,10 @@ namespace ScallyWags
         {
             if (transform.position.y < _respawnLimit)
             {
+                if (GetComponent<Player>())
+                {
+                    _levelEventManager.IncrementDeaths();
+                }
                 Respawn();
             }
         }

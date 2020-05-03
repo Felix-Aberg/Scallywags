@@ -18,6 +18,8 @@ namespace ScallyWags
         private IntVariable _goldCounterUI;
         private int _startingGold = 100;
         
+        private LevelEventManager _levelEventManager;
+        
         public void Init(IntVariable goldCounter)
         {
             _goldCounterUI = goldCounter;
@@ -26,6 +28,7 @@ namespace ScallyWags
                 Debug.LogError("No gold counter asset assigned to main.cs script");
             }
             gold = GameObject.FindObjectsOfType<ScoreItem>();
+            _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
 
             foreach (var item in gold)
             {
@@ -58,6 +61,8 @@ namespace ScallyWags
             {
                 _goldValue += item.GoldValue;
             }
+            
+            _levelEventManager.UpdateScore(_goldValue);
         }
     }
 }

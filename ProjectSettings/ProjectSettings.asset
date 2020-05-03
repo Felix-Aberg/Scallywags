@@ -666,10 +666,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: ce32a805-28a5-4b30-8fb2-8c4779f22a1e
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: ScallyWags
+  organizationId: jarskih
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -30,9 +30,12 @@ namespace ScallyWags
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
+        public LevelEventManager _levelEventManager;
 
         void Awake()
         {
+            _levelEventManager = gameObject.AddComponent<LevelEventManager>();
+            
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
             // Spawn players
@@ -78,11 +81,13 @@ namespace ScallyWags
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Quit);
                 Application.Quit();
             }
 
             if (_treasureManager.GoldValue <= 0)
             {
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Lost);
                 StartCoroutine(LoadScene("LoseScene"));
             }
         }
