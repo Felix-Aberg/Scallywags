@@ -30,6 +30,11 @@ namespace ScallyWags
     
         public void Respawn()
         {
+            var player = GetComponent<Player>();
+            if (player)
+            {
+                player.Respawn();
+            }
             transform.position = _startPos;
             transform.rotation = _startRot;
             _rb.velocity = Vector3.zero;

@@ -31,6 +31,12 @@ public class KrakenAttack : MonoBehaviour
 
             if (destroyable != null)
             {
+                var player = other.gameObject.GetComponent<Player>();
+                if (player)
+                {
+                    player.Push(transform.position);
+                }
+                
                 destroyable.TakeDamage();
                 _dealtDamageToShipPart = true;
             }
@@ -45,11 +51,6 @@ public class KrakenAttack : MonoBehaviour
                 ship.TakeDamage(3);
                 _dealtDamageToShip = true;
             }
-        }
-
-        if (_dealtDamageToShip && _dealtDamageToShipPart)
-        {
-            // _collider.enabled = false;
         }
     }
 }
