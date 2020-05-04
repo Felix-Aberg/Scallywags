@@ -20,7 +20,7 @@ namespace ScallyWags
 
         private EntityManager _entityManager;
 
-        private PlayerSpawn[] _spawnPos;
+        private int _numberOfPlayers = 4;
         private TreasureManager _treasureManager;
         private RoundTimer _roundTimer;
         private CameraHandler _cameraHandler;
@@ -38,11 +38,10 @@ namespace ScallyWags
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
             // Spawn players
-            _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
-            _entityManager = new EntityManager(playerPrefab, _spawnPos);
-            for (int i = 1; i < _spawnPos.Length+1; i++) // Player index starts from 1
+            _entityManager = new EntityManager(playerPrefab);
+            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
             {
-                _entityManager.CreateEntity(EntityManager.EntityType.Player, i);
+                _entityManager.CreatePlayer(i);
             }
             
             // Setup camera

@@ -28,7 +28,7 @@ public class ScoreItem : MonoBehaviour, IDamageable
     {
         if (_lost) return;
         
-        if (transform.position.y < -25f)
+        if (transform.position.y < -5)
         {
             _lost = true;
             _createUIElement.CreateElement(UIElement.GoldLost, transform.position, "-" +_goldValue + " GOLD!");

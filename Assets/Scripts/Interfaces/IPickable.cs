@@ -9,7 +9,7 @@ namespace ScallyWags
     /// </summary>
     public interface IPickable
     {
-        IPickable Pickup(Player player);
+        IPickable Pickup(IEntity player);
         void Drop();
         bool IsAvailable();
         GameObject GetObject();

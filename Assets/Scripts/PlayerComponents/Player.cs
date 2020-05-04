@@ -61,6 +61,11 @@ namespace ScallyWags
             _animationController.Tick();
         }
 
+        public GameObject GetObject()
+        {
+            return gameObject;
+        }
+
         public void Drop()
         {
             _pickup.Throw();

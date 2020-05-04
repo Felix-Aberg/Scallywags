@@ -110,3 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyShip: {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   kraken: {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}
+  crab: {fileID: 11400000, guid: e95ffaf55152d8c4cb0a364382810aca, type: 2}
