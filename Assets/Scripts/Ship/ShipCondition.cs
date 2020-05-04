@@ -32,7 +32,7 @@ namespace ScallyWags
 
         public void Tick()
         {
-            if (_shipHealth.GetHealth() < 0)
+            if (_shipHealth.GetHealth() <= 0)
             {
                 Sink();
             }

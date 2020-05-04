@@ -47,7 +47,7 @@ namespace ScallyWags
         }
         private void CreateShip(EventManager.EventMessage message)
         {
-            CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, 5);
+            CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
         }
 
         private void CreateShipObject(GameObject prefab, ShipType shipType, int health)

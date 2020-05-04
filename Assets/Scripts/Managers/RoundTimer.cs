@@ -9,9 +9,11 @@ namespace ScallyWags
     {
         private FloatVariable _roundTimeUI;
         private double _time = 300;
+        private LevelEventManager _levelEventManager;
     
         public void Init(FloatVariable roundTimeUI)
         {
+            _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
             _roundTimeUI = roundTimeUI;
         }
     
@@ -23,6 +25,7 @@ namespace ScallyWags
             _roundTimeUI.Value = (float)_time;
             if (_time <= 0)
             {
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Won);
                 SceneManager.LoadScene("ScoreScene");
             }
         }
