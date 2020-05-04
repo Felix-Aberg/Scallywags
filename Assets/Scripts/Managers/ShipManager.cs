@@ -7,6 +7,7 @@ namespace ScallyWags
     {
         private List<ShipCondition> ships = new List<ShipCondition>();
         private Transform _spawnPos;
+
         public void Init()
         {
             var ship = GameObject.FindObjectOfType<ShipCondition>();

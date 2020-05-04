@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,13 +20,14 @@ namespace ScallyWags
 
         private EntityManager _entityManager;
 
-        private PlayerSpawn[] _spawnPos;
+        private int _numberOfPlayers = 4;
         private TreasureManager _treasureManager;
         private RoundTimer _roundTimer;
         private CameraHandler _cameraHandler;
         private ShipManager _shipManager;
         private MortarManager _mortarManager;
         [SerializeField] private KrakenManager _krakenManager;
+        private NavMeshManager _navMeshManager;
         
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
@@ -39,33 +41,29 @@ namespace ScallyWags
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
             // Spawn players
-            _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
-            _entityManager = new EntityManager(playerPrefab, _spawnPos);
-            for (int i = 1; i < _spawnPos.Length+1; i++) // Player index starts from 1
+            _entityManager = new EntityManager(playerPrefab);
+            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
             {
-                _entityManager.CreateEntity(EntityManager.EntityType.Player, i);
+                _entityManager.CreatePlayer(i);
             }
             
             // Setup camera
             _cameraHandler = FindObjectOfType<CameraHandler>();
-            _cameraHandler.Init(_entityManager.GetAllPlayers());
-            
             _treasureManager = new TreasureManager();
-            _treasureManager.Init(goldCounterUI);
-            
             _roundTimer = new RoundTimer();
-            _roundTimer.Init(roundTimeUI);
-            
+            _navMeshManager = gameObject.AddComponent<NavMeshManager>();
             _shipManager = gameObject.AddComponent<ShipManager>();
-            _shipManager.Init();
-
             _hazardManager = GetComponent<HazardManager>();
-            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
-
             _mortarManager = new MortarManager();
-            _mortarManager.Init();
-            
             _krakenManager = new KrakenManager();
+            
+            _cameraHandler.Init(_entityManager.GetAllPlayers());
+            _treasureManager.Init(goldCounterUI);
+            _roundTimer.Init(roundTimeUI);
+            _navMeshManager.Init(_shipManager.GetShip(ShipType.Player));
+            _shipManager.Init();
+            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
+            _mortarManager.Init();
             _krakenManager.Init();
         }
 

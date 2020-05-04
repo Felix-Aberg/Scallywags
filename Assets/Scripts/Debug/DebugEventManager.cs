@@ -7,6 +7,7 @@ public class DebugEventManager : MonoBehaviour
 {
     public HazardData enemyShip;
     public HazardData kraken;
+    public HazardData crab;
     
     void OnGUI()
     {
@@ -23,7 +24,13 @@ public class DebugEventManager : MonoBehaviour
             EventManager.TriggerEvent("Kraken", eventMessage);
         }
         
-        if (GUI.Button(new Rect(10, 160, 100, 30), "Pause"))
+        if (GUI.Button(new Rect(10, 150, 100, 30), "Crabs"))
+        {
+            EventManager.EventMessage eventMessage = new EventManager.EventMessage(crab);
+            EventManager.TriggerEvent("SpawnEntity", eventMessage);
+        }
+        
+        if (GUI.Button(new Rect(10, 200, 100, 30), "Pause"))
         {
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(null);
             EventManager.TriggerEvent("Pause", eventMessage);

@@ -15,20 +15,27 @@ namespace ScallyWags
         private List<Player> _players = new List<Player>();
 
         private GameObject _playerPrefab;
-        // private GameObject _enemy1;
+        private GameObject _crabPrefab;
+        private GameObject _skeletonPrefab;
 
         private PlayerSpawn[] _spawnPos;
-        
+        private EnemySpawn[] _enemySpawnPos;
+        private int _enemyIndex = 0;
+
         public enum EntityType
         {
-            Player,
-            Enemy
+            NotSet,
+            Skeleton,
+            Crab
         }
 
-        public EntityManager(GameObject playerPrefab, PlayerSpawn[] spawnPos)
+        public EntityManager(GameObject playerPrefab)
         {
             _playerPrefab = playerPrefab;
-            _spawnPos = spawnPos;
+            _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
+            _enemySpawnPos = GameObject.FindObjectsOfType<EnemySpawn>();
+
+            EventManager.StartListening("SpawnEntity", EntityRequest);
         }
 
         public void Tick()
@@ -43,40 +50,43 @@ namespace ScallyWags
                 player.Tick();
             }
         }
-
-        public void CreateEntity(EntityType type, int index)
+        
+        private void EntityRequest(EventManager.EventMessage msg)
         {
-            switch (type)
+            if (msg.HazardData.Prefab == null)
             {
-                case EntityType.Player:
-                    CreatePlayer(_spawnPos[index-1].transform.position, index);
-                    break;
-                case EntityType.Enemy:
-                    // CreateEnemy();
-                    // AddEntity(entity);
-                    throw new NotImplementedException();
-                    break;
+                Debug.LogError("No prefab set for spawning entity");
+                return;
+            }
+            
+            if(msg.HazardData.NumberOfHazards == 0)
+            {
+                Debug.LogError("Spawning zero entities");
+                return;  
+            }
+            for(int i = 0; i < msg.HazardData.NumberOfHazards; i++)
+            {
+                if (_enemyIndex > _enemySpawnPos.Length-1) _enemyIndex = 0;
+                CreateEnemy(_enemySpawnPos[_enemyIndex].transform.position, msg.HazardData.Prefab);
+                _enemyIndex++;
             }
         }
-
-        private void RespawnEntity(EntityType type, int index)
-        { 
-            var player = GetPlayer(index);
-            player.gameObject.SetActive(false);
-
-            player.transform.position = _spawnPos[index-1].transform.position;
-            // Todo delay & visual effects
-            player.gameObject.SetActive(true);
-        }
-
-        private void CreatePlayer(Vector3 pos, int index)
+        public void CreatePlayer(int index)
         {
+            var pos = _spawnPos[index - 1].transform.position;
             var player = GameObject.Instantiate(_playerPrefab, pos, Quaternion.identity);
             IEntity entity = player.GetComponent<IEntity>();
             entity.Init(index);
             _players.Add(entity as Player);
         }
 
+        private void CreateEnemy(Vector3 pos, GameObject prefab)
+        {
+            var enemy = GameObject.Instantiate(prefab, pos, Quaternion.identity);
+            IEntity entity = enemy.GetComponent<IEntity>();
+            entity.Init();
+            AddEntity(entity);
+        }
         private Player GetPlayer(int index)
         {
             foreach (var player in _players)

@@ -13,7 +13,9 @@ namespace ScallyWags
     {
         public ItemType itemType;
         public bool singleUse;
-        private Player _pickedUpBy;
+
+        public IEntity PickedUpBy => _pickedUpBy;
+        private IEntity _pickedUpBy;
         private Rigidbody _rb;
         
         private SphereCollider _sphereCollider;
@@ -41,7 +43,7 @@ namespace ScallyWags
             return gameObject;
         }
 
-        public IPickable Pickup(Player player)
+        public IPickable Pickup(IEntity entity)
         {
             if (_pickedUpBy != null) return null;
 
@@ -52,11 +54,11 @@ namespace ScallyWags
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.FreezeAll;
             
-            _pickedUpBy = player;
+            _pickedUpBy = entity;
             
             var t = transform;
             t.localRotation = Quaternion.identity;
-            t.SetParent(player.gameObject.GetComponentInChildren<RightArmTarget>().transform);
+            t.SetParent(entity.GetObject().GetComponentInChildren<RightArmTarget>().transform);
             t.localRotation = Quaternion.identity;
             transform.localRotation = Quaternion.Euler(0,-90,0);
 
@@ -74,7 +76,7 @@ namespace ScallyWags
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;
 
-            Rigidbody _parentRb = _pickedUpBy.GetComponent<Rigidbody>();
+            Rigidbody _parentRb = _pickedUpBy.GetObject().GetComponent<Rigidbody>();
             if (_parentRb == null) Debug.Log("Parent is null!");
 
             _pickedUpBy = null;
