@@ -13,7 +13,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     private Vector3 _startPos;
     
     private float _normalSpeed = 4f;
-    private float _carrySpeed = 2.5f;
+    private float _carrySpeed = 2f;
 
     public void Init(int index = 0)
     {
@@ -87,7 +87,13 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     private void GoForTreasure()
     {
         if (_pickedUpItem != null) return;
-        if(_navMeshAgent.hasPath) return;
+
+        if (Vector3.Distance(_navMeshAgent.destination, _targetItem.transform.position) > 1)
+        {
+            _navMeshAgent.ResetPath();
+        }
+        
+        if (_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
         _navMeshAgent.SetDestination(_targetItem.transform.position);
     }
 
@@ -103,7 +109,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     private void ReturnToSea()
     {
         if (_pickedUpItem == null) return;
-        if(_navMeshAgent.hasPath) return;
+        if(_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
         _navMeshAgent.SetDestination(_startPos);
     }
 
@@ -119,12 +125,14 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         if (_pickedUpItem == null)
         {
             var item = _targetItem.GetComponent<IPickable>();
-            _pickedUpItem = item.Pickup(this) as PickableItem;
+            if (item.IsAvailable())
+            {
+                _pickedUpItem = item.Pickup(this) as PickableItem;
+                _navMeshAgent.speed = _carrySpeed;
+                _navMeshAgent.ResetPath();
+                _navMeshAgent.SetDestination(_startPos);
+            }
         }
-
-        _navMeshAgent.speed = _carrySpeed;
-        _navMeshAgent.ResetPath();
-        _navMeshAgent.SetDestination(_startPos);
     }
 
     private void Drop()
