@@ -30,7 +30,7 @@ namespace ScallyWags
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
                 rb.detectCollisions = true;
-                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             }
 
             foreach (var collider in _rigidBodyColliders)

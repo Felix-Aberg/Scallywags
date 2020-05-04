@@ -1,4 +1,6 @@
-﻿using ScallyWags;
+﻿using Cinemachine;
+using ScallyWags;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +13,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     [SerializeField] private PickableItem _pickedUpItem;
     private bool _isDead;
     private Vector3 _startPos;
+
+    private Animator _animator;
     
     private float _normalSpeed = 4f;
     private float _carrySpeed = 2f;
@@ -19,15 +23,33 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     {
         _treasure = FindObjectsOfType<ScoreItem>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
         _startPos = transform.position;
         _navMeshAgent.speed = _normalSpeed;
     }
 
     public void Tick()
     {
+        UpdateAnimations();
         Sense();
         Decide();
         Act();
+    }
+
+    private void UpdateAnimations()
+    {
+        _animator.SetBool("Grounded", true);
+        _animator.SetFloat("Speed", _navMeshAgent.velocity.magnitude);
+        if (_pickedUpItem != null)
+        {
+            _animator.SetBool("Carrying", false);
+            _animator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            _animator.SetBool("Carrying", false);
+            _animator.SetLayerWeight(1, 0);
+        }
     }
 
     private void Sense()
@@ -108,7 +130,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     
     private void ReturnToSea()
     {
-        if (_pickedUpItem == null) return;
+        if (_pickedUpItem == null && _targetItem == null) return;
         if(_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
         _navMeshAgent.SetDestination(_startPos);
     }
