@@ -9,7 +9,7 @@ namespace ScallyWags
         private CapsuleCollider _colliderCollider;
         private CapsuleCollider[] _rigidBodyColliders;
         private Animator _animator;
-        private float impactStrength = 200f;
+        private float impactStrength = 50f;
 
         public Ragdoll(CapsuleCollider[] rigidbodyColliders, Rigidbody[] rigidBodies, CapsuleCollider colliderCollider, Animator animator)
         {

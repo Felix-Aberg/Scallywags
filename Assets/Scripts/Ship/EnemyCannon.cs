@@ -8,6 +8,8 @@ public class EnemyCannon : MonoBehaviour
 {
         [SerializeField] private SimpleAudioEvent _event;
         [SerializeField] private GameObject _cannonBall;
+        private float _maxDistance = 100;
+        private float _minDistance = 40;
         private float _cannonForce = 70;
         private ItemSpawn _spawnPos;
         private ParticleSystem[] _particleSystem;
@@ -16,6 +18,7 @@ public class EnemyCannon : MonoBehaviour
         private ShipCondition _shipCondition;
         private List<Destructable> _destroyable = new List<Destructable>();
         private float angle = 15;
+        
 
         private void Start()
         {
@@ -33,6 +36,11 @@ public class EnemyCannon : MonoBehaviour
         public void Act()
         {
             FindTarget();
+            
+            var dist = Vector3.Distance(transform.position, _enemyCondition.transform.position);
+            
+            if (dist < _minDistance || dist > _maxDistance) return;
+            
             Fire();
             
             foreach (var p in _particleSystem)
@@ -67,6 +75,8 @@ public class EnemyCannon : MonoBehaviour
 
         private void FindTarget()
         {
+            if (_enemyCondition != null) return;
+            
             var ships = FindObjectsOfType<ShipCondition>();
 
             foreach (var ship in ships)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrabsEasy
   m_EditorClassIdentifier: 
   EventName: SpawnEntity
-  Prefab: {fileID: 3819533037320255018, guid: 8782c6af0c7745140ad640e0be0dffef, type: 3}
+  Prefab: {fileID: 8845708071311245029, guid: 739399e2718dbd749883c0e3f9383acf, type: 3}
   Health: 0
   Audio: {fileID: 0}
   NumberOfHazards: 1

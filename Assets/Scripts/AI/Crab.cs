@@ -30,7 +30,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     public void Tick()
     {
-        UpdateAnimations();
+        //UpdateAnimations();
         Sense();
         Decide();
         Act();
@@ -42,7 +42,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _animator.SetFloat("Speed", _navMeshAgent.velocity.magnitude);
         if (_pickedUpItem != null)
         {
-            _animator.SetBool("Carrying", false);
+            _animator.SetBool("Carrying", true);
             _animator.SetLayerWeight(1, 1);
         }
         else

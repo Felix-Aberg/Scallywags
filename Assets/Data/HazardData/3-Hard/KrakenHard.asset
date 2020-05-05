@@ -17,3 +17,4 @@ MonoBehaviour:
   Health: 3
   Audio: {fileID: 0}
   NumberOfHazards: 2
+  PostEventData: {fileID: 11400000, guid: f18c1f985c0353c4d8edd28fda85d2e4, type: 2}

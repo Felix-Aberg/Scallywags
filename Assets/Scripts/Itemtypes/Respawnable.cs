@@ -26,7 +26,7 @@ namespace ScallyWags
         // Update is called once per frame
         void Update()
         {
-            if (transform.position.y < _respawnLimit)
+            if (transform.position.y < _respawnLimit || Vector3.Distance(transform.position, _startPos) > 50)
             {
                 if (GetComponent<Player>())
                 {
