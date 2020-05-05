@@ -22,13 +22,6 @@ namespace ScallyWags
         private EnemySpawn[] _enemySpawnPos;
         private int _enemyIndex = 0;
 
-        public enum EntityType
-        {
-            NotSet,
-            Skeleton,
-            Crab
-        }
-
         public EntityManager(GameObject playerPrefab)
         {
             _playerPrefab = playerPrefab;
