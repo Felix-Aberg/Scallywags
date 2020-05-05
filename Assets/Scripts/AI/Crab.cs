@@ -16,8 +16,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private Animator _animator;
     
-    private float _normalSpeed = 4f;
-    private float _carrySpeed = 2f;
+    private float _normalSpeed = 3f;
+    private float _carrySpeed = 1f;
 
     public void Init(int index = 0)
     {
