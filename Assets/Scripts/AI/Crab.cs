@@ -80,7 +80,13 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         TryPickingUp();
         ReturnToSea();
     }
-    
+
+    private void Die()
+    {
+        _navMeshAgent.ResetPath();
+        Drop();
+        gameObject.SetActive(false);
+    }
 
     private void GetClosestScoreItem()
     {
