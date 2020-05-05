@@ -35,6 +35,10 @@ namespace ScallyWags
         {
             foreach (IEntity entity in _entities)
             {
+                if (entity.IsDead())
+                {
+                    continue;
+                }
                 entity.Tick();
             }
 

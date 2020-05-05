@@ -8,4 +8,5 @@ public interface IEntity
     void Init(int index = 0);
     void Tick();
     GameObject GetObject();
+    bool IsDead();
 }

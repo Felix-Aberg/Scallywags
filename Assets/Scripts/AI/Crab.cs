@@ -18,6 +18,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     
     private float _normalSpeed = 3f;
     private float _carrySpeed = 1f;
+    private bool _died;
 
     public void Init(int index = 0)
     {
@@ -30,12 +31,15 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     public void Tick()
     {
-        //UpdateAnimations();
         Sense();
         Decide();
         Act();
     }
-
+    
+    public bool IsDead()
+    {
+        return _isDead;
+    }
     private void UpdateAnimations()
     {
         _animator.SetBool("Grounded", true);
@@ -75,7 +79,6 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Act()
     {
-        if (_isDead) return;
         GoForTreasure();
         TryPickingUp();
         ReturnToSea();
@@ -83,9 +86,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Die()
     {
-        _navMeshAgent.ResetPath();
-        Drop();
-        gameObject.SetActive(false);
+        _isDead = true;
     }
 
     private void GetClosestScoreItem()
@@ -163,6 +164,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     public void TakeDamage()
     {
-        Die();
+        Drop();
+        _isDead = true;
+        gameObject.SetActive(false);
     }
 }
