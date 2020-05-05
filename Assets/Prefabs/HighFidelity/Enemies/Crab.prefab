@@ -1365,6 +1365,8 @@ GameObject:
   - component: {fileID: 8845708071311245028}
   - component: {fileID: 8845708071311245026}
   - component: {fileID: 8296172668132212067}
+  - component: {fileID: 1724654740}
+  - component: {fileID: 1724654739}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -1478,3 +1480,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1724654740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845708071311245029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f192d5ee40893469abf16a3308d12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1724654739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845708071311245029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de60a630fc840d4d9a758c71001359a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _usableItems: {fileID: 11400000, guid: 3068ec0fb73988b41915313c08ba5fdb, type: 2}

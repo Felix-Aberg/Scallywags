@@ -75,21 +75,12 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Act()
     {
+        if (_isDead) return;
         GoForTreasure();
         TryPickingUp();
         ReturnToSea();
-        Die();
     }
-
-    private void Die()
-    {
-        if (_isDead)
-        {
-            _navMeshAgent.ResetPath();
-            Drop();
-            gameObject.SetActive(false);
-        }
-    }
+    
 
     private void GetClosestScoreItem()
     {
@@ -166,6 +157,6 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     public void TakeDamage()
     {
-        _isDead = true;
+        Die();
     }
 }
