@@ -97,4 +97,9 @@ public class Kraken : MonoBehaviour, IDamageable
         _health -= 1;
         Debug.Log("Kraken Damage");
     }
+
+    public void TakeDamage(Vector3 hitDir, float hitForce)
+    {
+        TakeDamage();
+    }
 }

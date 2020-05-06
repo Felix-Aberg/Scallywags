@@ -112,8 +112,14 @@ namespace ScallyWags
 
         public void TakeDamage()
         {
+            throw new NotImplementedException();
+        }
+
+        public void TakeDamage(Vector3 pos, float hitForce)
+        {
             _isDead = true;
-            Die();
+            var dir = transform.position - pos;
+            Die(dir.normalized, hitForce);
         }
 
         public void Respawn()
@@ -122,7 +128,7 @@ namespace ScallyWags
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
         }
 
-        private void Die()
+        private void Die(Vector3 hitDir, float hitForce = 50f)
         {
             Drop();
             _ragdoll.EnableRagdoll((transform.position - _hitPos).normalized);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f694bb96d89267846a165c824eb69f0d, type: 3}
-  m_Name: Crab
+  m_Name: Enemy
   m_EditorClassIdentifier: 
   itemList:
   - {fileID: 437035681750694260, guid: 3842c9346a154d64381143d2446fbfc6, type: 3}
