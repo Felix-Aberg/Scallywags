@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using DitzelGames.FastIK;
-using Unity.CodeEditor;
 using UnityEngine;
 
 namespace ScallyWags
