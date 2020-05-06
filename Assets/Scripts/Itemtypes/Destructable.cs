@@ -23,5 +23,10 @@ namespace ScallyWags
             }
             gameObject.SetActive(false);
         }
+
+        public void TakeDamage(Vector3 hitDir, float hitForce)
+        {
+            TakeDamage();
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace ScallyWags
     {
         private AnimationController _animationController;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
+        private bool _interacting;
 
         public void Init(AnimationController animationController)
         {
@@ -39,17 +40,31 @@ namespace ScallyWags
 
         public void Tick(PickableItem currentItem, Player player, bool interactPressed)
         {
-            if (currentItem == null) return;
+            _animationController.Interact(_interacting);
             
+            if (currentItem == null)
+            {
+                _interacting = false;
+                return;
+            }
+
             var closestItem = GetClosestItem(player, currentItem) as InteractableItem;
-            if (closestItem == null) return;
+            if (closestItem == null)
+            {
+                _interacting = false;
+                return;
+            }
                 
             if (interactPressed)
             {
-                closestItem.Interact(currentItem, player);
+                _interacting = true;
                 RefreshItems();
-                _animationController.Interact(currentItem.itemType);
                 closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
+            }
+
+            if (_interacting)
+            {
+                closestItem.Interact(currentItem, player);
             }
         }
 
@@ -72,12 +87,26 @@ namespace ScallyWags
             var closestDist = float.MaxValue;
             foreach (var item in _itemsNear)
             {
-                if (closest == null) closest = item;
+                if (!item.gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
                 
-                if (item == null) continue;
+                if (item == null)
+                {
+                    continue;
+                }
+                
+                if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false)
+                {
+                    continue;
+                }
 
-                if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false) continue;
-                
+                if (closest == null)
+                {
+                    closest = item;
+                }
+
                 item.GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
 
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);

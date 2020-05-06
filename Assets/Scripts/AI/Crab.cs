@@ -168,4 +168,9 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _isDead = true;
         gameObject.SetActive(false);
     }
+    
+    public void TakeDamage(Vector3 hitDir, float hitForce)
+    {
+        TakeDamage();
+    }
 }

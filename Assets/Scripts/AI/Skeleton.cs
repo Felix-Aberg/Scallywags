@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +23,7 @@ namespace ScallyWags
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _navMeshAgent.speed = _normalSpeed;
+            _sword = GetComponentInChildren<EnemySword>();
         }
 
         public void Update()
@@ -29,6 +32,21 @@ namespace ScallyWags
             Sense();
             Decide();
             Act();
+        }
+        
+        public void TakeDamage()
+        {
+            _isDead = true;
+        }
+
+        public void TakeDamage(Vector3 hitDir, float hitForce)
+        {
+            _isDead = true;
+        }
+
+        public GameObject GetObject()
+        {
+            return gameObject;
         }
 
         private void UpdateAnimations()
@@ -105,21 +123,13 @@ namespace ScallyWags
             }
         }
 
-        public GameObject GetObject()
-        {
-            return gameObject;
-        }
-
+        /// <summary>
+        /// Starts animation which activates collider. Dealing damage is handled in the EnemySword.cs
+        /// </summary>
         private void HandleAttack()
         {
             if (_targetPlayer == null) return;
-
             _animator.SetTrigger("Sword");
-        }
-
-        public void TakeDamage()
-        {
-            _isDead = true;
         }
     }
 }

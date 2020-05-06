@@ -626,7 +626,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -832,7 +832,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -873,6 +873,7 @@ GameObject:
   - component: {fileID: 5579699833169860633}
   - component: {fileID: 6148474946239032519}
   - component: {fileID: 6148474946239032516}
+  - component: {fileID: 909405527237697718}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -970,6 +971,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75704616, y: 2.4937835, z: 0.08958868}
   m_Center: {x: -0.06962761, y: 1.2468932, z: 0}
+--- !u!114 &909405527237697718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148474946239032517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8d5baf3003ecb4685cae35bc8ce8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6190255318112262712
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace ScallyWags
         public GameObject particles;
         public SimpleAudioEvent _audio;
         private AudioSourcePoolManager _audioPool;
+        private float _hitForce = 20f;
 
         private void Start()
         {
@@ -22,7 +23,7 @@ namespace ScallyWags
         private void OnCollisionEnter(Collision other)
         {
             var damageable = other.gameObject.GetComponent<IDamageable>();
-            damageable?.TakeDamage();
+            damageable?.TakeDamage(transform.position, _hitForce);
 
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();
 
