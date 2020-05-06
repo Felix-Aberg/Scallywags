@@ -8,7 +8,7 @@ namespace ScallyWags
 {
     public class ShipMoveCloser : MonoBehaviour
     {
-        [SerializeField] private float _moveDistance = 20;
+        private float _moveDistance = 15;
         private Vector3 _moveTarget;
         private ShipCondition _ship;
 
@@ -21,6 +21,8 @@ namespace ScallyWags
         void Update()
         {
             if (_ship.IsSinking()) return;
+            
+            _moveTarget = new Vector3(0, 0, _moveDistance);
             transform.position = Vector3.MoveTowards(transform.position,
                 new Vector3(0, transform.position.y, _moveTarget.z), 0.05f);
         }

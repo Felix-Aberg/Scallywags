@@ -22,13 +22,6 @@ namespace ScallyWags
         private EnemySpawn[] _enemySpawnPos;
         private int _enemyIndex = 0;
 
-        public enum EntityType
-        {
-            NotSet,
-            Skeleton,
-            Crab
-        }
-
         public EntityManager(GameObject playerPrefab)
         {
             _playerPrefab = playerPrefab;
@@ -42,6 +35,10 @@ namespace ScallyWags
         {
             foreach (IEntity entity in _entities)
             {
+                if (entity.IsDead())
+                {
+                    continue;
+                }
                 entity.Tick();
             }
 

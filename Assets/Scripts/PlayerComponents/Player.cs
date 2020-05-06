@@ -85,6 +85,11 @@ namespace ScallyWags
             return gameObject;
         }
 
+        public bool IsDead()
+        {
+            return _isDead;
+        }
+
         public void Drop()
         {
             _pickup.Throw();
