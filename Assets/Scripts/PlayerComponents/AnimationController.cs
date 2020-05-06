@@ -52,9 +52,13 @@ namespace ScallyWags
                     _animator.SetTrigger("Sword");
                     break;
                 default:
-                    _animator.SetTrigger("Interact");
                     break;
             }
+        }
+
+        public void Interact(bool active)
+        {
+            _animator.SetBool("Interact", active);
         }
     }
 }

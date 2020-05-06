@@ -9,6 +9,7 @@ public class KrakenAttack : MonoBehaviour
     private BoxCollider _collider;
     private bool _dealtDamageToShip;
     private bool _dealtDamageToShipPart;
+    private float _hitForce = 50f;
 
     private void Start()
     {
@@ -31,13 +32,7 @@ public class KrakenAttack : MonoBehaviour
 
             if (destroyable != null)
             {
-                var player = other.gameObject.GetComponent<Player>();
-                if (player)
-                {
-                    player.Push(transform.position);
-                }
-                
-                destroyable.TakeDamage();
+                destroyable.TakeDamage(transform.position, _hitForce);
                 _dealtDamageToShipPart = true;
             }
         }

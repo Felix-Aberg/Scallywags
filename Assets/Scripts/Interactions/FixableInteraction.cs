@@ -11,16 +11,27 @@ namespace ScallyWags
         private float _timer;
         private float _delay = 15f;
 
-        private ParticleSystem[] _particleSystems;
-    
-        private int charges = 0;
-        private int chargesRequired = 5;
+        private InteractParticles _interactParticles;
         
-        private int damageDone;
+        // UI
+        private CreateUIElement _createUIElement;
+        private FixProgressBar _bar;
+
+        // Timers
+        private float _fixingTime = 5f;
+        private float _fixingTimer = 0f;
+        private float _scaleSpeed = 0.35f;
+
+
         public void Start()
         {
             _shipCondition = GetComponentInParent<ShipCondition>();
-            _particleSystems = GetComponentsInChildren<ParticleSystem>();
+            _interactParticles = GetComponentInChildren<InteractParticles>();
+            _createUIElement = FindObjectOfType<CreateUIElement>();
+            var go = _createUIElement.CreateElement(UIElement.ProgressBar, transform.position);
+            _bar = go.GetComponent<FixProgressBar>();
+            _bar.Init(0, _fixingTime);
+            _bar.gameObject.SetActive(false);
         }
 
         void Update()
@@ -32,36 +43,39 @@ namespace ScallyWags
             if (_timer > _delay)
             {
                 _timer = 0;
-                _shipCondition.TakeDamage();
-                damageDone++;
+                _shipCondition.TakeDamage(1);
             }
         }
 
         public void Act()
         {
-            charges++;
-            foreach (var p in _particleSystems)
-            {
-                p.Play();
-            }
+            _interactParticles.Play();
 
-            if (scalesWithRepair)
-            {
-                var newScale = new Vector3(transform.localScale.x, Mathf.Max(transform.localScale.y - 0.2f, 0.3f), transform.localScale.z);
+            ScaleWhenRepaired();
 
-                transform.DOScale(newScale, 0.2f);
-            }
-            
-            if (charges >= chargesRequired)
+            _bar.gameObject.SetActive(true);
+            _bar.UpdateValues(_fixingTimer, _fixingTime, transform.position);
+
+            _fixingTimer += Time.deltaTime;
+            if (_fixingTimer >= _fixingTime)
             {
                 Fix();
+                Destroy(_bar.gameObject);
+            }
+        }
+
+        private void ScaleWhenRepaired()
+        {
+            if (scalesWithRepair)
+            {
+                var y = transform.localScale.y - Time.deltaTime * _scaleSpeed;
+                transform.localScale = new Vector3(transform.localScale.x, Mathf.Max(y, 0.2f), transform.localScale.z);
             }
         }
 
         private void Fix()
         {
             EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
-            charges = 0;
             _shipCondition.FixDamage(1);
             gameObject.SetActive(false);
         }

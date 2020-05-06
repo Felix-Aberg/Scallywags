@@ -51,6 +51,11 @@ public class ScoreItem : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamage(Vector3 hitDir, float hitForce)
+    {
+        TakeDamage();
+    }
+
     private void Divide()
     {
         _goldValue = 0;

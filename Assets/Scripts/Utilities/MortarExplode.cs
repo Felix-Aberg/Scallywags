@@ -13,6 +13,7 @@ namespace ScallyWags
         [SerializeField] private bool createsHoles;
         public SimpleAudioEvent _audio;
         private AudioSourcePoolManager _audioPool;
+        private float _hitForce = 10f;
 
         private void Start()
         {
@@ -27,7 +28,7 @@ namespace ScallyWags
                 damageable = other.gameObject.GetComponentInParent<IDamageable>();
             }
 
-            damageable?.TakeDamage();
+            damageable?.TakeDamage(transform.position, _hitForce);
 
             var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);
             if (particleSystem == null)
