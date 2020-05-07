@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyShipMedium
   m_EditorClassIdentifier: 
   EventName: EnemyShip
-  Prefab: {fileID: 8703128751041152250, guid: 2c3a4366e52695745a82ca549d628695, type: 3}
-  Health: 5
+  Prefab: {fileID: 122927237648891205, guid: f1b4be1c4bdda2344a1a0215795d454a, type: 3}
+  Health: 10
   Audio: {fileID: 0}
   NumberOfHazards: 1

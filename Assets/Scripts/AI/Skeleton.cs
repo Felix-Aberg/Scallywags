@@ -24,6 +24,7 @@ namespace ScallyWags
             _animator = GetComponent<Animator>();
             _navMeshAgent.speed = _normalSpeed;
             _sword = GetComponentInChildren<EnemySword>();
+            _navMeshAgent.enabled = false;
         }
 
         public void Update()
@@ -64,14 +65,12 @@ namespace ScallyWags
 
         private void Decide()
         {
-            if (_targetPlayer == null)
-            {
-                GetTarget();
-            }
+            GetTarget();
         }
 
         private void Act()
         {
+            if (!_navMeshAgent.enabled) return;
             MoveTowardsPlayer();
             Attack();
             Die();

@@ -214,7 +214,7 @@ MonoBehaviour:
     supportedLitShaderMode: 2
     supportDecals: 1
     msaaSampleCount: 1
-    supportMotionVectors: 1
+    supportMotionVectors: 0
     supportRuntimeDebugDisplay: 1
     supportDitheringCrossFade: 1
     supportTerrainHole: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
       m_LutSize: 32
       lutFormat: 48
     dynamicResolutionSettings:
-      enabled: 0
+      enabled: 1
       maxPercentage: 100
       minPercentage: 100
       dynResType: 1
