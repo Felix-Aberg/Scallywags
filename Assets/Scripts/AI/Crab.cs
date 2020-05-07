@@ -16,8 +16,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private Animator _animator;
     
-    private float _normalSpeed = 3f;
-    private float _carrySpeed = 1f;
+    private float _normalSpeed = 4f;
+    private float _carrySpeed = 1.5f;
     private bool _died;
 
     public void Init(int index = 0)
@@ -148,6 +148,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
             if (item.IsAvailable())
             {
                 _pickedUpItem = item.Pickup(this) as PickableItem;
+                _pickedUpItem.transform.localPosition = Vector3.zero;
                 _navMeshAgent.speed = _carrySpeed;
                 _navMeshAgent.ResetPath();
                 _navMeshAgent.SetDestination(_startPos);
@@ -165,7 +166,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     public void TakeDamage()
     {
         Drop();
-        _isDead = true;
+        Die();
         gameObject.SetActive(false);
     }
     

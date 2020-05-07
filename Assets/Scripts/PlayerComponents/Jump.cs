@@ -41,17 +41,17 @@ namespace ScallyWags
             
             if (grounded)
             {
-                Debug.Log("Player IS grounded!");
+              //  Debug.Log("Player IS grounded!");
                 return true; // Todo
             }
-            Debug.Log("Player ISN'T grounded!");
+          //  Debug.Log("Player ISN'T grounded!");
             return false; // Todo
         }
 
         
         public void InitiateJump(Rigidbody playerRigidBody)
         {
-            Debug.Log("Jump!");
+           // Debug.Log("Jump!");
             playerRigidBody.AddForce(0, _jumpForce, 0);
 
             Vector3 movement = playerRigidBody.velocity;

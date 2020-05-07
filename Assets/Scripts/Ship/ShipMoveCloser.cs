@@ -11,6 +11,7 @@ namespace ScallyWags
         private float _moveDistance = 15;
         private Vector3 _moveTarget;
         private ShipCondition _ship;
+        [SerializeField] private float _speed = 0.03f;
 
         private void Start()
         {
@@ -24,7 +25,7 @@ namespace ScallyWags
             
             _moveTarget = new Vector3(0, 0, _moveDistance);
             transform.position = Vector3.MoveTowards(transform.position,
-                new Vector3(0, transform.position.y, _moveTarget.z), 0.05f);
+                new Vector3(0, transform.position.y, _moveTarget.z), _speed);
         }
     }
 }

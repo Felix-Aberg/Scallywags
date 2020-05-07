@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dividesTo: {fileID: 0}
   particleEffect: {fileID: 0}
-  _goldValue: 10
+  _goldValue: 30
   maxHitpoints: 0
 --- !u!54 &1296917348080053592
 Rigidbody:
@@ -114,7 +114,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &8818623258272891901
 MonoBehaviour:

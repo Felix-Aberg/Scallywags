@@ -45,11 +45,10 @@ namespace ScallyWags
                 var rect = uiElement.GetComponent<RectTransform>();
                 
                 // Calculate *screen* position (note, not a canvas/recttransform position)
-                Vector2 canvasPos;
                 Vector2 screenPoint = _camera.WorldToScreenPoint(pos);
  
                 // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, screenPoint, null, out canvasPos);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, screenPoint, null, out var canvasPos);
  
                 // Set
                 uiElement.transform.localPosition = canvasPos;

@@ -24,6 +24,7 @@ namespace ScallyWags
             _animator = GetComponent<Animator>();
             _navMeshAgent.speed = _normalSpeed;
             _sword = GetComponentInChildren<EnemySword>();
+            _navMeshAgent.enabled = false;
         }
 
         public void Update()
@@ -64,14 +65,12 @@ namespace ScallyWags
 
         private void Decide()
         {
-            if (_targetPlayer == null)
-            {
-                GetTarget();
-            }
+            GetTarget();
         }
 
         private void Act()
         {
+            if (!_navMeshAgent.enabled) return;
             MoveTowardsPlayer();
             Attack();
             Die();
@@ -81,7 +80,10 @@ namespace ScallyWags
         {
             if (_isDead)
             {
-                _navMeshAgent.ResetPath();
+                if (_navMeshAgent.isOnNavMesh)
+                {
+                    _navMeshAgent.ResetPath();
+                }
                 gameObject.SetActive(false);
             }
         }
@@ -107,7 +109,10 @@ namespace ScallyWags
 
             if (Vector3.Distance(_navMeshAgent.destination, _targetPlayer.transform.position) > 1)
             {
-                _navMeshAgent.ResetPath();
+                if (_navMeshAgent.isOnNavMesh)
+                {
+                    _navMeshAgent.ResetPath();
+                }
             }
 
             if (_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;

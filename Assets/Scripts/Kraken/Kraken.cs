@@ -65,7 +65,7 @@ public class Kraken : MonoBehaviour, IDamageable
         if (_attackTimer > _attackDelay)
         {
             _attackTimer = 0;
-            _attackDelay = Random.Range(4, 8);
+            _attackDelay = Random.Range(2, 4);
             Attack();
             _krakenAttack.EnableCollider();
         }

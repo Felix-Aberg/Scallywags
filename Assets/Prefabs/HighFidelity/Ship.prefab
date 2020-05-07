@@ -145,7 +145,7 @@ OffMeshLink:
   m_AreaIndex: 0
   m_AgentTypeID: 0
   m_Start: {fileID: 1799054932}
-  m_End: {fileID: 1901512851}
+  m_End: {fileID: 0}
   m_CostOverride: -1
   m_BiDirectional: 1
   m_Activated: 1
@@ -225,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 64
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1221405817
 Transform:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ OffMeshLink:
   m_AreaIndex: 0
   m_AgentTypeID: 0
   m_Start: {fileID: 1254876307}
-  m_End: {fileID: 1221405817}
+  m_End: {fileID: 0}
   m_CostOverride: -1
   m_BiDirectional: 1
   m_Activated: 1
@@ -390,7 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1799054932}
   m_Layer: 13
-  m_Name: GameObject
+  m_Name: From
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ GameObject:
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 64
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1901512851
 Transform:
   m_ObjectHideFlags: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7c1e21521c287dd47ae9ab1a4a5e43fc, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c619efc9b06a7874bbb04f5217d294b4, type: 2}
 --- !u!1 &3084929382677523516
 GameObject:
   m_ObjectHideFlags: 0

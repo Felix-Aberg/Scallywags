@@ -26,7 +26,7 @@ namespace ScallyWags
             _sinkingPerDamage = 5f / maxHealth;
             var pos = transform.position;
             transform.position = new Vector3(pos.x, 0, pos.z);
-            _startingDepth = transform.position.y;
+            _startingDepth = 0;
             _navMeshManager = FindObjectOfType<NavMeshManager>();
         }
 
