@@ -1,6 +1,4 @@
 using UnityEngine;
-using DG.Tweening;
-
 
 namespace ScallyWags
 {
@@ -52,9 +50,9 @@ namespace ScallyWags
             _interactParticles.Play();
 
             ScaleWhenRepaired();
-
+            
             _bar.gameObject.SetActive(true);
-            _bar.UpdateValues(_fixingTimer, _fixingTime, transform.position);
+            _bar.UpdateValues(_fixingTimer, _fixingTime);
 
             _fixingTimer += Time.deltaTime;
             if (_fixingTimer >= _fixingTime)

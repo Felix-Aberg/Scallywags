@@ -80,7 +80,10 @@ namespace ScallyWags
         {
             if (_isDead)
             {
-                _navMeshAgent.ResetPath();
+                if (_navMeshAgent.isOnNavMesh)
+                {
+                    _navMeshAgent.ResetPath();
+                }
                 gameObject.SetActive(false);
             }
         }
@@ -106,7 +109,10 @@ namespace ScallyWags
 
             if (Vector3.Distance(_navMeshAgent.destination, _targetPlayer.transform.position) > 1)
             {
-                _navMeshAgent.ResetPath();
+                if (_navMeshAgent.isOnNavMesh)
+                {
+                    _navMeshAgent.ResetPath();
+                }
             }
 
             if (_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
