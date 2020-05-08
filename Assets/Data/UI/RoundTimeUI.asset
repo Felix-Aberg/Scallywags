@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46db1603045f7641ae785b38721807a, type: 3}
   m_Name: RoundTimeUI
   m_EditorClassIdentifier: 
-  Value: 108.57002
+  Value: -55.9
