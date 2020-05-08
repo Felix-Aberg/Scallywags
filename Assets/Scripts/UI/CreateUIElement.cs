@@ -41,6 +41,11 @@ namespace ScallyWags
 
             private GameObject InstantiateElement(GameObject prefab, Vector3 pos)
             {
+                if (_camera == null)
+                {
+                    _camera = FindObjectOfType<Camera>();
+                }
+                
                 var uiElement = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
                 var rect = uiElement.GetComponent<RectTransform>();
                 

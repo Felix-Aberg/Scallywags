@@ -1,16 +1,14 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ScallyWags
 {
-    public class FixableInteraction : MonoBehaviour, IInteraction
+    public class RailingInteraction : MonoBehaviour, IDamageable
     {
-
         private ShipCondition _shipCondition;
-        private float _timer;
-        private float _delay = 15f;
-
         private InteractParticles _interactParticles;
-        
+
         // UI
         private CreateUIElement _createUIElement;
         private FixProgressBar _bar;
@@ -20,8 +18,11 @@ namespace ScallyWags
         private float _fixingTimer = 0f;
         private float _scaleSpeed = 0.35f;
 
-        [Header("Fire")] 
-        [SerializeField] bool scalesWithRepair;
+        [SerializeField] private GameObject _fixableShipPart;
+        [SerializeField] private GameObject _particleSystem;
+
+        public bool Broken => _broken;
+        private bool _broken;   
 
         void Start()
         {
@@ -34,25 +35,12 @@ namespace ScallyWags
             _bar.gameObject.SetActive(false);
         }
 
-        void Update()
-        {
-            if (_shipCondition == null) return;
-
-            _timer += Time.deltaTime;
-
-            if (_timer > _delay)
-            {
-                _timer = 0;
-                _shipCondition.TakeDamage(1);
-            }
-        }
-
         public void Act()
         {
+            if (_broken == false) return;
+            
             _interactParticles.Play();
 
-            ScaleWhenRepaired();
-            
             _bar.gameObject.SetActive(true);
             _bar.UpdateValues(_fixingTimer, _fixingTime);
 
@@ -64,21 +52,45 @@ namespace ScallyWags
             }
         }
 
-        private void ScaleWhenRepaired()
-        {
-            if (scalesWithRepair)
-            {
-                var y = transform.localScale.y - Time.deltaTime * _scaleSpeed;
-                transform.localScale = new Vector3(transform.localScale.x, Mathf.Max(y, 0.2f), transform.localScale.z);
-            }
-        }
-
         private void Fix()
         {
             EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
             _shipCondition.FixDamage(1);
             
-            gameObject.SetActive(false);
+            _fixableShipPart.SetActive(true);
+            _broken = false;
+        }
+
+        public void TakeDamage()
+        {
+            if (_broken)
+            {
+                return;
+            }
+            
+            _broken = true;
+            _shipCondition.TakeDamage();
+
+            if (_particleSystem == null)
+            {
+                Debug.LogError(gameObject.name + " missing particle system");
+            }
+            else
+            {
+                Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            }
+
+            _fixableShipPart.SetActive(false);
+        }
+
+        public void TakeDamage(Vector3 hitDir, float hitForce)
+        {
+            TakeDamage();
+        }
+
+        public Vector3 GetPos()
+        {
+            return transform.position;
         }
     }
 }

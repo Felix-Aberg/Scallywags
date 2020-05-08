@@ -16,7 +16,7 @@ public class EnemyCannon : MonoBehaviour
         private AudioSourcePoolManager _audioPool;
         private ShipCondition _enemyCondition;
         private ShipCondition _shipCondition;
-        private List<Destructable> _destroyable = new List<Destructable>();
+        private List<IDamageable> _destroyable = new List<IDamageable>();
         private float angle = 15;
         
 
@@ -62,7 +62,8 @@ public class EnemyCannon : MonoBehaviour
             {
                 var index = Random.Range(0, _destroyable.Count);
 
-                Vector3 target = _destroyable[index].transform.position;
+                var target = _destroyable[index].GetPos();
+
                 Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
                 rb.velocity = BallisticVel(target, angle);
             }
@@ -91,10 +92,16 @@ public class EnemyCannon : MonoBehaviour
 
             if (_enemyCondition == null) return;
             
-            var targets = _enemyCondition.GetComponentsInChildren<Destructable>();
+            _destroyable.Clear();
+            var targets = _enemyCondition.GetComponentsInChildren<IDamageable>();
 
             foreach (var target in targets)
             {
+                var railing = target as RailingInteraction;
+                if (railing && railing.Broken)
+                {
+                    continue;
+                }
                 _destroyable.Add(target);
             }
         }

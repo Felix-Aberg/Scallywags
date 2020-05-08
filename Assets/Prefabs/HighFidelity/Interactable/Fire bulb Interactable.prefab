@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scalesWithRepair: 1
+  _takesDamageOverTime: 1
 --- !u!114 &104528873635138268
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,10 +16,11 @@ namespace ScallyWags
         {
             _rect = GetComponent<RectTransform>();
             _slider = GetComponent<Slider>();
+            _camera = FindObjectOfType<Camera>();
             _slider.value = start;
             _slider.maxValue = max;
             _slider.wholeNumbers = false;
-            _camera = FindObjectOfType<Camera>();
+
             _pos = pos;
         }
 

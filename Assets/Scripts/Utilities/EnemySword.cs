@@ -6,7 +6,7 @@ namespace ScallyWags
     public class EnemySword : MonoBehaviour
     {
         private BoxCollider _attackCollider;
-        private float _hitForce = 1f;
+        private float _hitForce = 10f;
 
         private void Start()
         {

@@ -40,13 +40,13 @@ namespace ScallyWags
 
         public void Tick(PickableItem currentItem, Player player, bool interactPressed)
         {
-            _animationController.Interact(_interacting);
-            
             if (currentItem == null)
             {
                 _interacting = false;
                 return;
             }
+            
+            _animationController.Interact(currentItem.itemType, _interacting);
 
             var closestItem = GetClosestItem(player, currentItem) as InteractableItem;
             if (closestItem == null)
@@ -57,6 +57,7 @@ namespace ScallyWags
                 
             if (interactPressed)
             {
+                _animationController.InteractTrigger(currentItem.itemType);
                 _interacting = true;
                 RefreshItems();
                 closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
