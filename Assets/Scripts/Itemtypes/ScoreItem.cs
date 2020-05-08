@@ -56,6 +56,11 @@ public class ScoreItem : MonoBehaviour, IDamageable
         TakeDamage();
     }
 
+    public Vector3 GetPos()
+    {
+        return transform.position;
+    }
+
     private void Divide()
     {
         _goldValue = 0;

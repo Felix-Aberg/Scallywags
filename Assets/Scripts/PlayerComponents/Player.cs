@@ -40,16 +40,22 @@ namespace ScallyWags
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
 
+            // Find rigidbody colliders
             var rigidBodyColliders = GetComponentsInChildren<CapsuleCollider>();
+            var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
+            
+            // Add player collider
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
             capsuleCollider.height = 1.98f;
             capsuleCollider.radius = 0.5f;
             capsuleCollider.center = new Vector3(0,1,0);
-            // DODO
             
-            _ragdoll = new Ragdoll(rigidBodyColliders, GetComponentsInChildren<Rigidbody>(), capsuleCollider, GetComponent<Animator>());
             _ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
+            _ragdoll = new Ragdoll(rigidBodyColliders, _ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider, GetComponent<Animator>());
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
+
+            // Enable trigger collider
+            GetComponent<BoxCollider>().enabled = true;
             
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -122,21 +128,26 @@ namespace ScallyWags
             Die(dir.normalized, hitForce);
         }
 
+        public Vector3 GetPos()
+        {
+            return transform.position;
+        }
+
         public void Respawn()
         {
             _isDead = false;
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
         }
 
-        private void Die(Vector3 hitDir, float hitForce = 50f)
+        /// <summary>
+        /// Takes in direction player was hit and hit force
+        /// </summary>
+        /// <param name="hitDir"></param>
+        /// <param name="hitForce"></param>
+        private void Die(Vector3 hitDir, float hitForce = 1f)
         {
             Drop();
-            _ragdoll.EnableRagdoll((transform.position - _hitPos).normalized);
-        }
-
-        public void Push(Vector3 pos)
-        {
-            _hitPos = pos;
+            _ragdoll.EnableRagdoll(hitDir, hitForce);
         }
     }
 }

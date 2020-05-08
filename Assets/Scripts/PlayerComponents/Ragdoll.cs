@@ -9,17 +9,18 @@ namespace ScallyWags
         private CapsuleCollider _colliderCollider;
         private CapsuleCollider[] _rigidBodyColliders;
         private Animator _animator;
-        private float impactStrength = 50f;
+        private BoxCollider[] _rigibodyBoxColliders;
 
-        public Ragdoll(CapsuleCollider[] rigidbodyColliders, Rigidbody[] rigidBodies, CapsuleCollider colliderCollider, Animator animator)
+        public Ragdoll(CapsuleCollider[] rigidbodyColliders, Rigidbody[] rigidBodies, BoxCollider[] rigibodyBoxColliders, CapsuleCollider colliderCollider, Animator animator)
         {
             _rigidBodyColliders = rigidbodyColliders;
             _rigidBodies = rigidBodies;
+            _rigibodyBoxColliders = rigibodyBoxColliders;
             _colliderCollider = colliderCollider;
             _animator = animator;
         }
 
-        public void EnableRagdoll(Vector3 dir)
+        public void EnableRagdoll(Vector3 dir, float impactStrength)
         {
             _colliderCollider.enabled = false;
             
@@ -31,6 +32,11 @@ namespace ScallyWags
                 rb.angularVelocity = Vector3.zero;
                 rb.detectCollisions = true;
                 rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            }
+
+            foreach (var collider in _rigibodyBoxColliders)
+            {
+                collider.enabled = true;
             }
 
             foreach (var collider in _rigidBodyColliders)
@@ -57,6 +63,11 @@ namespace ScallyWags
             }
             
             foreach (var collider in _rigidBodyColliders)
+            {
+                collider.enabled = false;
+            }
+
+            foreach (var collider in _rigibodyBoxColliders)
             {
                 collider.enabled = false;
             }

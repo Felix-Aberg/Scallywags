@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using ScallyWags;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -25,7 +26,6 @@ public class ShipController : MonoBehaviour
         {
             transform.DORotate(new Vector3(_halfSway, y, 0), 10).OnComplete(RotateAgainTransform);
         }
-
     }
 
     private void RotateAgain()

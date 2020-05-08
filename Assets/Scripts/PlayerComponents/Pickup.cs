@@ -62,15 +62,11 @@ namespace ScallyWags
 
             if (!TryToPickUp(itemToPickUp)) return;
             
-            itemToPickUp.GetObject().GetComponent<ItemHighlight>().HighlightItem(_itemsNear);
+            itemToPickUp.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
 
             if (pickUpReleased)
             {
-                if (TryToPickUp(itemToPickUp))
-                {
-                    itemToPickUp.GetObject().GetComponent<ItemHighlight>().HighlightItem(_itemsNear);
-                    PickUp(itemToPickUp as PickableItem, player);
-                }
+                PickUp(itemToPickUp as PickableItem, player);
                 RefreshItems();
             }
         }

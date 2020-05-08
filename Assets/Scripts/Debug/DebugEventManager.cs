@@ -9,9 +9,9 @@ public class DebugEventManager : MonoBehaviour
     public HazardData kraken;
     public HazardData crab;
     
+    #if UNITY_EDITOR
     void OnGUI()
     {
-
         if (GUI.Button(new Rect(10, 70, 100, 30), "EnemyShip"))
         {
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(enemyShip);
@@ -36,4 +36,5 @@ public class DebugEventManager : MonoBehaviour
             EventManager.TriggerEvent("Pause", eventMessage);
         }
     }
+    #endif
 }

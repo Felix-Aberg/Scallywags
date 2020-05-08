@@ -9,7 +9,8 @@
     BagOfGold,
     Gem,
     Bucket,
-    Sword
+    Sword,
+    Crab
 }
     
 }

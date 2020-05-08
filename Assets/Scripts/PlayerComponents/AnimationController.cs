@@ -44,7 +44,19 @@ namespace ScallyWags
             _animator.SetTrigger("Throw");
         }
 
-        public void Interact(ItemType type)
+        public void Interact(ItemType type, bool active)
+        {
+            switch (type)
+            {
+                case ItemType.Sword:
+                    break;
+                default:
+                    _animator.SetBool("Interact", active);
+                    break;
+            }
+        }
+
+        public void InteractTrigger(ItemType type)
         {
             switch (type)
             {
@@ -54,11 +66,6 @@ namespace ScallyWags
                 default:
                     break;
             }
-        }
-
-        public void Interact(bool active)
-        {
-            _animator.SetBool("Interact", active);
         }
     }
 }

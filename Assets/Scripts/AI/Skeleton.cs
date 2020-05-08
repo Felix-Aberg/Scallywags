@@ -10,12 +10,15 @@ namespace ScallyWags
         [SerializeField] private Player[] _players;
         private NavMeshAgent _navMeshAgent;
         private Pickup _pickup;
-        [SerializeField] Player _targetPlayer;
+        [SerializeField] private Player _targetPlayer;
         [SerializeField] private PickableItem _pickedUpItem;
         private bool _isDead;
         private Animator _animator;
         private float _normalSpeed = 4f;
         private EnemySword _sword;
+        private Ragdoll _ragdoll;
+        private Rigidbody _rigidbody;
+        private CapsuleCollider _capsuleCollider;
 
         public void Start()
         {
@@ -25,10 +28,28 @@ namespace ScallyWags
             _navMeshAgent.speed = _normalSpeed;
             _sword = GetComponentInChildren<EnemySword>();
             _navMeshAgent.enabled = false;
+
+            var ragDollColliders = GetComponentsInChildren<CapsuleCollider>();
+            var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
+            
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            capsuleCollider.height = 1.756473f;
+            capsuleCollider.radius = 0.3f;
+            capsuleCollider.center = new Vector3(0,0.8717635f,0);
+
+            var ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
+            _ragdoll = new Ragdoll(ragDollColliders, ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider, _animator);
+            _ragdoll.DisableRagdoll(ragdollRigidBodies);
+
+            _rigidbody = gameObject.AddComponent<Rigidbody>();
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            _rigidbody.mass = 50;
         }
 
         public void Update()
         {
+            if (_isDead) return;
             UpdateAnimations();
             Sense();
             Decide();
@@ -37,12 +58,19 @@ namespace ScallyWags
         
         public void TakeDamage()
         {
-            _isDead = true;
+            Die();
         }
 
         public void TakeDamage(Vector3 hitDir, float hitForce)
         {
-            _isDead = true;
+            Die();
+            var dir = transform.position - _targetPlayer.transform.position;
+            _ragdoll.EnableRagdoll(dir.normalized, hitForce);
+        }
+
+        public Vector3 GetPos()
+        {
+            return transform.position;
         }
 
         public GameObject GetObject()
@@ -60,7 +88,6 @@ namespace ScallyWags
 
         private void Sense()
         {
-
         }
 
         private void Decide()
@@ -73,19 +100,15 @@ namespace ScallyWags
             if (!_navMeshAgent.enabled) return;
             MoveTowardsPlayer();
             Attack();
-            Die();
         }
 
         private void Die()
         {
-            if (_isDead)
-            {
-                if (_navMeshAgent.isOnNavMesh)
-                {
-                    _navMeshAgent.ResetPath();
-                }
-                gameObject.SetActive(false);
-            }
+            _isDead = true;
+             if (_navMeshAgent.isOnNavMesh)
+             {
+                 _navMeshAgent.ResetPath();
+             }
         }
 
         private void GetTarget()

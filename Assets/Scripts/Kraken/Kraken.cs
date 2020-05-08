@@ -102,4 +102,9 @@ public class Kraken : MonoBehaviour, IDamageable
     {
         TakeDamage();
     }
+
+    public Vector3 GetPos()
+    {
+        return transform.position;
+    }
 }

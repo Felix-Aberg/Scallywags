@@ -6,20 +6,22 @@ using UnityEngine;
 
 public class KrakenAttack : MonoBehaviour
 {
-    private BoxCollider _collider;
+    private BoxCollider[] _colliders;
     private bool _dealtDamageToShip;
     private bool _dealtDamageToShipPart;
-    private float _hitForce = 50f;
+    private float _hitForce = 100f;
 
     private void Start()
     {
-        _collider = GetComponent<BoxCollider>();
-        _collider.enabled = false;
+        _colliders = GetComponentsInChildren<BoxCollider>();
+        foreach (var collider in _colliders)
+        { 
+            collider.enabled = true;
+        }
     }
 
     public void EnableCollider()
     {
-        _collider.enabled = true;
         _dealtDamageToShip = false;
         _dealtDamageToShipPart = false;
     }
@@ -33,14 +35,16 @@ public class KrakenAttack : MonoBehaviour
             if (destroyable != null)
             {
                 destroyable.TakeDamage(transform.position, _hitForce);
-                _dealtDamageToShipPart = true;
+                if (destroyable as Player == null)
+                {
+                    _dealtDamageToShipPart = true;
+                }
             }
         }
-
-
+        
         if (_dealtDamageToShip == false)
         {
-            var ship = other.gameObject.GetComponent<ShipCondition>();
+            var ship = other.gameObject.GetComponentInParent<ShipCondition>();
             if (ship != null)
             {
                 ship.TakeDamage(3);
