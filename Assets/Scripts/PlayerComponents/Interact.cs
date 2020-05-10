@@ -75,6 +75,8 @@ namespace ScallyWags
             foreach (var item in _itemsNear)
             {
                 if (item.gameObject.activeInHierarchy == false) continue;
+                var entity = item.gameObject.GetComponent<IEntity>();
+                if (entity.GetObject() != null && entity.IsDead()) continue;
                 
                 newList.Add(item);
             }

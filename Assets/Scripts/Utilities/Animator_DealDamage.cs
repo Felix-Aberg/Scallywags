@@ -4,7 +4,7 @@ using UnityEngine;
 public class Animator_DealDamage : StateMachineBehaviour
 {
     private float _timer;
-    private float _delay = 0.6f;
+    private float _delay = 0.1f;
     private EnemySword _sword;
 
     private bool _attacked;

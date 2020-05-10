@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace ScallyWags
 {
-    public class Skeleton : MonoBehaviour, IDamageable
+    public class Skeleton : MonoBehaviour, IDamageable, IEntity
     {
         [SerializeField] private Player[] _players;
         private NavMeshAgent _navMeshAgent;
@@ -20,6 +20,7 @@ namespace ScallyWags
         private Rigidbody _rigidbody;
         private CapsuleCollider _capsuleCollider;
 
+
         public void Start()
         {
             _players = FindObjectsOfType<Player>();
@@ -31,14 +32,15 @@ namespace ScallyWags
 
             var ragDollColliders = GetComponentsInChildren<CapsuleCollider>();
             var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
-            
+
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
             capsuleCollider.height = 1.756473f;
             capsuleCollider.radius = 0.3f;
-            capsuleCollider.center = new Vector3(0,0.8717635f,0);
+            capsuleCollider.center = new Vector3(0, 0.8717635f, 0);
 
             var ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
-            _ragdoll = new Ragdoll(ragDollColliders, ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider, _animator);
+            _ragdoll = new Ragdoll(ragDollColliders, ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider,
+                _animator);
             _ragdoll.DisableRagdoll(ragdollRigidBodies);
 
             _rigidbody = gameObject.AddComponent<Rigidbody>();
@@ -55,7 +57,7 @@ namespace ScallyWags
             Decide();
             Act();
         }
-        
+
         public void TakeDamage()
         {
             Die();
@@ -73,9 +75,24 @@ namespace ScallyWags
             return transform.position;
         }
 
+        public void Init(int index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Tick()
+        {
+            throw new NotImplementedException();
+        }
+
         public GameObject GetObject()
         {
             return gameObject;
+        }
+
+        public bool IsDead()
+        {
+            return _isDead;
         }
 
         private void UpdateAnimations()
@@ -105,10 +122,8 @@ namespace ScallyWags
         private void Die()
         {
             _isDead = true;
-             if (_navMeshAgent.isOnNavMesh)
-             {
-                 _navMeshAgent.ResetPath();
-             }
+            _navMeshAgent.enabled = false;
+            _sword.gameObject.SetActive(false);
         }
 
         private void GetTarget()
@@ -157,6 +172,7 @@ namespace ScallyWags
         private void HandleAttack()
         {
             if (_targetPlayer == null) return;
+
             _animator.SetTrigger("Sword");
         }
     }

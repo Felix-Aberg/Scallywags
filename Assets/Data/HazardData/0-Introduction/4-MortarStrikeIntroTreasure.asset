@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1df5830512614a4b88ab35bc19aaa42b, type: 3}
-  m_Name: CrabsHard
+  m_Name: 4-MortarStrikeIntroTreasure
   m_EditorClassIdentifier: 
-  EventName: SpawnEntity
-  Prefab: {fileID: 8845708071311245029, guid: 739399e2718dbd749883c0e3f9383acf, type: 3}
+  EventName: Intro3
+  Prefab: {fileID: 3720384497703973021, guid: 30ffde2300485ab4b84867f2e883a171, type: 3}
   Health: 0
-  Audio: {fileID: 0}
-  NumberOfHazards: 3
+  Audio: {fileID: 11400000, guid: e4dcde7a4c65c0140b509aa017681251, type: 2}
+  NumberOfHazards: 1

@@ -59,7 +59,7 @@ namespace ScallyWags
 
             if (!CanSpawnKraken()) return;
 
-            for(int i = 0; i <= message.HazardData.NumberOfHazards; i++)
+            for(int i = 0; i < message.HazardData.NumberOfHazards; i++)
             {
                 var t = _spawnPos[i].transform;
                 if (t == null) break;

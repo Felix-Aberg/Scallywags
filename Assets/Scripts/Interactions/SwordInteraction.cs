@@ -7,6 +7,7 @@ namespace ScallyWags
         private float _hitForce = 10f;
         public void Act()
         {
+            EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
             GetComponent<IDamageable>().TakeDamage(transform.position, _hitForce);
         }
     }

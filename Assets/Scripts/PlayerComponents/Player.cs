@@ -28,6 +28,7 @@ namespace ScallyWags
 
         // Monobehaviors
         private Rigidbody _rigidbody;
+        private BoxCollider _triggerCollider;
 
         public void Init(int index)
         {
@@ -55,12 +56,14 @@ namespace ScallyWags
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
 
             // Enable trigger collider
-            GetComponent<BoxCollider>().enabled = true;
+            _triggerCollider = GetComponent<BoxCollider>();
+            _triggerCollider.enabled = true;
             
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             _rigidbody.mass = 50;
+            _rigidbody.drag = 0.001f;
 
             _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup, _jump);
 
@@ -137,6 +140,7 @@ namespace ScallyWags
         {
             _isDead = false;
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
+            _triggerCollider.enabled = true;
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 73
   m_IsActive: 1
 --- !u!4 &11716321730170498
 Transform:
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252595273739247791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.13, z: 4.24}
+  m_LocalPosition: {x: 0, y: 2.27, z: 4.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 394553927052754497}
@@ -54,16 +54,17 @@ GameObject:
   - component: {fileID: 394553927052754497}
   - component: {fileID: 8656685993865888887}
   - component: {fileID: 3106977282769696910}
-  - component: {fileID: 8529538793408751354}
   - component: {fileID: 4853794303141854727}
   - component: {fileID: 1530166127}
   - component: {fileID: 6010708015978486075}
+  - component: {fileID: 6605103518766994493}
+  - component: {fileID: 2234247681264577724}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 73
   m_IsActive: 1
 --- !u!4 &394553927052754497
 Transform:
@@ -115,7 +116,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -128,19 +129,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8529538793408751354
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3684759697784573010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6001914, y: 2.7074115, z: 4.0827584}
-  m_Center: {x: 0, y: 1.3537062, z: 1.338066}
 --- !u!114 &4853794303141854727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +170,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outline: {fileID: 2100000, guid: bc3cf7a860b25be44bde604458f251b5, type: 2}
+--- !u!64 &6605103518766994493
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684759697784573010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4794089398904122074, guid: 870b90d790547f5459116d4cac28add3, type: 3}
+--- !u!64 &2234247681264577724
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684759697784573010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4794089398904122074, guid: 870b90d790547f5459116d4cac28add3, type: 3}
 --- !u!1001 &3802595435811277812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,14 +205,60 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394553927052754497}
     m_Modifications:
+    - target: {fileID: 729965448, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
+      objectReference: {fileID: 0}
     - target: {fileID: 729965451, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
       propertyPath: LightsModule.light
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 729965451, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.ratio
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 729965451, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.rangeCurve.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 729965451, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.maxLights
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457635811, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477150804, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477150807, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.ratio
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477150807, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 3903689058546227773, guid: e1a4a6f83af7ea84f853e77684e8b99a,
+        type: 3}
+    - target: {fileID: 1477150807, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: LightsModule.maxLights
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661594962, guid: b1dd467e0017f0648a13beee601ac194, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 313503345965464829, guid: b1dd467e0017f0648a13beee601ac194,
         type: 3}
       propertyPath: m_Name
       value: Cannon_Shot
+      objectReference: {fileID: 0}
+    - target: {fileID: 313503345965464829, guid: b1dd467e0017f0648a13beee601ac194,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 1088756823201219890, guid: b1dd467e0017f0648a13beee601ac194,
         type: 3}

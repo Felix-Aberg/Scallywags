@@ -40,8 +40,8 @@ namespace ScallyWags
             if (_enemyCondition)
             {
                 var dir = _enemyCondition.transform.position - _spawnPos.transform.position;
-                rot = Quaternion.LookRotation(dir.normalized, Vector3.up);
-                cannonBall.transform.rotation = rot;
+                rot = Quaternion.LookRotation(dir.normalized, cannonBall.transform.up);
+                cannonBall.transform.localRotation = rot;
             }
             
             cannonBall.GetComponent<Rigidbody>().AddForce(cannonBall.transform.forward * _cannonForce, ForceMode.Impulse);

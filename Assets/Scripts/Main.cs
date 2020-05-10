@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 
 namespace ScallyWags
 {
@@ -34,6 +37,9 @@ namespace ScallyWags
 
         void Awake()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
             _levelEventManager = gameObject.AddComponent<LevelEventManager>();
             
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
@@ -78,7 +84,7 @@ namespace ScallyWags
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Quit);
-                Application.Quit();
+                SceneManager.LoadSceneAsync("MainMenu");
             }
 
             if (_treasureManager.GoldValue <= 0)
@@ -92,6 +98,16 @@ namespace ScallyWags
         {
             yield return new WaitForSeconds(3f);
             SceneManager.LoadSceneAsync(scene);
+        }
+
+        private void OnDisable()
+        {
+            _treasureManager = null;
+            _roundTimer = null;
+            _mortarManager = null;
+            _krakenManager = null;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
