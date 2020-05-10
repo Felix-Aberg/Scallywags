@@ -37,8 +37,10 @@ namespace ScallyWags
 
         void Awake()
         {
+            #if !UNITY_EDITOR
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            #endif
             
             _levelEventManager = gameObject.AddComponent<LevelEventManager>();
             
