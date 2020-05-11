@@ -6,22 +6,46 @@ public class FilmStudioInterpolation : MonoBehaviour
 {
     public Vector3 startingLocation;
     public Vector3 endingLocation;
-    public float travelTime;
 
-    [SerializeField] private float distance;
-    [SerializeField] private float speed;
+    public Quaternion startingRotation;
+    public Quaternion endingRotation;
+
+    public float travelTime;
+    Vector3 pos;
+    Quaternion rot;
+
+    private float timeAccumulated = 0f;
+    private float looper = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        distance = Vector3.Distance(startingLocation, endingLocation);
-        speed = distance / travelTime;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        pos = transform.position;
+        rot = transform.rotation;
 
-        transform.position = Vector3.MoveTowards(startingLocation, endingLocation, speed);
+        timeAccumulated += Time.deltaTime;
+
+        looper = timeAccumulated / travelTime;
+        if (looper >= 1)
+        {
+            timeAccumulated -= travelTime;
+            looper -= 1;
+        }
+
+        pos.x = Mathf.Lerp(startingLocation.x, endingLocation.x, looper);
+        pos.y = Mathf.Lerp(startingLocation.y, endingLocation.y, looper);
+        pos.z = Mathf.Lerp(startingLocation.z, endingLocation.z, looper);
+
+        rot = Quaternion.Lerp(startingRotation, endingRotation, looper);
+
+        transform.position = pos;
+        transform.rotation = rot;
+        //this script kinda grew lmao
     }
 }
