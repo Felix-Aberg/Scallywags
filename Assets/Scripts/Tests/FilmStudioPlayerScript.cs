@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ScallyWags
 {
-    public class FilmStudioController : MonoBehaviour
+    public class FilmStudioPlayerScript : MonoBehaviour
     {
         public List<GameObject> _playerGameObjects;
 
