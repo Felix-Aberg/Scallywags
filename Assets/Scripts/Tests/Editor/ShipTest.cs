@@ -11,7 +11,7 @@ namespace Tests
     {
         // A Test behaves as an ordinary method
         [TestCase(1, 9)]
-        [TestCase(11, 0)]
+        [TestCase(11, -1)]
         [TestCase(5, 5)]
         [TestCase(0, 10)]
         public void ShipTakeDamage(int damage, int expected)
