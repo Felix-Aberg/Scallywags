@@ -19,17 +19,17 @@ namespace ScallyWags
         private Ragdoll _ragdoll;
         private Rigidbody _rigidbody;
         private CapsuleCollider _capsuleCollider;
+        private AudioSourcePoolManager _audioSourcePoolManager;
+        private string _enemyDamageEventName = "EnemyDamage";
 
-
-        public void Start()
+        public void Init(int index = 0)
         {
-            _players = FindObjectsOfType<Player>();
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _animator = GetComponent<Animator>();
-            _navMeshAgent.speed = _normalSpeed;
             _sword = GetComponentInChildren<EnemySword>();
-            _navMeshAgent.enabled = false;
-
+            _animator = GetComponent<Animator>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgent.speed = _normalSpeed;
+            _navMeshAgent.enabled = true;
+            
             var ragDollColliders = GetComponentsInChildren<CapsuleCollider>();
             var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
 
@@ -49,8 +49,15 @@ namespace ScallyWags
             _rigidbody.mass = 50;
         }
 
-        public void Update()
+        public void Tick()
         {
+            if (!_navMeshAgent.isOnNavMesh)
+            {
+                if( NavMesh.SamplePosition(transform.position, out var closestHit, 50, 1 )){
+                    transform.position = closestHit.position;
+                }
+            }
+            
             if (_isDead) return;
             UpdateAnimations();
             Sense();
@@ -73,16 +80,6 @@ namespace ScallyWags
         public Vector3 GetPos()
         {
             return transform.position;
-        }
-
-        public void Init(int index = 0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Tick()
-        {
-            throw new NotImplementedException();
         }
 
         public GameObject GetObject()
@@ -124,6 +121,7 @@ namespace ScallyWags
             _isDead = true;
             _navMeshAgent.enabled = false;
             _sword.gameObject.SetActive(false);
+            EventManager.TriggerEvent(_enemyDamageEventName, null);
         }
 
         private void GetTarget()
@@ -174,6 +172,11 @@ namespace ScallyWags
             if (_targetPlayer == null) return;
 
             _animator.SetTrigger("Sword");
+        }
+
+        public void SetPlayers(Player[] players)
+        {
+            _players = players;
         }
     }
 }

@@ -14,6 +14,9 @@ namespace ScallyWags
         [SerializeField] private List<HazardData> _introduction = new List<HazardData>();
         [SerializeField] private HazardRating _currentHazardRating;
 
+        [Header("Used to spawn ship at the start of the game")]
+        [SerializeField] private HazardData _enemyShip;
+
         private ShipCondition _playerShip;
 
         private int _hazardsUnlocked = 1;
@@ -57,11 +60,13 @@ namespace ScallyWags
             {
                 Debug.LogError("Missing hazards from lists");
             }
+            
+            EventManager.TriggerEvent("SpawnEnemyShip", new EventManager.EventMessage(_enemyShip));
         }
 
         public void Tick()
         {
-            if (_playerShip.GetHealth() <= 0)
+            if (_playerShip.IsSinking())
             {
                 _IsPaused = true;
             }

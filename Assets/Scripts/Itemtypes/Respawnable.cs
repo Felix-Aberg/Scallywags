@@ -12,7 +12,9 @@ namespace ScallyWags
         private float _respawnLimit = -50f;
         private Rigidbody _rb;
         private LevelEventManager _levelEventManager;
-    
+        private float _respawnTimer;
+        private float _respawnDelay = 5f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -42,11 +44,22 @@ namespace ScallyWags
             if (player)
             {
                 player.Respawn();
+                _respawnTimer = 0;
             }
             transform.position = _startPos;
             transform.rotation = _startRot;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
+        }
+
+        public void Tick()
+        {
+            _respawnTimer += Time.deltaTime;
+
+            if (_respawnTimer > _respawnDelay)
+            {
+                Respawn();
+            }
         }
     }
 }

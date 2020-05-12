@@ -18,7 +18,8 @@ public class EnemyCannon : MonoBehaviour
         private ShipCondition _shipCondition;
         private List<IDamageable> _destroyable = new List<IDamageable>();
         private float angle = 15;
-        
+        private bool _shooting;
+
 
         private void Start()
         {
@@ -52,6 +53,7 @@ public class EnemyCannon : MonoBehaviour
             
             _audioPool.PlayAudioEvent(_event, transform.position);
         }
+    
 
         private void Fire()
         {
@@ -65,7 +67,11 @@ public class EnemyCannon : MonoBehaviour
                 var target = _destroyable[index].GetPos();
 
                 Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
-                rb.velocity = BallisticVel(target, angle);
+                var vel = BallisticVel(target, angle);
+                if (vel.sqrMagnitude > 0)
+                {
+                    rb.velocity = vel;
+                }
             }
             else
             {

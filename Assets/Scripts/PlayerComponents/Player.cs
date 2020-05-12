@@ -25,16 +25,16 @@ namespace ScallyWags
         private Ragdoll _ragdoll;
         private Vector3 _hitPos;
         private Rigidbody[] _ragdollRigidBodies;
-
+        
         // Monobehaviors
         private Rigidbody _rigidbody;
         private BoxCollider _triggerCollider;
+        private Respawnable _respawnable;
+        private Drown _drown;
 
         public void Init(int index)
         {
             _index = index;
-
-
             _pickup = new Pickup();
             _interact = new Interact();
             _jump = new Jump();
@@ -63,19 +63,28 @@ namespace ScallyWags
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             _rigidbody.mass = 50;
-            _rigidbody.drag = 0.001f;
+            _rigidbody.drag = 0f;
 
             _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup, _jump);
 
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
             _jump.Init(transform);
+
+            _respawnable = GetComponent<Respawnable>();
+            _drown = GetComponent<Drown>();
         }
 
         public void Tick()
         {
-            if (_isDead) return;
-            
+            if (_isDead)
+            {
+                _respawnable.Tick();
+                return;
+            }
+
+            _drown.Tick();
+
             // Get inputs
             Inputs inputs = new Inputs();
             inputs = _inputHandler.GetInputs(_index);

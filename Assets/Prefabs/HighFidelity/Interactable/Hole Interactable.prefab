@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scalesWithRepair: 0
-  _takesDamageOverTime: 1
+  _audioEvent: {fileID: 11400000, guid: 6d003a3c49eac304fab42280bb112608, type: 2}
 --- !u!114 &8253712028182763050
 MonoBehaviour:
   m_ObjectHideFlags: 0

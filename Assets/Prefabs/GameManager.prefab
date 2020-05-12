@@ -54,7 +54,6 @@ MonoBehaviour:
     _krakens:
     - {fileID: 0}
     - {fileID: 0}
-  _levelEventManager: {fileID: 0}
 --- !u!114 &1124632563287614118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +87,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 117a046756fb2ba4585382179c4175f4, type: 2}
   - {fileID: 11400000, guid: 973108f18dbf6a942bdcd49a20a10421, type: 2}
   _currentHazardRating: 0
+  _enemyShip: {fileID: 11400000, guid: c318d5df0be673f45bf8ece9dc512ca5, type: 2}
   _hazardInterval: 10
 --- !u!114 &466275443
 MonoBehaviour:

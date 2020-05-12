@@ -19,7 +19,7 @@ public class ShootEverySecond : MonoBehaviour
 
     void Update()
     {
-        if (_ship.GetHealth() < 0)
+        if (_ship.IsSinking())
         {
             return;
         }

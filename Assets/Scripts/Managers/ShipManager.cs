@@ -20,7 +20,10 @@ namespace ScallyWags
         {
             foreach (var ship in ships)
             {
-                ship.Tick();
+                if (ship.gameObject.activeInHierarchy)
+                {
+                    ship.Tick();
+                }
             }
         }
 
@@ -38,41 +41,38 @@ namespace ScallyWags
 
         private void OnEnable()
         {
-            EventManager.StartListening("EnemyShip", CreateShip);
+            EventManager.StartListening("SpawnEnemyShip", CreateShip);
+            EventManager.StartListening("EnemyShip", EnableShip);
         }
         
         private void OnDisable()
         {
-            EventManager.StopListening("EnemyShip", CreateShip);
+            EventManager.StopListening("SpawnEnemyShip", CreateShip);
+            EventManager.StopListening("EnemyShip", EnableShip);
         }
         private void CreateShip(EventManager.EventMessage message)
         {
             CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
         }
 
+        private void EnableShip(EventManager.EventMessage message)
+        {
+            var shipCondition = GetShip(ShipType.Enemy);
+            if (shipCondition.gameObject.activeInHierarchy) return;
+            shipCondition.Init(ShipType.Enemy, this, message.HazardData.Health);
+            shipCondition.gameObject.SetActive(true);
+        }
+
         private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
         {
-            foreach (var s in ships)
-            {
-                if (s.ShipType == shipType)
-                {
-                    return;
-                }
-            }
+            var shipCondition = GetShip(shipType);
+            if (shipCondition != null) return;
             
             var go = GameObject.Instantiate(prefab, _spawnPos.position, Quaternion.identity);
             go.transform.rotation = Quaternion.Euler(0, 180, 0);
             var ship = go.GetComponent<ShipCondition>();
-            ship.Init(shipType, this, health);
             ships.Add(ship);
-        }
-
-        public void RemoveShip(ShipCondition shipCondition)
-        {
-            if (ships.Contains(shipCondition))
-            {
-                ships.Remove(shipCondition);
-            }
+            ship.gameObject.SetActive(false);
         }
     }
 }

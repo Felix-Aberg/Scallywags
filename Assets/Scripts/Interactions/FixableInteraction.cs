@@ -23,6 +23,11 @@ namespace ScallyWags
         [Header("Fire")] 
         [SerializeField] bool scalesWithRepair;
 
+
+        [Header("Audio")]
+        [SerializeField] private SimpleAudioEvent _audioEvent;
+        private AudioSource _audioSource;
+
         void Start()
         {
             _shipCondition = GetComponentInParent<ShipCondition>();
@@ -32,6 +37,8 @@ namespace ScallyWags
             _bar = go.GetComponent<FixProgressBar>();
             _bar.Init(0, _fixingTime, transform.position);
             _bar.gameObject.SetActive(false);
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.outputAudioMixerGroup = _audioEvent.MixerGroup;
         }
 
         void Update()
@@ -49,6 +56,11 @@ namespace ScallyWags
 
         public void Act()
         {
+            if (!_audioSource.isPlaying)
+            {
+                _audioEvent?.Play(_audioSource);
+            }
+            
             _interactParticles.Play();
 
             ScaleWhenRepaired();

@@ -65,7 +65,6 @@ namespace ScallyWags
                         var hole = Instantiate(holePrefab, pos, rotation);
                         hole.transform.SetParent(hit.transform);
                         hole.transform.localRotation = Quaternion.identity;
-                        ship?.TakeDamage();
                     }
                     if (causesFire)
                     {
@@ -73,6 +72,7 @@ namespace ScallyWags
                         fire.transform.SetParent(hit.transform);
                         fire.transform.localRotation = Quaternion.identity;
                     }
+                    ship?.TakeDamage();
                 }
             }
             

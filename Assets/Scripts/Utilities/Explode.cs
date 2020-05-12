@@ -14,6 +14,7 @@ namespace ScallyWags
         public SimpleAudioEvent _audio;
         private AudioSourcePoolManager _audioPool;
         private float _hitForce = 20f;
+        [SerializeField] private GameObject splashEffect;
 
         private void Start()
         {

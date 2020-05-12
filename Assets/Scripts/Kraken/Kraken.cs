@@ -18,6 +18,8 @@ public class Kraken : MonoBehaviour, IDamageable
     private float y;
     private KrakenAttack _krakenAttack;
     private KrakenManager _krakenManager;
+    private string _krakenAttackEventName = "KrakenAttacks";
+
     public void Init(KrakenManager krakenManager)
     {
         _krakenManager = krakenManager;
@@ -40,7 +42,7 @@ public class Kraken : MonoBehaviour, IDamageable
 
     public void Tick()
     {
-        if (_playerShip.GetHealth() < 0)
+        if (_playerShip.IsSinking())
         {
             _health = 0;
         }
@@ -95,7 +97,6 @@ public class Kraken : MonoBehaviour, IDamageable
     {
         _anim.SetTrigger("Damage");
         _health -= 1;
-        Debug.Log("Kraken Damage");
     }
 
     public void TakeDamage(Vector3 hitDir, float hitForce)

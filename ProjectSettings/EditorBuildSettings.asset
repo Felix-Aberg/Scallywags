@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 629b11bcfafa7c646848dadda4cf4003
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: bd716bdb69cea154ca014c76b71fe1fd
+  - enabled: 1
     path: Assets/Scenes/JariTestingHighFidelity.unity
     guid: 11c8f305dd1cfbf45a029a3420c06592
   - enabled: 1

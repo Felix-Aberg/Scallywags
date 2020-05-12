@@ -19,7 +19,7 @@ namespace ScallyWags
     
         public void Tick(ShipCondition ship)
         {
-            if (ship.GetHealth() <= 0) return;
+            if (ship.IsSinking()) return;
             
             _time -= Time.deltaTime;
             _roundTimeUI.Value = (float)_time;

@@ -10,6 +10,7 @@ public class KrakenAttack : MonoBehaviour
     private bool _dealtDamageToShip;
     private bool _dealtDamageToShipPart;
     private float _hitForce = 100f;
+    private string _eventName = "KrakenSlams";
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class KrakenAttack : MonoBehaviour
 
             if (destroyable != null)
             {
+                EventManager.TriggerEvent(_eventName, null);
                 destroyable.TakeDamage(transform.position, _hitForce);
                 if (destroyable as Player == null)
                 {
@@ -47,6 +49,7 @@ public class KrakenAttack : MonoBehaviour
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();
             if (ship != null)
             {
+                EventManager.TriggerEvent(_eventName, null);
                 ship.TakeDamage(3);
                 _dealtDamageToShip = true;
             }

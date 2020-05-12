@@ -33,7 +33,7 @@ namespace ScallyWags
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
-        public LevelEventManager _levelEventManager;
+        private LevelEventManager _levelEventManager;
 
         void Awake()
         {

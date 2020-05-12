@@ -27,7 +27,8 @@ namespace ScallyWags
         void Update()
         {
             if (_playerShip.GetHealth() == _shipHealth) return;
-            
+
+            _shipHealth = _playerShip.GetHealth();
             _navMeshLink.endPoint = new Vector3(_navMeshLink.endPoint.x, _playerShip.transform.position.y, _navMeshLink.endPoint.z);
         }
     }

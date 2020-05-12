@@ -92,7 +92,9 @@ namespace ScallyWags
     {
         if (Instance.events.TryGetValue(eventName, out var thisEvent))
         {
-             Debug.Log("Event triggered:" + eventName);
+            #if UNITY_EDITOR
+            Debug.Log("Event triggered:" + eventName);
+            #endif
             thisEvent.Invoke(eventMessage);
         }
     }

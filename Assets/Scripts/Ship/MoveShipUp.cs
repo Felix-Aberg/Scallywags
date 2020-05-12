@@ -23,12 +23,7 @@ namespace ScallyWags
 
         private void EnableAgents()
         {
-            var skeletons = GetComponentsInChildren<Skeleton>();
-
-            foreach (var skeleton in skeletons)
-            {
-                skeleton.GetComponent<NavMeshAgent>().enabled = true;
-            }
+            GetComponent<ShipCondition>().SpawnSkeletons();
         }
     }
 }
