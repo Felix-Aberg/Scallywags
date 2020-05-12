@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90db3620cac3094eaa7f4ed95bfc68b, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  MixerGroup: {fileID: 8876446087188848737, guid: e15608a8afa6f46469c924d1fda3f8cd,
+    type: 2}
+  clips:
+  - {fileID: 8300000, guid: f971756c117d3d0438a950bfa41367f7, type: 3}
+  - {fileID: 8300000, guid: e7389566098cfa34d99b143b1613e4b4, type: 3}
+  - {fileID: 8300000, guid: f9c33448a81d39f4aa127ed892bec897, type: 3}
+  - {fileID: 8300000, guid: 7561c87fdeeeae043ac0682617a649ba, type: 3}
+  - {fileID: 8300000, guid: c786434472bb279429308a15b30200f0, type: 3}
+  - {fileID: 8300000, guid: bb6d29ac5e8e5ba4186c6e3272ed53cf, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 1
+  maxPitch: 1

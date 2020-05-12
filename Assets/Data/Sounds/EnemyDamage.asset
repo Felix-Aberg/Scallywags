@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a90db3620cac3094eaa7f4ed95bfc68b, type: 3}
-  m_Name: CannonBallHit
+  m_Name: EnemyDamage
   m_EditorClassIdentifier: 
   MixerGroup: {fileID: 6508299029398506154, guid: e15608a8afa6f46469c924d1fda3f8cd,
     type: 2}
   clips:
-  - {fileID: 8300000, guid: d9990bc09cbdc7a419b873c64034513d, type: 3}
-  - {fileID: 8300000, guid: 00a47c64a2fce80469a7c8f27c632f00, type: 3}
-  - {fileID: 8300000, guid: e6b4bee84acd69d4d978d6614ed6359e, type: 3}
-  - {fileID: 8300000, guid: 0a5823f53b082f34cb1c40e46cd2160e, type: 3}
-  - {fileID: 8300000, guid: 5eaaccaf73a58264c898c5ea80870cad, type: 3}
-  minVolume: 1
+  - {fileID: 8300000, guid: 7228c4fd70d76374dab787fc420f4611, type: 3}
+  - {fileID: 8300000, guid: 3c1f2cf66716de640b42957511ca7262, type: 3}
+  - {fileID: 8300000, guid: 26aea01f717ce4145a6bace62cd0528e, type: 3}
+  minVolume: 0.95
   maxVolume: 1
   minPitch: 0.95
   maxPitch: 1.05

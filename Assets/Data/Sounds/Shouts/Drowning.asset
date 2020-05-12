@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a90db3620cac3094eaa7f4ed95bfc68b, type: 3}
-  m_Name: CannonFire
+  m_Name: Drowning
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 6508299029398506154, guid: e15608a8afa6f46469c924d1fda3f8cd,
+  MixerGroup: {fileID: 8876446087188848737, guid: e15608a8afa6f46469c924d1fda3f8cd,
     type: 2}
   clips:
-  - {fileID: 8300000, guid: abbf5167f84e1da4381a06e1cdecfbee, type: 3}
-  minVolume: 0.3
-  maxVolume: 0.3
-  minPitch: 0.95
-  maxPitch: 1.05
+  - {fileID: 8300000, guid: d73bd336e3569e3448b0ba0ef3c14871, type: 3}
+  - {fileID: 8300000, guid: 17fa19de9de7e41458288c9f1739ab9d, type: 3}
+  - {fileID: 8300000, guid: 12a51d71f8fd631479f2f76aeafdf657, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 1
+  maxPitch: 1
