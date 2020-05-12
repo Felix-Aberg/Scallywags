@@ -537,6 +537,7 @@ MonoBehaviour:
   animator: {fileID: 113576299}
   animatorFunctions: {fileID: 113576301}
   thisIndex: 1
+  scene: CreditScene
 --- !u!114 &113576301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,6 +2668,7 @@ MonoBehaviour:
   animator: {fileID: 623839512}
   animatorFunctions: {fileID: 623839510}
   thisIndex: 0
+  scene: JariTestingHighFidelity
 --- !u!95 &623839512
 Animator:
   serializedVersion: 3
@@ -2879,6 +2881,7 @@ MonoBehaviour:
   animator: {fileID: 628696929}
   animatorFunctions: {fileID: 628696931}
   thisIndex: 2
+  scene: 
 --- !u!114 &628696931
 MonoBehaviour:
   m_ObjectHideFlags: 0
