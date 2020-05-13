@@ -600,8 +600,8 @@ Transform:
   - {fileID: 3913020447581220171}
   - {fileID: 7557597493722975076}
   - {fileID: 6594886101310081965}
-  - {fileID: 7842869029028205120}
-  - {fileID: 7842869028957091555}
+  - {fileID: 1227834265}
+  - {fileID: 1290446650}
   - {fileID: 576274862852884428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5325720907911857403
 Transform:
   m_ObjectHideFlags: 0
@@ -957,7 +957,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -1568,7 +1568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8576386719084480704
 Transform:
   m_ObjectHideFlags: 0
@@ -1634,7 +1634,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -1780,7 +1780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4552679416861411043
 Transform:
   m_ObjectHideFlags: 0
@@ -1846,7 +1846,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -2385,7 +2385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2477397311089217159
 Transform:
   m_ObjectHideFlags: 0
@@ -2451,7 +2451,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -2777,7 +2777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1b80da204a354d9027bf631c975aa, type: 3}
---- !u!4 &7842869029028205120 stripped
+--- !u!4 &1227834265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842869029949461249, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}
@@ -2857,7 +2857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1b80da204a354d9027bf631c975aa, type: 3}
---- !u!4 &7842869028957091555 stripped
+--- !u!4 &1290446650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842869029949461249, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}
