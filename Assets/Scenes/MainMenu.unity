@@ -2668,7 +2668,7 @@ MonoBehaviour:
   animator: {fileID: 623839512}
   animatorFunctions: {fileID: 623839510}
   thisIndex: 0
-  scene: JariTestingHighFidelity
+  scene: Loading
 --- !u!95 &623839512
 Animator:
   serializedVersion: 3
