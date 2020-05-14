@@ -73,6 +73,7 @@ namespace ScallyWags
 
         public void TakeDamage(int damage = 1)
         {
+            if (IsSinking()) return;
             _shipHealth.TakeDamage(damage);
 
             var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage;
