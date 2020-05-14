@@ -1,8 +1,8 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
 
+/*
 namespace ScallyWags
 {
     public class FogManager : MonoBehaviour
@@ -54,3 +54,4 @@ namespace ScallyWags
         }
     }
 }
+*/
