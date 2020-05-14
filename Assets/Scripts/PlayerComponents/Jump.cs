@@ -10,10 +10,10 @@ namespace ScallyWags
     [System.Serializable]
     public class Jump
     {
-        [SerializeField] public float _jumpForce = 11f;
+        [SerializeField] public float _jumpForce = 12f;
         [SerializeField] public float _jumpBoost = 20f;
         [SerializeField] public float _gravityModifier = 40f;
-        [SerializeField] public float _jumpingGravityModifier = 32f;
+        [SerializeField] public float _jumpingGravityModifier = 36f;
         JumpCollission _jumpCollission;
         public void Init(Transform transform)
         {
