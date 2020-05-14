@@ -29,6 +29,7 @@ namespace ScallyWags
             inputs.pickUpReleased = GetPickupUp(index);
             inputs.interActPressed = GetInteractDown(index);
             inputs.jumpPressed = GetJumpDown(index);
+            inputs.jumpDown = GetJump(index);
 
             return inputs;
         }
@@ -61,6 +62,11 @@ namespace ScallyWags
         private bool GetInteractDown(int index)
         {
             return Input.GetButtonDown(interact + index);
+        }
+
+        private bool GetJump(int index)
+        {
+            return Input.GetButton(jump + index);
         }
 
         private bool GetJumpDown(int index)

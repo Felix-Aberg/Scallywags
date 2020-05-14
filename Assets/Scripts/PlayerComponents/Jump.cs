@@ -10,22 +10,41 @@ namespace ScallyWags
     [System.Serializable]
     public class Jump
     {
-        [SerializeField] float _jumpForce = 7.2f;
-        [SerializeField] private float _gravityModifier = 1.5f;
+        [SerializeField] public float _jumpForce = 11f;
+        [SerializeField] public float _jumpBoost = 20f;
+        [SerializeField] public float _gravityModifier = 40f;
+        [SerializeField] public float _jumpingGravityModifier = 32f;
         JumpCollission _jumpCollission;
         public void Init(Transform transform)
         {
             _jumpCollission = transform.GetComponentInChildren<JumpCollission>();
         }
 
-        public void Tick(Transform transform, Rigidbody rigidBody, bool jumpPressed)
+        public void Tick(Transform transform, Rigidbody rigidBody, bool jumpPressed, bool jumpHeld)
         {
             _jumpCollission.Tick();
             // Initiate jump
             if (jumpPressed && CheckIfGrounded(transform))
             {
-                InitiateJump(rigidBody);
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x, _jumpForce, rigidBody.velocity.z);
             }
+
+            if (rigidBody.velocity.y < 0)
+            {
+                //Apply falling gravity
+                rigidBody.AddForce(0f, -_gravityModifier * Time.deltaTime, 0f, ForceMode.VelocityChange);
+            }
+            else if (rigidBody.velocity.y > 0)
+            {
+                rigidBody.AddForce(0f, -_jumpingGravityModifier * Time.deltaTime, 0f, ForceMode.VelocityChange);
+            }
+
+            if (jumpHeld && rigidBody.velocity.y > 0)
+            {
+                //Boost jump if holding 
+                rigidBody.AddForce(0f, _jumpBoost * Time.deltaTime, 0f, ForceMode.VelocityChange);
+            }
+            
         }
 
         public bool IsGrounded()
@@ -41,25 +60,9 @@ namespace ScallyWags
             
             if (grounded)
             {
-              //  Debug.Log("Player IS grounded!");
                 return true; // Todo
             }
-          //  Debug.Log("Player ISN'T grounded!");
-            return false; // Todo
-        }
-
-        
-        public void InitiateJump(Rigidbody playerRigidBody)
-        {
-           // Debug.Log("Jump!");
-            playerRigidBody.AddForce(0, _jumpForce, 0);
-
-            Vector3 movement = playerRigidBody.velocity;
-            movement.x = playerRigidBody.velocity.x;
-            movement.z = playerRigidBody.velocity.z;
-            movement.y = _jumpForce;
-
-            playerRigidBody.velocity = movement;
+        return false; // Todo
         }
     }
 }
