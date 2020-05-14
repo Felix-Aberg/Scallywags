@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,20 +7,20 @@ namespace ScallyWags
 {
     public class NavMeshManager : MonoBehaviour
     {
-        private NavMeshSurface _navMeshurface;
+        private NavMeshSurface _navMeshSurface;
         private float y;
         private ShipCondition _ship;
 
         public void Init(ShipCondition ship)
         {
             _ship = ship;
-            _navMeshurface = FindObjectOfType<NavMeshSurface>();
-            _navMeshurface.BuildNavMesh();
+            _navMeshSurface = FindObjectOfType<NavMeshSurface>();
+            _navMeshSurface.BuildNavMesh();
         }
         
         public void UpdateMesh()
         {
-            _navMeshurface.BuildNavMesh();
+            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
     }
 }

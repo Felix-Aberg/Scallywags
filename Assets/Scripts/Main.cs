@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Scripting;
 
@@ -37,6 +38,8 @@ namespace ScallyWags
 
         void Awake()
         {
+            GraphicsSettings.useScriptableRenderPipelineBatching = true;
+            
             #if !UNITY_EDITOR
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

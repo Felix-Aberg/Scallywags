@@ -68,6 +68,7 @@ namespace ScallyWags
             var y = transform.position.y + damage;
             y = Mathf.Min(y, _startingDepth);
             transform.DOMoveY(y, 1).OnComplete(_navMeshManager.UpdateMesh);
+            _navMeshManager.UpdateMesh();
         }
 
         public void TakeDamage(int damage = 1)
@@ -75,8 +76,11 @@ namespace ScallyWags
             _shipHealth.TakeDamage(damage);
 
             var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage;
-            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1).OnComplete(_navMeshManager.UpdateMesh);
+            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1);
+            _navMeshManager.UpdateMesh();
         }
+        
+
         public int GetHealth()
         {
             return _shipHealth.GetHealth();

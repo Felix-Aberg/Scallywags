@@ -35,6 +35,9 @@ namespace ScallyWags
         public void Init(int index)
         {
             _index = index;
+            var model = transform.GetChild(index);
+            model.gameObject.SetActive(true);
+            
             _pickup = new Pickup();
             _interact = new Interact();
             _jump = new Jump();
@@ -52,7 +55,7 @@ namespace ScallyWags
             capsuleCollider.center = new Vector3(0,1,0);
             
             _ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
-            _ragdoll = new Ragdoll(rigidBodyColliders, _ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider, GetComponent<Animator>());
+            _ragdoll = new Ragdoll(rigidBodyColliders, _ragdollRigidBodies, rigidbodyBoxcolliders, capsuleCollider, GetComponentInChildren<Animator>());
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
 
             // Enable trigger collider
@@ -65,7 +68,7 @@ namespace ScallyWags
             _rigidbody.mass = 50;
             _rigidbody.drag = 0f;
 
-            _animationController = new AnimationController(GetComponent<Animator>(), _rigidbody, _pickup, _jump);
+            _animationController = new AnimationController(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump);
 
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
