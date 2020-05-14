@@ -14,10 +14,12 @@ namespace ScallyWags
         public SimpleAudioEvent _audio;
         private AudioSourcePoolManager _audioPool;
         private float _hitForce = 10f;
+        private PositionDecal _decal;
 
         private void Start()
         {
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
+            _decal = GetComponent<PositionDecal>();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -47,7 +49,7 @@ namespace ScallyWags
 
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();
 
-            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f))
             {
                 if (hit.collider.gameObject.GetComponent<InteractableItem>())
                 {
@@ -66,16 +68,19 @@ namespace ScallyWags
                         hole.transform.SetParent(hit.transform);
                         hole.transform.localRotation = Quaternion.identity;
                     }
+
                     if (causesFire)
                     {
                         var fire = Instantiate(firePrefab, pos, Quaternion.identity);
                         fire.transform.SetParent(hit.transform);
                         fire.transform.localRotation = Quaternion.identity;
                     }
+
                     ship?.TakeDamage();
                 }
             }
             
+            Destroy(_decal);
             Destroy(gameObject);
         }
     }

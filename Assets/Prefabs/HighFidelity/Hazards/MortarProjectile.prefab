@@ -157,8 +157,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3412818084094216154}
+  - component: {fileID: 3246912391821956384}
+  - component: {fileID: 5724631572249280787}
   m_Layer: 15
-  m_Name: GameObject
+  m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,9 +174,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8620662568346200755}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3720384497703972993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &3246912391821956384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8620662568346200755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17c62f10f5ac204eb59affb351abf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DecalData: {fileID: 11400000, guid: 5dfbf71c710602540bd678ad01afdee5, type: 2}
+--- !u!114 &5724631572249280787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8620662568346200755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ded3702400eb04090d39eb61856b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
