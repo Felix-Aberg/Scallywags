@@ -80,7 +80,7 @@ namespace ScallyWags
                 }
             }
             
-            Destroy(_decal);
+            Destroy(_decal.gameObject);
             Destroy(gameObject);
         }
     }
