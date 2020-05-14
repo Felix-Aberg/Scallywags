@@ -10,7 +10,11 @@ public class FilmStudioInterpolation : MonoBehaviour
     public Quaternion startingRotation;
     public Quaternion endingRotation;
 
+    public float startingFov;
+    public float endingFov;
+
     public float travelTime;
+    public bool looping;
     Vector3 pos;
     Quaternion rot;
 
@@ -32,7 +36,7 @@ public class FilmStudioInterpolation : MonoBehaviour
         timeAccumulated += Time.deltaTime;
 
         looper = timeAccumulated / travelTime;
-        if (looper >= 1)
+        if (looper >= 1 && looping)
         {
             timeAccumulated -= travelTime;
             looper -= 1;
@@ -43,6 +47,8 @@ public class FilmStudioInterpolation : MonoBehaviour
         pos.z = Mathf.Lerp(startingLocation.z, endingLocation.z, looper);
 
         rot = Quaternion.Lerp(startingRotation, endingRotation, looper);
+
+        gameObject.GetComponent<Camera>().fieldOfView = Mathf.Lerp(startingFov, endingFov, looper);
 
         transform.position = pos;
         transform.rotation = rot;
