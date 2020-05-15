@@ -7,7 +7,7 @@ namespace ScallyWags
     /// </summary>
     public class PlayerController
     {
-        [SerializeField] private float _speed = 6f;
+        [SerializeField] private float _speed = 7f;
         [SerializeField] private float _turnSpeed = 20f;
         [SerializeField] private float _deadZone = 0.4f;
         private Vector3 _lastDir = new Vector3();
