@@ -37,6 +37,7 @@ namespace ScallyWags
             }
 
             _animator.SetBool("Grounded", _jump.IsGrounded());
+            _animator.SetFloat("JumpSpeed", _rigidBody.velocity.y);
         }
 
         public void Throw()

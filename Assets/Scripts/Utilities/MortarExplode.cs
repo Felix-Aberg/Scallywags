@@ -19,7 +19,7 @@ namespace ScallyWags
         private void Start()
         {
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
-            _decal = GetComponent<PositionDecal>();
+            _decal = GetComponentInChildren<PositionDecal>();
         }
 
         private void OnCollisionEnter(Collision other)
