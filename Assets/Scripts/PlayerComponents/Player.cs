@@ -96,7 +96,7 @@ namespace ScallyWags
             _playerController.Tick(transform, inputs.horizontal, inputs.vertical);
             _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
-            _jump.Tick(transform, _rigidbody, inputs.jumpPressed);
+            _jump.Tick(transform, _rigidbody, inputs.jumpPressed, inputs.jumpDown);
 
             _animationController.Tick();
         }
