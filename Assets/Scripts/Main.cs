@@ -16,7 +16,9 @@ namespace ScallyWags
         // UI
         [SerializeField] private IntVariable goldCounterUI;
         [SerializeField] private FloatVariable roundTimeUI;
-        
+        public Animator transition;
+        public float transitionTime = 1.3f;
+
         // Prefabs
         public GameObject playerPrefab;
 
@@ -102,6 +104,8 @@ namespace ScallyWags
         private IEnumerator LoadScene(string scene)
         {
             yield return new WaitForSeconds(3f);
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(transitionTime);
             SceneManager.LoadSceneAsync(scene);
         }
 
