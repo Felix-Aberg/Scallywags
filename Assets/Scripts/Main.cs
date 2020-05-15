@@ -21,6 +21,10 @@ namespace ScallyWags
         [SerializeField] private PlayersSelected _players;
 
         // Prefabs
+        public Animator transition;
+        public float transitionTime = 1.3f;
+
+        // Prefabs
         public GameObject playerPrefab;
 
         private EntityManager _entityManager;
@@ -111,6 +115,8 @@ namespace ScallyWags
         private IEnumerator LoadScene(string scene)
         {
             yield return new WaitForSeconds(3f);
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(transitionTime);
             SceneManager.LoadSceneAsync(scene);
         }
 
