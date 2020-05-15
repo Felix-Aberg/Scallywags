@@ -286,7 +286,7 @@ Transform:
   - {fileID: 1504169188}
   - {fileID: 1189154801}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135274363
 GameObject:
@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &282660338
 PrefabInstance:
@@ -522,7 +522,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313761475}
-  - component: {fileID: 313761474}
   m_Layer: 0
   m_Name: StaticLightingSky
   m_TagString: Untagged
@@ -530,18 +529,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &313761474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313761473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &313761475
 Transform:
   m_ObjectHideFlags: 1
@@ -4853,7 +4840,7 @@ PrefabInstance:
     - target: {fileID: 653432063982976651, guid: 3d5b03c9e96ac8a488d84919589fc9e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 653432063982976651, guid: 3d5b03c9e96ac8a488d84919589fc9e4,
         type: 3}
@@ -5124,7 +5111,7 @@ PrefabInstance:
     - target: {fileID: 5117594472780965298, guid: 580363807ab97c94e96aef36f2d86429,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5117594472780965298, guid: 580363807ab97c94e96aef36f2d86429,
         type: 3}
