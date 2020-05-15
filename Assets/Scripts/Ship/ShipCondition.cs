@@ -34,7 +34,8 @@ namespace ScallyWags
             transform.position = new Vector3(pos.x, 0, pos.z);
 
             _startingDepth = 0;
-            _navMeshManager = FindObjectOfType<NavMeshManager>();
+            _navMeshManager = gameObject.AddComponent<NavMeshManager>();
+            _navMeshManager.Init(this);
 
             if(_shipType == ShipType.Enemy) {
                 _skeletonManager = new SkeletonManager(_skeleton, FindObjectsOfType<Player>(), _shipManager);

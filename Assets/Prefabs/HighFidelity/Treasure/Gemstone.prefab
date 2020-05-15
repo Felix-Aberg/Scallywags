@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1057648325716350667}
   - component: {fileID: 3047853060915882970}
   - component: {fileID: 6552186288488606860}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Gemstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

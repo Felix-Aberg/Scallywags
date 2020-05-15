@@ -77,7 +77,12 @@ namespace ScallyWags
                 if (item.gameObject.activeInHierarchy == false) continue;
                 var entity = item.gameObject.GetComponent<IEntity>();
                 
-                if (entity.GetObject() != null && entity.IsDead())
+                if (entity.GetObject() != null)
+                {
+                    continue;
+                }
+
+                if (entity.IsDead())
                 {
                     continue;
                 }

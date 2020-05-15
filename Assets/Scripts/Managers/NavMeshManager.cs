@@ -14,13 +14,15 @@ namespace ScallyWags
         public void Init(ShipCondition ship)
         {
             _ship = ship;
-            _navMeshSurface = FindObjectOfType<NavMeshSurface>();
-            _navMeshSurface.BuildNavMesh();
+            _navMeshSurface = GetComponent<NavMeshSurface>();
         }
         
         public void UpdateMesh()
         {
-            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+            var data = _navMeshSurface.navMeshData;
+            var y = _ship.transform.position.y;
+            data.position = new Vector3(data.position.x, y, data.position.z);
+            _navMeshSurface.UpdateNavMesh(data);
         }
     }
 }
