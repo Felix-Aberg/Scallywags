@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldCounterUI: {fileID: 11400000, guid: f189f9f1b04cbe24c9b237fe13f1a269, type: 2}
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
+  _players: {fileID: 11400000, guid: 3d0b192d3e3031e49ad8963ccfefe626, type: 2}
   playerPrefab: {fileID: 4374859028719597281, guid: 0d10ae24159ac134b8c1f7e541636ae0,
     type: 3}
   _krakenManager:
@@ -83,7 +84,6 @@ MonoBehaviour:
   _introduction:
   - {fileID: 11400000, guid: 2c595881e80e17246ba671c2b5ac698d, type: 2}
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
-  - {fileID: 11400000, guid: c13962ea4bf47e84597a7033f8d4a4a3, type: 2}
   - {fileID: 11400000, guid: 117a046756fb2ba4585382179c4175f4, type: 2}
   - {fileID: 11400000, guid: 973108f18dbf6a942bdcd49a20a10421, type: 2}
   _currentHazardRating: 0

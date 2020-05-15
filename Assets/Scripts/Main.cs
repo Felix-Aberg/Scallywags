@@ -16,7 +16,10 @@ namespace ScallyWags
         // UI
         [SerializeField] private IntVariable goldCounterUI;
         [SerializeField] private FloatVariable roundTimeUI;
-        
+
+        // Players to spawn
+        [SerializeField] private PlayersSelected _players;
+
         // Prefabs
         public GameObject playerPrefab;
 
@@ -29,8 +32,7 @@ namespace ScallyWags
         private ShipManager _shipManager;
         private MortarManager _mortarManager;
         [SerializeField] private KrakenManager _krakenManager;
-        private NavMeshManager _navMeshManager;
-        
+
         // Monobehaviors
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
@@ -38,8 +40,6 @@ namespace ScallyWags
 
         void Awake()
         {
-            GraphicsSettings.useScriptableRenderPipelineBatching = true;
-            
             #if !UNITY_EDITOR
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -49,18 +49,28 @@ namespace ScallyWags
             
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
+            // TODO remove this
+            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
+            {
+                _players.SetPlayerReady(i, false);
+            }
+            
+            _players.SetPlayerReady(3, true);
+
             // Spawn players
             _entityManager = new EntityManager(playerPrefab);
             for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
             {
-                _entityManager.CreatePlayer(i);
+                if (_players.GetPlayerReady(i))
+                {
+                    _entityManager.CreatePlayer(i);
+                }
             }
             
             // Setup camera
             _cameraHandler = FindObjectOfType<CameraHandler>();
             _treasureManager = new TreasureManager();
             _roundTimer = new RoundTimer();
-            _navMeshManager = gameObject.AddComponent<NavMeshManager>();
             _shipManager = gameObject.AddComponent<ShipManager>();
             _hazardManager = GetComponent<HazardManager>();
             _mortarManager = new MortarManager();
@@ -69,7 +79,6 @@ namespace ScallyWags
             _cameraHandler.Init(_entityManager.GetAllPlayers());
             _treasureManager.Init(goldCounterUI);
             _roundTimer.Init(roundTimeUI);
-            _navMeshManager.Init(_shipManager.GetShip(ShipType.Player));
             _shipManager.Init();
             _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
             _mortarManager.Init();
