@@ -14,8 +14,6 @@ namespace ScallyWags
         public PickableItem PickedUpItem => _pickedUpItem;
         private PickableItem _pickedUpItem;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
-        private float _yOffset = 0.7f;
-        private float _xOffset = 1.2f;
         
         [SerializeField] float _throwStrength = 0f;
         private float _initialThrowStrength = -5f; // Inverse time until it throws instead of dropping
@@ -61,8 +59,10 @@ namespace ScallyWags
             if (itemToPickUp == null) return;
 
             if (!TryToPickUp(itemToPickUp)) return;
-            
-            itemToPickUp.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
+
+            var pickable = itemToPickUp as PickableItem;
+            pickable.EnableUI();
+            pickable.GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
 
             if (pickUpReleased)
             {
@@ -136,6 +136,7 @@ namespace ScallyWags
             var item = gameObject.GetComponent<PickableItem>();
             if (item != null)
             {
+                item.DisableUI();
                 if (_itemsNear.Contains(gameObject))
                 {
                     _itemsNear.Remove(gameObject);
@@ -148,21 +149,12 @@ namespace ScallyWags
             return _pickedUpItem == null && itemToPickUp.IsAvailable();
         }
 
-        private Vector3 CalculateTargetPos(Transform transform)
-        {
-            var targetPos = transform.position;
-            targetPos.y += _yOffset;
-            targetPos += transform.forward * _xOffset;
-            return targetPos;
-        }
-
         private void PickUp(PickableItem item, Player player)
         {
             if (_pickedUpItem == null)
             {
                 _pickedUpItem = item.Pickup(player) as PickableItem;
                 _itemsNear.Remove(item.GetObject());
-                // _pickedUpItem.transform.DOMove(_rightArmTarget.transform.position, 0.2f);
             }
         }
 

@@ -20,6 +20,7 @@ namespace ScallyWags
         private NavMeshManager _navMeshManager;
         private SkeletonManager _skeletonManager;
         [SerializeField] private HazardData _skeleton;
+        [SerializeField] private float _sinkingSpeed = 1;
 
         // Start is called before the first frame update
         public void Init(ShipType shipType, ShipManager shipManager, int maxHealth = 10)
@@ -101,7 +102,7 @@ namespace ScallyWags
         private void Sink()
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                new Vector3(transform.position.x, -100, transform.position.z), 0.05f);
+                new Vector3(transform.position.x, -100, transform.position.z), _sinkingSpeed * Time.deltaTime);
         }
         
         public void SpawnSkeletons()

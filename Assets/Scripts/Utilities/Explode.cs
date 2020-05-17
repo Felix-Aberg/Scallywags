@@ -26,31 +26,37 @@ namespace ScallyWags
             var damageable = other.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(transform.position, _hitForce);
 
+            DamageShip(other.gameObject);
+           
+            Destroy(gameObject);
+        }
+
+        void DamageShip(GameObject other)
+        {
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();
 
-            if (ship == null) return;
-
-            if (ship.ShipType == ShipType.Enemy)
+            if (ship != null)
             {
-                ship.TakeDamage();
-            }
-
-            var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);
-            if (particleSystem == null)
-            {
-                Debug.LogError("Missing particle system prefab");
-            }
-            else
-            {
-                var systems = particleSystem.GetComponentsInChildren<ParticleSystem>();
-                foreach (var s in systems)
+                if (ship.ShipType == ShipType.Enemy)
                 {
-                    s.Play();
+                    ship.TakeDamage();
                 }
+                
+                var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);
+                if (particleSystem == null)
+                {
+                    Debug.LogError("Missing particle system prefab");
+                }
+                else
+                {
+                    var systems = particleSystem.GetComponentsInChildren<ParticleSystem>();
+                    foreach (var s in systems)
+                    {
+                        s.Play();
+                    }
+                }
+                _audioPool.PlayAudioEvent(_audio, transform.position);
             }
-            _audioPool.PlayAudioEvent(_audio, transform.position);
-            
-            Destroy(gameObject);
         }
     }
 }

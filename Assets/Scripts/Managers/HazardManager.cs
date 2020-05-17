@@ -12,7 +12,7 @@ namespace ScallyWags
         [SerializeField] private List<HazardData> _mediumHazards = new List<HazardData>();
         [SerializeField] private List<HazardData> _hardHazards = new List<HazardData>();
         [SerializeField] private List<HazardData> _introduction = new List<HazardData>();
-        [SerializeField] private HazardRating _currentHazardRating;
+        [SerializeField] private HazardRating _currentHazardRating = HazardRating.Easy;
 
         [Header("Used to spawn ship at the start of the game")]
         [SerializeField] private HazardData _enemyShip;
@@ -143,7 +143,7 @@ namespace ScallyWags
 
         private void ChooseRating()
         {
-            _currentHazardRating = (HazardRating) Random.Range(0, _hazardsUnlocked);
+            _currentHazardRating = (HazardRating) _hazardsUnlocked;
 
             switch (_currentHazardRating)
             {

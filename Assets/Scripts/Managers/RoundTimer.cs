@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 namespace ScallyWags
 {
-    public class RoundTimer
+    public class RoundTimer : MonoBehaviour
     {
         private FloatVariable _roundTimeUI;
         private double _time = 300;
         private LevelEventManager _levelEventManager;
-    
+        private bool _stopped;
+
         public void Init(FloatVariable roundTimeUI)
         {
             _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
@@ -19,6 +20,7 @@ namespace ScallyWags
     
         public void Tick(ShipCondition ship)
         {
+            if (_stopped) return;
             if (ship.IsSinking()) return;
             
             _time -= Time.deltaTime;
@@ -26,8 +28,17 @@ namespace ScallyWags
             if (_time <= 0)
             {
                 _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Won);
-                SceneManager.LoadScene("ScoreScene");
+                EventManager.TriggerEvent("RoundOver", null);
+                StartCoroutine(EndCinematics());
+                _time = 0;
+                _stopped = true;
             }
+        }
+
+        private IEnumerator EndCinematics()
+        {
+            yield return new WaitForSeconds(15f);
+            SceneManager.LoadScene("ScoreScene");
         }
     }
 }

@@ -4,6 +4,8 @@ namespace ScallyWags
    {
        GoldLost,
        SpeechBubble,
-       ProgressBar
+       ProgressBar,
+       Interact,
+       Pickup,
    }
 }

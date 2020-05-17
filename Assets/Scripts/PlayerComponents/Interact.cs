@@ -28,9 +28,10 @@ namespace ScallyWags
         
         public void RemoveItem(GameObject gameObject)
         {
-            var item = gameObject.GetComponent<IInteractable>();
+            var item = gameObject.GetComponent<IInteractable>() as InteractableItem;
             if (item != null)
             {
+                item.DisableUI();
                 if (_itemsNear.Contains(gameObject))
                 {
                     _itemsNear.Remove(gameObject);
@@ -39,7 +40,7 @@ namespace ScallyWags
         }
 
         public void Tick(PickableItem currentItem, Player player, bool interactPressed)
-        {
+        {           
             if (currentItem == null)
             {
                 _interacting = false;
@@ -61,6 +62,7 @@ namespace ScallyWags
                 _interacting = true;
                 RefreshItems();
                 closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
+                closestItem.DisableUI();
             }
 
             if (_interacting)
@@ -75,14 +77,10 @@ namespace ScallyWags
             foreach (var item in _itemsNear)
             {
                 if (item.gameObject.activeInHierarchy == false) continue;
-                var entity = item.gameObject.GetComponent<IEntity>();
                 
-                if (entity.GetObject() != null)
-                {
-                    continue;
-                }
+                var entity = item.gameObject.GetComponent<InteractableItem>();
 
-                if (entity.IsDead())
+                if (!entity.enabled)
                 {
                     continue;
                 }
@@ -108,8 +106,10 @@ namespace ScallyWags
                 {
                     continue;
                 }
+               
+                var interactable = item.GetComponent<InteractableItem>();
                 
-                if (item.GetComponent<InteractableItem>().CanBeUsed(currentItem) == false)
+                if (interactable.CanBeUsed(currentItem) == false)
                 {
                     continue;
                 }
@@ -119,6 +119,8 @@ namespace ScallyWags
                     closest = item;
                 }
 
+                // UI
+                interactable.EnableUI();
                 item.GetComponent<ItemHighlight>()?.HighlightItem(_itemsNear);
 
                 var currentDist = Vector3.Distance(player.transform.position, item.transform.position);

@@ -67,11 +67,13 @@ namespace ScallyWags
 
         public void TakeDamage()
         {
+            if (_isDead) return;
             Die();
         }
 
         public void TakeDamage(Vector3 hitDir, float hitForce)
         {
+            if (_isDead) return;
             Die();
             var dir = transform.position - _targetPlayer.transform.position;
             _ragdoll.EnableRagdoll(dir.normalized, hitForce);

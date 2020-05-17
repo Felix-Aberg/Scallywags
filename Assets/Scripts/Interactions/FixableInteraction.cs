@@ -39,6 +39,8 @@ namespace ScallyWags
             _bar.gameObject.SetActive(false);
             _audioSource = GetComponent<AudioSource>();
             _audioSource.outputAudioMixerGroup = _audioEvent.MixerGroup;
+
+            CreateProgressBar();
         }
 
         void Update()
@@ -91,6 +93,14 @@ namespace ScallyWags
             _shipCondition.FixDamage(1);
             
             gameObject.SetActive(false);
+        }
+
+        private void CreateProgressBar()
+        {
+            var go = _createUIElement.CreateElement(UIElement.ProgressBar, transform.position);
+            _bar = go.GetComponent<FixProgressBar>();
+            _bar.Init(0, _fixingTime, transform.position);
+            _bar.gameObject.SetActive(false);
         }
     }
 }

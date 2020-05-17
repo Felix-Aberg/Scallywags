@@ -20,6 +20,12 @@ namespace ScallyWags
         
         private SphereCollider _sphereCollider;
         private BoxCollider _boxCollider;
+        private int _layer;
+        
+                
+        // UI
+        private CreateUIElement _createUIElement;
+        private ButtonPrompt _interactUI;
 
         private void Start()
         {
@@ -31,6 +37,10 @@ namespace ScallyWags
 
             _boxCollider = GetComponent<BoxCollider>();
             _sphereCollider = GetComponent<SphereCollider>();
+            _layer = gameObject.layer;
+            
+            _createUIElement = FindObjectOfType<CreateUIElement>();
+            //CreateInteractUI();
         }
 
         public bool IsAvailable()
@@ -46,10 +56,11 @@ namespace ScallyWags
         public IPickable Pickup(IEntity entity)
         {
             if (_pickedUpBy != null) return null;
-
-            if (_boxCollider) _boxCollider.isTrigger = true;
-            if (_sphereCollider) _sphereCollider.isTrigger = true;
-           // _rb.detectCollisions = false;
+            
+            gameObject.layer = 16; // Do not collide with player
+            
+           // if (_boxCollider) _boxCollider.isTrigger = true;
+           // if (_sphereCollider) _sphereCollider.isTrigger = true;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -69,9 +80,10 @@ namespace ScallyWags
         {
             if (_pickedUpBy == null) return;
             
-            if (_boxCollider) _boxCollider.isTrigger = false;
-            if (_sphereCollider) _sphereCollider.isTrigger = false;
-           //  _rb.detectCollisions = true;
+            gameObject.layer = _layer;
+            
+          //  if (_boxCollider) _boxCollider.isTrigger = false;
+          //  if (_sphereCollider) _sphereCollider.isTrigger = false;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;
@@ -82,6 +94,24 @@ namespace ScallyWags
             _pickedUpBy = null;
             transform.SetParent(null);
             _rb.AddForce(_parentRb.velocity, ForceMode.VelocityChange);
+        }
+        
+        private void CreateInteractUI()
+        {
+            var interactUI = _createUIElement.CreateElement(UIElement.Interact, transform.position);
+            _interactUI = interactUI.GetComponent<ButtonPrompt>();
+            _interactUI.Init(transform.position, 2f);
+            DisableUI();
+        }
+
+        public void DisableUI()
+        {
+           // _interactUI.gameObject.SetActive(false);
+        }
+        
+        public void EnableUI()
+        {
+           // _interactUI.gameObject.SetActive(true);
         }
     }
 }

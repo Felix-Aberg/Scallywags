@@ -20,12 +20,19 @@ public class Kraken : MonoBehaviour, IDamageable
     private KrakenManager _krakenManager;
     private string _krakenAttackEventName = "KrakenAttacks";
 
-    public void Init(KrakenManager krakenManager)
+    public void Init(KrakenManager krakenManager, int health)
     {
         _krakenManager = krakenManager;
         
         _krakenAttack = GetComponentInChildren<KrakenAttack>();
-        _health = _maxHealth;
+        _health = health;
+        if (_health == 0)
+        {
+            _health = 3;
+            #if UNITY_EDITOR
+                Debug.LogError("EventData missing health");
+            #endif
+        }
         _anim = GetComponent<Animator>();
         _attackDelay = Random.Range(3, 5);
         y = transform.position.y;
@@ -91,6 +98,11 @@ public class Kraken : MonoBehaviour, IDamageable
         {
             _anim.SetTrigger("Slap");
         }
+    }
+
+    public void Die()
+    {
+        _health = 0;
     }
 
     public void TakeDamage()

@@ -5,14 +5,14 @@ using UnityEngine;
 namespace ScallyWags
 {
     public class CreateUIElement : MonoBehaviour
-        {
-            public GameObject _goldLost;
-            public GameObject _tauntBubble;    
-            public GameObject _progressBar;
+    {
+            [SerializeField] private GameObject _goldLost;
+            [SerializeField] private GameObject _tauntBubble;    
+            [SerializeField] private GameObject _progressBar;
+            [SerializeField] private GameObject _interactButton;
+            [SerializeField] private GameObject _pickupButton;
             private Camera _camera;
- 
 
-            // Start is called before the first frame update
             void Start()
             {
                 _camera = FindObjectOfType<Camera>();
@@ -31,7 +31,11 @@ namespace ScallyWags
                     case UIElement.ProgressBar:
                         return InstantiateElement(_progressBar, pos);
                         break;
-                    default:
+                    case UIElement.Interact:
+                        return InstantiateElement(_interactButton, pos);
+                    case UIElement.Pickup:
+                        return InstantiateElement(_pickupButton, pos);
+                     default:
                         Debug.LogError("Missing UI element type");
                         break;
                 }
@@ -47,7 +51,7 @@ namespace ScallyWags
                 }
                 
                 var uiElement = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
-                var rect = uiElement.GetComponent<RectTransform>();
+                var rect = uiElement.GetComponentInChildren<RectTransform>();
                 
                 // Calculate *screen* position (note, not a canvas/recttransform position)
                 Vector2 screenPoint = _camera.WorldToScreenPoint(pos);
