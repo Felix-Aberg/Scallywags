@@ -49,6 +49,8 @@ MonoBehaviour:
   goldCounterUI: {fileID: 11400000, guid: f189f9f1b04cbe24c9b237fe13f1a269, type: 2}
   roundTimeUI: {fileID: 11400000, guid: fc5a4f3ec45bfcf459f59ecd4a3af880, type: 2}
   _players: {fileID: 11400000, guid: 3d0b192d3e3031e49ad8963ccfefe626, type: 2}
+  transition: {fileID: 0}
+  transitionTime: 1.3
   playerPrefab: {fileID: 4374859028719597281, guid: 0d10ae24159ac134b8c1f7e541636ae0,
     type: 3}
   _krakenManager:

@@ -18,8 +18,6 @@ namespace ScallyWags
         private IEntity _pickedUpBy;
         private Rigidbody _rb;
         
-        private SphereCollider _sphereCollider;
-        private BoxCollider _boxCollider;
         private int _layer;
         
                 
@@ -35,8 +33,6 @@ namespace ScallyWags
                 Debug.LogError("You must set item type for item");
             }
 
-            _boxCollider = GetComponent<BoxCollider>();
-            _sphereCollider = GetComponent<SphereCollider>();
             _layer = gameObject.layer;
             
             _createUIElement = FindObjectOfType<CreateUIElement>();
@@ -58,12 +54,11 @@ namespace ScallyWags
             if (_pickedUpBy != null) return null;
             
             gameObject.layer = 16; // Do not collide with player
-            
-           // if (_boxCollider) _boxCollider.isTrigger = true;
-           // if (_sphereCollider) _sphereCollider.isTrigger = true;
+
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.FreezeAll;
+            _rb.isKinematic = false;
             
             _pickedUpBy = entity;
             
@@ -82,8 +77,6 @@ namespace ScallyWags
             
             gameObject.layer = _layer;
             
-          //  if (_boxCollider) _boxCollider.isTrigger = false;
-          //  if (_sphereCollider) _sphereCollider.isTrigger = false;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             _rb.constraints = RigidbodyConstraints.None;

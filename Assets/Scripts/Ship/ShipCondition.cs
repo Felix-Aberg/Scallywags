@@ -21,6 +21,7 @@ namespace ScallyWags
         private SkeletonManager _skeletonManager;
         [SerializeField] private HazardData _skeleton;
         [SerializeField] private float _sinkingSpeed = 1;
+        private EntityManager _entityManager;
 
         // Start is called before the first frame update
         public void Init(ShipType shipType, ShipManager shipManager, int maxHealth = 10)
@@ -38,8 +39,10 @@ namespace ScallyWags
             _navMeshManager = gameObject.AddComponent<NavMeshManager>();
             _navMeshManager.Init(this);
 
+            _entityManager = FindObjectOfType<EntityManager>();
+
             if(_shipType == ShipType.Enemy) {
-                _skeletonManager = new SkeletonManager(_skeleton, FindObjectsOfType<Player>(), _shipManager);
+                _skeletonManager = new SkeletonManager(_skeleton, _entityManager, _shipManager);
             }
         }
 
@@ -70,7 +73,6 @@ namespace ScallyWags
             var y = transform.position.y + damage;
             y = Mathf.Min(y, _startingDepth);
             transform.DOMoveY(y, 1).OnComplete(_navMeshManager.UpdateMesh);
-            _navMeshManager.UpdateMesh();
         }
 
         public void TakeDamage(int damage = 1)
@@ -79,8 +81,7 @@ namespace ScallyWags
             _shipHealth.TakeDamage(damage);
 
             var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage;
-            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1);
-            _navMeshManager.UpdateMesh();
+            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1).OnComplete(_navMeshManager.UpdateMesh);
         }
         
 

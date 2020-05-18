@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,9 @@ namespace ScallyWags
 {
     public class Skeleton : MonoBehaviour, IDamageable, IEntity
     {
-        [SerializeField] private Player[] _players;
+        public EntityManager EntityManager;
+        
+        [SerializeField] private List<Player> _players = new List<Player>();
         private NavMeshAgent _navMeshAgent;
         private Pickup _pickup;
         [SerializeField] private Player _targetPlayer;
@@ -21,15 +24,18 @@ namespace ScallyWags
         private CapsuleCollider _capsuleCollider;
         private AudioSourcePoolManager _audioSourcePoolManager;
         private string _enemyDamageEventName = "EnemyDamage";
+        
+        // Sword
+        private float _attackTimer;
+        private float _attackDelay = 2f;
+        private float _hitForce = 10f;
 
-        public void Init(int index = 0)
+
+        public void Start()
         {
             _sword = GetComponentInChildren<EnemySword>();
             _animator = GetComponent<Animator>();
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _navMeshAgent.speed = _normalSpeed;
-            _navMeshAgent.enabled = true;
-            
+
             var ragDollColliders = GetComponentsInChildren<CapsuleCollider>();
             var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
 
@@ -45,11 +51,17 @@ namespace ScallyWags
 
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-            _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             _rigidbody.mass = 50;
+            _rigidbody.isKinematic = true;
+
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgent.speed = _normalSpeed;
+            _navMeshAgent.enabled = true;
+            EntityManager = FindObjectOfType<EntityManager>();
         }
 
-        public void Tick()
+        public void Update()
         {
             if (!_navMeshAgent.isOnNavMesh)
             {
@@ -59,6 +71,8 @@ namespace ScallyWags
             }
             
             if (_isDead) return;
+            
+            _attackTimer += Time.deltaTime;
             UpdateAnimations();
             Sense();
             Decide();
@@ -82,6 +96,14 @@ namespace ScallyWags
         public Vector3 GetPos()
         {
             return transform.position;
+        }
+
+        public void Init(int index = 0)
+        {
+        }
+
+        public void Tick()
+        {
         }
 
         public GameObject GetObject()
@@ -113,7 +135,6 @@ namespace ScallyWags
 
         private void Act()
         {
-            if (!_navMeshAgent.enabled) return;
             MoveTowardsPlayer();
             Attack();
         }
@@ -128,7 +149,7 @@ namespace ScallyWags
 
         private void GetTarget()
         {
-            _players = FindObjectsOfType<Player>();
+            _players = EntityManager.GetAllPlayers();
             var distance = float.MaxValue;
             foreach (var t in _players)
             {
@@ -145,17 +166,17 @@ namespace ScallyWags
         {
             if (_pickedUpItem != null) return;
 
-            if (Vector3.Distance(_navMeshAgent.destination, _targetPlayer.transform.position) > 1)
+            if (_navMeshAgent.pathPending) return;
+
+            if (Vector3.Distance(_navMeshAgent.destination, _targetPlayer.transform.position) < 1)
             {
-                if (_navMeshAgent.isOnNavMesh)
-                {
-                    _navMeshAgent.ResetPath();
-                }
+                return;
             }
-
-            if (_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
-
-            _navMeshAgent.SetDestination(_targetPlayer.transform.position);
+            
+            if (_navMeshAgent.isOnNavMesh)
+            {
+                _navMeshAgent.SetDestination(_targetPlayer.transform.position);
+            }
         }
 
         private void Attack()
@@ -175,10 +196,18 @@ namespace ScallyWags
 
             _animator.SetTrigger("Sword");
         }
-
-        public void SetPlayers(Player[] players)
+        
+        private void OnCollisionEnter(Collision other)
         {
-            _players = players;
+            var target = other.gameObject.GetComponent<Player>();
+            if (target != null)
+            {
+                if (_attackTimer > _attackDelay)
+                {
+                    target.TakeDamage(transform.position, _hitForce);
+                    _attackTimer = 0;
+                }
+            }
         }
     }
 }

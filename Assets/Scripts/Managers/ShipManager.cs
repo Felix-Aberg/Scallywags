@@ -59,6 +59,8 @@ namespace ScallyWags
         {
             var shipCondition = GetShip(ShipType.Enemy);
             if (shipCondition.gameObject.activeInHierarchy) return;
+            
+            EventManager.TriggerEvent("EnemyShipSound", null);
             shipCondition.Init(ShipType.Enemy, this, message.HazardData.Health);
             shipCondition.gameObject.SetActive(true);
         }
