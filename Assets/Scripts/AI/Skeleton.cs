@@ -53,7 +53,7 @@ namespace ScallyWags
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             _rigidbody.mass = 50;
-            _rigidbody.isKinematic = true;
+            _rigidbody.isKinematic = false;
 
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _normalSpeed;
