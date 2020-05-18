@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 0cf450853075b544497857c32042aca0,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -311,7 +311,7 @@ RectTransform:
   m_Children:
   - {fileID: 1716001624}
   m_Father: {fileID: 1239287708}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1231,12 +1231,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1239287708}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 238.04, y: -35.9}
+  m_SizeDelta: {x: -571.06, y: -164.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523519192
 MonoBehaviour:
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6039216}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1439,7 +1439,7 @@ RectTransform:
   m_Children:
   - {fileID: 895407797}
   m_Father: {fileID: 1239287708}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1649,7 +1649,7 @@ RectTransform:
   m_Children:
   - {fileID: 1583996837}
   m_Father: {fileID: 1239287708}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2900,10 +2900,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 523519191}
   - {fileID: 623839506}
   - {fileID: 113576295}
   - {fileID: 628696925}
-  - {fileID: 523519191}
   - {fileID: 714335506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -7161,6 +7161,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2130254787323567035, guid: 21e083070efe8ca4d9c374f107ccaba6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d28e6b787be7c2f49ae4894e489a7b7f, type: 2}
     - target: {fileID: 2130254787323567037, guid: 21e083070efe8ca4d9c374f107ccaba6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7274,7 +7279,7 @@ PrefabInstance:
     - target: {fileID: 2130254787323567038, guid: 21e083070efe8ca4d9c374f107ccaba6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e083070efe8ca4d9c374f107ccaba6, type: 3}
@@ -29906,7 +29911,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 4200
+  m_ColorTemperature: 3555
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 3.8452e-41, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
