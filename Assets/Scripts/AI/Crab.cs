@@ -66,6 +66,11 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Sense()
     {
+        if (_pickedUpItem && !_pickedUpItem.gameObject.activeInHierarchy)
+        {
+            _pickedUpItem = null;
+        }
+        
         if (_targetItem?.GetComponent<PickableItem>().PickedUpBy != null)
         {
             _targetItem = null;
@@ -104,6 +109,11 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         var distance = float.MaxValue;
         foreach (var t in _treasure)
         {
+            if (!t.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+            
             var d = Vector3.Distance(transform.position, t.transform.position);
             if (d < distance)
             {

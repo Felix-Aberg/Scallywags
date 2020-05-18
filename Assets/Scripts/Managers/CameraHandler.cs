@@ -7,24 +7,22 @@ namespace ScallyWags
     public class CameraHandler : MonoBehaviour
     {
         private EntityManager _entityManager;
-        private List<Player> _players;
+        private List<Player> _players = new List<Player>();
         private CinemachineTargetGroup _targetGroup;
         private CinemachineVirtualCamera _virtualCamera;
          
-        public void Init(List<Player> players)
+        public void Init()
         {
             _targetGroup = FindObjectOfType<CinemachineTargetGroup>();
             _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-            _players = players;
-
-            // Add players to camera
-            foreach (var player in _players)
-            {
-                _targetGroup.AddMember(player.gameObject.transform, 1, 0);
-            }
-
             _virtualCamera.Follow = _targetGroup.transform;
             _virtualCamera.LookAt = _targetGroup.transform;
+        }
+
+        public void AddMember(GameObject player)
+        {
+            _targetGroup.AddMember(player.gameObject.transform, 1, 0);
+            _players.Add(player.GetComponent<Player>());
         }
         
         public void Tick()

@@ -53,24 +53,19 @@ namespace ScallyWags
             
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
-            // TODO remove this
+            #if UNITY_EDITOR
             for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
             {
                 _players.SetPlayerReady(i, false);
             }
             
-            _players.SetPlayerReady(3, true);
+            _players.SetPlayerReady(2, true);
+            #endif
 
             // Spawn players
-            _entityManager = new EntityManager(playerPrefab);
-            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
-            {
-                if (_players.GetPlayerReady(i))
-                {
-                    _entityManager.CreatePlayer(i);
-                }
-            }
-            
+            _entityManager = gameObject.AddComponent<EntityManager>();
+            _entityManager.Init(playerPrefab);
+
             // Setup camera
             _cameraHandler = FindObjectOfType<CameraHandler>();
             _treasureManager = new TreasureManager();
@@ -80,13 +75,22 @@ namespace ScallyWags
             _mortarManager = new MortarManager();
             _krakenManager = new KrakenManager();
             
-            _cameraHandler.Init(_entityManager.GetAllPlayers());
+            _cameraHandler.Init();
             _treasureManager.Init(goldCounterUI);
             _roundTimer.Init(roundTimeUI);
             _shipManager.Init();
             _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
             _mortarManager.Init();
             _krakenManager.Init();
+            
+            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
+            {
+                var index = i - 1;
+                if (_players.GetPlayerReady(index))
+                {
+                    _entityManager.CreatePlayer(i);
+                }
+            }
         }
 
         void Update()
@@ -109,6 +113,48 @@ namespace ScallyWags
             {
                 _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Lost);
                 StartCoroutine(LoadScene("LoseScene"));
+            }
+
+            PressButtonToJoin();
+        }
+
+        private void PressButtonToJoin()
+        {
+            if (Input.GetButton("Pickup1"))
+            {
+                if (_players.GetPlayerReady(0))
+                {
+                    return;
+                }
+                _players.SetPlayerReady(0, true);
+                _entityManager.CreatePlayer(1);
+            }
+            if (Input.GetButton("Pickup2"))
+            {
+                if (_players.GetPlayerReady(1))
+                {
+                    return;
+                }
+                _players.SetPlayerReady(1, true);
+                _entityManager.CreatePlayer(2);
+            }
+            if (Input.GetButton("Pickup3"))
+            {
+                if (_players.GetPlayerReady(2))
+                {
+                    return;
+                }
+                _players.SetPlayerReady(2, true);
+                _entityManager.CreatePlayer(3);
+            }
+            if (Input.GetButton("Pickup4"))
+            {
+                if (_players.GetPlayerReady(3))
+                {
+                    return;
+                }
+                _players.SetPlayerReady(3, true);
+                _entityManager.CreatePlayer(4);
             }
         }
 

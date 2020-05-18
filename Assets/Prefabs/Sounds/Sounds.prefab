@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 116689319}
   - component: {fileID: 116689318}
   m_Layer: 0
-  m_Name: EnemyShip
+  m_Name: EnemyShipSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0691650545f3e458c39cdf1dbd55b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: EnemyShip
+  eventName: EnemyShipSound
   sound: {fileID: 11400000, guid: 8d6213569c9aa654e9a8d1df2abf1bdd, type: 2}
 --- !u!1 &420543287
 GameObject:

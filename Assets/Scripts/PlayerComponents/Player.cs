@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace ScallyWags
@@ -153,6 +154,7 @@ namespace ScallyWags
             _isDead = false;
             _ragdoll.DisableRagdoll(_ragdollRigidBodies);
             _triggerCollider.enabled = true;
+            Drop();
         }
 
         /// <summary>

@@ -8,10 +8,12 @@ namespace ScallyWags
         private BoxCollider _attackCollider;
         private float _hitForce = 10f;
         private float _attackTimer;
-        private float _attackDelay = 1f;
+        private float _attackDelay = 2f;
+        private Skeleton _skeleton;
 
         private void Start()
         {
+            _skeleton = GetComponentInParent<Skeleton>();
             _attackCollider = GetComponent<BoxCollider>();
             _attackCollider.isTrigger = false;
             _attackCollider.enabled = true;
@@ -23,25 +25,19 @@ namespace ScallyWags
 
         private void Update()
         {
-            _attackTimer += Time.deltaTime;
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            var target = other.gameObject.GetComponent<Player>();
-            if (target != null)
+            if (_skeleton.IsDead())
             {
-                if (_attackTimer > _attackDelay)
-                {
-                    target.TakeDamage(transform.position, _hitForce);
-                    _attackTimer = 0;
-                }
+                _attackCollider.enabled = false;
             }
         }
 
         public void EnableCollider(bool enabled)
         {
-          _attackCollider.enabled = enabled;
+            if (_skeleton.IsDead())
+            {
+                return;
+            }
+            _attackCollider.enabled = enabled;
         }
     }
 }

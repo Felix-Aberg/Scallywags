@@ -26,6 +26,12 @@ public class KrakenAttack : MonoBehaviour
         _dealtDamageToShip = false;
         _dealtDamageToShipPart = false;
     }
+
+    public void DisableCollider()
+    {
+        _dealtDamageToShip = true;
+        _dealtDamageToShipPart = true;
+    }
     
     private void OnCollisionEnter(Collision other)
     {

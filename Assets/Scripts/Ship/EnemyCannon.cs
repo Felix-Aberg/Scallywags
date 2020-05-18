@@ -9,7 +9,7 @@ public class EnemyCannon : MonoBehaviour
         [SerializeField] private SimpleAudioEvent _event;
         [SerializeField] private GameObject _cannonBall;
         private float _maxDistance = 100;
-        private float _minDistance = 30;
+        private float _minDistance = 1;
         private float _cannonForce = 70;
         private ItemSpawn _spawnPos;
         private ParticleSystem[] _particleSystem;

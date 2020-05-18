@@ -9,7 +9,7 @@ namespace ScallyWags
     /// <summary>
     /// Creates entities and holds a list of entities in game
     /// </summary>
-    public class EntityManager
+    public class EntityManager : MonoBehaviour
     {
         private List<IEntity> _entities = new List<IEntity>();
         private List<Player> _players = new List<Player>();
@@ -21,12 +21,14 @@ namespace ScallyWags
         private PlayerSpawn[] _spawnPos;
         private EnemySpawn[] _enemySpawnPos;
         private int _enemyIndex = 0;
+        private CameraHandler _cameraHandler;
 
-        public EntityManager(GameObject playerPrefab)
+        public void Init(GameObject playerPrefab)
         {
             _playerPrefab = playerPrefab;
             _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
             _enemySpawnPos = GameObject.FindObjectsOfType<EnemySpawn>();
+            _cameraHandler = FindObjectOfType<CameraHandler>();
 
             EventManager.StartListening("SpawnEntity", EntityRequest);
         }
@@ -75,6 +77,7 @@ namespace ScallyWags
             IEntity entity = player.GetComponent<IEntity>();
             entity.Init(index);
             _players.Add(entity as Player);
+            _cameraHandler.AddMember(player);
         }
 
         private void CreateEnemy(Vector3 pos, GameObject prefab)
