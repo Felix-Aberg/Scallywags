@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: -50 Gold!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 21bbf5965f7cc6d488f0524246f3679f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbf2132c5ffeea848a78c03b9f4241a6, type: 2}
   m_sharedMaterial: {fileID: 9056005409581875842, guid: 21bbf5965f7cc6d488f0524246f3679f,
     type: 2}
   m_fontSharedMaterials: []
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}

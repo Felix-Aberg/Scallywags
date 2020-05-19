@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace ScallyWags
 {
     [System.Serializable]
-    public class KrakenManager
+    public class KrakenManager : MonoBehaviour
     {
         private KrakenSpawn[] _spawnPos;
         [SerializeField] private Kraken[] _krakens = new Kraken[2];
@@ -11,12 +12,16 @@ namespace ScallyWags
         public void Init()
         {
             _spawnPos = GameObject.FindObjectsOfType<KrakenSpawn>();
+        }
+
+        private void OnEnable()
+        {
             EventManager.StartListening("Kraken", SpawnKraken);
             EventManager.StartListening("KrakenIntro", SpawnIntroKraken);
             EventManager.StartListening("RoundOver", KillKrakens);
         }
 
-        ~KrakenManager()
+        private void OnDisable()
         {
             EventManager.StopListening("Kraken", SpawnKraken);
             EventManager.StopListening("KrakenIntro", SpawnIntroKraken);

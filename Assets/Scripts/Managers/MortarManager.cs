@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ScallyWags
 {
-    public class MortarManager
+    public class MortarManager : MonoBehaviour
     {
         private MortarSpawn[] _mortarSpawns;
         private List<MortarSpawn> _spawnList = new List<MortarSpawn>();
@@ -14,18 +16,22 @@ namespace ScallyWags
         {
             _mortarSpawns = GameObject.FindObjectsOfType<MortarSpawn>();
             _audioPool = GameObject.FindObjectOfType<AudioSourcePoolManager>();
+        }
+
+        private void OnEnable()
+        {
             EventManager.StartListening("Mortar", BarrageRequest);
             EventManager.StartListening("Intro1", IntroBarrageRequest);
             EventManager.StartListening("Intro2", IntroBarrageRequest);
-            EventManager.StartListening("Intro3", IntroBarrageRequestOnTreasure);
+            EventManager.StartListening("MortarTreasure", IntroBarrageRequestOnTreasure);
         }
 
-        ~MortarManager()
+        private void OnDisable()
         { 
             EventManager.StopListening("Mortar", BarrageRequest);
             EventManager.StopListening("Intro1", IntroBarrageRequest);
             EventManager.StopListening("Intro2", IntroBarrageRequest);
-            EventManager.StartListening("Intro3", IntroBarrageRequestOnTreasure);
+            EventManager.StartListening("MortarTreasure", IntroBarrageRequestOnTreasure);
         }
         
         private void BarrageRequest(EventManager.EventMessage message)

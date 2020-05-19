@@ -73,20 +73,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
   - {fileID: 11400000, guid: 890d7d8fa231f6e4d9c2706dc466fb0f, type: 2}
   - {fileID: 11400000, guid: e95ffaf55152d8c4cb0a364382810aca, type: 2}
+  - {fileID: 11400000, guid: 4f1684719daf94f42a289eab8661ae90, type: 2}
   _mediumHazards:
   - {fileID: 11400000, guid: 7e4e6a8d2722122458ff459f34fbaa2e, type: 2}
   - {fileID: 11400000, guid: 3f219bb4f2abfa04f964aba85bc5c51e, type: 2}
   - {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   - {fileID: 11400000, guid: 6ed9bf950109f2942a10ef8dc32bce49, type: 2}
+  - {fileID: 11400000, guid: 4f1684719daf94f42a289eab8661ae90, type: 2}
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   - {fileID: 11400000, guid: 4a4a61e37543d6c4bb2261639b9be14b, type: 2}
   - {fileID: 11400000, guid: ed88d2367c4d7d34cbe8d4aaebf954c4, type: 2}
+  - {fileID: 11400000, guid: c41d83bb2b909da40b624662345339a7, type: 2}
+  - {fileID: 11400000, guid: f95d4c2c09ed62e46949d4925c185327, type: 2}
   _introduction:
   - {fileID: 11400000, guid: 2c595881e80e17246ba671c2b5ac698d, type: 2}
   - {fileID: 11400000, guid: 0e55bfc113a6a6140a9e44e1ce16998f, type: 2}
-  - {fileID: 11400000, guid: 117a046756fb2ba4585382179c4175f4, type: 2}
+  - {fileID: 11400000, guid: 35535de31a64aab4b82a1f69dc0c75b6, type: 2}
   - {fileID: 11400000, guid: 973108f18dbf6a942bdcd49a20a10421, type: 2}
   _currentHazardRating: 0
   _enemyShip: {fileID: 11400000, guid: c318d5df0be673f45bf8ece9dc512ca5, type: 2}

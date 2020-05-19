@@ -10,7 +10,7 @@ namespace ScallyWags
     /// Keeps track of the gold value on the ship
     /// </summary>
     [Serializable]
-    public class TreasureManager
+    public class TreasureManager : MonoBehaviour
     {
         public int GoldValue => _goldValue;
         private int _goldValue;

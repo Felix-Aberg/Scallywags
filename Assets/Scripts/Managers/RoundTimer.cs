@@ -10,12 +10,13 @@ namespace ScallyWags
         private FloatVariable _roundTimeUI;
         private double _time = 300;
         private LevelEventManager _levelEventManager;
-        private bool _stopped;
+        private bool _stopped = true;
 
         public void Init(FloatVariable roundTimeUI)
         {
             _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
             _roundTimeUI = roundTimeUI;
+            _roundTimeUI.Value = (float)_time;
         }
     
         public void Tick(ShipCondition ship)
@@ -33,6 +34,11 @@ namespace ScallyWags
                 _time = 0;
                 _stopped = true;
             }
+        }
+        
+        public void BeginRound()
+        {
+            _stopped = false;
         }
 
         private IEnumerator EndCinematics()

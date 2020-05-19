@@ -18,6 +18,7 @@ namespace ScallyWags
         [SerializeField] private HazardData _enemyShip;
 
         private ShipCondition _playerShip;
+        private RoundTimer _roundTimer;
 
         private int _hazardsUnlocked = 1;
         private bool _introInProgress;
@@ -26,7 +27,7 @@ namespace ScallyWags
         private float _hazardTimer = 0;
 
         private float _tutorialTimer = 0;
-        private float _tutorialMaxDelay = 60f;
+        private float _tutorialMaxDelay = 180f;
         
         private FloatVariable _roundTime;
 
@@ -50,8 +51,9 @@ namespace ScallyWags
             _IsPaused = !_IsPaused;
         }
 
-        public void Init(FloatVariable roundTime, ShipCondition ship)
+        public void Init(RoundTimer roundTimer, FloatVariable roundTime, ShipCondition ship)
         {
+            _roundTimer = roundTimer;
             _roundTime = roundTime;
             _playerShip = ship;
             
@@ -100,6 +102,8 @@ namespace ScallyWags
             }
             else
             {
+                _roundTimer.BeginRound();
+                EventManager.TriggerEvent("protectTreasure", null);
                 Hazard();
             }
         }
@@ -130,14 +134,14 @@ namespace ScallyWags
 
         private void UpdateAvailableHazards()
         {
-            if (_roundTime.Value < 200 && _roundTime.Value > 100)
+            if (_roundTime.Value < 250 && _roundTime.Value > 150)
             {
-                _hazardsUnlocked = 2;
+                _hazardsUnlocked = 1;
             }
 
-            if (_roundTime.Value < 100)
+            if (_roundTime.Value < 150)
             {
-                _hazardsUnlocked = 3;
+                _hazardsUnlocked = 2;
             }
         }
 
@@ -164,13 +168,6 @@ namespace ScallyWags
 
         private void SpawnHazard(List<HazardData> hazards)
         {
-            // If no hazards in this rating choose new hazard rating
-            if (hazards.Count <= 0)
-            {
-                ChooseRating();
-                return;
-            }
-
             var index = Random.Range(0, hazards.Count);
             for(int i = 0; i < hazards[index].NumberOfHazards; i++)
             {
