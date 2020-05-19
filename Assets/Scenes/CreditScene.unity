@@ -4348,7 +4348,33 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6547830239913338029, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 8073067479956926876, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 8968776551657435357, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 7126809053615653652, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 2007145060044333845, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1480655821467746642, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 7539109936935591397, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 664317188815313037, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 703315571536455733, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1087179841125220692, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 4846672267462892643, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 7607998481169615186, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 7344025841101195283, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 8897922392996199386, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 163969734920625115, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 6184076257899746447, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1016799061016785483, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1199196240294797379, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1179639224327655675, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1624170096529815962, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 1897543370561355367, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 4853794303693578233, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 6415740060487203599, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 2094635665, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 748471167699704155, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
+    - {fileID: 6010708015409297605, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb08d3ffe3562934f952f13e1123c291, type: 3}
 --- !u!1 &1768971430
 GameObject:
