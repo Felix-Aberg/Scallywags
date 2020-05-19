@@ -68,18 +68,18 @@ namespace ScallyWags
 
             // Setup camera
             _cameraHandler = FindObjectOfType<CameraHandler>();
-            _treasureManager = new TreasureManager();
+            _treasureManager = gameObject.AddComponent<TreasureManager>();
             _roundTimer = gameObject.AddComponent<RoundTimer>();
             _shipManager = gameObject.AddComponent<ShipManager>();
             _hazardManager = GetComponent<HazardManager>();
-            _mortarManager = new MortarManager();
-            _krakenManager = new KrakenManager();
+            _mortarManager = gameObject.AddComponent<MortarManager>();
+            _krakenManager = gameObject.AddComponent<KrakenManager>();
             
             _cameraHandler.Init();
             _treasureManager.Init(goldCounterUI);
             _roundTimer.Init(roundTimeUI);
             _shipManager.Init();
-            _hazardManager.Init(roundTimeUI, _shipManager.GetShip(ShipType.Player));
+            _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player));
             _mortarManager.Init();
             _krakenManager.Init();
             

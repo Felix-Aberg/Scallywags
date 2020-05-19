@@ -20,12 +20,12 @@ namespace ScallyWags
     
         private void OnEnable()
         {
-            EventManager.StartListening("SpawnEntity", EnableGameObjects);
+            EventManager.StartListening("Intro3", EnableGameObjects);
         }
     
         private void OnDisable()
         {
-            EventManager.StopListening("SpawnEntity", EnableGameObjects);
+            EventManager.StopListening("Intro3", EnableGameObjects);
         }
     
         private void EnableGameObjects(EventManager.EventMessage args)

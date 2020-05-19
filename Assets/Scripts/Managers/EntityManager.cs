@@ -29,8 +29,18 @@ namespace ScallyWags
             _spawnPos = GameObject.FindObjectsOfType<PlayerSpawn>();
             _enemySpawnPos = GameObject.FindObjectsOfType<EnemySpawn>();
             _cameraHandler = FindObjectOfType<CameraHandler>();
+        }
 
+        private void OnEnable()
+        {
             EventManager.StartListening("SpawnEntity", EntityRequest);
+            EventManager.StartListening("Intro3", EntityRequest);
+        }
+
+        private void OnDisable()
+        {
+            EventManager.StopListening("SpawnEntity", EntityRequest);
+            EventManager.StopListening("Intro3", EntityRequest);
         }
 
         public void Tick()
