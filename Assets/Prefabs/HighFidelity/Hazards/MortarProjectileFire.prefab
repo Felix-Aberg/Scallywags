@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17c62f10f5ac204eb59affb351abf0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DecalData: {fileID: 11400000, guid: 5dfbf71c710602540bd678ad01afdee5, type: 2}
+  m_DecalData: {fileID: 11400000, guid: 774b1a7b9cf8a96419c6f6ceaa825949, type: 2}
 --- !u!114 &8587160707099322451
 MonoBehaviour:
   m_ObjectHideFlags: 0
