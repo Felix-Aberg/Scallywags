@@ -13,6 +13,10 @@ public class ActivatePlayers : MonoBehaviour
     private bool _playerReady;
     private string _sceneName = "Loading";
 
+    private float _startCounter;
+    private float _startDelay = 2f;
+    private StartGameProgressBar _startProgressBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,8 @@ public class ActivatePlayers : MonoBehaviour
         {
             _playersSelected.SetPlayerReady(i, false);
         }
+
+        _startProgressBar = FindObjectOfType<StartGameProgressBar>();
     }
 
     // Update is called once per frame
@@ -31,10 +37,12 @@ public class ActivatePlayers : MonoBehaviour
             HandleInputs(i);
         }
 
-        if (_playerReady)
+        if (_startCounter > _startDelay)
         {
             _loadScene.LoadSceneByName(_sceneName);
         }
+
+        _startProgressBar.UpdateSlider(_startCounter, _startDelay);
     }
 
     private void HandleInputs(int index)
@@ -44,6 +52,17 @@ public class ActivatePlayers : MonoBehaviour
         {
             _playersSelected.SetPlayerReady(index, true);
             _playerReady = true;
+            _startCounter = 0;
+        }
+
+        if (Input.GetButton(_startKey + buttonIndex))
+        {
+            _startCounter += Time.deltaTime;
+        }
+
+        if (Input.GetButtonUp(_startKey + buttonIndex))
+        {
+            _startCounter = 0;
         }
     }
 }

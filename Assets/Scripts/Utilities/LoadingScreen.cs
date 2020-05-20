@@ -16,6 +16,11 @@ public class LoadingScreen : MonoBehaviour
     private IEnumerator LoadNextScene(string sceneName)
     {
         yield return new WaitForSeconds(5f);
+        AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
+        while (!scene.isDone)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);

@@ -2661,7 +2661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1694161660
 MonoBehaviour:
@@ -3174,11 +3174,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hammer (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6962217566526284295, guid: ff4ceaee8bc88be428e6dca09fa00f17,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff4ceaee8bc88be428e6dca09fa00f17, type: 3}
@@ -4594,7 +4589,7 @@ PrefabInstance:
     - target: {fileID: 653432063982976651, guid: 3d5b03c9e96ac8a488d84919589fc9e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 653432063982976651, guid: 3d5b03c9e96ac8a488d84919589fc9e4,
         type: 3}

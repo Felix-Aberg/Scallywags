@@ -53,15 +53,6 @@ namespace ScallyWags
             
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
 
-            #if UNITY_EDITOR
-            for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
-            {
-                _players.SetPlayerReady(i, false);
-            }
-            
-            _players.SetPlayerReady(2, true);
-            #endif
-
             // Spawn players
             _entityManager = gameObject.AddComponent<EntityManager>();
             _entityManager.Init(playerPrefab);
