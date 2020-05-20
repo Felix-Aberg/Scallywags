@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,23 +11,38 @@ public class MenuButton : MonoBehaviour
     [SerializeField] int thisIndex;
     [SerializeField] string scene;
 
-    // Update is called once per frame
+    private int playerCount = 4;
+    private string _startKey = "Pickup";
+    private bool _pressed;
+    private LoadScene _loadScene;
+
+    private void Start()
+    {
+        _loadScene = GetComponent<LoadScene>();
+    }
+
     void Update()
     {
+        for (int i = 0; i < playerCount; i++)
+        {
+            HandleInputs(i);
+        }
+        
         if(mainMenu.index == thisIndex)
         {
-            animator.SetBool("selected", true);
-            if(Input.GetAxis ("Submit") == 1)
+            animator.SetBool("Selected", true);
+            if(_pressed)
             {
-                animator.SetBool("pressed", true);
+                _pressed = false;
+                animator.SetBool("Pressed", true);
                 switch (thisIndex)
                 {
                     case 0:
-                        transform.GetComponent<LoadScene>().LoadSceneByName(scene);
+                        _loadScene.LoadSceneByName(scene);
                         break;
 
                     case 1:
-                        transform.GetComponent<LoadScene>().LoadSceneByName(scene);
+                        _loadScene.LoadSceneByName(scene);
                         break;
 
                     case 2:
@@ -34,15 +50,24 @@ public class MenuButton : MonoBehaviour
                         break;
                 }
             }
-            else if(animator.GetBool("pressed")){
-                animator.SetBool("pressed", false);
+            else if(animator.GetBool("Pressed")){
+                animator.SetBool("Pressed", false);
                 animatorFunctions.disableOnce = true;
             }
         }
         else
         {
-            animator.SetBool("selected", false);
+            animator.SetBool("Selected", false);
         }
 
+    }
+    
+    private void HandleInputs(int index)
+    {
+        var buttonIndex = index + 1;
+        if (Input.GetButtonDown(_startKey + buttonIndex))
+        {
+            _pressed = true;
+        }
     }
 }
