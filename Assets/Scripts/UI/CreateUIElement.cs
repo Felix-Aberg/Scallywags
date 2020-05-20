@@ -24,13 +24,10 @@ namespace ScallyWags
                 {
                     case UIElement.GoldLost:
                         return InstantiateElement(_goldLost, text);
-                        break;
                     case UIElement.SpeechBubble:
                         return InstantiateElement(_tauntBubble, pos);
-                        break;
                     case UIElement.ProgressBar:
                         return InstantiateElement(_progressBar, pos);
-                        break;
                     case UIElement.Interact:
                         return InstantiateElement(_interactButton, pos);
                     case UIElement.Pickup:
