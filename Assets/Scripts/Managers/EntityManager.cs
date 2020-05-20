@@ -97,7 +97,8 @@ namespace ScallyWags
             entity.Init();
             AddEntity(entity);
         }
-        private Player GetPlayer(int index)
+
+        public Player GetPlayer(int index)
         {
             foreach (var player in _players)
             {
@@ -106,8 +107,7 @@ namespace ScallyWags
                     return player;
                 }
             }
-
-            Debug.LogError("No player with index found: " + index);
+            
             return null;
         }
 

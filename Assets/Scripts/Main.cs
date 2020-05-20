@@ -113,39 +113,35 @@ namespace ScallyWags
         {
             if (Input.GetButton("Pickup1"))
             {
-                if (_players.GetPlayerReady(0))
+                if (_entityManager.GetPlayer(1) == null)
                 {
-                    return;
+                    _entityManager.CreatePlayer(1);
+                    _players.SetPlayerReady(0, true);
                 }
-                _players.SetPlayerReady(0, true);
-                _entityManager.CreatePlayer(1);
             }
             if (Input.GetButton("Pickup2"))
             {
-                if (_players.GetPlayerReady(1))
+                if (_entityManager.GetPlayer(2) == null)
                 {
-                    return;
+                    _entityManager.CreatePlayer(2);
+                    _players.SetPlayerReady(1, true);
                 }
-                _players.SetPlayerReady(1, true);
-                _entityManager.CreatePlayer(2);
             }
             if (Input.GetButton("Pickup3"))
             {
-                if (_players.GetPlayerReady(2))
+                if (_entityManager.GetPlayer(3) == null)
                 {
-                    return;
+                    _entityManager.CreatePlayer(3);
+                    _players.SetPlayerReady(2, true);
                 }
-                _players.SetPlayerReady(2, true);
-                _entityManager.CreatePlayer(3);
             }
             if (Input.GetButton("Pickup4"))
             {
-                if (_players.GetPlayerReady(3))
+                if (_entityManager.GetPlayer(4) == null)
                 {
-                    return;
+                    _entityManager.CreatePlayer(4);
+                    _players.SetPlayerReady(3, true);
                 }
-                _players.SetPlayerReady(3, true);
-                _entityManager.CreatePlayer(4);
             }
         }
 

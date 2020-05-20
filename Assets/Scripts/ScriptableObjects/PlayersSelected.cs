@@ -7,7 +7,7 @@ namespace ScallyWags
     [CreateAssetMenu(menuName = "PlayersReady")]
     public class PlayersSelected : ScriptableObject
     {
-        [SerializeField] bool[] _playersReady = new bool[4];
+        public bool[] _playersReady = new bool[4];
         public int PlayerCount = 4;
         
         /// <summary>
