@@ -66,7 +66,7 @@ namespace ScallyWags
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            _rigidbody.mass = 50;
+            _rigidbody.mass = 1;
             _rigidbody.drag = 0f;
 
             _animationController = new AnimationController(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump);

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Net.Configuration;
-using UnityEditor;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.Scripting;
 
 namespace ScallyWags
 {
