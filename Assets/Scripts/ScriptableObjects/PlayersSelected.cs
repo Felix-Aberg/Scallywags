@@ -9,7 +9,20 @@ namespace ScallyWags
     {
         public bool[] _playersReady = new bool[4];
         public int PlayerCount = 4;
-        
+
+        public int GetPlayersReady()
+        {
+            int number = 0;
+            foreach (var ready in _playersReady)
+            {
+                if (ready)
+                {
+                    number += 1;
+                }
+            }
+            return number;
+        }
+
         /// <summary>
         /// Set players ready (indexing 0-3)
         /// </summary>

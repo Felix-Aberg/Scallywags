@@ -74,7 +74,7 @@ namespace ScallyWags
             _treasureManager.Init(goldCounterUI);
             _roundTimer.Init(roundTimeUI);
             _shipManager.Init();
-            _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player));
+            _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player), _players);
             _mortarManager.Init();
             _krakenManager.Init();
             

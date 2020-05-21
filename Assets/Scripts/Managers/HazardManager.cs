@@ -30,7 +30,8 @@ namespace ScallyWags
         private float _tutorialMaxDelay = 180f;
         
         private FloatVariable _roundTime;
-
+        private PlayersSelected _players;
+        
         private bool _IsPaused;
 
         private enum HazardRating
@@ -51,8 +52,9 @@ namespace ScallyWags
             _IsPaused = !_IsPaused;
         }
 
-        public void Init(RoundTimer roundTimer, FloatVariable roundTime, ShipCondition ship)
+        public void Init(RoundTimer roundTimer, FloatVariable roundTime, ShipCondition ship, PlayersSelected players)
         {
+            _players = players;
             _roundTimer = roundTimer;
             _roundTime = roundTime;
             _playerShip = ship;
@@ -68,6 +70,8 @@ namespace ScallyWags
 
         public void Tick()
         {
+            UpdateDifficulty();
+            
             if (_playerShip.IsSinking())
             {
                 _IsPaused = true;
@@ -105,6 +109,25 @@ namespace ScallyWags
                 _roundTimer.BeginRound();
                 EventManager.TriggerEvent("protectTreasure", null);
                 Hazard();
+            }
+        }
+
+        private void UpdateDifficulty()
+        {
+            switch (_players.GetPlayersReady())
+            {
+                case 1:
+                    _hazardInterval = 15f;
+                    break;
+                case 2:
+                    _hazardInterval = 12.5f;
+                    break;
+                case 3:
+                    _hazardInterval = 10f;
+                    break;
+                case 4:
+                    _hazardInterval = 8.5f;
+                    break;
             }
         }
 
