@@ -12,7 +12,7 @@ public class MenuButton : MonoBehaviour
     [SerializeField] string scene;
 
     private int playerCount = 4;
-    private string _startKey = "Pickup";
+    private string _startKey = "Jump";
     private bool _pressed;
     private LoadScene _loadScene;
 
