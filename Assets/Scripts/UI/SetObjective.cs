@@ -30,12 +30,7 @@ public class SetObjective : MonoBehaviour
     }
     private void OnDisable()
     {
-        EventManager.StopListening("Intro1", FirstTutorial);
-        EventManager.StopListening("Intro2", SecondTutorial);
-        EventManager.StopListening("Intro3", ThirdTutorial);
-        EventManager.StopListening("KrakenIntro", FourthTutorial);
-        EventManager.StopListening("protectTreasure", ProtectTreasure);
-        EventManager.StopListening("IntroDone", ClearText);
+        StopListeningForEvents();
     }
     
     private void ClearText(EventManager.EventMessage msg)
@@ -63,7 +58,17 @@ public class SetObjective : MonoBehaviour
     private void ProtectTreasure(EventManager.EventMessage arg0)
     {
         _textMesh.text = _protectTreasure.Value;
+        StopListeningForEvents();
     }
 
+    private void StopListeningForEvents()
+    {
+        EventManager.StopListening("Intro1", FirstTutorial);
+        EventManager.StopListening("Intro2", SecondTutorial);
+        EventManager.StopListening("Intro3", ThirdTutorial);
+        EventManager.StopListening("KrakenIntro", FourthTutorial);
+        EventManager.StopListening("protectTreasure", ProtectTreasure);
+        EventManager.StopListening("IntroDone", ClearText);
+    }
 }
 }
