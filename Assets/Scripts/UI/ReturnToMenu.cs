@@ -16,7 +16,7 @@ public class ReturnToMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Back"))
         {
             _loadScene.LoadSceneByName(_sceneName);
         }

@@ -16,7 +16,7 @@ public class SetPlayerReady : MonoBehaviour
 
         foreach (var text in _text)
         {
-            text.text = "Press X to join";
+            text.text = "Press A to join";
         }
     }
 

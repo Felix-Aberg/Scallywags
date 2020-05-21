@@ -8,7 +8,7 @@ namespace ScallyWags
     {
         [SerializeField] private PlayersSelected _playersSelected;
         private LoadScene _loadScene;
-        private string _startKey = "Pickup";
+        private string _startKey = "Jump";
         private string _sceneName = "Loading";
 
         private float _startCounter;
