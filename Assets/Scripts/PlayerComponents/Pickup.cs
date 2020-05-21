@@ -17,8 +17,8 @@ namespace ScallyWags
         
         [SerializeField] float _throwStrength = 0f;
         private float _initialThrowStrength = -5f; // Inverse time until it throws instead of dropping
-        private float _maxThrowStrength = 20f; //Max throw strength
-        private float _strenghtFactor = 35f; // Throw charge speed (per second)
+        private float _maxThrowStrength = 7f; //Max throw strength
+        private float _strenghtFactor = 15f; // Throw charge speed (per second)
 
         private Transform _transform;
         private AnimationController _animationController;
