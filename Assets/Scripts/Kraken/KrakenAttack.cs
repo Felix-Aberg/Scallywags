@@ -60,5 +60,8 @@ public class KrakenAttack : MonoBehaviour
                 _dealtDamageToShip = true;
             }
         }
+
+        var player = other.gameObject.GetComponent<Player>();
+        player?.TakeDamage(transform.position, _hitForce);
     }
 }

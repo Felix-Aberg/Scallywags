@@ -1207,7 +1207,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 13f43b0a4683d0442b442e6de5980ba8, type: 3}
   m_Controller: {fileID: 9100000, guid: 1b996f4c2640dcf47a00abb66de082d6, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2472,7 +2472,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 594011a260640a6459bedc8683b87158, type: 3}
   m_Controller: {fileID: 9100000, guid: 1b996f4c2640dcf47a00abb66de082d6, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2944,7 +2944,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 54b70a66f5fad6146a06b40444b216f2, type: 3}
   m_Controller: {fileID: 9100000, guid: 1b996f4c2640dcf47a00abb66de082d6, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

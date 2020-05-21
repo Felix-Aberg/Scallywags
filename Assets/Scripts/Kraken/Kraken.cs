@@ -34,7 +34,7 @@ public class Kraken : MonoBehaviour, IDamageable
             #endif
         }
         _anim = GetComponent<Animator>();
-        _attackDelay = Random.Range(3, 5);
+        _attackDelay = Random.Range(1, 4);
         y = transform.position.y;
 
         var ships = FindObjectsOfType<ShipCondition>();
@@ -74,7 +74,7 @@ public class Kraken : MonoBehaviour, IDamageable
         if (_attackTimer > _attackDelay)
         {
             _attackTimer = 0;
-            _attackDelay = Random.Range(2, 4);
+            _attackDelay = Random.Range(1, 4);
             Attack();
             _krakenAttack.EnableCollider();
         }
@@ -87,16 +87,16 @@ public class Kraken : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        int attack = Random.Range(0, 2);
+        int attack = Random.Range(0, 10);
 
-        if (attack == 0)
+        if (attack < 5)
         {
-            _anim.SetTrigger("Slam");
+            _anim.SetInteger("Attack", 0);
         }
 
-        if (attack == 1)
+        if (attack >= 5)
         {
-            _anim.SetTrigger("Slap");
+            _anim.SetInteger("Attack", 1);
         }
     }
 
