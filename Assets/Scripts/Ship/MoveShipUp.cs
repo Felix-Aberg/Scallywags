@@ -11,7 +11,7 @@ namespace ScallyWags
         private float _delay = 5f;
         private float _rotationDelay = 3f;
 
-        void Start()
+        public void Init()
         {
             transform.rotation = Quaternion.Euler(0, 180, 35);
             transform.position = new Vector3(0, -20, transform.position.z);

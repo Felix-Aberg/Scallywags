@@ -61,8 +61,10 @@ namespace ScallyWags
             if (shipCondition.gameObject.activeInHierarchy) return;
             
             EventManager.TriggerEvent("EnemyShipSound", null);
-            shipCondition.Init(ShipType.Enemy, this, message.HazardData.Health);
             shipCondition.gameObject.SetActive(true);
+            shipCondition.transform.position = _spawnPos.position;
+            shipCondition.GetComponent<MoveShipUp>().Init();
+            shipCondition.Init(ShipType.Enemy, this, message.HazardData.Health);
         }
 
         private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
