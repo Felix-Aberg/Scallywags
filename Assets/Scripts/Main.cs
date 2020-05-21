@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Net.Configuration;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -41,6 +42,9 @@ namespace ScallyWags
         private AudioSourcePoolManager _audioSourcePoolManager;
         private HazardManager _hazardManager;
         private LevelEventManager _levelEventManager;
+        
+        // Pause
+        private bool _paused;
 
         void Awake()
         {
@@ -86,6 +90,11 @@ namespace ScallyWags
 
         void Update()
         {
+            if (_paused)
+            {
+                return;
+            }
+            
             _hazardManager.Tick();
             _cameraHandler.Tick();
             _entityManager.Tick();
@@ -94,11 +103,6 @@ namespace ScallyWags
             _shipManager.Tick();
             _krakenManager.Tick();
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Quit);
-                SceneManager.LoadSceneAsync("MainMenu");
-            }
 
             if (_treasureManager.GoldValue <= 0)
             {
@@ -143,6 +147,11 @@ namespace ScallyWags
                     _players.SetPlayerReady(3, true);
                 }
             }
+        }
+
+        public void PauseGame(bool value)
+        {
+            _paused = value;
         }
 
         private IEnumerator LoadScene(string scene)
