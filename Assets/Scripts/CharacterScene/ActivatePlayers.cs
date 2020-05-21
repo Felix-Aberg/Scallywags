@@ -8,7 +8,7 @@ namespace ScallyWags
 {
     [SerializeField] private PlayersSelected _playersSelected;
     private int _maxPlayers = 4;
-    private string _startKey = "Pickup";
+    private string _startKey = "Jump";
     private static ActivatePlayers instance;
     
     void Start()
