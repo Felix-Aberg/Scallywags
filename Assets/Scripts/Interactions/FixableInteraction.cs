@@ -7,7 +7,7 @@ namespace ScallyWags
 
         private ShipCondition _shipCondition;
         private float _timer;
-        private float _delay = 15f;
+        private float _delay = 30f;
 
         private InteractParticles _interactParticles;
         

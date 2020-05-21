@@ -4710,6 +4710,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1124632563287614118, guid: 8b205ec1dbcc1ad45aa757895e232068,
+        type: 3}
+      propertyPath: _easyHazards.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3611850030813781983, guid: 8b205ec1dbcc1ad45aa757895e232068,
         type: 3}
       propertyPath: m_LocalPosition.x

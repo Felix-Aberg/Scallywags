@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: EnemyShip
   Prefab: {fileID: 122927237648891205, guid: f1b4be1c4bdda2344a1a0215795d454a, type: 3}
-  Health: 5
+  Health: 10
   Audio: {fileID: 0}
   NumberOfHazards: 1

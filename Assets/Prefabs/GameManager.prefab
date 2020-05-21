@@ -53,10 +53,7 @@ MonoBehaviour:
   transitionTime: 1.3
   playerPrefab: {fileID: 4374859028719597281, guid: 0d10ae24159ac134b8c1f7e541636ae0,
     type: 3}
-  _krakenManager:
-    _krakens:
-    - {fileID: 0}
-    - {fileID: 0}
+  _krakenManager: {fileID: 0}
 --- !u!114 &1124632563287614118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,9 +75,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e4e6a8d2722122458ff459f34fbaa2e, type: 2}
   - {fileID: 11400000, guid: 3f219bb4f2abfa04f964aba85bc5c51e, type: 2}
   - {fileID: 11400000, guid: 6e973d01cc63ce44f8de04e1fe247394, type: 2}
-  - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
+  - {fileID: 11400000, guid: c318d5df0be673f45bf8ece9dc512ca5, type: 2}
   - {fileID: 11400000, guid: 6ed9bf950109f2942a10ef8dc32bce49, type: 2}
-  - {fileID: 11400000, guid: 4f1684719daf94f42a289eab8661ae90, type: 2}
   _hardHazards:
   - {fileID: 11400000, guid: b986717bcccab2748b724f9df73ec8d9, type: 2}
   - {fileID: 11400000, guid: 4a4a61e37543d6c4bb2261639b9be14b, type: 2}

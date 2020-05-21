@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Kraken
   Prefab: {fileID: 3216380735516547154, guid: e9a92f17b135c4f4e8ee44fa9a705f2d, type: 3}
-  Health: 5
+  Health: 3
   Audio: {fileID: 0}
   NumberOfHazards: 2
