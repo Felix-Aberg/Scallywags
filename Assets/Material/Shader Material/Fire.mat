@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire
-  m_Shader: {fileID: -6465566751694194690, guid: 8734ff13a27bc2246b6adf5d2c01b08c,
+  m_Shader: {fileID: -6465566751694194690, guid: 74fe936e5e7cc3642acf887453a87ce1,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -29,10 +29,10 @@ Material:
     m_Floats:
     - Vector1_2A5E04FD: 5
     - Vector1_50F8BDB0: 0.5
-    - Vector1_53EEFD3F: 1
+    - Vector1_53EEFD3F: 0.09
     - Vector1_58417E94: 10
     - Vector1_8F095B2: 0.5
-    - Vector1_FEA8E8A9: 0.2
+    - Vector1_FEA8E8A9: 0.26
     m_Colors:
     - Color_1CFAE49F: {r: 1, g: 0.9150761, b: 0.6367924, a: 0}
     - Color_4C443069: {r: 1, g: 0.5248941, b: 0.15566036, a: 0}

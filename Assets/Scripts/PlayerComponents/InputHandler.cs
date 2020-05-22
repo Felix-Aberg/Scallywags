@@ -30,10 +30,17 @@ namespace ScallyWags
             inputs.interActPressed = GetInteractDown(index);
             inputs.jumpPressed = GetJumpDown(index);
             inputs.jumpDown = GetJump(index);
+            inputs.emoteDown = GetEmote(index);
 
             return inputs;
         }
-        
+
+        private bool GetEmote(int index)
+        {
+            var button = "Yarr" + index;
+            return Input.GetButtonDown(button);
+        }
+
         private float GetXAxis(int index)
         {
             return Input.GetAxis(horizontal + index);

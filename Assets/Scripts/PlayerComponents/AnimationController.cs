@@ -57,6 +57,11 @@ namespace ScallyWags
             }
         }
 
+        public void Emote()
+        {
+            _animator.SetTrigger("Emote");
+        }
+
         public void InteractTrigger(ItemType type)
         {
             switch (type)

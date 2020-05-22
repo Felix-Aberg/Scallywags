@@ -17,7 +17,7 @@ namespace ScallyWags
         void Start()
         {
             _createUIElement = FindObjectOfType<CreateUIElement>();
-            CreateInteractUI();
+          //  CreateInteractUI();
         }
 
         public void Interact(PickableItem item, Player player)
@@ -76,12 +76,12 @@ namespace ScallyWags
 
         public void DisableUI()
         {
-            _interactUI.gameObject.SetActive(false);
+            _interactUI?.gameObject.SetActive(false);
         }
         
         public void EnableUI()
         {
-            _interactUI.gameObject.SetActive(true);
+            _interactUI?.gameObject.SetActive(true);
         }
     }
 }

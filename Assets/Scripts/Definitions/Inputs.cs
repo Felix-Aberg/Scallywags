@@ -10,5 +10,6 @@ namespace ScallyWags
         public bool pickUpDown;
         public bool jumpPressed;
         public bool jumpDown;
+        public bool emoteDown;
     }
 }

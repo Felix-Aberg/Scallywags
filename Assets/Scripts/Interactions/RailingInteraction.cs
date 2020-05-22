@@ -16,7 +16,6 @@ namespace ScallyWags
         // Timers
         private float _fixingTime = 5f;
         private float _fixingTimer = 0f;
-        private float _scaleSpeed = 0.35f;
 
         [SerializeField] private GameObject _fixableShipPart;
         [SerializeField] private GameObject _particleSystem;

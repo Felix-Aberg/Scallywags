@@ -26,22 +26,30 @@ namespace ScallyWags
         private Ragdoll _ragdoll;
         private Vector3 _hitPos;
         private Rigidbody[] _ragdollRigidBodies;
+        private AudioSourcePoolManager _audioSourcePoolManager;
         
         // Monobehaviors
         private Rigidbody _rigidbody;
         private BoxCollider _triggerCollider;
         private Respawnable _respawnable;
         private Drown _drown;
+        private Emote _emote;
+
+        // AudioEvents
+        [SerializeField] SimpleAudioEvent _emoteAudio;
 
         public void Init(int index)
         {
             _index = index;
             var model = transform.GetChild(index);
             model.gameObject.SetActive(true);
+
+            _audioSourcePoolManager = FindObjectOfType<AudioSourcePoolManager>();
             
             _pickup = new Pickup();
             _interact = new Interact();
             _jump = new Jump();
+            _emote = new Emote();
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
 
@@ -74,6 +82,7 @@ namespace ScallyWags
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
             _jump.Init(transform);
+            _emote.Init(_emoteAudio, _audioSourcePoolManager, _animationController);
 
             _respawnable = GetComponent<Respawnable>();
             _drown = GetComponent<Drown>();
@@ -98,6 +107,7 @@ namespace ScallyWags
             _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
             _jump.Tick(transform, _rigidbody, inputs.jumpPressed, inputs.jumpDown);
+            _emote.Tick(inputs.emoteDown);
 
             _animationController.Tick();
         }
