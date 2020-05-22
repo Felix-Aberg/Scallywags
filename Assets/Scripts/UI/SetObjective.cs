@@ -13,10 +13,15 @@ public class SetObjective : MonoBehaviour
     [SerializeField] private StringVariable _tutorial3;
     [SerializeField] private StringVariable _tutorial4;
     [SerializeField] private StringVariable _protectTreasure;
+    [SerializeField] private GameObject _timer;
+    [SerializeField] private GameObject _gold;
+
     void Start()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
         _textMesh.text = "";
+        _timer.SetActive(false);
+        _gold.SetActive(false);
     }
 
     private void OnEnable()
@@ -59,6 +64,8 @@ public class SetObjective : MonoBehaviour
     {
         _textMesh.text = _protectTreasure.Value;
         StopListeningForEvents();
+        _timer.SetActive(true);
+        _gold.SetActive(true);
     }
 
     private void StopListeningForEvents()

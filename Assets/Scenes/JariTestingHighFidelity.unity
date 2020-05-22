@@ -4132,90 +4132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 245559725, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 850
-      objectReference: {fileID: 0}
-    - target: {fileID: 245559725, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 487
-      objectReference: {fileID: 0}
-    - target: {fileID: 245559727, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443287, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 177.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443287, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 223.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443287, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -108
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_text
-      value: Press "B" or Escape to Resume game
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 251443288, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textAlignment
-      value: 258
-      objectReference: {fileID: 0}
-    - target: {fileID: 308990191, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831916, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -178
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831916, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -108
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831916, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 244.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831916, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831917, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_text
-      value: Press "Back" to leave game
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831917, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831917, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 397831917, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1301180990518491699, guid: 40e6d5cfa2b53f247962d71ac8012601,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4331,11 +4247,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1495256194}
-    - target: {fileID: 8980802746018757881, guid: 40e6d5cfa2b53f247962d71ac8012601,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40e6d5cfa2b53f247962d71ac8012601, type: 3}
 --- !u!1001 &624057056637225285
