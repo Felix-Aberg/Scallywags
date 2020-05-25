@@ -49,12 +49,6 @@ namespace ScallyWags
                 _animator);
             _ragdoll.DisableRagdoll(ragdollRigidBodies);
 
-            _rigidbody = gameObject.AddComponent<Rigidbody>();
-            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-            _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            _rigidbody.mass = 50;
-            _rigidbody.isKinematic = false;
-
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _normalSpeed;
             _navMeshAgent.enabled = true;

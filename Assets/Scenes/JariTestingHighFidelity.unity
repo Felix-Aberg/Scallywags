@@ -301,7 +301,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106388492}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -1477,7 +1477,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214852683}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -2510,7 +2510,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835880468}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -2710,7 +2710,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902571365}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -3282,6 +3282,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 97
       objectReference: {fileID: 0}
+    - target: {fileID: 175908583960047915, guid: eb08d3ffe3562934f952f13e1123c291,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 285690736572661568, guid: eb08d3ffe3562934f952f13e1123c291,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3849,22 +3854,22 @@ PrefabInstance:
     - target: {fileID: 7331326973492267388, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124653586845, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124712232897, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124730582767, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124762232790, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
@@ -3879,132 +3884,132 @@ PrefabInstance:
     - target: {fileID: 7904475124815695078, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124876642271, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124937968995, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475124962622490, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125020778459, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125233737250, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125281498926, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125350780867, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125365734826, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125372164302, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125418995070, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125430784942, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125658540887, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125669329531, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125702732461, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125711629231, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125742382707, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125851877733, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125931678524, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475125984705415, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126019765375, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126088021707, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126105006194, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126173671941, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126211885669, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7904475126627981981, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8470848907921106802, guid: aae7a46c28719194f9cf695bd447633d,
         type: 3}
@@ -4574,7 +4579,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9244208757128653}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -4776,7 +4781,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386302714345676988}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
