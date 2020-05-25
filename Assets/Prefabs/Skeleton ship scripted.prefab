@@ -666,7 +666,7 @@ MonoBehaviour:
   _shipHealth:
     _health: 5
   _skeleton: {fileID: 11400000, guid: d01727cc6b9cba3459fec6c559313ab9, type: 2}
-  _sinkingSpeed: 1
+  _sinkingSpeed: 5
 --- !u!54 &1033711561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2650411537610174293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 9.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5092327642853492341}

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace ScallyWags 
@@ -36,6 +37,7 @@ namespace ScallyWags
 
             var rot = _spawnPos.transform.rotation;
             var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, Quaternion.identity);
+            cannonBall.GetComponent<Explode>().Init(_shipCondition.ShipType);
             
             if (_enemyCondition)
             {

@@ -11,6 +11,7 @@ public class Kraken : MonoBehaviour, IDamageable
     private int _maxHealth = 3;
     private int _health;
     private Animator _anim;
+    [SerializeField] private ParticleSystem _particles;
 
     private float _attackTimer;
     private float _attackDelay;
@@ -45,6 +46,8 @@ public class Kraken : MonoBehaviour, IDamageable
                 _playerShip = ship;
             }
         }
+
+        _particles = GetComponentInChildren<ParticleSystem>();
     }
 
     public void Tick()
@@ -107,6 +110,7 @@ public class Kraken : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
+        _particles.Play();
         _anim.SetTrigger("Damage");
         _health -= 1;
     }
