@@ -187,7 +187,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         if (_isDead) return;
         Drop();
         Die();
-        Push();
+        Flip();
     }
     
     public void TakeDamage(Vector3 hitDir, float hitForce)
@@ -195,7 +195,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         if (_isDead) return;
         Drop();
         Die();
-        Push();
+        Flip();
+
         var pickable = gameObject.AddComponent<PickableItem>();
         pickable.itemType = ItemType.Crab;
     }
@@ -205,12 +206,13 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         return transform.position;
     }
 
-    private void Push()
+    private void Flip()
     {
-        _rigidBody.DORotate(new Vector3(0, 0, -180), 1f);
         _rigidBody.isKinematic = false;
         _rigidBody.useGravity = true;
         _rigidBody.velocity = Vector3.zero;
-        _rigidBody.AddForce(Vector3.up * 2f, ForceMode.Impulse);
+        _rigidBody.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        _rigidBody.DORotate(new Vector3(0, 0, 180), 0.4f);
+
     }
 }

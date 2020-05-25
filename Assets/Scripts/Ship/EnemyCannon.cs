@@ -80,6 +80,8 @@ public class EnemyCannon : MonoBehaviour
                 cannonBall.transform.rotation = rot;
                 cannonBall.GetComponent<Rigidbody>().AddForce(cannonBall.transform.forward * _cannonForce, ForceMode.Impulse);
             }
+
+            cannonBall.GetComponent<Explode>().Init(_shipCondition.ShipType);
         }
 
         private void FindTarget()

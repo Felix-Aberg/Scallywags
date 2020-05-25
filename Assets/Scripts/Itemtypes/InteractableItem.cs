@@ -34,13 +34,20 @@ namespace ScallyWags
                 var respawnable = item.GetComponent<Respawnable>();
                 if (respawnable)
                 {
-                    respawnable.Respawn();
+                    respawnable.ResetPosition();
+                    StartCoroutine(EnableAfterDelay(respawnable.gameObject));
                 }
                 else
                 {
                     Destroy(item);
                 }
             }
+        }
+        
+        private IEnumerator EnableAfterDelay(GameObject item)
+        {
+            yield return new WaitForSeconds(5f);
+            item.SetActive(true);
         }
 
         public bool CanBeUsed(PickableItem item)

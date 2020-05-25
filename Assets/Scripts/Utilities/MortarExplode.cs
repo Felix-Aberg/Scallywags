@@ -48,8 +48,15 @@ namespace ScallyWags
             _audioPool.PlayAudioEvent(_audio, transform.position);
 
             var ship = other.gameObject.GetComponentInParent<ShipCondition>();
+            
+            // Bit shift the index of the layer (11) to get a bit mask
+            int layerMask = 1 << 11;
 
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f))
+            // This would cast rays only against colliders in layer 11.
+            // But instead we want to collide against everything except layer 11. The ~ operator does this, it inverts a bitmask.
+            layerMask = ~layerMask;
+
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
                 if (hit.collider.gameObject.GetComponent<InteractableItem>())
                 {

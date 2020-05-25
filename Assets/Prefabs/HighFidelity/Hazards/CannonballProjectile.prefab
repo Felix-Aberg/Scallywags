@@ -107,7 +107,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -128,7 +128,6 @@ MonoBehaviour:
   particles: {fileID: 6369757037939972947, guid: 9aadd14458295ac47b45a79ba4109e39,
     type: 3}
   _audio: {fileID: 11400000, guid: e6569ce8898297348be19d3b3095e398, type: 2}
-  splashEffect: {fileID: 0}
 --- !u!114 &-1726330551361402166
 MonoBehaviour:
   m_ObjectHideFlags: 0

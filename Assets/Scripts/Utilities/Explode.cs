@@ -14,11 +14,16 @@ namespace ScallyWags
         public SimpleAudioEvent _audio;
         private AudioSourcePoolManager _audioPool;
         private float _hitForce = 20f;
-        [SerializeField] private GameObject splashEffect;
+        private ShipType _owner;
 
         private void Start()
         {
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
+        }
+
+        public void Init(ShipType type)
+        {
+            _owner = type;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -37,7 +42,7 @@ namespace ScallyWags
 
             if (ship != null)
             {
-                if (ship.ShipType == ShipType.Enemy)
+                if (ship.ShipType != _owner && ship.ShipType == ShipType.Enemy)
                 {
                     ship.TakeDamage();
                 }

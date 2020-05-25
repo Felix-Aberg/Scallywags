@@ -33,6 +33,10 @@ namespace ScallyWags
             foreach (var c in _swords)
             {
                 c.gameObject.SetActive(true);
+                foreach (var transform in c.GetComponentsInChildren<Transform>())
+                {
+                    transform.gameObject.SetActive(true);
+                }
             }
         }
     }
