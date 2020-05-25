@@ -47,7 +47,7 @@ namespace ScallyWags
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             #endif
-            
+
             _levelEventManager = gameObject.AddComponent<LevelEventManager>();
             
             _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
@@ -81,6 +81,11 @@ namespace ScallyWags
                     _entityManager.CreatePlayer(i);
                 }
             }
+        }
+
+        void Start()
+        {
+            EventManager.TriggerEvent("PlayBattleMusic", null);
         }
 
         void Update()

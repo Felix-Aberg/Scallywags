@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3611850030813781983}
   - component: {fileID: 8517884298922818127}
   - component: {fileID: 1124632563287614118}
-  - component: {fileID: 466275443}
   - component: {fileID: 2044908652}
   m_Layer: 0
   m_Name: GameManager
@@ -70,7 +69,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 784b9e94014d53e499d91b84976c2302, type: 2}
   - {fileID: 11400000, guid: 890d7d8fa231f6e4d9c2706dc466fb0f, type: 2}
   - {fileID: 11400000, guid: e95ffaf55152d8c4cb0a364382810aca, type: 2}
-  - {fileID: 11400000, guid: 4f1684719daf94f42a289eab8661ae90, type: 2}
   _mediumHazards:
   - {fileID: 11400000, guid: 7e4e6a8d2722122458ff459f34fbaa2e, type: 2}
   - {fileID: 11400000, guid: 3f219bb4f2abfa04f964aba85bc5c51e, type: 2}
@@ -91,18 +89,6 @@ MonoBehaviour:
   _currentHazardRating: 0
   _enemyShip: {fileID: 11400000, guid: c318d5df0be673f45bf8ece9dc512ca5, type: 2}
   _hazardInterval: 10
---- !u!114 &466275443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912385582754536911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf3ae50a0e4ba9479d8232a733901ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2044908652
 MonoBehaviour:
   m_ObjectHideFlags: 0
