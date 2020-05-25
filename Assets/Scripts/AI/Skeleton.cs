@@ -28,7 +28,7 @@ namespace ScallyWags
         // Sword
         private float _attackTimer;
         private float _attackDelay = 2f;
-        private float _hitForce = 10f;
+        private float _hitForce = 40f;
 
 
         public void Start()

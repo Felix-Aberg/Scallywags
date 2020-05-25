@@ -61,5 +61,15 @@ namespace ScallyWags
                 Respawn();
             }
         }
+
+        // Used for cannon balls to not spawn immediately
+        public void ResetPosition()
+        {
+            transform.position = _startPos;
+            transform.rotation = _startRot;
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            gameObject.SetActive(false);
+        }
     }
 }

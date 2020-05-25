@@ -48,6 +48,12 @@ namespace ScallyWags
             }
             
             _animationController.Interact(currentItem.itemType, _interacting);
+            
+            if (interactPressed)
+            {
+                _animationController.InteractTrigger(currentItem.itemType);
+            }
+            
 
             var closestItem = GetClosestItem(player, currentItem) as InteractableItem;
             if (closestItem == null)
@@ -58,7 +64,6 @@ namespace ScallyWags
                 
             if (interactPressed)
             {
-                _animationController.InteractTrigger(currentItem.itemType);
                 _interacting = true;
                 RefreshItems();
                 closestItem.GetObject().GetComponent<ItemHighlight>()?.HighlightItem(null);
