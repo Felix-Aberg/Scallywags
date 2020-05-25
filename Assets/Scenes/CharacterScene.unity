@@ -3192,6 +3192,50 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000009313226, y: 0.042139784, z: -0.0077137034}
     m_Extent: {x: 0.042039946, y: 0.066863894, z: 0.033787213}
   m_DirtyAABB: 0
+--- !u!1 &389698799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389698801}
+  - component: {fileID: 389698800}
+  m_Layer: 0
+  m_Name: PlayMenuMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389698800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389698799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606feab893df1924085110f1801fd5c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: PlayMenuMusic
+--- !u!4 &389698801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389698799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.381895, y: 0.7238089, z: 1.081429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404408552
 GameObject:
   m_ObjectHideFlags: 0
