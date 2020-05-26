@@ -27,8 +27,13 @@ namespace ScallyWags
         
         // Sword
         private float _attackTimer;
-        private float _attackDelay = 2f;
+        private float _attackDelay = 1f;
+        
+        private float _damageTimer;
+        private float _damageDelay = 1f;
+        
         private float _hitForce = 40f;
+        private ParticleSystem _slash;
 
 
         public void Start()
@@ -38,6 +43,7 @@ namespace ScallyWags
 
             var ragDollColliders = GetComponentsInChildren<CapsuleCollider>();
             var rigidbodyBoxcolliders = GetComponentsInChildren<BoxCollider>();
+            _slash = GetComponentInChildren<ParticleSystem>();
 
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
             capsuleCollider.height = 1.756473f;
@@ -67,6 +73,8 @@ namespace ScallyWags
             if (_isDead) return;
             
             _attackTimer += Time.deltaTime;
+            _damageTimer += Time.deltaTime;
+            
             UpdateAnimations();
             Sense();
             Decide();
@@ -177,6 +185,13 @@ namespace ScallyWags
 
         private void Attack()
         {
+            if (_attackTimer < _attackDelay)
+            {
+                return;
+            }
+
+            _attackTimer = 0;
+            
             if (Vector3.Distance(transform.position, _targetPlayer.transform.position) < 1)
             {
                 HandleAttack();
@@ -191,6 +206,7 @@ namespace ScallyWags
             if (_targetPlayer == null) return;
 
             _animator.SetTrigger("Sword");
+            _slash.Play();
         }
         
         private void OnCollisionEnter(Collision other)
@@ -198,10 +214,10 @@ namespace ScallyWags
             var target = other.gameObject.GetComponent<Player>();
             if (target != null)
             {
-                if (_attackTimer > _attackDelay)
+                if (_damageTimer > _damageDelay)
                 {
                     target.TakeDamage(transform.position, _hitForce);
-                    _attackTimer = 0;
+                    _damageTimer = 0;
                 }
             }
         }

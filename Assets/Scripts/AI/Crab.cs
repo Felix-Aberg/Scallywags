@@ -20,7 +20,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     private Rigidbody _rigidBody;
     
     private float _normalSpeed = 4f;
-    private float _carrySpeed = 1.5f;
+    private float _carrySpeed = 1.3f;
     private bool _died;
     
 
