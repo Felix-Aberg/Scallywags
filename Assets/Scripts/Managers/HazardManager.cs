@@ -209,5 +209,13 @@ namespace ScallyWags
             EventManager.TriggerEvent(_introduction[0].EventName, eventMessage);
             _introduction.RemoveAt(0);
         }
+
+        public void SkipHazard()
+        {
+            #if UNITY_EDITOR
+            Debug.Log("Skipped hazard");
+            #endif
+            _hazardTimer = _hazardInterval;
+        }
     }
 }

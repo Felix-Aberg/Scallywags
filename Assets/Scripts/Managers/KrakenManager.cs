@@ -8,9 +8,11 @@ namespace ScallyWags
     {
         private KrakenSpawn[] _spawnPos;
         [SerializeField] private Kraken[] _krakens = new Kraken[2];
+        private HazardManager _hazardManager;
 
-        public void Init()
+        public void Init(HazardManager hazardManager)
         {
+            _hazardManager = hazardManager;
             _spawnPos = GameObject.FindObjectsOfType<KrakenSpawn>();
         }
 
@@ -89,7 +91,11 @@ namespace ScallyWags
         {
             if (IsEnemyShipSpawned()) return;
 
-            if (!CanSpawnKraken()) return;
+            if (!CanSpawnKraken())
+            {
+                _hazardManager.SkipHazard();
+                return;
+            }
 
             bool spawnedKraken = false;
 

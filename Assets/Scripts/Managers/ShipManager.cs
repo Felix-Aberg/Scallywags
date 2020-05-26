@@ -7,9 +7,11 @@ namespace ScallyWags
     {
         private List<ShipCondition> ships = new List<ShipCondition>();
         private Transform _spawnPos;
+        private HazardManager _hazardManager;
 
-        public void Init()
+        public void Init(HazardManager hazardManager)
         {
+            _hazardManager = hazardManager;
             var ship = GameObject.FindObjectOfType<ShipCondition>();
             ship.Init(ShipType.Player, this, 20);
             ships.Add(ship);
@@ -58,7 +60,11 @@ namespace ScallyWags
         private void EnableShip(EventManager.EventMessage message)
         {
             var shipCondition = GetShip(ShipType.Enemy);
-            if (shipCondition.gameObject.activeInHierarchy) return;
+            if (shipCondition.gameObject.activeInHierarchy)
+            {
+                _hazardManager.SkipHazard();
+                return;
+            }
             
             EventManager.TriggerEvent("EnemyShipSound", null);
             shipCondition.gameObject.SetActive(true);
@@ -70,7 +76,10 @@ namespace ScallyWags
         private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
         {
             var shipCondition = GetShip(shipType);
-            if (shipCondition != null) return;
+            if (shipCondition != null)
+            {
+                return;
+            }
             
             var go = GameObject.Instantiate(prefab, _spawnPos.position, Quaternion.identity);
             go.transform.rotation = Quaternion.Euler(0, 180, 0);
