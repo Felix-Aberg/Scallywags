@@ -150,9 +150,11 @@ namespace ScallyWags
 
         public void TakeDamage(Vector3 pos, float hitForce)
         {
+            if (_isDead) return;
             _isDead = true;
             var dir = transform.position - pos;
             Die(dir.normalized, hitForce);
+            EventManager.TriggerEvent("PlayerDied", null);
         }
 
         public Vector3 GetPos()

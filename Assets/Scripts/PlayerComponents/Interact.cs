@@ -89,6 +89,18 @@ namespace ScallyWags
                 {
                     continue;
                 }
+
+                var skeleton = entity.GetComponent<Skeleton>();
+                if (skeleton.IsDead())
+                {
+                    continue;
+                }
+                
+                var crab = entity.GetComponent<Crab>();
+                if (crab.IsDead())
+                {
+                    continue;
+                }
                 
                 newList.Add(item);
             }
