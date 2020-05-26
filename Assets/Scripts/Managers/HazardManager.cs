@@ -17,6 +17,8 @@ namespace ScallyWags
         [Header("Used to spawn ship at the start of the game")]
         [SerializeField] private HazardData _enemyShip;
 
+        [SerializeField] private HazardData _krakens;
+
         private ShipCondition _playerShip;
         private RoundTimer _roundTimer;
 
@@ -66,6 +68,7 @@ namespace ScallyWags
             }
             
             EventManager.TriggerEvent("SpawnEnemyShip", new EventManager.EventMessage(_enemyShip));
+            EventManager.TriggerEvent("CreateKrakens", new EventManager.EventMessage(_krakens));
         }
 
         public void Tick()

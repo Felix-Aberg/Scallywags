@@ -69,10 +69,10 @@ namespace ScallyWags
             _treasureManager.Init(goldCounterUI);
             _roundTimer.Init(roundTimeUI);
             _shipManager.Init();
-            _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player), _players);
             _mortarManager.Init();
             _krakenManager.Init();
-            
+            _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player), _players);
+
             for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1
             {
                 var index = i - 1;

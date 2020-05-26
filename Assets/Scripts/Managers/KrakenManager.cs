@@ -16,15 +16,17 @@ namespace ScallyWags
 
         private void OnEnable()
         {
+            EventManager.StartListening("CreateKrakens", CreateKrakens);
             EventManager.StartListening("Kraken", SpawnKraken);
-            EventManager.StartListening("KrakenIntro", SpawnIntroKraken);
+            EventManager.StartListening("KrakenIntro", SpawnKraken);
             EventManager.StartListening("RoundOver", KillKrakens);
         }
 
         private void OnDisable()
         {
+            EventManager.StopListening("CreateKrakens", CreateKrakens);
             EventManager.StopListening("Kraken", SpawnKraken);
-            EventManager.StopListening("KrakenIntro", SpawnIntroKraken);
+            EventManager.StopListening("KrakenIntro", SpawnKraken);
             EventManager.StopListening("RoundOver", KillKrakens);
         }
         
@@ -35,40 +37,52 @@ namespace ScallyWags
                 k?.Tick();
             }
         }
+
+        private void CreateKrakens(EventManager.EventMessage message)
+        {
+            for (var index = 0; index < _spawnPos.Length; index++)
+            {
+                var spawn = _spawnPos[index];
+                var transform = spawn.transform;
+                if (transform == null) break;
+
+                transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0);
+                var kraken = GameObject.Instantiate(message.HazardData.Prefab, spawn.transform.position,
+                    transform.rotation);
+
+                var krakenComponent = kraken.GetComponent<Kraken>();
+                _krakens[index] = krakenComponent;
+                krakenComponent.Init(this, 1);
+                RemoveKraken(krakenComponent);
+            }
+        }
         
         private void KillKrakens(EventManager.EventMessage message)
         {
-            foreach (var k in _krakens)
+            foreach (var kraken in _krakens)
             {
-                if (k == null) continue;
-                k.Die();
+                kraken.Die();
+                RemoveKraken(kraken);
             }
-
-            _krakens = new Kraken[2];
         }
 
-        private void AddKraken(Kraken kraken)
+        private bool AddKraken(EventManager.EventMessage message)
         {
-            for (int i = 0; i < _krakens.Length; i++)
+            foreach (var kraken in _krakens)
             {
-                if (_krakens[i] == null)
+                if (!kraken.gameObject.activeInHierarchy)
                 {
-                    _krakens[i] = kraken;
-                    break;
+                    kraken.gameObject.SetActive(true);
+                    kraken.Init(this, message.HazardData.Health);
+                    return true;
                 }
             }
+            return false;
         }
 
         public void RemoveKraken(Kraken kraken)
         {
-            for (int i = 0; i < _krakens.Length; i++)
-            {
-                if (_krakens[i] == kraken)
-                {
-                    _krakens[i] = null;
-                    break;
-                }
-            }
+            kraken.gameObject.SetActive(false);
         }
 
         private void SpawnKraken(EventManager.EventMessage message)
@@ -76,31 +90,31 @@ namespace ScallyWags
             if (IsEnemyShipSpawned()) return;
 
             if (!CanSpawnKraken()) return;
-            
-            EventManager.TriggerEvent("KrakenSound", null);
+
+            bool spawnedKraken = false;
 
             for(int i = 0; i < message.HazardData.NumberOfHazards; i++)
             {
-                var t = _spawnPos[i].transform;
-                if (t == null) break;
-                
-                t.rotation = Quaternion.Euler(0, t.localRotation.eulerAngles.y, 0);
-                var kraken = GameObject.Instantiate(message.HazardData.Prefab, _spawnPos[i].transform.position, t.rotation);
-                
-                var krakenComponent = kraken.GetComponent<Kraken>();
-                AddKraken(krakenComponent);
-                krakenComponent.Init(this, message.HazardData.Health);
+                if (AddKraken(message))
+                {
+                    spawnedKraken = true;
+                }
+            }
+
+            if (spawnedKraken)
+            {
+                EventManager.TriggerEvent("KrakenSound", null);
             }
         }
 
         private bool CanSpawnKraken()
         {
-            bool canSpawn = true;
-            for (int i = 0; i < _krakens.Length; i++)
+            bool canSpawn = false;
+            foreach (var kraken in _krakens)
             {
-                if (_krakens[i] != null)
+                if (!kraken.gameObject.activeInHierarchy)
                 {
-                    canSpawn = false;
+                    canSpawn = true;
                     break;
                 }
             }
@@ -119,18 +133,6 @@ namespace ScallyWags
                 }
             }
             return false;
-        }
-
-        private void SpawnIntroKraken(EventManager.EventMessage message)
-        {
-            EventManager.TriggerEvent("KrakenSound", null);
-            var t = _spawnPos[1].transform;
-            t.rotation = Quaternion.Euler(t.rotation.x, 180, t.rotation.z);
-            var kraken = GameObject.Instantiate(message.HazardData.Prefab, t.position, t.rotation);
-            
-            var krakenComponent = kraken.GetComponent<Kraken>();
-            AddKraken(krakenComponent);
-            krakenComponent.Init(this, message.HazardData.Health);
         }
     }
 }

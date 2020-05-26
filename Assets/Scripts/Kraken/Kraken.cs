@@ -11,7 +11,7 @@ public class Kraken : MonoBehaviour, IDamageable
     private int _maxHealth = 3;
     private int _health;
     private Animator _anim;
-    [SerializeField] private ParticleSystem _particles;
+    private ParticleSystem _particles;
 
     private float _attackTimer;
     private float _attackDelay;
@@ -60,13 +60,39 @@ public class Kraken : MonoBehaviour, IDamageable
         AttackDecision();
         DieDecision();
     }
+    
+    public void Die()
+    {
+        _health = 0;
+    }
+
+    public void TakeDamage()
+    {
+        _particles.Play();
+        _anim.SetTrigger("Damage");
+        _health -= 1;
+    }
+
+    public void TakeDamage(Vector3 hitDir, float hitForce)
+    {
+        TakeDamage();
+    }
+
+    public Vector3 GetPos()
+    {
+        return transform.position;
+    }
+    
+    public void Disable()
+    {
+        _krakenManager.RemoveKraken(this);
+    }
 
     private void DieDecision()
     {
         if (_health <= 0)
         {
             _anim.SetBool("Dead", true);
-            _krakenManager.RemoveKraken(this);
         }
     }
 
@@ -101,27 +127,5 @@ public class Kraken : MonoBehaviour, IDamageable
         {
             _anim.SetInteger("Attack", 1);
         }
-    }
-
-    public void Die()
-    {
-        _health = 0;
-    }
-
-    public void TakeDamage()
-    {
-        _particles.Play();
-        _anim.SetTrigger("Damage");
-        _health -= 1;
-    }
-
-    public void TakeDamage(Vector3 hitDir, float hitForce)
-    {
-        TakeDamage();
-    }
-
-    public Vector3 GetPos()
-    {
-        return transform.position;
     }
 }
