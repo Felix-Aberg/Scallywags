@@ -4,7 +4,7 @@ namespace ScallyWags
 {
     public class SwordInteraction : MonoBehaviour, IInteraction
     {
-        private float _hitForce = 20f;
+        private float _hitForce = 10f;
         public void Act()
         {
             EventManager.TriggerEvent("IntroDone", new EventManager.EventMessage(null));
