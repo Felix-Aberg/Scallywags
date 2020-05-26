@@ -3,15 +3,16 @@ using UnityEngine;
 
 namespace ScallyWags
 {
-    public class AnimationController
+    public class AnimationController : MonoBehaviour
     {
         private Animator _animator;
         private Rigidbody _rigidBody;
         private Pickup _pickup;
         private List<ItemType> _equippableItems = new List<ItemType>();
         private Jump _jump;
+        private ParticleSystem _slash;
 
-        public AnimationController(Animator animator, Rigidbody rigidBody, Pickup pickup, Jump jump)
+        public void Init(Animator animator, Rigidbody rigidBody, Pickup pickup, Jump jump)
         {
             _animator = animator;
             _rigidBody = rigidBody;
@@ -19,6 +20,7 @@ namespace ScallyWags
             _jump = jump;
             _equippableItems.Add(ItemType.Hammer);
             _equippableItems.Add(ItemType.Sword);
+            _slash = GetComponentInChildren<ParticleSystem>();
         }
 
         public void Tick()
@@ -68,6 +70,7 @@ namespace ScallyWags
             {
                 case ItemType.Sword:
                     _animator.SetTrigger("Sword");
+                    _slash.Play();
                     break;
                 default:
                     break;

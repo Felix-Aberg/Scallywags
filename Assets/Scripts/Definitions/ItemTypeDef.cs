@@ -10,7 +10,8 @@
     Gem,
     Bucket,
     Sword,
-    Crab
+    Crab,
+    Skeleton
 }
     
 }

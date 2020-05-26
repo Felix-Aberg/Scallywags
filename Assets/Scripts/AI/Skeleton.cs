@@ -139,6 +139,8 @@ namespace ScallyWags
             _navMeshAgent.enabled = false;
             _sword.gameObject.SetActive(false);
             EventManager.TriggerEvent(_enemyDamageEventName, null);
+            var pickable = gameObject.AddComponent<PickableItem>();
+            pickable.itemType = ItemType.Skeleton;
         }
 
         private void GetTarget()

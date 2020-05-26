@@ -211,8 +211,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _rigidBody.isKinematic = false;
         _rigidBody.useGravity = true;
         _rigidBody.velocity = Vector3.zero;
-        _rigidBody.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-        _rigidBody.DORotate(new Vector3(0, 0, 180), 0.4f);
+        _rigidBody.DORotate(new Vector3(0, 0, 180), 0.2f);
 
     }
 }

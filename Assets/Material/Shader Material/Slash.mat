@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slash
+  m_Shader: {fileID: -6465566751694194690, guid: 41db372d949e56443ac2b769d950b25b,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_28ABA4CC:
+        m_Texture: {fileID: 2800000, guid: 41bb829a62e7d0845a319148967f7f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B0E482E0:
+        m_Texture: {fileID: 2800000, guid: 8a8ceca8ffb19c44abe8b0a9ecb5701d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_5185981: 1
+    - Vector1_6B685B5D: 5
+    - Vector1_F5E15123: 1
+    m_Colors:
+    - Color_10CB758C: {r: 0.4198113, g: 0.7242151, b: 1, a: 1}
+    - Color_9976B1FE: {r: 0.7688679, g: 0.9847045, b: 1, a: 0}

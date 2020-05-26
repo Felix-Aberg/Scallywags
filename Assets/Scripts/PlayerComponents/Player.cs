@@ -77,7 +77,8 @@ namespace ScallyWags
             _rigidbody.mass = 1;
             _rigidbody.drag = 0f;
 
-            _animationController = new AnimationController(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump);
+            _animationController = gameObject.AddComponent<AnimationController>();
+            _animationController.Init(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump);
 
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
