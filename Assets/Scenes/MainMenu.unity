@@ -861,7 +861,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1050,7 +1050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -85.6}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 243.85, y: -9.9996}
+  m_AnchoredPosition: {x: 243.84998, y: -9.999573}
   m_SizeDelta: {x: -376.56, y: -364.99243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523519192
