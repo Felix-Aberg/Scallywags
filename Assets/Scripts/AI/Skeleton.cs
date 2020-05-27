@@ -216,7 +216,11 @@ namespace ScallyWags
             {
                 if (_damageTimer > _damageDelay)
                 {
-                    target.TakeDamage(transform.position, _hitForce);
+                    var random = UnityEngine.Random.Range(0, 11);
+                    if (random < 5)
+                    {
+                        target.TakeDamage(transform.position, _hitForce);
+                    }
                     _damageTimer = 0;
                     _attackTimer = _attackDelay;
                 }
