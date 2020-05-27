@@ -72,6 +72,12 @@ namespace ScallyWags
                     _animator.SetTrigger("Sword");
                     _slash.Play();
                     break;
+                case ItemType.Hammer:
+                    _animator.SetTrigger("Hammer");
+                    break;
+                case ItemType.Bucket:
+                    _animator.SetTrigger("Bucket");
+                    break;
                 default:
                     break;
             }

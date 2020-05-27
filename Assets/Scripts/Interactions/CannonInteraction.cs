@@ -12,7 +12,7 @@ namespace ScallyWags
         private ItemSpawn _spawnPos;
         private ParticleSystem[] _particleSystem;
         private AudioSourcePoolManager _audioPool;
-        private ShipCondition _enemyCondition;
+        private CannonTarget _cannonTarget;
         private ShipCondition _shipCondition;
         private Animator _animator;
         private void Start()
@@ -41,9 +41,9 @@ namespace ScallyWags
             var cannonBall = Instantiate(_cannonBall, _spawnPos.transform.position, Quaternion.identity);
             cannonBall.GetComponent<Explode>().Init(_shipCondition.ShipType);
             
-            if (_enemyCondition)
+            if (_cannonTarget)
             {
-                var dir = _enemyCondition.transform.position - _spawnPos.transform.position;
+                var dir = _cannonTarget.transform.position - _spawnPos.transform.position;
                 rot = Quaternion.LookRotation(dir.normalized, cannonBall.transform.up);
                 cannonBall.transform.localRotation = rot;
             }
@@ -60,15 +60,7 @@ namespace ScallyWags
 
         private void FindTarget()
         {
-            var ships = FindObjectsOfType<ShipCondition>();
-
-            foreach (var ship in ships)
-            {
-                if (ship.ShipType != _shipCondition?.ShipType)
-                {
-                    _enemyCondition = ship;
-                }
-            }
+            _cannonTarget = FindObjectOfType<CannonTarget>();
         }
     }
 }
