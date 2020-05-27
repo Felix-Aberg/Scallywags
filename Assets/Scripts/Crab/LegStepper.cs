@@ -23,12 +23,13 @@ namespace ScallyWags
 
         // Is the leg moving?
         public bool Moving;
+        private GameObject _legStepperTarget;
 
         private void Start()
         {
-            var gm = new GameObject();
-            target = Instantiate(gm, transform.position, Quaternion.identity).transform;
-            gm.name = "LegStepperTarget";
+            _legStepperTarget = new GameObject();
+            target = Instantiate(_legStepperTarget, transform.position, Quaternion.identity).transform;
+            _legStepperTarget.name = "LegStepperTarget";
             var IK = gameObject.AddComponent<FastIKFabric>();
             IK.Target = target;
         }
@@ -46,6 +47,11 @@ namespace ScallyWags
                 // Start the step coroutine
                 StartCoroutine(MoveToHome());
             }
+        }
+
+        public void CleanUp()
+        {
+            Destroy(_legStepperTarget);
         }
 
         // Coroutines must return an IEnumerator

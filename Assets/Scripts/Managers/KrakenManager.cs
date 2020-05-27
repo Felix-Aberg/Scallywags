@@ -9,11 +9,13 @@ namespace ScallyWags
         private KrakenSpawn[] _spawnPos;
         [SerializeField] private Kraken[] _krakens = new Kraken[2];
         private HazardManager _hazardManager;
+        private EnableKrakenDecal[] _decals;
 
         public void Init(HazardManager hazardManager)
         {
             _hazardManager = hazardManager;
             _spawnPos = GameObject.FindObjectsOfType<KrakenSpawn>();
+            _decals = FindObjectsOfType<EnableKrakenDecal>();
         }
 
         private void OnEnable()
@@ -55,6 +57,7 @@ namespace ScallyWags
                 var krakenComponent = kraken.GetComponent<Kraken>();
                 _krakens[index] = krakenComponent;
                 krakenComponent.Init(this, 1);
+                krakenComponent.SetDecal(_decals[index]);
                 RemoveKraken(krakenComponent);
             }
         }

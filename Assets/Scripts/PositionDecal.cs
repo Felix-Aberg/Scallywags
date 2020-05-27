@@ -18,7 +18,7 @@ public class PositionDecal : MonoBehaviour
             var pos = hit.point;
             pos.y += 0.2f;
             transform.position = pos;
-            transform.parent = null;
+            transform.parent = hit.transform;
         }
     }
 }

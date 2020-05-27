@@ -20,6 +20,7 @@ public class Kraken : MonoBehaviour, IDamageable
     private KrakenAttack _krakenAttack;
     private KrakenManager _krakenManager;
     private string _krakenAttackEventName = "KrakenAttacks";
+    private EnableKrakenDecal _decal;
 
     public void Init(KrakenManager krakenManager, int health)
     {
@@ -35,7 +36,7 @@ public class Kraken : MonoBehaviour, IDamageable
             #endif
         }
         _anim = GetComponent<Animator>();
-        _attackDelay = Random.Range(1, 4);
+        _attackDelay = Random.Range(3, 5);
         y = transform.position.y;
 
         var ships = FindObjectsOfType<ShipCondition>();
@@ -68,6 +69,7 @@ public class Kraken : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
+        _decal.DisableDecal();
         _particles.Play();
         _anim.SetTrigger("Damage");
         _health -= 1;
@@ -98,13 +100,16 @@ public class Kraken : MonoBehaviour, IDamageable
 
     private void AttackDecision()
     {
+        if (!gameObject.activeInHierarchy) return;
+        
         _attackTimer += Time.deltaTime;
 
         if (_attackTimer > _attackDelay)
         {
             _attackTimer = 0;
-            _attackDelay = Random.Range(1, 4);
+            _attackDelay = Random.Range(3, 5);
             Attack();
+            _anim.SetTrigger("AttackTrigger");
             _krakenAttack.EnableCollider();
         }
     }
@@ -120,12 +125,20 @@ public class Kraken : MonoBehaviour, IDamageable
 
         if (attack < 5)
         {
+            // Slap
             _anim.SetInteger("Attack", 0);
         }
 
         if (attack >= 5)
         {
+            // Slam
             _anim.SetInteger("Attack", 1);
+            _decal.EnableDecal();
         }
+    }
+
+    public void SetDecal(EnableKrakenDecal decal)
+    {
+        _decal = decal;
     }
 }

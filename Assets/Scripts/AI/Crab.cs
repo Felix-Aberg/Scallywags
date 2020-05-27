@@ -101,6 +101,12 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     {
         _isDead = true;
         _navMeshAgent.enabled = false;
+        var legs = GetComponentsInChildren<LegStepper>();
+        foreach (var leg in legs)
+        {
+            leg.CleanUp();
+            leg.enabled = false;
+        }
     }
 
     private void GetClosestScoreItem()
