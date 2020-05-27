@@ -2,6 +2,8 @@
 
 namespace ScallyWags
 {
+    [System.Serializable]
+
     public class Emote
     {
         private float _delay = 2f;
@@ -9,6 +11,7 @@ namespace ScallyWags
         private AudioSourcePoolManager _audioSourcePoolManager;
         private SimpleAudioEvent _emoteAudio;
         private AnimationController _animation;
+        [SerializeField] private GameObject _yarrBubble;
 
         public void Init(SimpleAudioEvent emoteAudio, AudioSourcePoolManager audioSourcePoolManager, AnimationController animationController)
         {
@@ -18,7 +21,7 @@ namespace ScallyWags
         }
 
         // Update is called once per frame
-        public void Tick(bool emoteDown)
+        public void Tick(bool emoteDown, Transform transform)
         {
             _timer += Time.deltaTime;
 
@@ -26,9 +29,14 @@ namespace ScallyWags
             {
                 if (_timer > _delay)
                 {
+                    //Execute yarr!
                     _timer = 0;
                     _audioSourcePoolManager.PlayAudioEvent(_emoteAudio);
                     _animation.Emote();
+
+                    Debug.Log(_yarrBubble);
+                    Debug.Log(!!_yarrBubble);
+                    Object.Instantiate(_yarrBubble, transform, transform);
                 }
             }
         }

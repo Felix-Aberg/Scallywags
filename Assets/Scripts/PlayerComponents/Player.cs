@@ -13,14 +13,15 @@ namespace ScallyWags
     {
         public int Index => _index;
         [SerializeField] private int _index;
-        
+
         private bool _isDead;
-        
+
         private InputHandler _inputHandler;
         private PlayerController _playerController;
         [SerializeField] private Pickup _pickup;
         [SerializeField] private Interact _interact;
         [SerializeField] private Jump _jump;
+        [SerializeField] private Emote _emote;
 
         private AnimationController _animationController;
         private Ragdoll _ragdoll;
@@ -33,7 +34,6 @@ namespace ScallyWags
         private BoxCollider _triggerCollider;
         private Respawnable _respawnable;
         private Drown _drown;
-        private Emote _emote;
 
         // AudioEvents
         [SerializeField] SimpleAudioEvent _emoteAudio;
@@ -49,7 +49,7 @@ namespace ScallyWags
             _pickup = new Pickup();
             _interact = new Interact();
             _jump = new Jump();
-            _emote = new Emote();
+            //_emote = new Emote();
             _playerController = new PlayerController();
             _inputHandler = new InputHandler();
 
@@ -108,7 +108,7 @@ namespace ScallyWags
             _pickup.Tick(this, inputs.pickUpPressed, inputs.pickUpDown, inputs.pickUpReleased);
             _interact.Tick(_pickup.PickedUpItem, this, inputs.interActPressed);
             _jump.Tick(transform, _rigidbody, inputs.jumpPressed, inputs.jumpDown);
-            _emote.Tick(inputs.emoteDown);
+            _emote.Tick(inputs.emoteDown, transform);
 
             _animationController.Tick();
         }

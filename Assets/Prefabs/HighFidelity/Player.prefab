@@ -3453,6 +3453,9 @@ MonoBehaviour:
     _jumpBoost: 20
     _gravityModifier: 1.5
     _jumpingGravityModifier: 36
+  _emote:
+    _yarrBubble: {fileID: 5204847401088768632, guid: 50a9e5ad935561e4483ccb5d20913bd0,
+      type: 3}
   _emoteAudio: {fileID: 11400000, guid: d7209bfd6acc6e0418fb8d66cb38f228, type: 2}
 --- !u!65 &6950868564152302689
 BoxCollider:
