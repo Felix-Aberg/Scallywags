@@ -49,7 +49,7 @@ namespace ScallyWags
             
             _animationController.Interact(currentItem.itemType, _interacting);
             
-            if (interactPressed)
+            if (interactPressed && !_interacting)
             {
                 _animationController.InteractTrigger(currentItem.itemType);
             }
