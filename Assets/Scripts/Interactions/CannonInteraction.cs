@@ -14,12 +14,14 @@ namespace ScallyWags
         private AudioSourcePoolManager _audioPool;
         private ShipCondition _enemyCondition;
         private ShipCondition _shipCondition;
+        private Animator _animator;
         private void Start()
         {
             _shipCondition = GetComponentInParent<ShipCondition>();
             _particleSystem = GetComponentsInChildren<ParticleSystem>();
             _spawnPos = GetComponentInChildren<ItemSpawn>();
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
+            _animator = GetComponentInChildren<Animator>();
 
             if (_spawnPos == null)
             {
@@ -52,6 +54,8 @@ namespace ScallyWags
                 p.Play();   
             }
             _audioPool.PlayAudioEvent(_event, transform.position);
+            
+            _animator.SetTrigger("Shoot");
         }
 
         private void FindTarget()
