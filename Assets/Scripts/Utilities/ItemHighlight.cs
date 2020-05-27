@@ -12,10 +12,12 @@ namespace ScallyWags
         private bool _highlighted;
 
         private List<GameObject> _items = new List<GameObject>();
+        private SkinnedMeshRenderer _skinnedMeshRenderer;
 
         private void Start()
         {
             _meshRenderer = GetComponent<MeshRenderer>();
+            _skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
         private void Update()
@@ -38,15 +40,35 @@ namespace ScallyWags
             if (value)
             {
                 Material[] array = new Material[2];
-                array[0] = _meshRenderer.materials[0];
-                array[1] = _outline;
-                _meshRenderer.materials = array;
+                if (_meshRenderer)
+                {
+                    array[0] = _meshRenderer.materials[0];
+                    array[1] = _outline;
+                    _meshRenderer.materials = array;
+                }
+
+                if (_skinnedMeshRenderer)
+                {
+                    array[0] = _skinnedMeshRenderer.materials[0];
+                    array[1] = _outline;
+                    _skinnedMeshRenderer.materials = array;
+                }
             }
             else
             {
                 Material[] array = new Material[1];
-                array[0] = _meshRenderer.materials[0];
-                _meshRenderer.materials = array;
+
+                if (_meshRenderer)
+                {
+                    array[0] = _meshRenderer.materials[0];
+                    _meshRenderer.materials = array;
+                }
+
+                if (_skinnedMeshRenderer)
+                {
+                    array[0] = _skinnedMeshRenderer.materials[0];
+                    _skinnedMeshRenderer.materials = array;
+                }
             }
         }
     }

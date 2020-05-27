@@ -91,13 +91,13 @@ namespace ScallyWags
                 }
 
                 var skeleton = entity.GetComponent<Skeleton>();
-                if (skeleton.IsDead())
+                if (skeleton && skeleton.IsDead())
                 {
                     continue;
                 }
                 
                 var crab = entity.GetComponent<Crab>();
-                if (crab.IsDead())
+                if (crab && crab.IsDead())
                 {
                     continue;
                 }

@@ -218,6 +218,7 @@ namespace ScallyWags
                 {
                     target.TakeDamage(transform.position, _hitForce);
                     _damageTimer = 0;
+                    _attackTimer = _attackDelay;
                 }
             }
         }

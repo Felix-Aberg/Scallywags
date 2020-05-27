@@ -23,8 +23,6 @@ namespace ScallyWags
             _rb = GetComponent<Rigidbody>();
             _levelEventManager = GameObject.FindObjectOfType<LevelEventManager>();
             _shipManager = FindObjectOfType<ShipManager>();
-            Debug.Log(_shipManager);
-            Debug.Log(!!_shipManager);
         }
     
         // Update is called once per frame
