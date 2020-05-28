@@ -8,7 +8,7 @@ namespace ScallyWags
     public class EnableKrakenDecal : MonoBehaviour
 {
     private Decal _decal;
-    private float _telegraphDuration = 2f;
+    [SerializeField] float _telegraphDuration = 1f;
 
     void Start()
     {

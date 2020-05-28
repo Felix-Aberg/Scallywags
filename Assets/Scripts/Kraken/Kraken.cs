@@ -133,12 +133,16 @@ public class Kraken : MonoBehaviour, IDamageable
         {
             // Slam
             _anim.SetInteger("Attack", 1);
-            _decal.EnableDecal();
         }
     }
 
     public void SetDecal(EnableKrakenDecal decal)
     {
         _decal = decal;
+    }
+
+    public void EnableDecal()
+    {
+        _decal.EnableDecal();
     }
 }
