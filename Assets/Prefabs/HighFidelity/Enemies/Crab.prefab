@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8744978864158167812}
   - component: {fileID: 75972917162964735}
+  - component: {fileID: 3424428987938331978}
   m_Layer: 0
   m_Name: Leg1_3.L
   m_TagString: Untagged
@@ -117,6 +118,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &3424428987938331978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75972917162964721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &133076222409665599
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1509143145196995109}
   - component: {fileID: 2049237469395892611}
+  - component: {fileID: 7910046939776474777}
   m_Layer: 0
   m_Name: Leg4_3.R
   m_TagString: Untagged
@@ -573,6 +594,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &7910046939776474777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049237469395892612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &2747158895499483412
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031620795517467273}
   - component: {fileID: 2883435389067626559}
+  - component: {fileID: 31550081806015127}
   m_Layer: 0
   m_Name: Leg2_3.R
   m_TagString: Untagged
@@ -729,6 +770,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &31550081806015127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883435389067626544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &3264786609798022423
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4999721593930029480}
   - component: {fileID: 3534286294131701713}
+  - component: {fileID: 5618408559886596905}
   m_Layer: 0
   m_Name: Leg2_3.L
   m_TagString: Untagged
@@ -809,6 +870,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &5618408559886596905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534286294131701714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &3932014208175363449
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +1055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1528212262779373540}
   - component: {fileID: 4787785407149606137}
+  - component: {fileID: 8522832221223061680}
   m_Layer: 0
   m_Name: Leg1_3.R
   m_TagString: Untagged
@@ -1014,6 +1095,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &8522832221223061680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787785407149606138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &4968621144263685043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6736097253906394464}
   - component: {fileID: 5041816781239835552}
+  - component: {fileID: 4828717396152052971}
   m_Layer: 0
   m_Name: Leg4_3.L
   m_TagString: Untagged
@@ -1095,6 +1196,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &4828717396152052971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041816781239835553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &5286737214926208255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8735332099772600206}
   - component: {fileID: 5961215717519718482}
+  - component: {fileID: 8297907846440042984}
   m_Layer: 0
   m_Name: Leg3_3.R
   m_TagString: Untagged
@@ -1215,6 +1336,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &8297907846440042984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961215717519718483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &6708781929350835877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272936160138921946}
   - component: {fileID: 8211736616106748170}
+  - component: {fileID: 6024038408088572650}
   m_Layer: 0
   m_Name: Leg3_3.L
   m_TagString: Untagged
@@ -1389,6 +1530,25 @@ MonoBehaviour:
   moveDuration: 0.1
   stepOvershootFraction: 2
   Moving: 0
+--- !u!114 &6024038408088572650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211736616106748171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca45bb53dc94f478358a1b6475653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainLength: 2
+  TargetGameObject: {fileID: 0}
+  Target: {fileID: 0}
+  Pole: {fileID: 0}
+  Iterations: 10
+  Delta: 0.001
+  SnapBackStrength: 1
 --- !u!1 &8243399166404389847
 GameObject:
   m_ObjectHideFlags: 0

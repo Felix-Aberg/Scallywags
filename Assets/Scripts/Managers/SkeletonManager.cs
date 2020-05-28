@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace ScallyWags
@@ -23,9 +24,13 @@ namespace ScallyWags
         {
             foreach (var skeleton in _skeletons)
             {
-                skeleton.Tick();
+                if (skeleton.gameObject.activeInHierarchy)
+                {
+                    skeleton.Tick();
+                }
             }
         }
+        
 
         public void Spawn(Vector3 pos)
         {

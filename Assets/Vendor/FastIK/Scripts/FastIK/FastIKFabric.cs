@@ -18,6 +18,7 @@ namespace DitzelGames.FastIK
         /// <summary>
         /// Target the chain should bent to
         /// </summary>
+        public GameObject TargetGameObject;
         public Transform Target;
         public Transform Pole;
 
@@ -76,7 +77,8 @@ namespace DitzelGames.FastIK
             //init target
             if (Target == null)
             {
-                Target = new GameObject(gameObject.name + " Target").transform;
+                TargetGameObject = new GameObject(gameObject.name + " Target");
+                Target = TargetGameObject.transform;
                 SetPositionRootSpace(Target, GetPositionRootSpace(transform));
             }
             StartRotationTarget = GetRotationRootSpace(Target);

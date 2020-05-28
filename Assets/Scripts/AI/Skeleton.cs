@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -89,9 +90,6 @@ namespace ScallyWags
         {
             if (_isDead) return;
             Die();
-            
-            var pickable = gameObject.AddComponent<PickableItem>();
-            pickable.itemType = ItemType.Skeleton;
         }
 
         public void TakeDamage(Vector3 hitDir, float hitForce)
@@ -130,11 +128,15 @@ namespace ScallyWags
             }
 
             _ragdoll.EnableRagdoll(dir.normalized, hitForce);
-            
-            var pickable = gameObject.AddComponent<PickableItem>();
-            pickable.itemType = ItemType.Skeleton;
+            StartCoroutine(DisableSkeleton());
         }
-        
+
+        private IEnumerator DisableSkeleton()
+        {
+            yield return new WaitForSeconds(5f);
+            gameObject.SetActive(false);
+        }
+
         public Vector3 GetPos()
         {
             return transform.position;

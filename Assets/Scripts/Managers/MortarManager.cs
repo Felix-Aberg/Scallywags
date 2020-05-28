@@ -58,7 +58,7 @@ namespace ScallyWags
         private void Barrage(HazardData data)
         {
             _lastSpawn = SelectPosition();
-            GameObject.Instantiate(data.Prefab, _lastSpawn.transform.position, Quaternion.identity);
+            Instantiate(data.Prefab, _lastSpawn.transform.position, Quaternion.identity);
             _audioPool.PlayAudioEvent(data.Audio);
             _spawnList.Remove(_lastSpawn);
 

@@ -1,10 +1,8 @@
-﻿using Cinemachine;
+﻿using System.Collections;
 using DG.Tweening;
 using ScallyWags;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Analytics;
 
 public class Crab : MonoBehaviour, IEntity, IDamageable
 {
@@ -38,7 +36,10 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     public void Tick()
     {
-        if (_isDead) return;
+        if (_isDead)
+        {
+            return;
+        }
         Sense();
         Decide();
         Act();
@@ -51,6 +52,13 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Sense()
     {
+        if (_pickedUpItem != null && transform.position.y < -9)
+        {
+            _pickedUpItem.gameObject.SetActive(false);
+            Die();
+            return;
+        }
+        
         if (_pickedUpItem && !_pickedUpItem.gameObject.activeInHierarchy)
         {
             _pickedUpItem = null;
@@ -60,12 +68,6 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         if (targetItem && targetItem.PickedUpBy != null)
         {
             _targetItem = null;
-        }
-        
-        if (_pickedUpItem != null && transform.position.y < -9)
-        {
-            Destroy(_pickedUpItem, 3);
-            Die();
         }
     }
     
@@ -89,8 +91,14 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     {
         _isDead = true;
         _navMeshAgent.enabled = false;
+        StartCoroutine(DisableCrab());
+    }
+
+    private IEnumerator DisableCrab()
+    {
+        yield return new WaitForSeconds(5f);
+        gameObject.SetActive(false);
         DestroyLegSteppers();
-        Destroy(gameObject, 3);
     }
 
     private void GetClosestScoreItem()

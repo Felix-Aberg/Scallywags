@@ -11,5 +11,6 @@ public class Hat : MonoBehaviour
         var rb = gameObject.AddComponent<Rigidbody>();
         gameObject.AddComponent<SphereCollider>();
         rb.AddForce(transform.up*2f, ForceMode.Impulse);
+        Destroy(gameObject,5f);
     }
 }

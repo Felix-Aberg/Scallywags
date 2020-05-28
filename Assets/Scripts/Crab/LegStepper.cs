@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using DitzelGames.FastIK;
 using UnityEngine;
 
@@ -27,11 +28,10 @@ namespace ScallyWags
 
         private void Start()
         {
-            _legStepperTarget = new GameObject();
-            target = Instantiate(_legStepperTarget, transform.position, Quaternion.identity).transform;
-            _legStepperTarget.name = "LegStepperTarget";
-            var IK = gameObject.AddComponent<FastIKFabric>();
-            IK.Target = target;
+            var IK = GetComponent<FastIKFabric>();
+            IK.Target.position = transform.position;
+            IK.Target.rotation = transform.rotation;
+            target = IK.Target;
         }
 
         void Update()
@@ -51,7 +51,7 @@ namespace ScallyWags
 
         public void CleanUp()
         {
-            target.gameObject.SetActive(false);
+            Destroy(GetComponent<FastIKFabric>().TargetGameObject);
             gameObject.SetActive(false);
         }
 
