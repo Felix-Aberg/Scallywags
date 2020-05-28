@@ -23,7 +23,6 @@ namespace ScallyWags
             cam = GameObject.FindGameObjectWithTag("MainCamera");
             transform.position = transform.parent.position + cam.transform.TransformDirection(1.2f, 1.6f, 0);
             transform.rotation = cam.transform.rotation;
-            Debug.Log("Position: " + transform.position);
         }
 
         private IEnumerator Die()

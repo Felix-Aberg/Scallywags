@@ -33,9 +33,6 @@ namespace ScallyWags
                     _timer = 0;
                     _audioSourcePoolManager.PlayAudioEvent(_emoteAudio);
                     _animation.Emote();
-
-                    Debug.Log(_yarrBubble);
-                    Debug.Log(!!_yarrBubble);
                     Object.Instantiate(_yarrBubble, transform, transform);
                 }
             }
