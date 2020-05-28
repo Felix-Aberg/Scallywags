@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1691882557191202938}
   - component: {fileID: 8021860875864208867}
   - component: {fileID: -7003488385310355376}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Yarr_Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488345790531553074}
   - component: {fileID: 1310098681188407019}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Yarr_Bubble_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75e82b659cc8729468b7d5c05a75ff7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
