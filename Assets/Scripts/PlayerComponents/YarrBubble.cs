@@ -12,7 +12,7 @@ namespace ScallyWags
         private GameObject cam;
 
         // Start is called before the first frame update
-        public void Init()
+        public void Start()
         {
             StartCoroutine(Die());
         }
