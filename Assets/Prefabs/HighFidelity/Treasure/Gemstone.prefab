@@ -97,9 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dbfaaf307d01e4eaa43078968b2d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _breakSound: {fileID: 0}
   _dividesTo: {fileID: 0}
   particleEffect: {fileID: 0}
-  _goldValue: 30
+  _goldValue: 10
   maxHitpoints: 0
 --- !u!54 &1296917348080053592
 Rigidbody:

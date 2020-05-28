@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using ScallyWags;
 using UnityEngine;
 
-public class ShipController : MonoBehaviour
+namespace ScallyWags
+{
+    public class ShipController : MonoBehaviour
 {
     [SerializeField] private bool useRigidBody;
     private float _swayAmount = 7;
@@ -53,4 +54,5 @@ public class ShipController : MonoBehaviour
             transform.DORotate(new Vector3(-_halfSway, y, 0), 10).OnComplete(RotateAgain);
         }
     }
+}
 }

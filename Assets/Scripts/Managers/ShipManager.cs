@@ -8,14 +8,16 @@ namespace ScallyWags
         private List<ShipCondition> ships = new List<ShipCondition>();
         private Transform _spawnPos;
         private HazardManager _hazardManager;
+        private Kraken[] _krakens = new Kraken[2];
 
         public void Init(HazardManager hazardManager)
         {
             _hazardManager = hazardManager;
-            var ship = GameObject.FindObjectOfType<ShipCondition>();
+            var ship = FindObjectOfType<ShipCondition>();
             ship.Init(ShipType.Player, this, 20);
             ships.Add(ship);
-            _spawnPos = GameObject.FindObjectOfType<EnemyShipSpawn>().gameObject.transform;
+            _spawnPos = FindObjectOfType<EnemyShipSpawn>().gameObject.transform;
+            _krakens = FindObjectsOfType<Kraken>();
         }
 
         public void Tick()
@@ -60,7 +62,7 @@ namespace ScallyWags
         private void EnableShip(EventManager.EventMessage message)
         {
             var shipCondition = GetShip(ShipType.Enemy);
-            if (shipCondition.gameObject.activeInHierarchy)
+            if (shipCondition.gameObject.activeInHierarchy || !CanSpawnShip())
             {
                 _hazardManager.SkipHazard();
                 return;
@@ -81,11 +83,24 @@ namespace ScallyWags
                 return;
             }
             
-            var go = GameObject.Instantiate(prefab, _spawnPos.position, Quaternion.identity);
+            var go = Instantiate(prefab, _spawnPos.position, Quaternion.identity);
             go.transform.rotation = Quaternion.Euler(0, 180, 0);
             var ship = go.GetComponent<ShipCondition>();
             ships.Add(ship);
             ship.gameObject.SetActive(false);
+        }
+        
+        private bool CanSpawnShip()
+        {
+            bool canSpawn = true;
+            foreach (var kraken in _krakens) {
+                if (kraken.gameObject.activeInHierarchy)
+                {
+                    canSpawn = false;
+                    break;
+                }
+            }
+            return canSpawn;
         }
     }
 }
