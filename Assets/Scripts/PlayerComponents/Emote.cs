@@ -31,7 +31,7 @@ namespace ScallyWags
                 {
                     //Execute yarr!
                     _timer = 0;
-                    _audioSourcePoolManager.PlayAudioEvent(_emoteAudio);
+                    _audioSourcePoolManager.PlayAudioEvent(_emoteAudio, transform.position);
                     _animation.Emote();
                     Object.Instantiate(_yarrBubble, transform, transform);
                 }
