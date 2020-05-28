@@ -16,4 +16,4 @@ MonoBehaviour:
   Prefab: {fileID: 8845708071311245029, guid: 739399e2718dbd749883c0e3f9383acf, type: 3}
   Health: 0
   Audio: {fileID: 0}
-  NumberOfHazards: 5
+  NumberOfHazards: 3
