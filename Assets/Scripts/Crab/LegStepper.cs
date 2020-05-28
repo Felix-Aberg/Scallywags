@@ -51,7 +51,7 @@ namespace ScallyWags
 
         public void CleanUp()
         {
-            Destroy(_legStepperTarget);
+            Destroy(target);
         }
 
         // Coroutines must return an IEnumerator
@@ -84,7 +84,7 @@ namespace ScallyWags
             // We want to pass through the center point
             Vector3 centerPoint = (startPoint + endPoint) / 2;
             // But also lift off, so we move it up by half the step distance (arbitrarily)
-            centerPoint += homeTransform.up * Vector3.Distance(startPoint, endPoint) / 2f;
+            centerPoint += Vector3.Distance(startPoint, endPoint) * 0.5f * homeTransform.up;
 
             float timeElapsed = 0;
             do

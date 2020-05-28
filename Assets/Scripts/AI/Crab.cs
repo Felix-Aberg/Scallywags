@@ -101,12 +101,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     {
         _isDead = true;
         _navMeshAgent.enabled = false;
-        var legs = GetComponentsInChildren<LegStepper>();
-        foreach (var leg in legs)
-        {
-            leg.CleanUp();
-            leg.enabled = false;
-        }
+        DestroyLegSteppers();
     }
 
     private void GetClosestScoreItem()
@@ -218,6 +213,15 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _rigidBody.useGravity = true;
         _rigidBody.velocity = Vector3.zero;
         _rigidBody.DORotate(new Vector3(0, 0, 180), 0.2f);
+    }
 
+    private void DestroyLegSteppers()
+    {
+        var legs = GetComponentsInChildren<LegStepper>();
+        foreach (var leg in legs)
+        {
+            leg.CleanUp();
+            leg.enabled = false;
+        }
     }
 }
