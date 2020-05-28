@@ -30,7 +30,7 @@ public class AudioSourcePool : PollingPool<AudioSource>
     {
         var source = Get();
         source.transform.position = pos;
-        source.spatialBlend = 0.9f;
+        source.spatialBlend = 0.5f;
         source.outputAudioMixerGroup = simpleAudioEvent.MixerGroup;
         simpleAudioEvent.Play(source);
     }

@@ -4354,9 +4354,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 115354237, guid: 3d5b03c9e96ac8a488d84919589fc9e4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 531496062, guid: 3d5b03c9e96ac8a488d84919589fc9e4, type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d42425ccd9270344a4cc9216bedd9a7,
+        type: 2}
+    - target: {fileID: 531496063, guid: 3d5b03c9e96ac8a488d84919589fc9e4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 653432063982976650, guid: 3d5b03c9e96ac8a488d84919589fc9e4,
         type: 3}

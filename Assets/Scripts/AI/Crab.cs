@@ -8,11 +8,13 @@ using UnityEngine.Analytics;
 
 public class Crab : MonoBehaviour, IEntity, IDamageable
 {
-    [SerializeField] private ScoreItem[] _treasure;
+    [SerializeField] private SimpleAudioEvent _dieSound;
+    private AudioSourcePoolManager _audioSourcePool;
+    private ScoreItem[] _treasure;
     private NavMeshAgent _navMeshAgent;
     private Pickup _pickup;
-    [SerializeField] ScoreItem _targetItem;
-    [SerializeField] private PickableItem _pickedUpItem;
+    private ScoreItem _targetItem;
+    private PickableItem _pickedUpItem;
     private bool _isDead;
     private Vector3 _startPos;
 
@@ -22,7 +24,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     private float _normalSpeed = 4f;
     private float _carrySpeed = 1.3f;
     private bool _died;
-    
+
 
     public void Init(int index = 0)
     {
@@ -34,6 +36,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _rigidBody.useGravity = false;
         _startPos = transform.position;
         _navMeshAgent.speed = _normalSpeed;
+        _audioSourcePool = FindObjectOfType<AudioSourcePoolManager>();
     }
 
     public void Tick()
@@ -197,6 +200,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         Drop();
         Die();
         Flip();
+        _audioSourcePool.PlayAudioEvent(_dieSound);
 
         var pickable = gameObject.AddComponent<PickableItem>();
         pickable.itemType = ItemType.Crab;

@@ -80,6 +80,6 @@ Material:
     - _SrcBlend: 5
     - _WorkflowMode: 1
     m_Colors:
-    - _BaseColor: {r: 0.9698319, g: 0.990566, b: 0.65881985, a: 1}
+    - _BaseColor: {r: 0.9444204, g: 0.99215686, b: 0.65882355, a: 1}
     - _EmissionColor: {r: 1.4980392, g: 1.4431373, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

@@ -10,6 +10,7 @@ namespace ScallyWags
         private AnimationController _animationController;
         [SerializeField] private List<GameObject> _itemsNear = new List<GameObject>();
         private bool _interacting;
+        private SimpleAudioEvent _slashSound;
 
         public void Init(AnimationController animationController)
         {

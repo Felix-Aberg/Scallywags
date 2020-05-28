@@ -1501,10 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94be9fde80143f9489d54c346f247efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treasure:
-  - {fileID: 0}
-  _targetItem: {fileID: 0}
-  _pickedUpItem: {fileID: 0}
+  _dieSound: {fileID: 11400000, guid: 1a039d1588f9a1b4784bdae95dfaa4b5, type: 2}
 --- !u!195 &8296172668132212067
 NavMeshAgent:
   m_ObjectHideFlags: 0

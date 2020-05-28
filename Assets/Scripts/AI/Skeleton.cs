@@ -22,8 +22,8 @@ namespace ScallyWags
         private Ragdoll _ragdoll;
         private Rigidbody _rigidbody;
         private CapsuleCollider _capsuleCollider;
-        private AudioSourcePoolManager _audioSourcePoolManager;
         private string _enemyDamageEventName = "EnemyDamage";
+        private string _enemyTauntEventName = "SkeletonTaunt";
         
         // Sword
         private float _attackTimer;
@@ -34,6 +34,8 @@ namespace ScallyWags
         
         private float _hitForce = 40f;
         private ParticleSystem _slash;
+        private float _tauntTimer;
+        private float _tauntDelay = 2f;
 
 
         public void Start()
@@ -71,7 +73,8 @@ namespace ScallyWags
             }
             
             if (_isDead) return;
-            
+
+            _tauntTimer += Time.deltaTime;
             _attackTimer += Time.deltaTime;
             _damageTimer += Time.deltaTime;
             
@@ -207,6 +210,12 @@ namespace ScallyWags
 
             _animator.SetTrigger("Sword");
             _slash.Play();
+
+            if (_tauntTimer > _tauntDelay)
+            {
+                EventManager.TriggerEvent(_enemyTauntEventName, null);
+                _tauntTimer = 0;
+            }
         }
         
         private void OnCollisionEnter(Collision other)

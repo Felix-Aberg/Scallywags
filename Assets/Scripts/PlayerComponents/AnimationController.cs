@@ -11,8 +11,10 @@ namespace ScallyWags
         private List<ItemType> _equippableItems = new List<ItemType>();
         private Jump _jump;
         private ParticleSystem _slash;
+        private AudioSourcePoolManager _audioSourcePoolManager;
+        private SimpleAudioEvent _slashSound;
 
-        public void Init(Animator animator, Rigidbody rigidBody, Pickup pickup, Jump jump)
+        public void Init(Animator animator, Rigidbody rigidBody, Pickup pickup, Jump jump, SimpleAudioEvent slashSound)
         {
             _animator = animator;
             _rigidBody = rigidBody;
@@ -21,6 +23,8 @@ namespace ScallyWags
             _equippableItems.Add(ItemType.Hammer);
             _equippableItems.Add(ItemType.Sword);
             _slash = GetComponentInChildren<ParticleSystem>();
+            _audioSourcePoolManager = FindObjectOfType<AudioSourcePoolManager>();
+            _slashSound = slashSound;
         }
 
         public void Tick()
@@ -70,6 +74,7 @@ namespace ScallyWags
             {
                 case ItemType.Sword:
                     _animator.SetTrigger("Sword");
+                    _audioSourcePoolManager.PlayAudioEvent(_slashSound, transform.position);
                     _slash.Play();
                     break;
                 case ItemType.Hammer:

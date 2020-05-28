@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dbfaaf307d01e4eaa43078968b2d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _breakSound: {fileID: 11400000, guid: b41c55c9cd624fc48a65e88818cdff4b, type: 2}
   _dividesTo: {fileID: 3604555032304741275, guid: 987553a9874d8a24daa8a65dbfbba4bc,
     type: 3}
   particleEffect: {fileID: 6524640592341377298, guid: d0a1b80da204a354d9027bf631c975aa,

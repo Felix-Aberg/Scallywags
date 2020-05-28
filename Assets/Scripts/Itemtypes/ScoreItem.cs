@@ -6,8 +6,10 @@ namespace ScallyWags
     
 public class ScoreItem : MonoBehaviour, IDamageable
 {
+    [SerializeField] private SimpleAudioEvent _breakSound;
     [SerializeField] private GameObject _dividesTo;
     [SerializeField] private GameObject particleEffect;
+    private AudioSourcePoolManager _audioSourcePoolManager;
     public int GoldValue => _goldValue;
     [SerializeField] private int _goldValue;
     [SerializeField] private int maxHitpoints = 2;
@@ -22,6 +24,7 @@ public class ScoreItem : MonoBehaviour, IDamageable
         _createUIElement = FindObjectOfType<CreateUIElement>();
         _treasureManager = treasureManager;
         _hitPoint = maxHitpoints;
+        _audioSourcePoolManager = FindObjectOfType<AudioSourcePoolManager>();
     }
     
     public void Tick()
@@ -51,6 +54,10 @@ public class ScoreItem : MonoBehaviour, IDamageable
                 SpawnItem(_dividesTo);
                 SpawnItem(_dividesTo);
                 Divide();
+                if (_breakSound)
+                {
+                    _audioSourcePoolManager.PlayAudioEvent(_breakSound);
+                }
             }
         }
     }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90db3620cac3094eaa7f4ed95bfc68b, type: 3}
+  m_Name: SkeletonTaunt
+  m_EditorClassIdentifier: 
+  MixerGroup: {fileID: 8876446087188848737, guid: e15608a8afa6f46469c924d1fda3f8cd,
+    type: 2}
+  clips:
+  - {fileID: 8300000, guid: a2e0f0ef557cab94087650b2b14ec64c, type: 3}
+  - {fileID: 8300000, guid: 03427622c3b0d6149be112b55b9fe45a, type: 3}
+  - {fileID: 8300000, guid: 7839f1969e59b104eb593897a4a888ff, type: 3}
+  - {fileID: 8300000, guid: fcf62095fd8c1594d84746f60078a3d0, type: 3}
+  - {fileID: 8300000, guid: d3c46cb489d83a54d913ab53179f3df2, type: 3}
+  - {fileID: 8300000, guid: bf89856f90fa9dd479fdcf6491e88fc6, type: 3}
+  minVolume: 0.9
+  maxVolume: 1
+  minPitch: 0.95
+  maxPitch: 1.05

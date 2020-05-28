@@ -51,7 +51,7 @@ namespace ScallyWags
 
         public void CleanUp()
         {
-            Destroy(target);
+            Destroy(target.gameObject);
         }
 
         // Coroutines must return an IEnumerator

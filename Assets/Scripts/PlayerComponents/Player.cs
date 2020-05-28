@@ -36,7 +36,8 @@ namespace ScallyWags
         private Drown _drown;
 
         // AudioEvents
-        [SerializeField] SimpleAudioEvent _emoteAudio;
+        [SerializeField] private SimpleAudioEvent _emoteAudio;
+        [SerializeField] private SimpleAudioEvent _slashSound;
 
         public void Init(int index)
         {
@@ -78,7 +79,7 @@ namespace ScallyWags
             _rigidbody.drag = 0f;
 
             _animationController = gameObject.AddComponent<AnimationController>();
-            _animationController.Init(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump);
+            _animationController.Init(GetComponentInChildren<Animator>(), _rigidbody, _pickup, _jump, _slashSound);
 
             _pickup.Init(transform, _animationController, GetComponentInChildren<RightArmTarget>());
             _interact.Init(_animationController);
