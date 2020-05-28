@@ -14,7 +14,7 @@ public class ShootEverySecond : MonoBehaviour
     {
         _cannon = GetComponent<EnemyCannon>();
         _ship = GetComponentInParent<ShipCondition>();
-        _delay = Random.Range(3f, 5f);
+        _delay = Random.Range(5f, 8f);
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class ShootEverySecond : MonoBehaviour
         if (_timer >= _delay)
         {
             _timer = 0;
-            _delay = Random.Range(3f, 5f);
+            _delay = Random.Range(5f, 8f);
             Shoot();
         }
     }

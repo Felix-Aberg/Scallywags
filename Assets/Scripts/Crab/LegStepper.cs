@@ -51,7 +51,8 @@ namespace ScallyWags
 
         public void CleanUp()
         {
-            Destroy(target.gameObject);
+            target.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         // Coroutines must return an IEnumerator

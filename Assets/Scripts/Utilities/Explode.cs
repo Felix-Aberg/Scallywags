@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
+using Random = System.Random;
 using Vector3 = UnityEngine.Vector3;
 
 namespace ScallyWags
@@ -16,9 +17,22 @@ namespace ScallyWags
         private float _hitForce = 20f;
         private ShipType _owner;
 
+        [SerializeField] private AudioClip _fallSound1;
+        [SerializeField] private AudioClip _fallSound2;
         private void Start()
         {
             _audioPool = FindObjectOfType<AudioSourcePoolManager>();
+            var audioSource = GetComponent<AudioSource>();
+            if (UnityEngine.Random.Range(0, 2) == 1)
+            {
+                audioSource.clip = _fallSound1;
+            }
+            else
+            {
+                audioSource.clip = _fallSound2;
+            }
+
+            audioSource.Play();
         }
 
         public void Init(ShipType type)

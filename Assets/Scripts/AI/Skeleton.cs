@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
 namespace ScallyWags
 {
     public class Skeleton : MonoBehaviour, IDamageable, IEntity
     {
         public EntityManager EntityManager;
-        
+        [SerializeField] private GameObject _skeletonBones;
         [SerializeField] private List<Player> _players = new List<Player>();
         private NavMeshAgent _navMeshAgent;
         private Pickup _pickup;
@@ -88,16 +89,52 @@ namespace ScallyWags
         {
             if (_isDead) return;
             Die();
+            
+            var pickable = gameObject.AddComponent<PickableItem>();
+            pickable.itemType = ItemType.Skeleton;
         }
 
         public void TakeDamage(Vector3 hitDir, float hitForce)
         {
             if (_isDead) return;
+
             Die();
-            var dir = transform.position - _targetPlayer.transform.position;
-            _ragdoll.EnableRagdoll(dir.normalized, hitForce);
+            HandleDeath(hitDir, hitForce);
+        }
+        
+        private void Die()
+        {
+            _isDead = true;
+            _navMeshAgent.enabled = false;
+            _sword.gameObject.SetActive(false);
+            EventManager.TriggerEvent(_enemyDamageEventName, null);
         }
 
+        private void HandleDeath(Vector3 hitDir, float hitForce)
+        {
+            var dir = transform.position - _targetPlayer.transform.position;
+            
+            var explodeToBones = UnityEngine.Random.Range(0, 10);
+            if (explodeToBones > 2)
+            {
+                var bones = Instantiate(_skeletonBones, transform.position, transform.rotation);
+                foreach (var b in bones.GetComponentsInChildren<Rigidbody>())
+                {
+                    b.AddForce(dir * hitForce, ForceMode.Impulse);
+                }
+
+                GetComponentInChildren<Hat>().Drop();
+                
+                gameObject.SetActive(false);
+                return;
+            }
+
+            _ragdoll.EnableRagdoll(dir.normalized, hitForce);
+            
+            var pickable = gameObject.AddComponent<PickableItem>();
+            pickable.itemType = ItemType.Skeleton;
+        }
+        
         public Vector3 GetPos()
         {
             return transform.position;
@@ -142,16 +179,6 @@ namespace ScallyWags
         {
             MoveTowardsPlayer();
             Attack();
-        }
-
-        private void Die()
-        {
-            _isDead = true;
-            _navMeshAgent.enabled = false;
-            _sword.gameObject.SetActive(false);
-            EventManager.TriggerEvent(_enemyDamageEventName, null);
-            var pickable = gameObject.AddComponent<PickableItem>();
-            pickable.itemType = ItemType.Skeleton;
         }
 
         private void GetTarget()

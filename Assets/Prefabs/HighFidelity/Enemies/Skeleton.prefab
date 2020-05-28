@@ -899,6 +899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityManager: {fileID: 0}
+  _skeletonBones: {fileID: 8810500865329841312, guid: 90e9cb202a7845742a4fe3c6abf751f1,
+    type: 3}
   _players: []
   _targetPlayer: {fileID: 0}
   _pickedUpItem: {fileID: 0}
@@ -1037,6 +1039,7 @@ GameObject:
   - component: {fileID: 875311746507708398}
   - component: {fileID: 8178182718436060632}
   - component: {fileID: 2468593480773226785}
+  - component: {fileID: 125462715893494822}
   m_Layer: 19
   m_Name: Bandana
   m_TagString: Untagged
@@ -1105,6 +1108,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &125462715893494822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215055605758911997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547a460d6ed0e364a93e8952f2264e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4434731135021691994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1367,7 @@ GameObject:
   - component: {fileID: 9051872963713984262}
   - component: {fileID: 55644357137358128}
   - component: {fileID: 6050930608096846281}
+  - component: {fileID: 3485756798627894829}
   m_Layer: 19
   m_Name: Skeleton CapHat
   m_TagString: Untagged
@@ -1420,6 +1436,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3485756798627894829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460033286735959317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547a460d6ed0e364a93e8952f2264e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6190255318112262712
 GameObject:
   m_ObjectHideFlags: 0

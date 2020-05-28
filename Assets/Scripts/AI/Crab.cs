@@ -225,7 +225,6 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         foreach (var leg in legs)
         {
             leg.CleanUp();
-            leg.enabled = false;
         }
     }
 }

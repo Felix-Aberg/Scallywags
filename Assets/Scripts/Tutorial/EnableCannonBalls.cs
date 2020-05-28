@@ -34,5 +34,13 @@ namespace ScallyWags
             c.gameObject.SetActive(true);
         }
     }
+
+    public void EnableTools()
+    {
+        foreach (var c in _cannonballs)
+        {
+            c.gameObject.SetActive(true);
+        }
+    }
 }
 }

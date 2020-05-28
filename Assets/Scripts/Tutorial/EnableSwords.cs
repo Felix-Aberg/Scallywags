@@ -39,5 +39,13 @@ namespace ScallyWags
                 }
             }
         }
+        
+        public void EnableTools()
+        {
+            foreach (var c in _swords)
+            {
+                c.gameObject.SetActive(true);
+            }
+        }
     }
 }

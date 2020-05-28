@@ -13,7 +13,7 @@ namespace ScallyWags
         private LevelEventManager _levelEventManager;
         private ShipManager _shipManager;
         private float _respawnTimer;
-        private float _respawnDelay = 5;
+        private float _respawnDelay = 3f;
 
         // Start is called before the first frame update
         void Start()

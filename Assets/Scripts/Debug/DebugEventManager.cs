@@ -30,10 +30,22 @@ public class DebugEventManager : MonoBehaviour
             EventManager.TriggerEvent("SpawnEntity", eventMessage);
         }
         
-        if (GUI.Button(new Rect(10, 200, 100, 30), "Pause"))
+        if (GUI.Button(new Rect(10, 190, 100, 30), "Pause"))
         {
             EventManager.EventMessage eventMessage = new EventManager.EventMessage(null);
             EventManager.TriggerEvent("Pause", eventMessage);
+        }
+        
+        if (GUI.Button(new Rect(10, 230, 100, 30), "EnableItems"))
+        {
+            var buckets = FindObjectOfType<EnableBuckets>();
+            buckets.EnableTools();
+            
+            var swords = FindObjectOfType<EnableSwords>();
+            swords.EnableTools();
+            
+            var cannonballs = FindObjectOfType<EnableCannonBalls>();
+            cannonballs.EnableTools();
         }
     }
     #endif
