@@ -160,12 +160,14 @@ namespace ScallyWags
 
         private void UpdateAvailableHazards()
         {
-            if (_roundTime.Value < 120 && _roundTime.Value > 60)
+            // unlock medium hazards when 1/3 of the round has passed
+            if (_roundTime.Value < _roundTimer.RoundTime/3 && _roundTime.Value > _roundTimer.RoundTime/3*2)
             {
                 _hazardsUnlocked = 1;
             }
 
-            if (_roundTime.Value < 60)
+            // unlock hard hazards when 2/3 of the round has passed
+            if (_roundTime.Value < _roundTimer.RoundTime/3*2)
             {
                 _hazardsUnlocked = 2;
             }

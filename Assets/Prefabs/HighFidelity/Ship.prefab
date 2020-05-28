@@ -374,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f43a493ab06e488d3317a74a753e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _telegraphDuration: 1
 --- !u!1 &1254876306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5961,6 +5962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f43a493ab06e488d3317a74a753e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _telegraphDuration: 1
 --- !u!1 &7209749562224880056
 GameObject:
   m_ObjectHideFlags: 0

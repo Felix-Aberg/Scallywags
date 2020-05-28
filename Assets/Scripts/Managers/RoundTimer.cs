@@ -8,7 +8,8 @@ namespace ScallyWags
     public class RoundTimer : MonoBehaviour
     {
         private FloatVariable _roundTimeUI;
-        private double _time = 300;
+        public float RoundTime => _time;
+        private float _time = 180;
         private LevelEventManager _levelEventManager;
         private bool _stopped = true;
 
