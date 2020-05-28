@@ -104,7 +104,7 @@ MonoBehaviour:
     type: 3}
   particleEffect: {fileID: 6524640592341377298, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}
-  _goldValue: 50
+  _goldValue: 25
   maxHitpoints: 1
 --- !u!114 &-7744786291694761584
 MonoBehaviour:

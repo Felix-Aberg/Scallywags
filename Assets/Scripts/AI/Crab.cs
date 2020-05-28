@@ -55,15 +55,17 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         {
             _pickedUpItem = null;
         }
-        
-        if (_targetItem?.GetComponent<PickableItem>().PickedUpBy != null)
+
+        var targetItem = _targetItem?.GetComponent<PickableItem>();
+        if (targetItem && targetItem.PickedUpBy != null)
         {
             _targetItem = null;
         }
         
         if (_pickedUpItem != null && transform.position.y < -9)
         {
-            _isDead = true;
+            Destroy(_pickedUpItem, 3);
+            Die();
         }
     }
     
@@ -77,6 +79,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Act()
     {
+        if (_isDead) return;
         GoForTreasure();
         TryPickingUp();
         ReturnToSea();
@@ -87,6 +90,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         _isDead = true;
         _navMeshAgent.enabled = false;
         DestroyLegSteppers();
+        Destroy(gameObject, 3);
     }
 
     private void GetClosestScoreItem()
@@ -184,8 +188,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         Flip();
         _audioSourcePool.PlayAudioEvent(_dieSound);
 
-        var pickable = gameObject.AddComponent<PickableItem>();
-        pickable.itemType = ItemType.Crab;
+        //var pickable = gameObject.AddComponent<PickableItem>();
+        //pickable.itemType = ItemType.Crab;
     }
 
     public Vector3 GetPos()
