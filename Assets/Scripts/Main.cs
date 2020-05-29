@@ -70,7 +70,7 @@ namespace ScallyWags
             _roundTimer.Init(roundTimeUI);
             _shipManager.Init(_hazardManager);
             _mortarManager.Init();
-            _krakenManager.Init(_hazardManager);
+            _krakenManager.Init(_hazardManager, _shipManager, _roundTimer);
             _hazardManager.Init(_roundTimer, roundTimeUI, _shipManager.GetShip(ShipType.Player), _players);
 
             for (int i = 1; i <= _numberOfPlayers; i++) // Player index starts from 1

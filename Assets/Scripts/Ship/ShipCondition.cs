@@ -22,6 +22,7 @@ namespace ScallyWags
         [SerializeField] private HazardData _skeleton;
         [SerializeField] private float _sinkingSpeed = 1;
         private EntityManager _entityManager;
+        private RoundTimer _roundTimer;
 
         // Start is called before the first frame update
         public void Init(ShipType shipType, ShipManager shipManager, int maxHealth = 10)
@@ -29,7 +30,7 @@ namespace ScallyWags
             _shipHealth = new ShipHealth(maxHealth);
             _shipManager = shipManager;
             _shipType = shipType;
-            
+
             _sinkingPerDamage = 5f / maxHealth;
             
             var pos = transform.position;
@@ -40,6 +41,7 @@ namespace ScallyWags
             _navMeshManager.Init(this);
 
             _entityManager = FindObjectOfType<EntityManager>();
+            _roundTimer = FindObjectOfType<RoundTimer>();
 
             if(_shipType == ShipType.Enemy) {
                 _skeletonManager = new SkeletonManager(_skeleton, _entityManager, _shipManager);
@@ -51,12 +53,21 @@ namespace ScallyWags
             if (_shipType == ShipType.Enemy)
             {
                 _skeletonManager.Tick();
+
+                if (_shipManager.GetShip(ShipType.Player).IsSinking() || _roundTimer.RoundTime <= 0)
+                {
+                    if (_shipHealth.GetHealth() > 0)
+                    {
+                        _shipHealth.TakeDamage(20);
+                    }
+                }
             }
 
             if (IsSinking())
             {
                 Sink();
             }
+            
 
             if (transform.position.y <= -50)
             {
@@ -78,6 +89,7 @@ namespace ScallyWags
         public void TakeDamage(int damage = 1)
         {
             if (IsSinking()) return;
+            
             _shipHealth.TakeDamage(damage);
 
             var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage;

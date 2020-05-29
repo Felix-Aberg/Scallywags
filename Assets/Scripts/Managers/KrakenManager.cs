@@ -10,12 +10,18 @@ namespace ScallyWags
         [SerializeField] private Kraken[] _krakens = new Kraken[2];
         private HazardManager _hazardManager;
         private EnableKrakenDecal[] _decals;
+        private ShipManager _shipManager;
+        private RoundTimer _roundTimer;
+        private bool _ended;
 
-        public void Init(HazardManager hazardManager)
+        public void Init(HazardManager hazardManager, ShipManager shipManager, RoundTimer roundTimer)
         {
             _hazardManager = hazardManager;
             _spawnPos = GameObject.FindObjectsOfType<KrakenSpawn>();
             _decals = FindObjectsOfType<EnableKrakenDecal>();
+            _shipManager = shipManager;
+            _roundTimer = roundTimer;
+
         }
 
         private void OnEnable()
@@ -39,6 +45,19 @@ namespace ScallyWags
             foreach (var k in _krakens)
             {
                 k?.Tick();
+            }
+            
+            if (_ended)
+            {
+                return;
+            }
+            
+            if (_roundTimer.RoundTime <= 0)
+            {
+                foreach (var kraken in _krakens)
+                {
+                    kraken.Die();
+                }
             }
         }
 

@@ -116,7 +116,7 @@ public class Kraken : MonoBehaviour, IDamageable
 
     private void UpdateDepth()
     {
-        transform.DOMoveY(y - _playerShip.DepthOffset(), 1f);
+        transform.DOMoveY(y - _playerShip.DepthOffset(), 0.5f);
     }
 
     private void Attack()
