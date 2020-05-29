@@ -599,8 +599,8 @@ Transform:
   - {fileID: 3913020447581220171}
   - {fileID: 7557597493722975076}
   - {fileID: 6594886101310081965}
-  - {fileID: 7842869029028205120}
-  - {fileID: 7842869028957091555}
+  - {fileID: 1227834628}
+  - {fileID: 1290445223}
   - {fileID: 576274862852884428}
   - {fileID: 4063390743955883544}
   - {fileID: 8555855911136107770}
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: a7abb82533863864baf6f0608f79316b, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!114 &1033711563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4063390743955883544
 Transform:
   m_ObjectHideFlags: 0
@@ -2335,6 +2335,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1975106152, guid: c872e98910f2f604ea221d04049bee28, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 576274862260179962, guid: c872e98910f2f604ea221d04049bee28,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2517,7 +2521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1b80da204a354d9027bf631c975aa, type: 3}
---- !u!4 &7842869029028205120 stripped
+--- !u!4 &1227834628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842869029949461249, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}
@@ -2612,7 +2616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1b80da204a354d9027bf631c975aa, type: 3}
---- !u!4 &7842869028957091555 stripped
+--- !u!4 &1290445223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842869029949461249, guid: d0a1b80da204a354d9027bf631c975aa,
     type: 3}

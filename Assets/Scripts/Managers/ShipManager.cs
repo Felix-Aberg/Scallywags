@@ -56,7 +56,22 @@ namespace ScallyWags
         }
         private void CreateShip(EventManager.EventMessage message)
         {
-            InitShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
+           // InitShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
+            CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
+        }
+
+        private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
+        {
+        	var shipCondition = GetShip(shipType);
+            if (shipCondition != null)
+            {
+                return;
+            }
+             var go = Instantiate(prefab, _spawnPos.position, Quaternion.identity);
+             go.transform.rotation = Quaternion.Euler(0, 180, 0);
+             var ship = go.GetComponent<ShipCondition>();
+             ships.Add(ship);
+             ship.gameObject.SetActive(false);
         }
 
         private void EnableShip(EventManager.EventMessage message)
