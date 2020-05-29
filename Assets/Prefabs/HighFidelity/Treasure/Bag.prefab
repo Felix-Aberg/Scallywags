@@ -18,12 +18,12 @@ GameObject:
   - component: {fileID: -6108810420528277311}
   - component: {fileID: 442780139605947237}
   - component: {fileID: -8738178623717845658}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5353386176066986989
 Transform:
@@ -200,7 +200,12 @@ PrefabInstance:
     - target: {fileID: 7281034512461113386, guid: 6dc835418205d554f93899b407a3bb24,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281034512461113386, guid: 6dc835418205d554f93899b407a3bb24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7281034513146463298, guid: 6dc835418205d554f93899b407a3bb24,
         type: 3}
@@ -210,7 +215,12 @@ PrefabInstance:
     - target: {fileID: 7281034513146463298, guid: 6dc835418205d554f93899b407a3bb24,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281034513146463298, guid: 6dc835418205d554f93899b407a3bb24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7281034513146463299, guid: 6dc835418205d554f93899b407a3bb24,
         type: 3}
@@ -270,7 +280,12 @@ PrefabInstance:
     - target: {fileID: 7281034513855373048, guid: 6dc835418205d554f93899b407a3bb24,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281034513855373048, guid: 6dc835418205d554f93899b407a3bb24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc835418205d554f93899b407a3bb24, type: 3}

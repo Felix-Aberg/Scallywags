@@ -7,11 +7,10 @@ using UnityEngine;
 public class KrakenAttack : MonoBehaviour
 {
     private BoxCollider[] _colliders;
-    private bool _dealtDamageToShip;
-    private bool _dealtDamageToShipPart;
     private float _hitForce = 100f;
     private string _eventName = "KrakenSlams";
-
+    private bool _disabled;
+    
     private void Start()
     {
         _colliders = GetComponentsInChildren<BoxCollider>();
@@ -23,42 +22,33 @@ public class KrakenAttack : MonoBehaviour
 
     public void EnableCollider()
     {
-        _dealtDamageToShip = false;
-        _dealtDamageToShipPart = false;
+        _disabled = false;
     }
 
     public void DisableCollider()
     {
-        _dealtDamageToShip = true;
-        _dealtDamageToShipPart = true;
+        _disabled = true;
     }
-    
+
     private void OnCollisionEnter(Collision other)
     {
-        if (_dealtDamageToShipPart == false)
+        if (_disabled)
         {
-            var destroyable = other.gameObject.GetComponent<IDamageable>();
-
-            if (destroyable != null)
-            {
-                EventManager.TriggerEvent(_eventName, null);
-                destroyable.TakeDamage(transform.position, _hitForce);
-                if (destroyable as Player == null)
-                {
-                    _dealtDamageToShipPart = true;
-                }
-            }
+            return;
         }
         
-        if (_dealtDamageToShip == false)
+        var destroyable = other.gameObject.GetComponent<IDamageable>();
+
+        if (destroyable != null)
         {
-            var ship = other.gameObject.GetComponentInParent<ShipCondition>();
-            if (ship != null)
-            {
-                EventManager.TriggerEvent(_eventName, null);
-                ship.TakeDamage(3);
-                _dealtDamageToShip = true;
-            }
+            EventManager.TriggerEvent(_eventName, null);
+            destroyable.TakeDamage(transform.position, _hitForce);
+        }
+        else
+        {
+            var rb = other.gameObject.GetComponent<Rigidbody>();
+            var dir = other.transform.position - transform.position;
+            rb?.AddForce(dir * _hitForce, ForceMode.Impulse);
         }
 
         var player = other.gameObject.GetComponent<Player>();
