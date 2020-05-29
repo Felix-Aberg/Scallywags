@@ -9,7 +9,7 @@ namespace ScallyWags
     {
         private FloatVariable _roundTimeUI;
         public float RoundTime => _time;
-        private float _time = 180;
+        private float _time = 240;
         private LevelEventManager _levelEventManager;
         private bool _stopped = true;
 

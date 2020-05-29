@@ -56,7 +56,7 @@ namespace ScallyWags
         }
         private void CreateShip(EventManager.EventMessage message)
         {
-            CreateShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
+            InitShipObject(message.HazardData.Prefab, ShipType.Enemy, message.HazardData.Health);
         }
 
         private void EnableShip(EventManager.EventMessage message)
@@ -81,19 +81,26 @@ namespace ScallyWags
             shipCondition.Init(ShipType.Enemy, this, message.HazardData.Health);
         }
 
-        private void CreateShipObject(GameObject prefab, ShipType shipType, int health)
+        private void InitShipObject(GameObject prefab, ShipType shipType, int health)
         {
             var shipCondition = GetShip(shipType);
             if (shipCondition != null)
             {
                 return;
             }
-            
-            var go = Instantiate(prefab, _spawnPos.position, Quaternion.identity);
-            go.transform.rotation = Quaternion.Euler(0, 180, 0);
-            var ship = go.GetComponent<ShipCondition>();
-            ships.Add(ship);
-            ship.gameObject.SetActive(false);
+
+            var shipConditions = FindObjectsOfType<ShipCondition>();
+
+            foreach (var ship in shipConditions)
+            {
+                if (ship.ShipType == ShipType.Enemy)
+                {
+                    ship.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    ship.transform.position = _spawnPos.position;
+                    ships.Add(ship);
+                    ship.gameObject.SetActive(false);
+                }
+            }
         }
         
         private bool CanSpawnShip()

@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6460942134512239860
 Transform:
@@ -43,7 +43,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9921569, g: 0.97647065, b: 0.882353, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -56,7 +56,7 @@ Light:
     m_Strength: 1
     m_Bias: 1
     m_NormalBias: 1
-    m_NearPlane: 0.1
+    m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -78,21 +78,21 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2096663
+    m_Bits: 4294967295
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6500
-  m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 7.17e-43, y: 2.7e-44, z: 0, w: -0.0087890625}
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 5.97e-43, y: -0.00000017671687, z: 5.96e-43, w: 4.3935612e-27}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
-  m_ShadowAngle: 0.64
+  m_ShadowAngle: 1
 --- !u!114 &488410138
 MonoBehaviour:
   m_ObjectHideFlags: 0
