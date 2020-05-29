@@ -81,7 +81,17 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
     private void Act()
     {
-        if (_isDead) return;
+        if (_isDead)
+        {
+            return;
+        }
+
+        if (!_navMeshAgent.isOnNavMesh)
+        {
+            SetDestinationNearTarget(transform.position);
+            return;
+        }
+        
         GoForTreasure();
         TryPickingUp();
         ReturnToSea();
@@ -111,7 +121,7 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
             {
                 continue;
             }
-            
+
             var d = Vector3.Distance(transform.position, t.transform.position);
             if (d < distance)
             {
@@ -127,10 +137,14 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
 
         if (Vector3.Distance(_navMeshAgent.destination, _targetItem.transform.position) > 1)
         {
-            _navMeshAgent.ResetPath();
+            if (_navMeshAgent.isOnNavMesh)
+            {
+                _navMeshAgent.ResetPath();
+            }
         }
         
         if (_navMeshAgent.hasPath || _navMeshAgent.pathPending) return;
+        
         _navMeshAgent.SetDestination(_targetItem.transform.position);
     }
 
@@ -219,6 +233,27 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
         foreach (var leg in legs)
         {
             leg.CleanUp();
+        }
+    }
+    
+    private void SetDestinationNearTarget(Vector3 pos)
+    {
+        NavMeshHit hit;
+        var repathCount = 50;
+        float radius = 0;
+        for (int i = 0; i < repathCount; ++i)
+        {
+            Vector3 randomPosition = Random.insideUnitSphere * radius;
+            randomPosition += pos;
+            if (NavMesh.SamplePosition(randomPosition, out hit, radius, 1))
+            {
+                _navMeshAgent.SetDestination(hit.position);
+                break;
+            }
+            else
+            {
+                ++radius;
+            }
         }
     }
 }

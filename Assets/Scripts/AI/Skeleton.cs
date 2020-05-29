@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using Object = UnityEngine.Object;
 
 namespace ScallyWags
 {
@@ -179,6 +177,11 @@ namespace ScallyWags
 
         private void Act()
         {
+            if (!_navMeshAgent.isOnNavMesh)
+            {
+                SetDestinationNearTarget(transform.position);
+                return;
+            }
             MoveTowardsPlayer();
             Attack();
         }
@@ -261,6 +264,27 @@ namespace ScallyWags
                     }
                     _damageTimer = 0;
                     _attackTimer = _attackDelay;
+                }
+            }
+        }
+        
+        private void SetDestinationNearTarget(Vector3 pos)
+        {
+            NavMeshHit hit;
+            var repathCount = 50;
+            float radius = 0;
+            for (int i = 0; i < repathCount; ++i)
+            {
+                Vector3 randomPosition = UnityEngine.Random.insideUnitSphere * radius;
+                randomPosition += pos;
+                if (NavMesh.SamplePosition(randomPosition, out hit, radius, 1))
+                {
+                    _navMeshAgent.SetDestination(hit.position);
+                    break;
+                }
+                else
+                {
+                    ++radius;
                 }
             }
         }
