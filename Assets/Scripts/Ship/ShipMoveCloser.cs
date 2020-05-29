@@ -8,7 +8,7 @@ namespace ScallyWags
 {
     public class ShipMoveCloser : MonoBehaviour
     {
-        private float _moveDistance = 25;
+        private float _moveDistance = 20;
         private Vector3 _moveTarget;
         private ShipCondition _ship;
         [SerializeField] private float _speed = 0.03f;

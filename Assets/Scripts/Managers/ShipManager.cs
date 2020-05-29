@@ -62,11 +62,17 @@ namespace ScallyWags
         private void EnableShip(EventManager.EventMessage message)
         {
             var shipCondition = GetShip(ShipType.Enemy);
-            if (shipCondition.gameObject.activeInHierarchy || !CanSpawnShip())
+            if (shipCondition.gameObject.activeInHierarchy)
+            {
+                shipCondition.SpawnSkeletons();
+                return;
+            }
+            
+            if(!CanSpawnShip())
             {
                 _hazardManager.SkipHazard();
                 return;
-            }
+            });
             
             EventManager.TriggerEvent("EnemyShipSound", null);
             shipCondition.gameObject.SetActive(true);
