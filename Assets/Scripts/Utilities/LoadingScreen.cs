@@ -24,7 +24,6 @@ public class LoadingScreen : MonoBehaviour
         if (!once && isLoaded && Input.anyKeyDown)
         {
             once = true;
-            Debug.Log("button pressed");
             transition.SetTrigger("Start");
             StartCoroutine(ActualLoadNextScene(sceneName));
         }
@@ -32,7 +31,6 @@ public class LoadingScreen : MonoBehaviour
 
     private IEnumerator LoadNextScene()
     {
-        Debug.Log("LoadNextScene Logged");
         yield return new WaitForSeconds(5f);
         isLoaded = true;
         loadingText.SetActive(false);

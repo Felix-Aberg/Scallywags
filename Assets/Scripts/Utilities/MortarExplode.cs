@@ -15,6 +15,7 @@ namespace ScallyWags
         private AudioSourcePoolManager _audioPool;
         private float _hitForce = 10f;
         private PositionDecal _decal;
+        private bool _hazardCreated;
 
         private void Start()
         {
@@ -24,6 +25,11 @@ namespace ScallyWags
 
         private void OnCollisionEnter(Collision other)
         {
+            if (_hazardCreated)
+            {
+                return;
+            }
+            
             var damageable = other.gameObject.GetComponent<IDamageable>();
             if (damageable == null)
             {
@@ -89,6 +95,7 @@ namespace ScallyWags
                     }
 
                     ship?.TakeDamage();
+                    _hazardCreated = true;
                 }
             }
             
