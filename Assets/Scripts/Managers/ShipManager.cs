@@ -72,8 +72,8 @@ namespace ScallyWags
             {
                 _hazardManager.SkipHazard();
                 return;
-            });
-            
+            }
+
             EventManager.TriggerEvent("EnemyShipSound", null);
             shipCondition.gameObject.SetActive(true);
             shipCondition.transform.position = _spawnPos.position;
