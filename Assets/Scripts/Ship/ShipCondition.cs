@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,7 @@ namespace ScallyWags
         private NavMeshManager _navMeshManager;
         private SkeletonManager _skeletonManager;
         [SerializeField] private HazardData _skeleton;
-        [SerializeField] private float _sinkingSpeed = 1;
+        [SerializeField] private float _sinkingSpeed = 2;
         private EntityManager _entityManager;
         private RoundTimer _roundTimer;
 
@@ -83,7 +84,7 @@ namespace ScallyWags
             
             var y = transform.position.y + damage;
             y = Mathf.Min(y, _startingDepth);
-            transform.DOMoveY(y, 1).OnComplete(_navMeshManager.UpdateMesh);
+            transform.DOMoveY(y, 2).OnComplete(_navMeshManager.UpdateMesh);
         }
 
         public void TakeDamage(int damage = 1)
@@ -93,7 +94,8 @@ namespace ScallyWags
             _shipHealth.TakeDamage(damage);
 
             var depth = _startingDepth - _shipHealth.GetMissingHealth() * _sinkingPerDamage;
-            transform.DOMoveY(depth - _sinkingPerDamage * damage, 1).OnComplete(_navMeshManager.UpdateMesh);
+
+            transform.DOMoveY(depth - _sinkingPerDamage * damage, 2).OnComplete(_navMeshManager.UpdateMesh);
         }
         
 
