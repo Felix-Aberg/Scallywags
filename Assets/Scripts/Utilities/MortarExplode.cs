@@ -32,6 +32,11 @@ namespace ScallyWags
 
             damageable?.TakeDamage(transform.position, _hitForce);
 
+            if (other.gameObject.GetComponent<ScoreItem>())
+            {
+                return;
+            }
+
             var particleSystem = Instantiate(particles, transform.position, Quaternion.identity);
             if (particleSystem == null)
             {
