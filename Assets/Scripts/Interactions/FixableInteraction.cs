@@ -16,7 +16,7 @@ namespace ScallyWags
         private FixProgressBar _bar;
 
         // Timers
-        private float _fixingTime = 5f;
+        private float _fixingTime = 4f;
         private float _fixingTimer = 0f;
         private float _scaleSpeed = 0.35f;
 

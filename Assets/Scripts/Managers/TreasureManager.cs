@@ -16,7 +16,7 @@ namespace ScallyWags
         private int _goldValue;
         private ScoreItem[] gold;
         private IntVariable _goldCounterUI;
-        private int _startingGold = 500;
+        private int _startingGold = 400;
         
         private LevelEventManager _levelEventManager;
         
