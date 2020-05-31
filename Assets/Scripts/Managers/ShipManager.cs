@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 namespace ScallyWags
 {
@@ -9,6 +11,8 @@ namespace ScallyWags
         private Transform _spawnPos;
         private HazardManager _hazardManager;
         private Kraken[] _krakens = new Kraken[2];
+        public bool resetRound => _resetRound;
+        private bool _resetRound;
 
         public void Init(HazardManager hazardManager)
         {
@@ -28,6 +32,11 @@ namespace ScallyWags
                 {
                     ship.Tick();
                 }
+            }
+            
+            if(GetShip(ShipType.Player).IsSinking())
+            {
+                _resetRound = true;
             }
         }
 
@@ -67,11 +76,11 @@ namespace ScallyWags
             {
                 return;
             }
-             var go = Instantiate(prefab, _spawnPos.position, Quaternion.identity);
-             go.transform.rotation = Quaternion.Euler(0, 180, 0);
-             var ship = go.GetComponent<ShipCondition>();
-             ships.Add(ship);
-             ship.gameObject.SetActive(false);
+            var go = Instantiate(prefab, _spawnPos.position, Quaternion.identity);
+            go.transform.rotation = Quaternion.Euler(0, 180, 0);
+            var ship = go.GetComponent<ShipCondition>();
+            ships.Add(ship);
+            ship.gameObject.SetActive(false);
         }
 
         private void EnableShip(EventManager.EventMessage message)

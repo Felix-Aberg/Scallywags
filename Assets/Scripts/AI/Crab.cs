@@ -135,6 +135,8 @@ public class Crab : MonoBehaviour, IEntity, IDamageable
     {
         if (_pickedUpItem != null) return;
 
+        if(_targetItem == null) return;
+        
         if (Vector3.Distance(_navMeshAgent.destination, _targetItem.transform.position) > 1)
         {
             if (_navMeshAgent.isOnNavMesh)

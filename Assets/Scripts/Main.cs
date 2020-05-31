@@ -40,6 +40,7 @@ namespace ScallyWags
         
         // Pause
         private bool _paused;
+        private bool _levelLoading;
 
         void Awake()
         {
@@ -94,7 +95,7 @@ namespace ScallyWags
             {
                 return;
             }
-            
+
             _hazardManager.Tick();
             _cameraHandler.Tick();
             _entityManager.Tick();
@@ -103,7 +104,13 @@ namespace ScallyWags
             _shipManager.Tick();
             _krakenManager.Tick();
 
-
+            if (_shipManager.resetRound && !_levelLoading)
+            {
+                _levelLoading = true;
+                _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Lost);
+                StartCoroutine(LoadScene("LoseScene"));
+            }
+            
             if (_treasureManager.GoldValue <= 0)
             {
                 _levelEventManager.SetLevelPlayState(LevelEventManager.LevelPlayState.Lost);

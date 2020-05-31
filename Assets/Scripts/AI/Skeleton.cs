@@ -179,7 +179,6 @@ namespace ScallyWags
         {
             if (!_navMeshAgent.isOnNavMesh)
             {
-                SetDestinationNearTarget(transform.position);
                 return;
             }
             MoveTowardsPlayer();
@@ -214,7 +213,7 @@ namespace ScallyWags
             
             if (_navMeshAgent.isOnNavMesh)
             {
-                _navMeshAgent.SetDestination(_targetPlayer.transform.position);
+                SetDestinationNearTarget(_targetPlayer.transform.position);
             }
         }
 
